@@ -1,0 +1,13 @@
+- clean: ['~']
+          
+- link:
+        ~/.scripts: scripts
+        ~/.config/fish:
+                force: true
+                path: fish
+        ~/.Xresources:
+                force: true
+                path: Xresources
+        ~/.i3:
+                force: true
+                path: i3
