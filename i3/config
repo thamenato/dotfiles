@@ -1,42 +1,33 @@
-# i3 config file (v4)
-# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+# Manjaro i3 Defaults
 
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
-
-# set default desktop layout (default is tiling)
-# workspace_layout tabbed <stacking|tabbed>
-
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
 new_window pixel 1
 new_float normal
-
 # Hide borders
 hide_edge_borders none
-
 # change borders
 bindsym $mod+u border none
 bindsym $mod+y border pixel 1
 bindsym $mod+n border normal
-
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font xft:URWGothic-Book 11
-
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
-
 # start a terminal
 bindsym $mod+Return exec terminal
-
 # kill focused window
 bindsym $mod+Shift+q kill
-
 # start program launcher
-bindsym $mod+d exec --no-startup-id dmenu_recency
-
+# bindsym $mod+d exec --no-startup-id dmenu_recency
+bindsym $mod+d exec rofi -show run
+bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu'
 # launch categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu
+# launch calendar \o/
+bindsym $mod+c exec --no-startup-id /usr/bin/zenity --calendar
 
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
@@ -273,7 +264,6 @@ bindsym $mod+9 exec --no-startup-id blurlock
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
-#exec --no-startup-id manjaro-hello
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
