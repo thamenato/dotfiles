@@ -1,6 +1,9 @@
 - clean: ['~']
           
 - link:
+        ~/.bashrc:
+                force: true
+                path: bashrc
         ~/.config/i3blocks:
                 force: true
                 path: i3blocks
@@ -13,6 +16,9 @@
         ~/.i3:
                 force: true
                 path: i3
+        ~/.profile:
+                force: true
+                path: profile
         ~/.scripts: scripts
         ~/.Xresources:
                 force: true

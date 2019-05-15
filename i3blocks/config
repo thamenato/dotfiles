@@ -55,7 +55,3 @@ interval=30
 [temperature]
 label=
 interval=10
-
-[monitors]
-command=~/.config/i3blocks/scripts/monitor_manager
-interval=once

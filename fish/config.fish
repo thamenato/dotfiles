@@ -36,4 +36,4 @@ else
     end  
 end
 
-set -gx PATH $PATH /home/thamenato/.local/bin
+# set -gx PATH $PATH /home/thamenato/.scripts
