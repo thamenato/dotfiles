@@ -1,6 +1,9 @@
 - clean: ['~']
           
 - link:
+        ~/.config/i3blocks:
+                force: true
+                path: i3blocks
         ~/.config/fish:
                 force: true
                 path: fish
