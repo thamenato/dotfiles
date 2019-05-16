@@ -273,7 +273,7 @@ exec --no-startup-id clipit
 # exec_always --no-startup-id sbxkb
 exec --no-startup-id ~/.scripts/start_conky_custom
 # exec --no-startup-id start_conky_green
-exec --no-startup-id xautolock -time 10 -locker blurlock
+# exec --no-startup-id xautolock -time 10 -locker blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
@@ -312,7 +312,8 @@ set_from_resource $term_color15    color15
 bar {
         status_command i3blocks
 	position top
-        font pango: DejaVu Sans Mono, Font Awesome 5 Free 10 
+        tray_output primary
+        font pango:FontAwesome 5 Free 10
 }
 
 # hide/unhide i3status bar
