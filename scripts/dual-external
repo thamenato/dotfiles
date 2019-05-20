@@ -1,0 +1,6 @@
+#!/bin/sh
+xrandr --output HDMI-0 --primary --mode 2560x1080 --pos 1920x0 --rotate normal --output DP-0 --off --output DP-1 --mode 1920x1080 --pos 0x0 --rotate normal --output eDP-1-1 --off --output DP-1-1 --off --output HDMI-1-1 --off
+nvidia-settings --assign CurrentMetaMode="DPY-0: nvidia-auto-select @2560x1080 +1920+0 {ViewPortIn=2560x1080, ViewPortOut=2560x1080+0+0, ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}, DPY-2: nvidia-auto-select @1920x1080 +0+0 {ViewPortIn=1920x1080, ViewPortOut=1920x1080+0+0, ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"
+nitrogen --restore
+killall conky
+start_conky_custom
