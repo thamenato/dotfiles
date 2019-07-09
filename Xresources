@@ -17,7 +17,7 @@ XTerm*reverseVideo:         on
 XTerm*selectToClipboard:    true
 
 !-------- URxvt 
-URxvt.font:                     xft:Hack:size=11
+URxvt.font:                     xft:Meslo LG M DZ for Powerline:size=10.5
 
 URxvt.depth:                    32
 URxvt.background:               [100]#222D31

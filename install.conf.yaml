@@ -4,12 +4,15 @@
         ~/.bashrc:
                 force: true
                 path: bashrc
-        ~/.config/i3blocks:
-                force: true
-                path: i3blocks
         ~/.config/fish:
                 force: true
                 path: fish
+        ~/.config/i3blocks:
+                force: true
+                path: i3blocks
+        ~/.config/mimeapps.list:
+                force: true
+                path: mimeapps.list
         ~/.config/rofi:
                 force: true
                 path: rofi
