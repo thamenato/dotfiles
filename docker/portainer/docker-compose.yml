@@ -1,0 +1,26 @@
+version: "3.3"
+
+services:
+  portainer:
+    image: "portainer/portainer"
+    container_name: "portainer"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - portainer_data:/data
+    restart: always
+    labels:
+      traefik.enable: "true"
+      traefik.docker.network: "traefik_default"
+      traefik.http.routers.portainer_insecure.rule: "Host(`portainer.cthylla.codes`)"
+      traefik.http.routers.portainer_insecure.middlewares: "redirect@file"
+      traefik.http.routers.portainer.rule: "Host(`portainer.cthylla.codes`)"
+      traefik.http.routers.portainer.tls: "true"
+      traefik.http.services.portainer.loadbalancer.server.port: "9000"
+
+volumes:
+  portainer_data:
+
+networks:
+  default:
+    external:
+      name: traefik_default

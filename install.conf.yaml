@@ -4,9 +4,6 @@
         ~/.bashrc:
                 force: true
                 path: bashrc
-        ~/.config/fish:
-                force: true
-                path: fish
         ~/.config/i3blocks:
                 force: true
                 path: i3blocks

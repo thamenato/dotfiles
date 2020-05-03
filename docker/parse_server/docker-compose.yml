@@ -1,0 +1,61 @@
+version: '3.3'
+
+services:
+  mongo:
+    container_name: parse-mongo
+    image: mongo
+    restart: always
+    networks:
+      - net 
+
+  parse:
+    container_name: parse-server
+    image: parse-server 
+    restart: always
+    command: 
+      - "--appId=APPLICATION_ID"
+      - "--masterKey=MASTER_KEY"
+      - "--databaseURI=mongodb://parse-mongo/test"
+      - "--publicServerURL=http://parse-server.cthulhu/parse"
+    volumes:
+      - parsecode:/parse-server/cloud
+      - parseconfig:/parse-server/config
+    networks:
+      - net 
+    labels:
+      traefik.enable: "true"
+      traefik.docker.network: "traefik_default"
+      traefik.http.routers.parse_server_insecure.rule: "Host(`parse-server.cthylla.codes`)"
+      traefik.http.routers.parse_server_insecure.middlewares: "redirect@file"
+      traefik.http.routers.parse_server.rule: "Host(`parse-server.cthylla.codes`)"
+      traefik.http.routers.parse_server.tls: "true"
+      traefik.http.services.parse_server.loadbalancer.server.port: "1337"
+
+  parse_dashboard:
+    container_name: parse-dashboard
+    image: parseplatform/parse-dashboard
+    restart: always
+    ports:
+      - 4040
+    volumes:
+      - ./config.json:/src/Parse-Dashboard/parse-dashboard-config.json
+    command: ["--dev"]
+    networks:
+      - net
+    labels:
+      traefik.enable: "true"
+      traefik.docker.network: "traefik_default"
+      traefik.http.routers.parse_dashboard_insecure.rule: "Host(`parse-dashboard.cthylla.codes`)"
+      traefik.http.routers.parse_dashboard_insecure.middlewares: "redirect@file"
+      traefik.http.routers.parse_dashboard.rule: "Host(`parse-dashboard.cthylla.codes`)"
+      traefik.http.routers.parse_dashboard.tls: "true"
+      traefik.http.services.parse_dashboard.loadbalancer.server.port: "4040"
+
+volumes:
+  parsecode:
+  parseconfig:
+
+networks:
+  net:
+    external:
+      name: traefik_default

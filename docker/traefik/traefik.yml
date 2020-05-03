@@ -1,0 +1,26 @@
+global:
+  sendAnonymousUsage: false
+
+log:
+  level: "INFO"
+  format: "common"
+
+entryPoints:
+  web:
+    address: ":80"
+
+  websecure:
+    address: ":443"
+    
+api:
+  insecure: true
+  dashboard: true
+
+providers:
+  file:
+    filename: "/etc/traefik/traefik.config.yml"
+    watch: true
+
+  docker:
+    exposedbydefault: false
+    defaultRule: "Host(`{{ trimPrefix `/` .Name }}.docker.localhost`)"

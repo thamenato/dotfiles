@@ -1,3 +1,11 @@
 .env
 .vscode
 Pipfile*
+*.pem
+
+# Hyper stuff
+Hyper/blob_storage
+Hyper/Cache
+Hyper/GPUCache
+Hyper/web*
+Hyper/Network Persistent State
