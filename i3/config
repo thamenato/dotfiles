@@ -315,7 +315,7 @@ bar {
         status_command i3blocks
 	position top
         tray_output primary
-        font pango:FontAwesome 5 Free 10
+        font pango:FontAwesome 11
 }
 
 # hide/unhide i3status bar

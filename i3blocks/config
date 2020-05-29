@@ -1,56 +1,32 @@
-# i3blocks config file
-#
-# Please see man i3blocks for a complete reference!
-# The man page is also hosted at http://vivien.github.io/i3blocks
-#
-# List of valid properties:
-#
-# align
-# color
-# command
-# full_text
-# instance
-# interval
-# label
-# min_width
-# name
-# separator
-# separator_block_width
-# short_text
-# signal
-# urgent
-
 # Global properties
-#
-# The top properties below are applied to every block, but can be overridden.
-# Each block command defaults to the script name to avoid boilerplate.
-command=/usr/lib/i3blocks/$BLOCK_NAME
+command=~/.config/i3blocks/scripts/$BLOCK_NAME
 separator=false
 separator_block_width=18
 markup=none
 
 [spotify]
-label=
-command=~/.config/i3blocks/scripts/spotify.py
+label= 
 interval=5
 signal=10
 color=#1DB954
 
+[time]
+interval=1
+STRFTIME_FORMAT=%Y-%m-%d %H:%M
+
+[iface]
+color=#00FF00
+interval=10
+
 [memory]
-label=
-command=~/.config/i3blocks/scripts/memory
+label= 
 interval=5
 
 [temperature]
-label=
+label= 
 interval=10
 
-[time]
-label=
-command=date '+%Y-%m-%d %H:%M'
-interval=1
-
 [battery]
-label=⚡
 interval=30
 min_width=60
+markup=pango
