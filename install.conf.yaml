@@ -1,25 +1,32 @@
 - clean: ['~']
           
 - link:
-        ~/.bashrc:
-                force: true
-                path: bashrc
-        ~/.config/i3blocks:
-                force: true
-                path: i3blocks
-        ~/.config/mimeapps.list:
-                force: true
-                path: mimeapps.list
-        ~/.config/rofi:
-                force: true
-                path: rofi
-        ~/.i3:
-                force: true
-                path: i3
         ~/.profile:
                 force: true
-                path: profile
-        ~/.scripts: scripts
+                path: home/profile
+
+        ~/.scripts: home/scripts 
+
         ~/.Xresources:
                 force: true
-                path: Xresources
+                path: home/Xresources
+
+        ~/.i3:
+                force: true
+                path: home/i3
+
+        ~/.config/i3blocks:
+                force: true
+                path: home/config/i3blocks
+
+        ~/.config/mimeapps.list:
+                force: true
+                path: home/config/mimeapps.list
+
+        ~/.config/rofi:
+                force: true
+                path: home/config/rofi
+
+        ~/.config/nvim:
+                force: true
+                path: home/config/nvim

@@ -14,6 +14,10 @@ color=#1DB954
 interval=1
 STRFTIME_FORMAT=%Y-%m-%d %H:%M
 
+[weather]
+interval=60
+command=curl "wttr.in/Charlotte?format=3&m"
+
 [iface]
 color=#00FF00
 interval=10
