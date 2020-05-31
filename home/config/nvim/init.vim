@@ -8,6 +8,7 @@ call plug#begin('~/.vim/plugged')
 
 " Theme
   Plug 'crusoexia/vim-monokai'
+  Plug 'sainnhe/sonokai'
 
 " Conquer of Completion
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -58,12 +59,15 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 "
 syntax on
 " theme
-colorscheme monokai
 set termguicolors
+colorscheme sonokai
+let g:sonokai_style = 'shusia'
+let g:sonokai_enable_italic = 1
+let g:sonokai_disable_italic_comment = 1
 set guioptions-=r
 set guifont=MesloLGS\ NF
 " show line numbers
-set number
+set number relativenumber
 " highlight matches when searching
 set hlsearch
 " disable line wrapping
@@ -100,9 +104,10 @@ inoremap ;; <Esc>
 
 " toggle NERDTree
 nnoremap <silent> <Space> :NERDTreeToggle<CR>
+nmap <F3> :NERDTreeToggle<CR>
 " toggle tagbar
 nnoremap <silent> <leader>tb :TagbarToggle<CR>
-nmap <F8> :TagbarToggle<CR>
+nmap <F4> :TagbarToggle<CR>
 " toggle buffer (switch between current and last buffer)
 nnoremap <silent> <leader>bb <C-^>
 " go to next buffer
@@ -144,4 +149,4 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
-let g:airline_theme='monochrome'
+let g:airline_theme='sonokai'

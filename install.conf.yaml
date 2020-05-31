@@ -15,6 +15,10 @@
                 force: true
                 path: home/i3
 
+        ~/.zshrc:
+                force: true
+                path: home/zshrc
+
         ~/.config/i3blocks:
                 force: true
                 path: home/config/i3blocks
@@ -30,3 +34,7 @@
         ~/.config/nvim:
                 force: true
                 path: home/config/nvim
+
+        ~/.config/alacritty:
+                force: true
+                path: home/config/allacrity

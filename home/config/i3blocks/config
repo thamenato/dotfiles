@@ -1,7 +1,8 @@
 # Global properties
 command=~/.config/i3blocks/scripts/$BLOCK_NAME
+align=center
 separator=false
-separator_block_width=18
+separator_block_width=15
 markup=none
 
 [spotify]
@@ -10,15 +11,19 @@ interval=5
 signal=10
 color=#1DB954
 
-[time]
-interval=1
-STRFTIME_FORMAT=%Y-%m-%d %H:%M
-
 [weather]
 interval=60
-command=curl "wttr.in/Charlotte?format=3&m"
+command=curl "wttr.in/Charlotte?format=%22%l+%c+%t%22&m"
+
+[time]
+TZ=America/New_York
+interval=1
+command=date +"%Y-%m-%d %H:%M"
+
+[separator]
 
 [iface]
+label= 
 color=#00FF00
 interval=10
 
@@ -32,5 +37,6 @@ interval=10
 
 [battery]
 interval=30
-min_width=60
 markup=pango
+
+[separator]
