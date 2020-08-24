@@ -41,6 +41,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'jiangmiao/auto-pairs'
   Plug 'machakann/vim-sandwich'
 
+  Plug 'cespare/vim-toml'
+
 call plug#end()
 
 

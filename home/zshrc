@@ -69,6 +69,7 @@ export LANG=en_US.UTF-8
 # For a full list of active aliases, run `alias`.
 alias zshconfig="vim ~/.zshrc"
 alias vim="nvim"
+alias servedir="python3 -m http.server"
 
 # Node.js configuration
 NPM_PACKAGES="${HOME}/.npm-packages"
