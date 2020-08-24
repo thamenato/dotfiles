@@ -19,6 +19,10 @@
                 force: true
                 path: home/zshrc
 
+        ~/.tmux.conf:
+                force: true
+                path: home/tmux.conf
+
         ~/.config/i3blocks:
                 force: true
                 path: home/config/i3blocks
@@ -37,4 +41,4 @@
 
         ~/.config/alacritty:
                 force: true
-                path: home/config/allacrity
+                path: home/config/alacritty

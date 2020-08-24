@@ -21,9 +21,8 @@ call plug#begin('~/.vim/plugged')
   " show git status in NERD Tree
   Plug 'Xuyuanp/nerdtree-git-plugin'
 
-" vim-airline - enhanced statusline
-  Plug 'vim-airline/vim-airline' 
-  Plug 'vim-airline/vim-airline-themes' 
+" Buffer Tabline
+  Plug 'ap/vim-buftabline' 
 
 " Save/restore session support
   Plug 'tpope/vim-obsession'
@@ -114,13 +113,14 @@ nmap <F4> :TagbarToggle<CR>
 nnoremap <silent> <leader>bb <C-^>
 " go to next buffer
 nnoremap <silent> <leader>bn :bn<CR>
-nnoremap <C-l> :bn<CR>
+nnoremap <C-n> :bnext<CR>
 " go to previous buffer
 nnoremap <silent> <leader>bp :bp<CR>
 " https://github.com/neovim/neovim/issues/2048
-nnoremap <C-h> :bp<CR>
+nnoremap <C-p> :bprevious<CR>
 " close buffer
 nnoremap <silent> <leader>bd :bd<CR>
+nnoremap <C-k> :bdelete<CR>
 " kill buffer
 nnoremap <silent> <leader>bk :bd!<CR>
 " list buffers
@@ -150,5 +150,3 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
-
-let g:airline_theme='sonokai'
