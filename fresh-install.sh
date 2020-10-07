@@ -3,7 +3,6 @@
 function update_system {
   # update mirrors to fastest
   sudo pacman-mirrors --fasttrack 5
-
   # update system
   sudo pacman -Syuu --noconfirm
 }
@@ -21,7 +20,8 @@ function install_basic_apps {
     pyenv \
     base-devel \
     bashtop \
-    nodejs
+    nodejs \
+    fzf
 }
 
 function config_zsh {
@@ -57,6 +57,18 @@ function install_printer {
 }
 
 function misc_apps {
-  yay -S telegram \
-    spotify
+  yay -S telegram-desktop \
+    spotify \
+    steam
 }
+
+# if no argument was passed, show available functions
+if [[ $# -eq 0 ]]; then
+  IFS=$'\n'
+  for f in $(declare -F); do
+    echo "${f:11}"
+  done
+fi
+
+$1
+

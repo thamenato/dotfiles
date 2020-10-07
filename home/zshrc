@@ -1,3 +1,5 @@
+fortune | cowsay 
+
 # Always work in a tmux session if tmux is installed
 # https://github.com/chrishunt/dot-files/blob/master/.zshrc
 if which tmux 2>&1 >/dev/null; then
@@ -89,8 +91,6 @@ export PATH="/home/thamenato/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 # eval "$(pyenv virtualenv-init -)"
 
-#
+# Leave this as last thing, p10k is a snowflake
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-fortune | cowsay 
