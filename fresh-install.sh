@@ -2,7 +2,7 @@
 
 function update_system {
   # update mirrors to fastest
-  sudo pacman-mirrors --fasttrack 5
+  sudo pacman-mirrors --fasttrack 
   # update system
   sudo pacman -Syuu --noconfirm
 }
