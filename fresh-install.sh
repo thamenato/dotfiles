@@ -21,7 +21,9 @@ function install_basic_apps {
     base-devel \
     bashtop \
     nodejs \
-    fzf
+    fzf \
+    yarn \
+    wmctrl
 }
 
 function config_zsh {
