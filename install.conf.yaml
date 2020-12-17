@@ -23,6 +23,10 @@
                 force: true
                 path: home/tmux.conf
 
+        ~/.tmux/plugins/tpm:
+                force: true
+                path: tpm
+
         ~/.config/i3blocks:
                 force: true
                 path: home/config/i3blocks
