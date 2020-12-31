@@ -1,48 +1,43 @@
 - clean: ['~']
           
 - link:
-        ~/.profile:
-                force: true
-                path: home/profile
+    ~/.profile:
+      force: true
+      path: home/profile
 
-        ~/.scripts: home/scripts 
+    ~/.scripts: home/scripts 
 
-        ~/.Xresources:
-                force: true
-                path: home/Xresources
+    ~/.config/i3:
+      force: true
+      path: home/config/i3
 
-        ~/.i3:
-                force: true
-                path: home/i3
+    ~/.zshrc:
+      forc: true
+      path: home/zshrc
 
-        ~/.zshrc:
-                force: true
-                path: home/zshrc
+    ~/.tmux.conf:
+      force: true
+      path: home/tmux.conf
 
-        ~/.tmux.conf:
-                force: true
-                path: home/tmux.conf
+    ~/.tmux/plugins/tpm:
+      force: true
+      path: tpm
 
-        ~/.tmux/plugins/tpm:
-                force: true
-                path: tpm
+    ~/.config/rofi:
+      force: true
+      path: home/config/rofi
 
-        ~/.config/i3blocks:
-                force: true
-                path: home/config/i3blocks
+    ~/.config/nvim:
+      force: true
+      path: home/config/nvim
 
-        ~/.config/mimeapps.list:
-                force: true
-                path: home/config/mimeapps.list
+    ~/.config/alacritty:
+      force: true
+      path: home/config/alacritty
 
-        ~/.config/rofi:
-                force: true
-                path: home/config/rofi
-
-        ~/.config/nvim:
-                force: true
-                path: home/config/nvim
-
-        ~/.config/alacritty:
-                force: true
-                path: home/config/alacritty
+#    ~/.Xresources:
+#      force: true
+#      path: home/Xresources
+#    ~/.config/mimeapps.list:
+#      force: true
+#      path: home/config/mimeapps.list
