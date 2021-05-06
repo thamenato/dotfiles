@@ -32,15 +32,15 @@ colors:
 
 font:
   normal:
-    family: MesloLGSDZ Nerd Font 
+    family: "MesloLGS NF"
     style: Regular 
 
   bold:
-    family: MesloLGSDZ Nerd Font
+    family: "MesloLGS NF"
     style: Bold
 
   italic:
-    family: MesloLGSDZ Nerd Font
+    family: "MesloLGS NF"
     style: Italic
 
 background_opacity: 0.9
