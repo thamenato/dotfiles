@@ -1,3 +1,14 @@
 {
-  "python.jediEnabled": false
+  "python.jediEnabled": false,
+  "languageserver": {
+    "golang": {
+      "command": "go-langserver",
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "gocodeCompletionEnabled": true,
+        "diagnosticsEnabled": true,
+        "lintTool": "golint"
+      }
+    }
+  }
 }

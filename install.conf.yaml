@@ -35,6 +35,10 @@
       force: true
       path: home/config/alacritty
 
+    ~/.config/pypoetry:
+      force: true
+      path: home/config/pypoetry
+
 #    ~/.Xresources:
 #      force: true
 #      path: home/Xresources

@@ -36,11 +36,14 @@ call plug#begin('~/.vim/plugged')
 " Tabs/Spaces
   Plug 'tpope/vim-sleuth'
   Plug 'editorconfig/editorconfig-vim'
+
 " Auto Pairs
   Plug 'jiangmiao/auto-pairs'
   Plug 'machakann/vim-sandwich'
 
+" Languages
   Plug 'cespare/vim-toml'
+  Plug 'fatih/vim-go'
 
 call plug#end()
 

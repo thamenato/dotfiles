@@ -80,6 +80,7 @@ export LANG=en_US.UTF-8
 alias zshconfig="vim ~/.zshrc"
 alias vim="nvim"
 alias servedir="python3 -m http.server"
+alias aws-docker-login="sudo $(aws ecr get-login --no-include-email)"
 
 # Node.js configuration
 NPM_PACKAGES="${HOME}/.npm-packages"
@@ -87,7 +88,8 @@ export PATH="$PATH:$NPM_PACKAGES/bin:$(yarn global bin)"
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 
 # pyenv config
-export PATH="/home/thamenato/.pyenv/bin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 # eval "$(pyenv virtualenv-init -)"
 
