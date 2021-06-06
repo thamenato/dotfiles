@@ -23,7 +23,10 @@ function install_basic_apps {
     nodejs \
     fzf \
     yarn \
-    wmctrl
+    wmctrl \
+    rofi \
+    flameshot \
+    sysstat
 }
 
 function config_zsh {
