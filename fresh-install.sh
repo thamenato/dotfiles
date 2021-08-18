@@ -26,7 +26,10 @@ function install_basic_apps {
     wmctrl \
     rofi \
     flameshot \
-    sysstat
+    sysstat \
+    i3blocks \
+    ttf-meslo-nerd-font-powerlevel10k \
+    noto-fonts-emoji
 }
 
 function config_zsh {
@@ -48,10 +51,6 @@ function install_browser {
     vivaldi-widevine
 }
 
-function install_fonts {
-  yay -S nerd-fonts-complete
-}
-
 function install_image_apps {
   yay -S krita \
     gimp
@@ -62,9 +61,32 @@ function install_printer {
 }
 
 function misc_apps {
-  yay -S telegram-desktop \
-    spotify \
-    steam
+  yay -S --noconfirm \
+    telegram-desktop \
+    steam \
+    signal-desktop \
+    visual-studio-code-bin \
+    jetbrains-toolbox
+
+  snap install spotify
+}
+
+function python_apps {
+  version="3.9.6"
+  pyenv install $version
+  pyenv global $version
+  pip install -U pip
+  pip install pipx
+  # aws command line
+  pipx install awscli 
+  # spotify i3blocks plugin
+  yay -S gobject-introspection --noconfirm
+  pipx install i3blocks-mpris
+}
+
+function fix_time {
+  sudo systemctl start ntpd
+  # sudo systemctl enable ntpd
 }
 
 # if no argument was passed, show available functions
