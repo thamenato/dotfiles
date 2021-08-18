@@ -90,8 +90,11 @@ export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 # pyenv config
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+eval "$(pyenv init --path)"
 # eval "$(pyenv virtualenv-init -)"
+
+# please build config
+source <(plz --completion_script)
 
 # Leave this as last thing, p10k is a snowflake
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

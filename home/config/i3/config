@@ -213,6 +213,8 @@ for_window [class="Xfburn"] floating enable
 # use command "xprop" and click on application window to get the title/class
 for_window [instance="origin.exe"] floating enable
 for_window [class="jetbrains-toolbox"] floating enable
+for_window [class="Steam"] floating enable
+for_window [class="zoom"] floating enable
 
 
 # switch to workspace with urgent window automatically
