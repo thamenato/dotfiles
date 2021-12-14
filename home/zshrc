@@ -1,4 +1,4 @@
-fortune | cowsay 
+fastfetch
 
 # Always work in a tmux session if tmux is installed
 # https://github.com/chrishunt/dot-files/blob/master/.zshrc
@@ -27,7 +27,8 @@ export EDITOR=nvim;
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
+DISABLE_CORRECTION="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -81,6 +82,7 @@ alias zshconfig="vim ~/.zshrc"
 alias vim="nvim"
 alias servedir="python3 -m http.server"
 alias aws-docker-login="sudo $(aws ecr get-login --no-include-email)"
+alias docker="sudo docker"
 
 # Node.js configuration
 NPM_PACKAGES="${HOME}/.npm-packages"

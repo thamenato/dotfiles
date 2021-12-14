@@ -66,7 +66,8 @@ function misc_apps {
     steam \
     signal-desktop \
     visual-studio-code-bin \
-    jetbrains-toolbox
+    jetbrains-toolbox \
+    slack-desktop
 
   snap install spotify
 }
