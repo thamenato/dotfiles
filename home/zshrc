@@ -1,4 +1,4 @@
-fastfetch
+neofetch
 
 # Always work in a tmux session if tmux is installed
 # https://github.com/chrishunt/dot-files/blob/master/.zshrc
@@ -81,7 +81,6 @@ export LANG=en_US.UTF-8
 alias zshconfig="vim ~/.zshrc"
 alias vim="nvim"
 alias servedir="python3 -m http.server"
-alias aws-docker-login="sudo $(aws ecr get-login --no-include-email)"
 alias docker="sudo docker"
 
 # Node.js configuration
@@ -101,3 +100,6 @@ source <(plz --completion_script)
 # Leave this as last thing, p10k is a snowflake
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Created by `pipx` on 2021-12-15 01:36:09
+export PATH="$PATH:/home/thamenato/.local/bin"

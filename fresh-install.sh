@@ -7,29 +7,21 @@ function update_system {
   sudo pacman -Syuu --noconfirm
 }
 
-function install_basic_apps {
-  # install basic applications
+function must_install {
   sudo pacman -S --noconfirm \
+    vivaldi \
+    vivaldi-ffmpeg-codecs \
     yay \
     neovim \
     zsh \
-    tmux \
-    alacritty \
-    cowsay \
-    fortune-mod \
-    pyenv \
-    base-devel \
-    bashtop \
-    nodejs \
     fzf \
+    alacritty \
+    pyenv \
+    nodejs \
     yarn \
-    wmctrl \
-    rofi \
     flameshot \
-    sysstat \
-    i3blocks \
-    ttf-meslo-nerd-font-powerlevel10k \
     noto-fonts-emoji
+  # ttf-meslo-nerd-font-powerlevel10k
 }
 
 function config_zsh {
@@ -45,10 +37,12 @@ function config_nvim {
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 }
 
-function install_browser {
-  yay -S vivaldi \
-    vivaldi-ffmpeg-codecs \
-    vivaldi-widevine
+function install_i3_extras {
+  sudo pacman -S --noconfirm \
+    wmctrl \
+    sysstat \
+    i3blocks \
+    rofi
 }
 
 function install_image_apps {
@@ -60,34 +54,44 @@ function install_printer {
   yay -S brother-dcp-l2550dw 
 }
 
-function misc_apps {
+function install_apps {
   yay -S --noconfirm \
     telegram-desktop \
     steam \
     signal-desktop \
     visual-studio-code-bin \
     jetbrains-toolbox \
-    slack-desktop
-
-  snap install spotify
+    slack-desktop \
+    spotify
 }
 
 function python_apps {
-  version="3.9.6"
+  version="3.10.0"
   pyenv install $version
   pyenv global $version
   pip install -U pip
   pip install pipx
-  # aws command line
-  pipx install awscli 
-  # spotify i3blocks plugin
   yay -S gobject-introspection --noconfirm
   pipx install i3blocks-mpris
+  # aws command line
+  # pipx install awscli // awscli is outdated on pipx
+  # use https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+  # spotify i3blocks plugin
 }
 
 function fix_time {
   sudo systemctl start ntpd
   # sudo systemctl enable ntpd
+}
+
+function install_misc {
+  # install basic applications
+  sudo pacman -S --noconfirm \
+    tmux \
+    cowsay \
+    fortune-mod \
+    base-devel \
+    bashtop
 }
 
 # if no argument was passed, show available functions
