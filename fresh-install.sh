@@ -62,7 +62,8 @@ function install_apps {
     visual-studio-code-bin \
     jetbrains-toolbox \
     slack-desktop \
-    spotify
+    spotify \
+    easyeffects
 }
 
 function python_apps {

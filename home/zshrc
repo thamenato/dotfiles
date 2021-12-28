@@ -81,7 +81,7 @@ export LANG=en_US.UTF-8
 alias zshconfig="vim ~/.zshrc"
 alias vim="nvim"
 alias servedir="python3 -m http.server"
-alias docker="sudo docker"
+# alias docker="sudo docker"
 
 # Node.js configuration
 NPM_PACKAGES="${HOME}/.npm-packages"
@@ -103,3 +103,8 @@ source <(plz --completion_script)
 
 # Created by `pipx` on 2021-12-15 01:36:09
 export PATH="$PATH:/home/thamenato/.local/bin"
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/nomad nomad
+
+complete -o nospace -C /usr/bin/consul consul
