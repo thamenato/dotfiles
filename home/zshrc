@@ -1,5 +1,6 @@
 neofetch
 
+eval $(ssh-agent) >> /dev/null
 # Always work in a tmux session if tmux is installed
 # https://github.com/chrishunt/dot-files/blob/master/.zshrc
 # if which tmux 2>&1 >/dev/null; then
@@ -81,6 +82,7 @@ export LANG=en_US.UTF-8
 alias zshconfig="vim ~/.zshrc"
 alias vim="nvim"
 alias servedir="python3 -m http.server"
+alias step="step-cli"
 # alias docker="sudo docker"
 
 # Node.js configuration
@@ -95,16 +97,13 @@ eval "$(pyenv init --path)"
 # eval "$(pyenv virtualenv-init -)"
 
 # please build config
-source <(plz --completion_script)
-
-# Leave this as last thing, p10k is a snowflake
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# source <(plz --completion_script)
 
 # Created by `pipx` on 2021-12-15 01:36:09
 export PATH="$PATH:/home/thamenato/.local/bin"
 
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/bin/nomad nomad
-
-complete -o nospace -C /usr/bin/consul consul
+#
+# Leave this as last thing, p10k is a snowflake
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

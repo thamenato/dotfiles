@@ -4,6 +4,7 @@ window:
   padding:
     x: 5
     y: 5
+  opacity: 0.9
 
 colors:
   primary:
@@ -42,5 +43,3 @@ font:
   italic:
     family: "MesloLGS NF"
     style: Italic
-
-background_opacity: 0.9
