@@ -11,6 +11,14 @@
       force: true
       path: home/config/i3
 
+    ~/.config/sway:
+      force: true
+      path: home/config/sway
+
+    ~/.config/swaylock:
+      force: true
+      path: home/config/swaylock
+
     ~/.zshrc:
       forc: true
       path: home/zshrc
@@ -18,10 +26,6 @@
     ~/.tmux.conf:
       force: true
       path: home/tmux.conf
-
-    ~/.tmux/plugins/tpm:
-      force: true
-      path: tpm
 
     ~/.config/rofi:
       force: true
