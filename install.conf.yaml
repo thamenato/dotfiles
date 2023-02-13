@@ -43,10 +43,6 @@
       force: true
       path: home/config/mimeapps.list
 
-    ~/.xlcore/ffxivConfig:
-      force: true
-      path: misc/ffxivConfig
-
 #    ~/.Xresources:
 #      force: true
 #      path: home/Xresources
