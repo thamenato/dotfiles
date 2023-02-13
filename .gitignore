@@ -2,6 +2,10 @@
 .vscode
 Pipfile*
 *.pem
+*.old
+*.log
+
+misc/ffxivConfig/screenshots
 
 # Hyper stuff
 Hyper/blob_storage
