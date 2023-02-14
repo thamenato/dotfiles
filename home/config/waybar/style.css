@@ -13,8 +13,8 @@
 /*
 Arc-Dark Color Scheme
 */
-@define-color highlight #5294e2 ;
-@define-color base1  #404552 ;
+@define-color highlight #5294e2;
+@define-color base1 #404552;
 
 @keyframes blink-warning {
     70% {
@@ -29,7 +29,7 @@ Arc-Dark Color Scheme
 
 @keyframes blink-critical {
     70% {
-      color: white;
+        color: white;
     }
 
     to {
@@ -75,7 +75,7 @@ Arc-Dark Color Scheme
 #tray,
 #idle_inhibitor,
 #custom-PBPbattery {
-    padding:0.5rem 0.6rem;
+    padding: 0.3rem 0.5rem;
     margin: 1px 0px;
 }
 
@@ -123,20 +123,20 @@ Arc-Dark Color Scheme
 
 #memory.warning {
     color: orange;
- }
+}
 
 #memory.critical {
     color: red;
     animation-name: blink-critical;
     animation-duration: 2s;
-    padding-left:5px;
-    padding-right:5px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 #mode {
     background: @highlight;
     border-bottom: 3px transparent;
-    color:white;
+    color: white;
     margin-left: 5px;
     padding: 7px;
 }
@@ -146,7 +146,7 @@ Arc-Dark Color Scheme
 }
 
 #pulseaudio {
-    padding-top:6px;
+    padding-top: 6px;
 }
 
 #pulseaudio.muted {
@@ -162,19 +162,19 @@ Arc-Dark Color Scheme
 }
 
 #workspaces {
-    font-size:13px;
+    font-size: 13px;
 }
 
 #workspaces button {
     border-bottom: 3px solid transparent;
     margin-bottom: 0px;
-    padding:0px;
+    padding: 0px;
 }
 
 #workspaces button.focused {
-    border-bottom: 3px solid  @highlight;
+    border-bottom: 3px solid @highlight;
     margin-bottom: 1px;
-    padding-left:0;
+    padding-left: 0;
 }
 
 #workspaces button.urgent {
@@ -183,18 +183,18 @@ Arc-Dark Color Scheme
 }
 
 #custom-power {
-    margin-left:15px;
-    margin-right:15px;
-    font-size:15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    font-size: 15px;
 }
 
 #custom-launcher {
-    font-size:15px;
-    margin-left:15px;
-    margin-right:10px;
+    font-size: 15px;
+    margin-left: 15px;
+    margin-right: 10px;
 }
 
 #backlight.icon {
-    padding-right:1px;
+    padding-right: 1px;
     font-size: 13px;
 }
