@@ -2,8 +2,17 @@
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 #
-output HDMI-A-1 resolution 1920x1080@74.973Hz position 0,0
-output DP-3 resolution 2560x1080@74.991Hz position 1920,0
+set $bg-folder ~/Pictures/Background
+
+output HDMI-A-1 \
+    resolution 1920x1080@74.973Hz \
+    position 0,0 \
+    bg $bg-folder/wallhaven-pkgolp_1920x1080.png fill
+
+output DP-3 \
+    resolution 2560x1080@74.991Hz \
+    position 1920,0 \
+    bg $bg-folder/wallhaven-3z5586_2560x1080.png fill
 
 # Wacom Tablet - Example
 #   input "1386:884:Wacom_Intuos_S_Pad" map_to_output HDMI-A-1
