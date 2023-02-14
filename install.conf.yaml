@@ -1,11 +1,11 @@
-- clean: ['~']
-          
+- clean: ["~"]
+
 - link:
     ~/.profile:
       force: true
       path: home/profile
 
-    ~/.scripts: home/scripts 
+    ~/.scripts: home/scripts
 
     ~/.config/i3:
       force: true
@@ -18,6 +18,10 @@
     ~/.config/swaylock:
       force: true
       path: home/config/swaylock
+
+    ~/.config/waybar:
+      force: true
+      path: home/config/waybar
 
     ~/.zshrc:
       forc: true
@@ -46,7 +50,6 @@
     ~/.config/mimeapps.list:
       force: true
       path: home/config/mimeapps.list
-
 #    ~/.Xresources:
 #      force: true
 #      path: home/Xresources
