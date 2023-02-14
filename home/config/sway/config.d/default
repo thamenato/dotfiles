@@ -215,7 +215,7 @@ bindsym $mod+r mode "resize"
 # App shortcuts
 #
     bindsym $mod+n exec thunar
-    bindsym $mod+o exec firefox
+    bindsym $mod+o exec brave
 #
 # Screenshots
 #
