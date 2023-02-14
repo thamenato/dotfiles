@@ -83,6 +83,7 @@ alias zshconfig="vim ~/.zshrc"
 alias vim="nvim"
 alias servedir="python3 -m http.server"
 alias step="step-cli"
+alias cat="bat"
 # alias docker="sudo docker"
 
 # Node.js configuration

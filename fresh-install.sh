@@ -1,43 +1,43 @@
-#/bin/env sh
+#!/bin/env bash
 
-function update_system {
+update_system() {
   # update mirrors to fastest
   sudo pacman-mirrors --fasttrack 
   # update system
   sudo pacman -Syuu --noconfirm
 }
 
-function must_install {
+must_install() {
   sudo pacman -S --noconfirm \
-    vivaldi \
-    vivaldi-ffmpeg-codecs \
     yay \
     neovim \
     zsh \
     fzf \
-    alacritty \
     pyenv \
     nodejs \
     yarn \
-    flameshot \
-    noto-fonts-emoji
+    noto-fonts-emoji \
+    bat
+  # vivaldi
+  # vivaldi-ffmpeg-codecs
+  # flameshot
   # ttf-meslo-nerd-font-powerlevel10k
 }
 
-function config_zsh {
+config_zsh() {
   # install oh-my-zsh / powerlevel10k / zsh-autosuggestion
   sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+  git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
 }
 
-function config_nvim {
+config_nvim() {
   # install vim-plug
   sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 }
 
-function install_i3_extras {
+install_i3_extras() {
   sudo pacman -S --noconfirm \
     wmctrl \
     sysstat \
@@ -45,28 +45,28 @@ function install_i3_extras {
     rofi
 }
 
-function install_image_apps {
+install_image_apps() {
   yay -S krita \
     gimp
 }
 
-function install_printer {
+install_printer() {
   yay -S brother-dcp-l2550dw 
 }
 
-function install_apps {
+install_apps() {
   yay -S --noconfirm \
-    telegram-desktop \
     steam \
     signal-desktop \
     visual-studio-code-bin \
-    jetbrains-toolbox \
-    slack-desktop \
-    spotify \
-    easyeffects
+    spotify
+    # jetbrains-toolbox
+    # slack-desktop
+    # easyeffects
+    # telegram-desktop
 }
 
-function python_apps {
+python_apps() {
   version="3.10.0"
   pyenv install $version
   pyenv global $version
@@ -80,12 +80,12 @@ function python_apps {
   # spotify i3blocks plugin
 }
 
-function fix_time {
+fix_time() {
   sudo systemctl start ntpd
   # sudo systemctl enable ntpd
 }
 
-function install_misc {
+install_misc() {
   # install basic applications
   sudo pacman -S --noconfirm \
     tmux \
@@ -96,7 +96,7 @@ function install_misc {
 }
 
 # if no argument was passed, show available functions
-if [[ $# -eq 0 ]]; then
+if [ $# -eq 0 ]; then
   IFS=$'\n'
   for f in $(declare -F); do
     echo "${f:11}"
@@ -104,4 +104,3 @@ if [[ $# -eq 0 ]]; then
 fi
 
 $1
-
