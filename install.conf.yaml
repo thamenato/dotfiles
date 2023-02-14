@@ -23,6 +23,14 @@
       force: true
       path: home/config/waybar
 
+    ~/.config/xfce4/terminal:
+      force: true
+      path: home/config/xfce4/terminal
+
+    ~/.config/gtk-3.0:
+      force: true
+      path: home/config/gtk-3.0
+
     ~/.zshrc:
       forc: true
       path: home/zshrc
