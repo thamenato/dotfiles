@@ -17,7 +17,11 @@ must_install() {
     nodejs \
     yarn \
     noto-fonts-emoji \
-    bat
+    bat \
+    wine \
+    gvfs
+  # gvfs was needed for mounting usb devices on Thunar
+
   # vivaldi
   # vivaldi-ffmpeg-codecs
   # flameshot
