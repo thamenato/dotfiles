@@ -1,4 +1,4 @@
-neofetch
+fastfetch
 
 eval $(ssh-agent) >> /dev/null
 # Always work in a tmux session if tmux is installed

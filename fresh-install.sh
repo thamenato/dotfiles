@@ -19,7 +19,9 @@ must_install() {
     noto-fonts-emoji \
     bat \
     wine \
-    gvfs
+    gvfs \
+    swappy \
+    grimshot
   # gvfs was needed for mounting usb devices on Thunar
 
   # vivaldi
