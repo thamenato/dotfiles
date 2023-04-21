@@ -7,8 +7,10 @@
 call plug#begin('~/.vim/plugged')
 
 " Theme
-  Plug 'crusoexia/vim-monokai'
+  " Plug 'crusoexia/vim-monokai'
   Plug 'sainnhe/sonokai'
+  Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+
 
 " Conquer of Completion
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -64,10 +66,10 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 syntax on
 " theme
 set termguicolors
-colorscheme sonokai
-let g:sonokai_style = 'shusia'
-let g:sonokai_enable_italic = 1
-let g:sonokai_disable_italic_comment = 1
+colorscheme catppuccin-mocha " catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
+" let g:sonokai_style = 'shusia'
+" let g:sonokai_enable_italic = 1
+" let g:sonokai_disable_italic_comment = 1
 set guioptions-=r
 set guifont=MesloLGS\ NF
 " show line numbers

@@ -13,28 +13,27 @@
 /*
 Arc-Dark Color Scheme
 */
-@define-color highlight #5294e2;
-@define-color base1 #404552;
+@import "mocha.css";
 
 @keyframes blink-warning {
     70% {
-        color: white;
+        color: @text;
     }
 
     to {
-        color: white;
-        background-color: orange;
+        color: @text;
+        background-color: @peach;
     }
 }
 
 @keyframes blink-critical {
     70% {
-        color: white;
+        color: @text;
     }
 
     to {
-        color: white;
-        background-color: red;
+        color: @text;
+        background-color: @red;
     }
 }
 
@@ -47,154 +46,201 @@ Arc-Dark Color Scheme
     border: none;
     border-radius: 0;
     min-height: 0;
-    margin: 1px;
+    font-size: 12px;
+    font-family: FontAwesome;
+    margin: 0;
     padding: 0;
 }
 
 /* The whole bar */
-#waybar {
-    background: transparent;
-    color: #bebebe;
-    background-color: @base1;
-    font-family: UbuntuMono;
-    font-size: 14px;
+window#waybar {
+    background-color: @base;
+    color: @text;
 }
 
-/* Every modules */
-#battery,
-#clock,
-#backlight,
-#cpu,
-#custom-keyboard-layout,
-#memory,
+tooltip {
+    background: none;
+    border: 2px solid @blue;
+    border-radius: 15px;
+}
+
+tooltip label {
+    padding: 10px;
+    color: @subtext0;
+}
+
+
+/*************************** 
+    Shared Global Settings
+***************************/
+
+#workspace,
+#workspaces button,
 #mode,
+#custom-spotify,
 #custom-weather,
-#network,
-#pulseaudio,
+#clock,
 #temperature,
-#tray,
+#memory,
+#cpu,
+#pulseaudio,
+#custom-grimshot,
 #idle_inhibitor,
-#custom-PBPbattery {
-    padding: 0.3rem 0.5rem;
-    margin: 1px 0px;
-}
-
-/* -----------------------------------------------------------------------------
- * Modules styles
- * -------------------------------------------------------------------------- */
-
-#battery {
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-#battery.warning {
-    color: orange;
-}
-
-#battery.critical {
-    color: red;
-}
-
-#battery.warning.discharging {
-    animation-name: blink-warning;
-    animation-duration: 3s;
-}
-
-#battery.critical.discharging {
-    animation-name: blink-critical;
-    animation-duration: 2s;
-}
-
-#cpu.warning {
-    color: orange;
-}
-
-#cpu.critical {
-    color: red;
-}
-
-#memory {
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-#memory.warning {
-    color: orange;
-}
-
-#memory.critical {
-    color: red;
-    animation-name: blink-critical;
-    animation-duration: 2s;
-    padding-left: 5px;
-    padding-right: 5px;
-}
-
-#mode {
-    background: @highlight;
-    border-bottom: 3px transparent;
-    color: white;
-    margin-left: 5px;
-    padding: 7px;
-}
-
-#network.disconnected {
-    color: orange;
-}
-
-#pulseaudio {
-    padding-top: 6px;
-}
-
-#pulseaudio.muted {
-    color: @highlight;
-}
-
-#temperature.critical {
-    color: red;
-}
-
+#tray,
+#custom-power,
 #window {
-    font-weight: bold;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    border-radius: 15px;
+    margin: 3px 0;
 }
+
+/*************************** 
+    Modules Left 
+***************************/
+.modules-left {}
 
 #workspaces {
     font-size: 13px;
+    margin-right: 20px;
 }
 
 #workspaces button {
-    border-bottom: 3px solid transparent;
-    margin-bottom: 0px;
-    padding: 0px;
+    margin: 3px 0;
+    padding: 2px;
+    margin-left: 3px;
+    border: 2px solid @surface1;
 }
 
 #workspaces button.focused {
-    border-bottom: 3px solid @highlight;
-    margin-bottom: 1px;
-    padding-left: 0;
+    border-color: @sapphire;
+    color: @sapphire;
 }
 
 #workspaces button.urgent {
-    border-color: #c9545d;
-    color: #c9545d;
+    border-color: @red;
+    color: @red;
+}
+
+#window {
+    padding: 0 16px;
+    background-color: @surface1;
+}
+
+/*************************** 
+    Modules Center
+***************************/
+.modules-center {}
+
+#custom-weather,
+#clock {
+    padding: 0 15px;
+    min-width: 70px;
+    margin: 3px 2px;
+    background-color: @mantle;
+}
+
+#custom-weather {
+    background-color: @blue;
+    color: @crust;
+}
+
+#clock {
+    background-color: @lavender;
+    color: @crust;
+    min-width: 80px;
+}
+
+
+/*************************** 
+    Modules Right
+***************************/
+
+#custom-spotify,
+#temperature,
+#memory,
+#cpu,
+#pulseaudio,
+#custom-grimshot,
+#idle_inhibitor,
+#tray,
+#custom-power {
+    padding: 0 15px;
+    margin: 3px 2px;
+    background: @mantle;
+}
+
+#custom-spotify {
+    margin: 3px 0;
+    padding: 0 16px;
+    color: @crust;
+    transition: none;
+    background-color: @green;
+}
+
+#temperature {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-right: 0;
+    padding-left: 16px;
+    padding-right: 8px;
+}
+
+#temperature.critical {
+    background-color: @red;
+}
+
+#memory {
+    border-radius: 0;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0 8px;
+}
+
+#memory.warning {
+    color: @peach;
+}
+
+#memory.critical {
+    color: @red;
+    animation-name: blink-critical;
+    animation-duration: 2s;
+}
+
+#cpu {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-left: 0;
+    padding-right: 16px;
+    padding-left: 8px;
+}
+
+#cpu.warning {
+    color: @peach;
+}
+
+#cpu.critical {
+    color: @red;
+}
+
+#pulseaudio {
+    border: 2px solid @blue;
+}
+
+#pulseaudio.muted {
+    color: @teal;
+}
+
+#custom-grimshot {
+    border: 2px solid @blue;
+}
+
+#idle_inhibitor {
+    border: 2px solid @blue;
 }
 
 #custom-power {
-    margin-left: 15px;
-    margin-right: 15px;
-    font-size: 15px;
-}
-
-#custom-launcher {
-    font-size: 15px;
-    margin-left: 15px;
-    margin-right: 10px;
-}
-
-#backlight.icon {
-    padding-right: 1px;
-    font-size: 13px;
+    border: 2px solid @mauve;
+    color: @mauve;
 }
