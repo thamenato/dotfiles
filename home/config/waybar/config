@@ -31,8 +31,8 @@
     "sway/workspaces": {
         "disable-scroll": true,
         "disable-markup": false,
-        "all-outputs": true,
-        "format": "  {icon}  ",
+        "all-outputs": false,
+        "format": "{name}",
         //"format":"{icon}",
         // "format-icons": {
         //     "1": "",
