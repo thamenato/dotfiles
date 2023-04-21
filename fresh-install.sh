@@ -21,7 +21,11 @@ must_install() {
     wine \
     gvfs \
     swappy \
-    grimshot
+    grimshot \
+    wttrbar \
+    ttf-font-awesome \
+    swaysome-git \
+    catppuccin-gtk-theme-mocha
   # gvfs was needed for mounting usb devices on Thunar
 
   # vivaldi
