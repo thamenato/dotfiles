@@ -69,7 +69,6 @@ tooltip label {
     color: @subtext0;
 }
 
-
 /*************************** 
     Shared Global Settings
 ***************************/
@@ -100,6 +99,12 @@ tooltip label {
     Modules Left 
 ***************************/
 .modules-left {}
+
+#custom-weather {
+    padding: 0 16px;
+    background-color: @blue;
+    color: @crust;
+}
 
 #workspaces {
     font-size: 13px;
@@ -133,23 +138,12 @@ tooltip label {
 ***************************/
 .modules-center {}
 
-#custom-weather,
-#clock {
-    padding: 0 15px;
-    min-width: 70px;
-    margin: 3px 2px;
-    background-color: @mantle;
-}
-
-#custom-weather {
-    background-color: @blue;
-    color: @crust;
-}
-
 #clock {
     background-color: @lavender;
     color: @crust;
+    margin: 3px 2px;
     min-width: 80px;
+    padding: 0 16;
 }
 
 

@@ -5,13 +5,12 @@
     // If height property would be not present, it'd be calculated dynamically
     "height": 28,
     "modules-left": [
+        "custom/weather",
         "sway/workspaces",
         "sway/mode",
-        "custom/separator",
-        "sway/window"
+        "sway/window",
     ],
     "modules-center": [
-        "custom/weather",
         "clock",
     ],
     "modules-right": [
@@ -62,10 +61,17 @@
         "interval": 3600,
     },
     "clock": {
-        "interval": 10,
-        "format-alt": " {:%e %b %Y}", // Icon: calendar-alt
-        "format": "{:%H:%M}",
-        "tooltip-format": "{:%e %B %Y}"
+        "format": "{:%H:%M}  ",
+        "format-alt": "{:%A, %B %d, %Y (%R)}  ",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "calendar-weeks-pos": "right",
+        "today-format": "<span color='#ff6699'><b><u>{}</u></b></span>",
+        "format-calendar": "<span color='#ecc6d9'><b>{}</b></span>",
+        "format-calendar-weeks": "<span color='#99ffdd'><b>W{:%V}</b></span>",
+        "format-calendar-weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "on-scroll": {
+            "calendar": 1
+        }
     },
     // *****************
     //   MODULES RIGHT
