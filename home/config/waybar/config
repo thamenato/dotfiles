@@ -28,7 +28,7 @@
     //   MODULES LEFT
     // ****************
     "sway/workspaces": {
-        "disable-scroll": true,
+        "disable-scroll": false,
         "disable-markup": false,
         "all-outputs": false,
         "format": "{name}",
