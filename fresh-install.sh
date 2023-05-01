@@ -8,8 +8,7 @@ update_system() {
 }
 
 must_install() {
-  sudo pacman -S --noconfirm \
-    yay \
+  yay -S --noconfirm \
     neovim \
     zsh \
     fzf \
@@ -24,12 +23,14 @@ must_install() {
     grimshot \
     wttrbar \
     ttf-font-awesome \
-    swaysome-git \
-    catppuccin-gtk-theme-mocha
-  # gvfs was needed for mounting usb devices on Thunar
+    ttf-nerd-fonts-symbols \
+    catppuccin-gtk-theme-mocha \
+    alacritty \
+    fastfetch \
+    tumbler 
 
-  # vivaldi
-  # vivaldi-ffmpeg-codecs
+  # gvfs was needed for mounting usb devices on Thunar
+  # tumbler is needed to show thumbnails on Thunar
   # flameshot
   # ttf-meslo-nerd-font-powerlevel10k
 }
@@ -38,7 +39,7 @@ config_zsh() {
   # install oh-my-zsh / powerlevel10k / zsh-autosuggestion
   sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
-  git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
+  git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
 }
 
 config_nvim() {
@@ -56,7 +57,8 @@ install_i3_extras() {
 }
 
 install_image_apps() {
-  yay -S krita \
+  yay -S --noconfirm \
+    krita \
     gimp
 }
 
@@ -69,10 +71,10 @@ install_apps() {
     steam \
     signal-desktop \
     visual-studio-code-bin \
-    spotify
-    # jetbrains-toolbox
-    # slack-desktop
-    # easyeffects
+    spotify \
+    jetbrains-toolbox \
+    slack-desktop \
+    easyeffects
     # telegram-desktop
 }
 

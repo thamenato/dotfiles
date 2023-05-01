@@ -15,6 +15,8 @@ Arc-Dark Color Scheme
 */
 @import "mocha.css";
 
+@define-color orange-kairos #e46e19;
+
 @keyframes blink-warning {
     70% {
         color: @text;
@@ -37,6 +39,8 @@ Arc-Dark Color Scheme
     }
 }
 
+
+
 /* -----------------------------------------------------------------------------
  * Base styles
  * -------------------------------------------------------------------------- */
@@ -47,7 +51,7 @@ Arc-Dark Color Scheme
     border-radius: 0;
     min-height: 0;
     font-size: 12px;
-    font-family: FontAwesome;
+    font-family: "JetBrains Mono SemiBold";
     margin: 0;
     padding: 0;
 }
@@ -78,6 +82,7 @@ tooltip label {
 #mode,
 #custom-spotify,
 #custom-weather,
+#custom-hostname,
 #clock,
 #temperature,
 #memory,
@@ -88,9 +93,9 @@ tooltip label {
 #tray,
 #custom-power,
 #window {
-    animation-timing-function: linear;
+    /* animation-timing-function: linear;
     animation-iteration-count: infinite;
-    animation-direction: alternate;
+    animation-direction: alternate; */
     border-radius: 15px;
     margin: 3px 0;
 }
@@ -100,10 +105,12 @@ tooltip label {
 ***************************/
 .modules-left {}
 
-#custom-weather {
+#custom-hostname {
     padding: 0 16px;
-    background-color: @blue;
+    margin-right: 3px;
     color: @crust;
+    background-color: @orange-kairos;
+    font-family: JetBrains Mono ExtraBold;
 }
 
 #workspaces {
@@ -138,13 +145,28 @@ tooltip label {
 ***************************/
 .modules-center {}
 
-#clock {
+#clock,
+#custom-weather {
     background-color: @lavender;
     color: @crust;
-    margin: 3px 2px;
-    min-width: 80px;
-    padding: 0 16;
 }
+
+#clock {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-right: 0;
+    padding-left: 24px;
+    padding-right: 8px;
+}
+
+#custom-weather {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-left: 0;
+    padding-right: 24px;
+    padding-left: 8px;
+}
+
 
 
 /*************************** 

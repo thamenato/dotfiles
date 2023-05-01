@@ -5,13 +5,13 @@
     // If height property would be not present, it'd be calculated dynamically
     "height": 28,
     "modules-left": [
-        "custom/weather",
+        "custom/hostname",
         "sway/workspaces",
         "sway/mode",
-        "sway/window",
     ],
     "modules-center": [
         "clock",
+        "custom/weather",
     ],
     "modules-right": [
         "custom/spotify",
@@ -27,6 +27,15 @@
     // ****************
     //   MODULES LEFT
     // ****************
+    "custom/hostname": {
+        // to use the weather module replace <your_location> with your city or town
+        // note: do not use spaces: new york would be newyork
+        "format": "{}",
+        "exec": "echo ${HOSTNAME^^}",
+        // "return-type": "json",
+        // "tooltip": true,
+        "interval": 3600,
+    },
     "sway/workspaces": {
         "disable-scroll": false,
         "disable-markup": false,
