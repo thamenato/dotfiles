@@ -5,6 +5,7 @@
     ./apps/git.nix
     ./apps/zsh.nix
     ./apps/kitty.nix
+    ./apps/alacritty.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
