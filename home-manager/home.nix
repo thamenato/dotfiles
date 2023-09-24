@@ -31,6 +31,7 @@
     pkgs.fastfetch
     pkgs.httpie
     pkgs.fzf
+    pkgs.macchina
 
     # dependencies
     pkgs.catppuccin-gtk
@@ -43,12 +44,20 @@
     # editors/ide
     pkgs.helix
     pkgs.vscode
+    pkgs.obsidian
 
     # apps
     pkgs.easyeffects
+    pkgs.bitwarden
     pkgs.spotify
     pkgs.tidal-hifi
     pkgs.signal-desktop
+    pkgs.slack
+
+    # gaming
+    pkgs.steam
+    pkgs.xivlauncher
+    pkgs.discord
 
     (pkgs.nerdfonts.override {
       fonts = [
