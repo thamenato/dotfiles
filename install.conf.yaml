@@ -1,63 +1,70 @@
 - clean: ["~"]
 
 - link:
-    ~/.profile:
+    ~/.config/home-manager:
       force: true
-      path: home/profile
+      path: home-manager
 
-    ~/.scripts: home/scripts
-
-    ~/.config/i3:
+    /etc/nixos/dotfiles-configuration.nix:
       force: true
-      path: home/config/i3
+      path: configuration.nix
+    # ~/.profile:
+    #   force: true
+    #   path: home/profile
 
-    ~/.config/sway:
-      force: true
-      path: home/config/sway
+    # ~/.scripts: home/scripts
 
-    ~/.config/swaylock:
-      force: true
-      path: home/config/swaylock
+    # ~/.config/i3:
+    #   force: true
+    #   path: home/config/i3
 
-    ~/.config/waybar:
-      force: true
-      path: home/config/waybar
+    # ~/.config/sway:
+    #   force: true
+    #   path: home/config/sway
 
-    ~/.config/xfce4/terminal:
-      force: true
-      path: home/config/xfce4/terminal
+    # ~/.config/swaylock:
+    #   force: true
+    #   path: home/config/swaylock
 
-    ~/.config/gtk-3.0:
-      force: true
-      path: home/config/gtk-3.0
+    # ~/.config/waybar:
+    #   force: true
+    #   path: home/config/waybar
 
-    ~/.zshrc:
-      forc: true
-      path: home/zshrc
+    # ~/.config/xfce4/terminal:
+    #   force: true
+    #   path: home/config/xfce4/terminal
 
-    ~/.tmux.conf:
-      force: true
-      path: home/tmux.conf
+    # ~/.config/gtk-3.0:
+    #   force: true
+    #   path: home/config/gtk-3.0
 
-    ~/.config/rofi:
-      force: true
-      path: home/config/rofi
+    # ~/.zshrc:
+    #   forc: true
+    #   path: home/zshrc
 
-    ~/.config/nvim:
-      force: true
-      path: home/config/nvim
+    # ~/.tmux.conf:
+    #   force: true
+    #   path: home/tmux.conf
 
-    ~/.config/alacritty:
-      force: true
-      path: home/config/alacritty
+    # ~/.config/rofi:
+    #   force: true
+    #   path: home/config/rofi
 
-    ~/.config/pypoetry:
-      force: true
-      path: home/config/pypoetry
+    # ~/.config/nvim:
+    #   force: true
+    #   path: home/config/nvim
 
-    ~/.config/mimeapps.list:
-      force: true
-      path: home/config/mimeapps.list
+    # ~/.config/alacritty:
+    #   force: true
+    #   path: home/config/alacritty
+
+    # ~/.config/pypoetry:
+    #   force: true
+    #   path: home/config/pypoetry
+
+    # ~/.config/mimeapps.list:
+    #   force: true
+    #   path: home/config/mimeapps.list
 
 #    ~/.Xresources:
 #      force: true
