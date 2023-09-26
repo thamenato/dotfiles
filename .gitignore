@@ -4,6 +4,7 @@ Pipfile*
 *.pem
 *.old
 *.log
+.direnv
 
 misc/ffxivConfig/screenshots
 

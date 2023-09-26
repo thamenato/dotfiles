@@ -2,4 +2,3 @@
 
 - shell:
   -  [git submodule update --remote .dotbot, Update dotbot]
-
