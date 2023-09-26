@@ -1,8 +1,3 @@
-- clean: ["~"]
-
-- shell:
-  -  [git submodule update --remote dotbot, Update dotbot]
-
 - link:
     ~/.config/home-manager:
       force: true

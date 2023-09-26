@@ -33,6 +33,7 @@
     pkgs.httpie
     pkgs.fzf
     pkgs.macchina
+    pkgs.ranger
 
     # dependencies
     pkgs.catppuccin-gtk
