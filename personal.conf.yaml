@@ -3,6 +3,6 @@
       force: true
       path: personal/home-manager
 
-    /etc/nixos/dotfiles-configuration.nix:
+    /etc/nixos/personal-configuration.nix:
       force: true
       path: personal/nixos/configuration.nix

@@ -2,3 +2,8 @@
 
 - shell:
   -  [git submodule update --remote .dotbot, Update dotbot]
+
+- link:
+    /etc/nixos/default-configuration.nix:
+      force: true
+      path: default/nixos/configuration.nix

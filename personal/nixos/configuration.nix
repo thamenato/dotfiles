@@ -1,38 +1,6 @@
 { config, pkgs, ...}:
-let
-  nixpkgs_unstable = import <nixos-unstable> { config.allowUnfree = true; };
-in
 {
- environment.systemPackages = with pkgs; [
-  # packages that I want available in all hosts
-  # for host specific, still use the definition
-  # inside configuration.nix
-    home-manager
-    # tools
-    bat
-    git
-    htop
-    python311
-    wget
-    zsh
-    gnupg
-    pinentry
-    # editor
-    helix
-    neovim
+  environment.systemPackages = with pkgs; [
+    amdgpu_top
   ];
-
-  # set zsh as default shell
-  environment.shells = with pkgs; [ zsh ];
-  programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
-
-  # enable flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # configure gnupg
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
 }

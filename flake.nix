@@ -17,7 +17,7 @@
     flake-utils.lib.eachDefaultSystem (system: let
       pkgs = nixpkgs.legacyPackages.${system};
     in {
-      formatter = pkgs.alejandra;
+      formatter = alejandra.defaultPackage.${system};
 
       devShells.default = pkgs.mkShell {
         packages = [
@@ -28,6 +28,7 @@
           pkgs.python311
           # language server
           pkgs.yaml-language-server
+          pkgs.nil
         ];
       };
     });
