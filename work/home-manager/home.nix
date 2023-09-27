@@ -41,11 +41,6 @@
     pkgs.python311
     pkgs.python311Packages.pip
 
-    # browser
-    pkgs.vivaldi
-    pkgs.vivaldi-ffmpeg-codecs
-    pkgs.firefox
-
     # editors/ide
     pkgs.helix
     pkgs.vscode

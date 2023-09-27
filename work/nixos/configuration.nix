@@ -26,6 +26,10 @@ in
     # editor
     helix
     neovim
+    # browser
+    vivaldi
+    vivaldi-ffmpeg-codecs
+    firefox
   ];
 
   # set zsh as default shell
