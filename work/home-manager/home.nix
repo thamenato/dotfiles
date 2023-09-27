@@ -7,6 +7,7 @@
     ./apps/helix.nix
     ./apps/kitty.nix
     ./apps/zsh.nix
+    ./apps/direnv.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -29,7 +30,7 @@
     # terminal
     pkgs.alacritty
     pkgs.kitty
-    pkgs.direnv
+    # pkgs.direnv
     pkgs.fastfetch
     pkgs.httpie
     pkgs.fzf
