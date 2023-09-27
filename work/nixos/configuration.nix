@@ -20,7 +20,6 @@ in
     gnupg
     htop
     pinentry
-    python311
     tailscale
     wget
     zsh
@@ -40,6 +39,7 @@ in
     enable = true;
     enableSSHSupport = true;
   };
+
   programs.hyprland.enable = true;
 
   # docker

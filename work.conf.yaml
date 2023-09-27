@@ -1,0 +1,8 @@
+- link:
+    ~/.config/home-manager:
+      force: true
+      path: work/home-manager
+
+    /etc/nixos/work-configuration.nix:
+      force: true
+      path: work/nixos/configuration.nix
