@@ -6,6 +6,10 @@
     userName = "Thales Menato";
     userEmail = "8753631+thamenato@users.noreply.github.com";
 
+    extraConfig = {
+      push.autoSetupRemote = true;
+    };
+
     aliases = {
       pu = "push";
       co = "checkout";

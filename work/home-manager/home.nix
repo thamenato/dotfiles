@@ -30,7 +30,7 @@
     # terminal
     pkgs.alacritty
     pkgs.kitty
-    # pkgs.direnv
+    pkgs.direnv
     pkgs.fastfetch
     pkgs.httpie
     pkgs.fzf
