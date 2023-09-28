@@ -14,6 +14,7 @@
     zsh
     gnupg
     pinentry
+    easyeffects
     # editor
     helix
     neovim

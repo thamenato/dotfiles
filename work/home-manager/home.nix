@@ -53,7 +53,6 @@
     pkgs.terraform-ls
 
     # apps
-    pkgs.easyeffects
     pkgs.bitwarden
     pkgs.spotify
     pkgs.tidal-hifi
