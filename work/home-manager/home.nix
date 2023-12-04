@@ -1,5 +1,4 @@
 { config, pkgs, ... }:
-
 {
   imports = [
     ./apps/alacritty.nix
@@ -8,6 +7,7 @@
     ./apps/kitty.nix
     ./apps/zsh.nix
     ./apps/direnv.nix
+    ./apps/ripgrep.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -22,45 +22,55 @@
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  home.stateVersion = "22.11"; # Please read the comment before changing.
+  home.stateVersion = "23.11"; # Please read the comment before changing.
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
+  home.packages = with pkgs; [
     # terminal
-    pkgs.alacritty
-    pkgs.kitty
-    pkgs.direnv
-    pkgs.fastfetch
-    pkgs.httpie
-    pkgs.fzf
-    pkgs.macchina
-    pkgs.ranger
+    # alacritty
+    # kitty
+    direnv
+    fastfetch
+    httpie
+    fzf
+    macchina
+    ranger
+    lazygit
+    lazydocker
 
-    # dependencies
-    pkgs.catppuccin-gtk
-    pkgs.python311
-    pkgs.python311Packages.pip
+    # dependencies/tools
+    catppuccin-gtk
+    python311
+    python311Packages.pip
+    pipx
+    terraform
 
     # editors/ide
-    pkgs.helix
-    pkgs.vscode
-    pkgs.obsidian
-    pkgs.jetbrains-toolbox
-    pkgs.dbeaver
+    vscode
+    obsidian
+    jetbrains-toolbox
+    dbeaver
+    glow
 
     # language servers
-    pkgs.terraform-ls
+    terraform-ls
+    nil
+    yaml-language-server
+    marksman
+
+    # formatters
+    dprint
 
     # apps
-    pkgs.bitwarden
-    pkgs.spotify
-    pkgs.tidal-hifi
-    pkgs.signal-desktop
-    pkgs.slack
+    bitwarden
+    spotify
+    tidal-hifi
+    signal-desktop
+    slack
 
     # fonts
-    (pkgs.nerdfonts.override {
+    (nerdfonts.override {
       fonts = [
         "FiraCode"
         "FiraMono"

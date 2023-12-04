@@ -8,8 +8,13 @@
       eval "$(direnv hook zsh)"
 
       fastfetch
+
+      export PATH=/home/thales/.local/bin:$PATH
     '';
 
+    shellAliases = {
+      lg = "lazygit";
+    };
     oh-my-zsh = {
       enable = true;
       theme = "bureau";
@@ -17,6 +22,7 @@
         "fzf"
         "git"
         "git-auto-fetch"
+        "ripgrep"
       ];
     };
   };
