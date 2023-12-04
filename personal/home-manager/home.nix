@@ -24,44 +24,44 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
+  home.packages = with pkgs; [
     # terminal
-    pkgs.alacritty
-    pkgs.kitty
-    pkgs.direnv
-    pkgs.fastfetch
-    pkgs.httpie
-    pkgs.fzf
-    pkgs.macchina
-    pkgs.ranger
+    direnv
+    fastfetch
+    httpie
+    fzf
+    macchina
+    ranger
+    lazygit
+    lazydocker
 
     # dependencies
-    pkgs.catppuccin-gtk
-    pkgs.python311
+    catppuccin-gtk
+    python311
 
     # browser
-    pkgs.vivaldi
-    pkgs.vivaldi-ffmpeg-codecs
+    vivaldi
+    vivaldi-ffmpeg-codecs
 
     # editors/ide
-    pkgs.helix
-    pkgs.vscode
-    pkgs.obsidian
+    helix
+    vscode
+    obsidian
 
     # apps
-    pkgs.easyeffects
-    pkgs.bitwarden
-    pkgs.spotify
-    pkgs.tidal-hifi
-    pkgs.signal-desktop
-    pkgs.slack
+    easyeffects
+    bitwarden
+    spotify
+    tidal-hifi
+    signal-desktop
+    slack
 
     # gaming
-    pkgs.steam
-    pkgs.xivlauncher
-    pkgs.discord
+    steam
+    xivlauncher
+    discord
 
-    (pkgs.nerdfonts.override {
+    (nerdfonts.override {
       fonts = [
         "FiraCode"
         "FiraMono"
