@@ -1,5 +1,4 @@
 .env
-.vscode
 Pipfile*
 *.pem
 *.old
@@ -14,3 +13,7 @@ Hyper/Cache
 Hyper/GPUCache
 Hyper/web*
 Hyper/Network Persistent State
+
+# VSCode
+.vscode
+.history
