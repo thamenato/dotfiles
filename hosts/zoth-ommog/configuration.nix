@@ -1,3 +1,6 @@
+# Edit this configuration file to define what should be installed on
+# your system.  Help is available in the configuration.nix(5) man page
+# and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   config,
   pkgs,
@@ -6,24 +9,14 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./../../modules/system.nix
+    ../../modules/system.nix
   ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Setup keyfile
-  boot.initrd.secrets = {
-    "/crypto_keyfile.bin" = null;
-  };
-
-  # Enable swap on luks
-  boot.initrd.luks.devices."luks-ab1df3b4-57db-440d-b340-b71db1de7e1d".device = "/dev/disk/by-uuid/ab1df3b4-57db-440d-b340-b71db1de7e1d";
-  boot.initrd.luks.devices."luks-ab1df3b4-57db-440d-b340-b71db1de7e1d".keyFile = "/crypto_keyfile.bin";
-
-  networking.hostName = "thales-meer7"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.hostName = "zoth-ommog"; # Define your hostname.
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -51,10 +44,7 @@
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager = {
-    gnome.enable = true;
-    xfce.enable = true;
-  };
+  services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -67,6 +57,11 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  services.printing.drivers = [
+    pkgs.brlaser
+    pkgs.brgenml1lpr
+    pkgs.brgenml1cupswrapper
+  ];
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -80,39 +75,31 @@
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.thales = {
+  users.users.thamenato = {
     isNormalUser = true;
-    description = "thales";
+    description = "Thales Menato";
     extraGroups = ["networkmanager" "wheel"];
   };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  security.polkit.enable = true;
-  hardware.opengl.enable = true;
-
-  # system packages
+  # host-specific
   environment.systemPackages = with pkgs; [
-    _1password-gui
-    _1password
-    tailscale
-    system76-firmware
+    amdgpu_top
   ];
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+  };
 
   # docker
   virtualisation.docker = {
     enable = true;
-    daemon.settings = {
-      bip = "172.26.0.1/24";
-      dns = ["1.1.1.1" "8.8.8.8"];
-    };
+    # daemon.settings = {};
   };
-  users.extraGroups.docker.members = ["thales"];
-
-  # services
-  services.openssh.enable = true;
-  services.tailscale.enable = true;
+  users.extraGroups.docker.members = ["thamenato"];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

@@ -39,4 +39,14 @@
     enableSSHSupport = true;
     pinentryFlavor = null;
   };
+
+  # https://nixos.wiki/wiki/Polkit
+  security.polkit.enable = true;
+
+  # kernel version
+  boot.kernelPackages = pkgs.linuxPackages_6_6;
+  system.autoUpgrade = {
+    enable = true;
+    allowReboot = false;
+  };
 }
