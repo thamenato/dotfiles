@@ -15,7 +15,7 @@ RUN apt-get install -yq tzdata && \
 ENV TZ="America/New_York"
 
 
-# configure zsh 
+# configure zsh
 RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.5/zsh-in-docker.sh)" -- \
     -p git \
     -p git-auto-fetch \

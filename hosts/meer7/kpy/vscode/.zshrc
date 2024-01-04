@@ -12,8 +12,8 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 ZSH_TMUX_AUTOSTART=true
 
 plugins=(
-    git 
-    git-auto-fetch 
+    git
+    git-auto-fetch
     zsh-autosuggestions
     tmux
 )
