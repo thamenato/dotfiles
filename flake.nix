@@ -21,11 +21,12 @@
 
       devShells.default = pkgs.mkShell {
         packages = [
-          # tools
+          # cli tools
           pkgs.alejandra
           pkgs.pre-commit
+          pkgs.dpkg
           # python is required by dotbot
-          pkgs.python311
+          pkgs.python3
           # language server
           pkgs.yaml-language-server
           pkgs.nil
