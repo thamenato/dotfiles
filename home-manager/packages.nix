@@ -1,12 +1,10 @@
 { config, pkgs, ...}:
 {
   home.packages = with pkgs; [
-    # terminal
+    # cli
     alejandra
-    direnv
     fastfetch
     httpie
-    fzf
     macchina
     ranger
     lazygit

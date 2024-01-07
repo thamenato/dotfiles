@@ -6,17 +6,16 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [ 
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./../../modules/system.nix
     ];
   # Nix Settings
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
     allowed-users = [ "thamenato" ];
   };
-
-  # Kernel
-  boot.kernelPackages = pkgs.linuxPackages_6_6;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -90,22 +89,11 @@
     isNormalUser = true;
     description = "Thales Menato";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      firefox
-      signal-desktop
-    ];
+    # packages = []; 
   };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-      neovim
-      wget
-      curl
-  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -134,5 +122,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
-
 }

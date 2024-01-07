@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ../../home-manager/packages.nix
     ../../home-manager/git.nix
   ];
 
