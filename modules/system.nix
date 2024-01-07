@@ -6,6 +6,7 @@
   environment.systemPackages = with pkgs; [
     # cli tools
     bat
+    curl
     dig
     git
     gnupg
@@ -23,6 +24,7 @@
     # apps
     easyeffects
     firefox
+    signal-desktop
   ];
 
   # set zsh as default shell
