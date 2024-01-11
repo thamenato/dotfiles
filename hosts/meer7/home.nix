@@ -35,8 +35,8 @@
 
     # editors/ide
     vscode
-    jetbrains-toolbox
     dbeaver
+    # jetbrains-toolbox
 
     # language servers
     terraform-ls
