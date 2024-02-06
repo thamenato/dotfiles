@@ -21,6 +21,7 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.binfmt.emulatedSystems= [ "aarch64-linux" ];
 
   networking.hostName = "kassogtha"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -123,6 +124,18 @@
   programs.zsh.enable = true;
 
   # List services that you want to enable:
+  # docker
+  virtualisation.docker = {
+    enable = true;
+    daemon.settings = {
+      experimental = true;
+      features = {
+        containerd-snapshotter = true;
+        buildkit = true;
+      };
+    };
+  };
+  users.extraGroups.docker.members = ["thamenato"];
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;

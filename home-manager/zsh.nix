@@ -9,7 +9,7 @@
 
       fastfetch
 
-      export PATH=/home/thales/.local/bin:$PATH
+      export PATH=/home/$USER/.local/bin:$PATH
     '';
 
     shellAliases = {
