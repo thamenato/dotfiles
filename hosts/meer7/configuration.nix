@@ -100,12 +100,19 @@
     system76-firmware
   ];
 
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [];
+
   # docker
   virtualisation.docker = {
     enable = true;
     daemon.settings = {
       bip = "172.26.0.1/24";
       dns = ["1.1.1.1" "8.8.8.8"];
+      features = {
+        containerd-snapshotter = true;
+        buildkit = true;
+      };
     };
   };
   users.extraGroups.docker.members = ["thales"];

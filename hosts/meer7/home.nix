@@ -21,14 +21,15 @@
     alejandra
     direnv
     fastfetch
-    httpie
     fzf
+    httpie
+    jq
+    lazydocker
+    lazygit
     macchina
     ranger
-    lazygit
-    lazydocker
-    zip
     unzip
+    zip
 
     # dependencies/tools
     catppuccin-gtk
