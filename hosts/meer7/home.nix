@@ -11,6 +11,7 @@
     ../../home-manager/zsh.nix
     ../../home-manager/direnv.nix
     ../../home-manager/ripgrep.nix
+    ../../home-manager/zoxide.nix
   ];
 
   home.username = "thales";
@@ -83,17 +84,6 @@
     #   org.gradle.daemon.idletimeout=3600000
     # '';
   };
-
-  # You can also manage environment variables but you will have to manually
-  # source
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/thamenato/etc/profile.d/hm-session-vars.sh
-  #
-  # if you don't want to manage your shell through Home Manager.
 
   home.sessionVariables = {
     EDITOR = "nvim";
