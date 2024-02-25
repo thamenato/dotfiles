@@ -2,7 +2,15 @@
 
 {
   imports = [
+    ../../home-manager/alacritty.nix
+    ../../home-manager/direnv.nix
+    ../../home-manager/fzf.nix
     ../../home-manager/git.nix
+    ../../home-manager/lazygit.nix
+    ../../home-manager/neovim.nix
+    ../../home-manager/ripgrep.nix
+    ../../home-manager/vscode.nix
+    ../../home-manager/zoxide.nix
     ../../home-manager/zsh.nix
   ];
 
@@ -20,10 +28,7 @@
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
   home.packages = with pkgs; [
-    vscode
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -57,28 +62,10 @@
     # '';
   };
 
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. If you don't want to manage your shell through Home
-  # Manager then you have to manually source 'hm-session-vars.sh' located at
-  # either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/thamenato/etc/profile.d/hm-session-vars.sh
-  #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "nvim";
   };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  programs.zsh = {
-    enable = true;
-  };
 }
