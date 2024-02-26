@@ -1,28 +1,77 @@
-{ pkgs, ... }:
-
-{
+{ pkgs, ... }: {
   programs.vscode = {
     enable = true;
 
     # do not let VSCode alter the folder, only Home-Manager
     mutableExtensionsDir = false;
-    
+
     extensions = with pkgs.vscode-extensions; [
-      jnoortheen.nix-ide
-      vscodevim.vim
+      adpyke.codesnap
+      bierner.emojisense
+      charliermarsh.ruff
       codezombiech.gitignore
+      github.vscode-github-actions
+      hashicorp.terraform
+      jdinhlife.gruvbox
+      jnoortheen.nix-ide
+      mikestead.dotenv
+      ms-python.python
+      ms-vscode-remote.remote-containers
+      redhat.vscode-yaml
+      streetsidesoftware.code-spell-checker
+      tamasfe.even-better-toml
+      timonwong.shellcheck
+      vscode-icons-team.vscode-icons
+      vscodevim.vim
       waderyan.gitblame
-      equinusocio.vsc-material-theme
+      xyz.local-history
+      yzhang.markdown-all-in-one
     ];
 
     userSettings = {
-      # vscode
+      # ui
       "window.menuBarVisibility" = "toggle";
-      "editor.rulers" = [80 120];
+      "workbench.colorTheme" = "Gruvbox Dark Medium";
+      "workbench.iconTheme" = "vscode-icons";
+
+      # editor
+      "editor.rulers" = [ 80 120 ];
+      "editor.fontFamily" = "'JetBrainsMono NF', 'monospace'";
+      "editor.fontLigatures" = true;
+      "editor.formatOnSave" = true;
+      "editor.inlineSuggest.enabled" = true;
 
       # extensions
-      "workbench.colorTheme" = "Material Theme Palenight";
+      "codesnap.realLineNumbers" = true;
+      "codesnap.showWindowControls" = false;
+      "codesnap.showWindowTitle" = true;
+      "codesnap.transparentBackground" = true;
+
+      "git.inputValidationLength" = 72;
+      "git.inputValidationSubjectLength" = 50;
+      "[git-commit]" = {
+        "editor.rulers" = [ 72 50 ];
+        "editor.wordWrap" = "off";
+        "workbench.editor.restoreViewState" = false;
+      };
+
+      "local-history.daysLimit" = 7;
+      "local-history.exclude" = [
+        "**/.vscode/**"
+        "**/node_modules/**"
+        "**/typings/**"
+        "**/out/**"
+        "**/Code/User/**"
+      ];
+
+      "[terraform]" = { "editor.tabSize" = 2; };
+      "terraform.languageServer.indexing.ignoreDirectoryNames" = [ ".history" ];
+
+      "[github-actions-workflow]" = { "editor.tabSize" = 2; };
+
+      "[markdown]" = { "editor.defaultFormatter" = "yzhang.markdown-all-in-one"; };
+
+      "[python]" = { "editor.defaultFormatter" = "charliermarsh.ruff"; };
     };
   };
 }
-

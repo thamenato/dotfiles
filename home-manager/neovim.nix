@@ -71,7 +71,5 @@
         };
       };
     };
-
-    # plugins not yet added to nixvim
-    # extraPlugins = [];
+  };
 }

@@ -11,6 +11,7 @@
     ../../home-manager/kitty.nix
     ../../home-manager/neovim.nix
     ../../home-manager/ripgrep.nix
+    ../../home-manager/vscode.nix
     ../../home-manager/zoxide.nix
     ../../home-manager/zsh.nix
   ];
@@ -37,7 +38,6 @@
     catppuccin-gtk
 
     # editors/ide
-    vscode
     dbeaver
     # jetbrains-toolbox
 
@@ -49,6 +49,7 @@
 
     # formatters
     dprint
+    nixpkgs-fmt
 
     # apps
     spotify
