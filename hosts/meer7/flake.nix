@@ -4,19 +4,25 @@
   inputs = {
     # unstable
     nixpkgs.url = "nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager/master";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
+    nixvim,
     ...
   }: let
     system = "x86_64-linux";
     lib = nixpkgs.lib;
-    # pkgs = nixpkgs.legacyPackages.${system};
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
@@ -31,7 +37,10 @@
     homeConfigurations = {
       thales = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [./home.nix];
+        modules = [
+          nixvim.homeManagerModules.nixvim
+          ./home.nix
+        ];
       };
     };
   };

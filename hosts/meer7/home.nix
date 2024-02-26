@@ -5,13 +5,14 @@
 }: {
   imports = [
     ../../home-manager/alacritty.nix
+    ../../home-manager/direnv.nix
     ../../home-manager/git.nix
     ../../home-manager/helix.nix
     ../../home-manager/kitty.nix
-    ../../home-manager/zsh.nix
-    ../../home-manager/direnv.nix
+    ../../home-manager/neovim.nix
     ../../home-manager/ripgrep.nix
     ../../home-manager/zoxide.nix
+    ../../home-manager/zsh.nix
   ];
 
   home.username = "thales";
