@@ -2,34 +2,63 @@
   description = "My Dotfiles";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
-    alejandra.url = "github:kamadorueda/alejandra/3.0.0";
-    alejandra.inputs.nixpkgs.follows = "nixpkgs";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
+    home-manager = {
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = {
-    self,
-    alejandra,
-    nixpkgs,
-    flake-utils,
-  }:
-    flake-utils.lib.eachDefaultSystem (system: let
-      pkgs = nixpkgs.legacyPackages.${system};
-    in {
-      formatter = alejandra.defaultPackage.${system};
-
-      devShells.default = pkgs.mkShell {
-        packages = [
+  outputs =
+    { self
+    , nixpkgs
+    , home-manager
+    , nixvim
+    , ...
+    }:
+    let
+      system = "x86_64-linux";
+      lib = nixpkgs.lib;
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
+    in
+    {
+      devShell."${system}" = pkgs.mkShell {
+        packages = with pkgs; [
           # tools
-          pkgs.alejandra
-          pkgs.pre-commit
-          # python is required by dotbot
-          pkgs.python311
+          pre-commit
+          nixpkgs-fmt
           # language server
-          pkgs.yaml-language-server
-          pkgs.nil
+          yaml-language-server
+          nil
         ];
       };
-    });
+
+      # nixos hosts
+      nixosConfigurations = {
+        kassogtha = lib.nixosSystem {
+          inherit system;
+
+          modules = [ ./hosts/kassogtha/configuration.nix ];
+        };
+      };
+
+      # home-manager
+      homeConfigurations = {
+        "thamenato@kassogtha" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+
+          modules = [
+            nixvim.homeManagerModules.nixvim
+            ./hosts/kassogtha/home.nix
+          ];
+        };
+      };
+    };
 }
