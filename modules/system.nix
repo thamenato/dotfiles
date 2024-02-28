@@ -44,7 +44,7 @@
   security.polkit.enable = true;
 
   # kernel version
-  boot.kernelPackages = pkgs.linuxPackages_6_6;
+  boot.kernelPackages = pkgs.linuxPackages_6_7;
   system.autoUpgrade = {
     enable = true;
     allowReboot = false;

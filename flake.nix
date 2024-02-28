@@ -13,53 +13,65 @@
     };
   };
 
-  outputs =
-    { self
-    , nixpkgs
-    , home-manager
-    , nixvim
-    , ...
-    }:
-    let
-      system = "x86_64-linux";
-      user = "thamenato";
-      lib = nixpkgs.lib;
-      pkgs = import nixpkgs {
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    nixvim,
+    ...
+  }: let
+    system = "x86_64-linux";
+    user = "thamenato";
+    lib = nixpkgs.lib;
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+    };
+  in {
+    devShell."${system}" = pkgs.mkShell {
+      packages = with pkgs; [
+        # tools
+        pre-commit
+        nixpkgs-fmt
+        # language server
+        yaml-language-server
+        nil
+      ];
+    };
+
+    # nixos hosts
+    nixosConfigurations = {
+      kassogtha = lib.nixosSystem {
         inherit system;
-        config.allowUnfree = true;
+
+        modules = [./hosts/kassogtha/configuration.nix];
       };
-    in
-    {
-      devShell."${system}" = pkgs.mkShell {
-        packages = with pkgs; [
-          # tools
-          pre-commit
-          nixpkgs-fmt
-          # language server
-          yaml-language-server
-          nil
+      zoth-ommog = lib.nixosSystem {
+        inherit system;
+
+        modules = [./hosts/zoth-ommog/configuration.nix];
+      };
+    };
+
+    # home-manager
+    homeConfigurations = {
+      "${user}@kassogtha" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+
+        modules = [
+          nixvim.homeManagerModules.nixvim
+          ./hosts/kassogtha/home.nix
         ];
       };
 
-      # nixos hosts
-      nixosConfigurations = {
-        kassogtha = lib.nixosSystem {
-          inherit system;
+      "${user}@zoth-ommog" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
 
-          modules = [ ./hosts/kassogtha/configuration.nix ];
-        };
-      };
-
-      # home-manager
-      homeConfigurations = {
-        "${user}@kassogtha" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-
-          modules = [
-            nixvim.homeManagerModules.nixvim
-            ./hosts/kassogtha/home.nix
-          ];
-        };
+        modules = [
+          nixvim.homeManagerModules.nixvim
+          ./hosts/zoth-ommog/home.nix
+        ];
       };
     };
+  };
 }

@@ -4,11 +4,18 @@
   ...
 }: {
   imports = [
-    ../../home-manager/git.nix
     ../../home-manager/alacritty.nix
+    ../../home-manager/direnv.nix
+    ../../home-manager/fzf.nix
+    ../../home-manager/git.nix
+    ../../home-manager/hyprland.nix
     ../../home-manager/kitty.nix
+    ../../home-manager/lazygit.nix
+    ../../home-manager/neovim.nix
+    ../../home-manager/ripgrep.nix
+    ../../home-manager/vscode.nix
+    ../../home-manager/zoxide.nix
     ../../home-manager/zsh.nix
-    # ../../home-manager/nvim
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
