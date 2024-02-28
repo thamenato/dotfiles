@@ -14,34 +14,36 @@
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    nixvim,
-    ...
-  }: let
-    system = "x86_64-linux";
-    lib = nixpkgs.lib;
-    pkgs = import nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
-    };
-  in {
-    nixosConfigurations = {
-      thales-meer7 = lib.nixosSystem {
+  outputs =
+    { self
+    , nixpkgs
+    , home-manager
+    , nixvim
+    , ...
+    }:
+    let
+      system = "x86_64-linux";
+      lib = nixpkgs.lib;
+      pkgs = import nixpkgs {
         inherit system;
-        modules = [./configuration.nix];
+        config.allowUnfree = true;
+      };
+    in
+    {
+      nixosConfigurations = {
+        thales-meer7 = lib.nixosSystem {
+          inherit system;
+          modules = [ ./configuration.nix ];
+        };
+      };
+      homeConfigurations = {
+        thales = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [
+            nixvim.homeManagerModules.nixvim
+            ./home.nix
+          ];
+        };
       };
     };
-    homeConfigurations = {
-      thales = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          nixvim.homeManagerModules.nixvim
-          ./home.nix
-        ];
-      };
-    };
-  };
 }

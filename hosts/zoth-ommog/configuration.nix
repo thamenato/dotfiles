@@ -1,10 +1,9 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{
-  config,
-  pkgs,
-  ...
+{ config
+, pkgs
+, ...
 }: {
   imports = [
     # Include the results of the hardware scan.
@@ -79,7 +78,7 @@
   users.users.thamenato = {
     isNormalUser = true;
     description = "Thales Menato";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = [ "networkmanager" "wheel" ];
   };
 
   # Allow unfree packages
@@ -100,7 +99,7 @@
     enable = true;
     # daemon.settings = {};
   };
-  users.extraGroups.docker.members = ["thamenato"];
+  users.extraGroups.docker.members = [ "thamenato" ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

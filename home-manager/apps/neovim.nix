@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   programs.nixvim = {
     enable = true;
 
@@ -6,7 +6,7 @@
     colorschemes.gruvbox.enable = true;
 
     # vim.g.*
-    globals = {};
+    globals = { };
 
     # vim.o.*
     options = {
@@ -43,9 +43,9 @@
         enable = true;
         autoEnableSources = true;
         sources = [
-          {name = "nvim_lsp";}
-          {name = "path";}
-          {name = "buffer";}
+          { name = "nvim_lsp"; }
+          { name = "path"; }
+          { name = "buffer"; }
         ];
 
         mapping = {
@@ -66,7 +66,7 @@
                 end
               end
             '';
-            modes = ["i" "s"];
+            modes = [ "i" "s" ];
           };
         };
       };

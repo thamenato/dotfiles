@@ -13,7 +13,8 @@
       system = "x86_64-linux";
       lib = nixpkgs.lib;
       pkgs = nixpkgs.legacyPackages.${system};
-    in {
+    in
+    {
       nixosConfigurations = {
         system76 = lib.nixosSystem {
           inherit system;
@@ -21,7 +22,7 @@
         };
       };
       homeConfigurations = {
-	thamenato = home-manager.lib.homeManagerConfiguration {
+        thamenato = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [ ./home.nix ];
         };

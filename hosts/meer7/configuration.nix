@@ -1,7 +1,6 @@
-{
-  config,
-  pkgs,
-  ...
+{ config
+, pkgs
+, ...
 }: {
   imports = [
     # Include the results of the hardware scan.
@@ -83,7 +82,7 @@
   users.users.thales = {
     isNormalUser = true;
     description = "thales";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = [ "networkmanager" "wheel" ];
   };
 
   # Allow unfree packages
@@ -101,21 +100,21 @@
   ];
 
   programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [];
+  programs.nix-ld.libraries = with pkgs; [ ];
 
   # docker
   virtualisation.docker = {
     enable = true;
     daemon.settings = {
       bip = "172.26.0.1/24";
-      dns = ["1.1.1.1" "8.8.8.8"];
+      dns = [ "1.1.1.1" "8.8.8.8" ];
       features = {
         containerd-snapshotter = true;
         buildkit = true;
       };
     };
   };
-  users.extraGroups.docker.members = ["thales"];
+  users.extraGroups.docker.members = [ "thales" ];
 
   # services
   services.openssh.enable = true;

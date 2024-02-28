@@ -6,7 +6,7 @@
     settings = {
       theme = "autumn";
       editor = {
-        rulers = [80];
+        rulers = [ 80 ];
       };
     };
 
@@ -16,7 +16,7 @@
           name = "hcl";
           formatter = {
             command = "terraform";
-            args = ["fmt" "-"];
+            args = [ "fmt" "-" ];
           };
         }
         {
@@ -24,7 +24,7 @@
           auto-format = true;
           formatter = {
             command = "black";
-            args = ["-"];
+            args = [ "-" ];
           };
         }
         {
@@ -32,7 +32,7 @@
           auto-format = true;
           formatter = {
             command = "dprint";
-            args = ["fmt" "--stdin" "md"];
+            args = [ "fmt" "--stdin" "md" ];
           };
         }
       ];

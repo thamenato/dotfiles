@@ -1,7 +1,6 @@
-{
-  config,
-  pkgs,
-  ...
+{ config
+, pkgs
+, ...
 }: {
   environment.systemPackages = with pkgs; [
     # cli tools
@@ -26,12 +25,12 @@
   ];
 
   # set zsh as default shell
-  environment.shells = with pkgs; [zsh];
+  environment.shells = with pkgs; [ zsh ];
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
   # enable flakes
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # configure gnupg
   programs.gnupg.agent = {

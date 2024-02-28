@@ -5,7 +5,7 @@
       modifier = "Mod4"; # super key
       terminal = "kitty";
       startup = [
-        {command = "vivaldi";}
+        { command = "vivaldi"; }
       ];
       outputs = {
         "DP-1" = {
