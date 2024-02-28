@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
   # Nix Settings
@@ -21,7 +22,7 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.binfmt.emulatedSystems= [ "aarch64-linux" ];
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   networking.hostName = "kassogtha"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -97,9 +98,9 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-      neovim
-      wget
-      curl
+    neovim
+    wget
+    curl
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -111,6 +112,7 @@
   };
 
   programs.steam.enable = true;
+  programs.hyprland.enable = true;
 
   # Set zsh as default shell
   environment.shells = with pkgs; [ zsh ];
@@ -129,7 +131,7 @@
       };
     };
   };
-  users.extraGroups.docker.members = ["thamenato"];
+  users.extraGroups.docker.members = [ "thamenato" ];
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;

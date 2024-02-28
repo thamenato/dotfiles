@@ -22,6 +22,7 @@
     }:
     let
       system = "x86_64-linux";
+      user = "thamenato";
       lib = nixpkgs.lib;
       pkgs = import nixpkgs {
         inherit system;
@@ -51,7 +52,7 @@
 
       # home-manager
       homeConfigurations = {
-        "thamenato@kassogtha" = home-manager.lib.homeManagerConfiguration {
+        "${user}@kassogtha" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
 
           modules = [

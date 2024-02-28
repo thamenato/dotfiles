@@ -6,6 +6,7 @@
     ../../home-manager/direnv.nix
     ../../home-manager/fzf.nix
     ../../home-manager/git.nix
+    ../../home-manager/hyprland.nix
     ../../home-manager/lazygit.nix
     ../../home-manager/neovim.nix
     ../../home-manager/ripgrep.nix
@@ -24,7 +25,7 @@
     nixpkgs-fmt
   ];
 
-  home.file = {};
+  home.file = { };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
