@@ -5,8 +5,6 @@ Pipfile*
 *.log
 .direnv
 
-misc/ffxivConfig/screenshots
-
 # Hyper stuff
 Hyper/blob_storage
 Hyper/Cache
