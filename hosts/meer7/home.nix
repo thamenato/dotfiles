@@ -3,16 +3,19 @@
 , ...
 }: {
   imports = [
-    ../../home-manager/alacritty.nix
-    ../../home-manager/direnv.nix
-    ../../home-manager/git.nix
-    ../../home-manager/helix.nix
-    ../../home-manager/kitty.nix
-    ../../home-manager/neovim.nix
-    ../../home-manager/ripgrep.nix
-    ../../home-manager/vscode.nix
-    ../../home-manager/zoxide.nix
-    ../../home-manager/zsh.nix
+    ../../home-manager/apps/alacritty.nix
+    ../../home-manager/apps/direnv.nix
+    ../../home-manager/apps/fzf.nix
+    ../../home-manager/apps/git.nix
+    # ../../home-manager/apps/helix.nix
+    ../../home-manager/apps/hyprland.nix
+    ../../home-manager/apps/kitty.nix
+    ../../home-manager/apps/lazygit.nix
+    ../../home-manager/apps/neovim.nix
+    ../../home-manager/apps/ripgrep.nix
+    ../../home-manager/apps/vscode.nix
+    ../../home-manager/apps/zoxide.nix
+    ../../home-manager/apps/zsh.nix
   ];
 
   home.username = "thales";
@@ -20,21 +23,16 @@
 
   home.packages = with pkgs; [
     # terminal
-    alejandra
-    direnv
     fastfetch
-    fzf
     httpie
     jq
     lazydocker
-    lazygit
-    macchina
-    ranger
     unzip
     zip
 
     # dependencies/tools
     catppuccin-gtk
+    python3
 
     # editors/ide
     dbeaver

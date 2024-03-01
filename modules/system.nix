@@ -36,7 +36,7 @@
   # enable flakes
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
-    allowed-users = [ "thamenato" ];
+    allowed-users = [ "thamenato" "thales" ];
   };
 
   # localization

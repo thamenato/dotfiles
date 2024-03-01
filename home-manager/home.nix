@@ -24,9 +24,11 @@
     # terminal
     fastfetch
     httpie
-    ranger
+    jq
     lazydocker
     nixpkgs-fmt
+    unzip
+    zip
 
     # dependencies
     catppuccin-gtk

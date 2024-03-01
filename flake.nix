@@ -52,6 +52,11 @@
 
           modules = [ ./hosts/zoth-ommog/configuration.nix ];
         };
+        thales-meer7 = lib.nixosSystem {
+          inherit system;
+
+          modules = [ ./hosts/meer7/configuration.nix ];
+        };
       };
 
       # home-manager
@@ -62,6 +67,14 @@
           modules = [
             nixvim.homeManagerModules.nixvim
             ./home-manager/home.nix
+          ];
+        };
+        "thales@thales-meer7" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+
+          modules = [
+            nixvim.homeManagerModules.nixvim
+            ./hosts/meer7/home.nix
           ];
         };
       };
