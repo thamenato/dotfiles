@@ -42,8 +42,13 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.xserver = {
+    displayManager.gdm.enable = true;
+    desktopManager = {
+      gnome.enable = true;
+      xfce.enable = true;
+    };
+  };
 
   # Configure keymap in X11
 
@@ -87,12 +92,15 @@
   # host-specific
   environment.systemPackages = with pkgs; [
     amdgpu_top
+    brave
   ];
 
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
   };
+
+  programs.gamemode.enable = true;
 
   # docker
   virtualisation.docker = {
