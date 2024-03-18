@@ -17,6 +17,7 @@
       mikestead.dotenv
       ms-python.python
       ms-vscode-remote.remote-containers
+      redhat.ansible
       redhat.vscode-yaml
       streetsidesoftware.code-spell-checker
       tamasfe.even-better-toml
