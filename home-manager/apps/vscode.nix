@@ -5,6 +5,10 @@
     # do not let VSCode alter the folder, only Home-Manager
     mutableExtensionsDir = false;
 
+    # disable checking for remote updates
+    enableUpdateCheck = false;
+    enableExtensionUpdateCheck = false;
+
     extensions = with pkgs.vscode-extensions; [
       adpyke.codesnap
       bierner.emojisense
