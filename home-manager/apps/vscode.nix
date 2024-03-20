@@ -45,6 +45,7 @@
       "editor.fontLigatures" = true;
       "editor.formatOnSave" = true;
       "editor.inlineSuggest.enabled" = true;
+      "[terraform]" = { "editor.tabSize" = 2; };
 
       # extensions
       "codesnap.realLineNumbers" = true;
@@ -69,8 +70,12 @@
         "**/Code/User/**"
       ];
 
-      "[terraform]" = { "editor.tabSize" = 2; };
-      "terraform.languageServer.indexing.ignoreDirectoryNames" = [ ".history" ];
+      "terraform.languageServer" = {
+        "maxNumberOfProblems" = 100;
+        "trace.server" = "off";
+        "ignoreDirectoryNames" = [ ".history" ];
+      };
+      "terraform-ls.ignoreDirectoryNames" = [ ".history" ];
 
       "[github-actions-workflow]" = { "editor.tabSize" = 2; };
 
