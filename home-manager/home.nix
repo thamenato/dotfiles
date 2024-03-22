@@ -22,6 +22,7 @@
 
   home.packages = with pkgs; [
     # terminal
+    alejandra
     fastfetch
     httpie
     jq
@@ -29,27 +30,6 @@
     nixpkgs-fmt
     unzip
     zip
-
-    # dependencies
-    catppuccin-gtk
-    python3
-
-    # browser
-    firefox
-
-    # editors/ide
-    vscode
-
-    # apps
-    bitwarden
-    spotify
-    tidal-hifi
-    signal-desktop
-    slack
-
-    # gaming
-    xivlauncher
-    discord
 
     # fonts
     (nerdfonts.override {

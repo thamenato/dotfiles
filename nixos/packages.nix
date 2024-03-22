@@ -21,11 +21,16 @@
     kitty
 
     # apps
+    bitwarden
     easyeffects
     signal-desktop
+    spotify
 
     # browser
     brave
     firefox
+
+    # theme
+    catppuccin-gtk
   ];
 }
