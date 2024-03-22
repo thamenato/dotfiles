@@ -8,35 +8,30 @@
   imports =
     [
       ./hardware-configuration.nix
-      ../../modules/system.nix
+      ../../nixos
     ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   # Networking
   networking.hostName = "kassogtha"; # Define your hostname.
   networking.networkmanager.enable = true;
-
-  # Enable the X11 windowing system.
-  services.xserver = {
-    enable = true;
-
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
-  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.thamenato = {
     isNormalUser = true;
     description = "Thales Menato";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      firefox
-      signal-desktop
-    ];
+    # packages = with pkgs; [ ];
+  };
+
+  users.users.nmenato = {
+    isNormalUser = true;
+    description = "Natalie Menato";
+    extraGroups = [ "networkmanager" "wheel" ];
+    # packages = with pkgs; [ ];
   };
 
   # programs
