@@ -1,9 +1,4 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
-
 {
   imports =
     [
@@ -24,8 +19,11 @@
     isNormalUser = true;
     description = "Thales Menato";
     extraGroups = [ "networkmanager" "wheel" ];
-    # packages = with pkgs; [ ];
+    packages = with pkgs; [
+      system76-firmware
+    ];
   };
+  users.extraGroups.docker.members = [ "thamenato" ];
 
   users.users.nmenato = {
     isNormalUser = true;
@@ -37,9 +35,6 @@
   # programs
   programs.steam.enable = true;
   programs.hyprland.enable = true;
-
-  # docker
-  users.extraGroups.docker.members = [ "thamenato" ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
