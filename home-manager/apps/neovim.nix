@@ -9,7 +9,7 @@
     globals = { };
 
     # vim.o.*
-    options = {
+    opts = {
       number = true;
       tabstop = 4;
       shiftwidth = 4;
