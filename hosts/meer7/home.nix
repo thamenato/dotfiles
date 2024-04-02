@@ -9,11 +9,12 @@
     ../../home-manager/apps/git.nix
     # ../../home-manager/apps/helix.nix
     ../../home-manager/apps/hyprland.nix
-    ../../home-manager/apps/kitty.nix
+    # ../../home-manager/apps/kitty.nix
     ../../home-manager/apps/lazygit.nix
     ../../home-manager/apps/neovim.nix
     ../../home-manager/apps/ripgrep.nix
     ../../home-manager/apps/vscode.nix
+    ../../home-manager/apps/zellij.nix
     ../../home-manager/apps/zoxide.nix
     ../../home-manager/apps/zsh.nix
   ];
@@ -33,6 +34,7 @@
     # dependencies/tools
     catppuccin-gtk
     python3
+    python311Packages.pip
 
     # editors/ide
     dbeaver
