@@ -3,10 +3,15 @@
 , ...
 }: {
   imports = [
-    ../../home-manager/git.nix
-    ../../home-manager/kitty.nix
-    ../../home-manager/zsh.nix
-    ../../home-manager/direnv.nix
+    ../../home-manager/apps/alacritty.nix
+    ../../home-manager/apps/direnv.nix
+    ../../home-manager/apps/fzf.nix
+    ../../home-manager/apps/git.nix
+    ../../home-manager/apps/lazygit.nix
+    ../../home-manager/apps/vscode.nix
+    ../../home-manager/apps/zellij.nix
+    ../../home-manager/apps/zoxide.nix
+    ../../home-manager/apps/zsh.nix
   ];
 
   home.username = "thales";
@@ -14,48 +19,10 @@
 
   home.packages = with pkgs; [
     # terminal
-    alejandra
-    direnv
     httpie
-    fzf
-    macchina
-    lazygit
     lazydocker
-
-    # language servers
-    # terraform-ls
-    # nil
-    # yaml-language-server
-    # marksman
-
-    # formatters
-    # dprint
-
-    # fonts
-    (nerdfonts.override {
-      fonts = [
-        "FiraCode"
-        "FiraMono"
-        "Hack"
-        "JetBrainsMono"
-      ];
-    })
+    nixpkgs-fmt
   ];
-
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
-  };
 
   home.sessionVariables = {
     EDITOR = "nvim";

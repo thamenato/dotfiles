@@ -22,9 +22,15 @@
     }:
     let
       system = "x86_64-linux";
+      darwin = "aarch64-darwin";
       lib = nixpkgs.lib;
+
       pkgs = import nixpkgs {
         inherit system;
+        config.allowUnfree = true;
+      };
+      darwin_pkgs = import nixpkgs {
+        system = "${darwin}";
         config.allowUnfree = true;
       };
     in
@@ -37,6 +43,12 @@
           # language server
           yaml-language-server
           nil
+        ];
+      };
+
+      devShell."${darwin}" = darwin_pkgs.mkShell {
+        packages = with darwin_pkgs; [
+          pre-commit
         ];
       };
 
@@ -75,6 +87,14 @@
           modules = [
             nixvim.homeManagerModules.nixvim
             ./hosts/meer7/home.nix
+          ];
+        };
+        "thales@thales-mac" = home-manager.lib.homeManagerConfiguration {
+          pkgs = darwin_pkgs;
+
+          modules = [
+            nixvim.homeManagerModules.nixvim
+            ./hosts/mac/home.nix
           ];
         };
       };
