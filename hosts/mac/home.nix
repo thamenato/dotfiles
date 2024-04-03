@@ -1,5 +1,6 @@
 { config
 , pkgs
+, lib
 , ...
 }: {
   imports = [
@@ -8,6 +9,7 @@
     ../../home-manager/apps/fzf.nix
     ../../home-manager/apps/git.nix
     ../../home-manager/apps/lazygit.nix
+    ../../home-manager/apps/neovim.nix
     ../../home-manager/apps/vscode.nix
     ../../home-manager/apps/zellij.nix
     ../../home-manager/apps/zoxide.nix
@@ -22,6 +24,16 @@
     httpie
     lazydocker
     nixpkgs-fmt
+
+    # fonts
+    (nerdfonts.override {
+      fonts = [
+        "FiraCode"
+        "FiraMono"
+        "Hack"
+        "JetBrainsMono"
+      ];
+    })
   ];
 
   home.sessionVariables = {
