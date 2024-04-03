@@ -38,6 +38,10 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  nix = {
+    optimise.automatic = true;
+  };
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
@@ -63,9 +67,7 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
   services.printing.drivers = [
-    pkgs.brlaser
-    pkgs.brgenml1lpr
-    pkgs.brgenml1cupswrapper
+    # pkgs.brlaser
   ];
 
   # Enable sound with pipewire.
@@ -83,7 +85,7 @@
   users.users.thamenato = {
     isNormalUser = true;
     description = "Thales Menato";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "lp" ];
   };
 
   # Allow unfree packages
@@ -93,6 +95,8 @@
   environment.systemPackages = with pkgs; [
     amdgpu_top
     brave
+    discord
+    gparted
   ];
 
   programs.steam = {

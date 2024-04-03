@@ -13,6 +13,12 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
+
   # configure keymap in X11
   services.xserver.xkb = {
     variant = "intl";
