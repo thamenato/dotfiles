@@ -30,6 +30,7 @@
     lazydocker
     nixpkgs-fmt
     unzip
+    xxh
     zip
 
     # fonts
