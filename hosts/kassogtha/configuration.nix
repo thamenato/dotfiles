@@ -21,6 +21,9 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       system76-firmware
+      # hyprland/sway dependencies
+      rofi
+      mako
     ];
   };
   users.extraGroups.docker.members = [ "thamenato" ];

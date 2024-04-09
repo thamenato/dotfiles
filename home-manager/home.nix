@@ -12,6 +12,7 @@
     ./apps/lazygit.nix
     ./apps/neovim.nix
     ./apps/ripgrep.nix
+    ./apps/rofi.nix
     ./apps/vscode.nix
     ./apps/zellij.nix
     ./apps/zoxide.nix
