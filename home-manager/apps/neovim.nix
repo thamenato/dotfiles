@@ -35,7 +35,7 @@
           # terraform
           terraformls.enable = true;
           # python
-          pylsp.enable = true;
+          # pylsp.enable = true;
         };
       };
 
