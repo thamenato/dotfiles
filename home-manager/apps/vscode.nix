@@ -29,7 +29,7 @@
       vscode-icons-team.vscode-icons
       vscodevim.vim
       waderyan.gitblame
-      xyz.local-history
+      # xyz.local-history
       yzhang.markdown-all-in-one
     ];
 
@@ -61,21 +61,19 @@
         "workbench.editor.restoreViewState" = false;
       };
 
-      "local-history.daysLimit" = 7;
-      "local-history.exclude" = [
-        "**/.vscode/**"
-        "**/node_modules/**"
-        "**/typings/**"
-        "**/out/**"
-        "**/Code/User/**"
-      ];
+      # "local-history.daysLimit" = 7;
+      # "local-history.exclude" = [
+      #   "**/.vscode/**"
+      #   "**/node_modules/**"
+      #   "**/typings/**"
+      #   "**/out/**"
+      #   "**/Code/User/**"
+      # ];
 
       "terraform.languageServer" = {
         "maxNumberOfProblems" = 100;
         "trace.server" = "off";
-        "ignoreDirectoryNames" = [ ".history" ];
       };
-      "terraform-ls.ignoreDirectoryNames" = [ ".history" ];
 
       "[github-actions-workflow]" = { "editor.tabSize" = 2; };
 
