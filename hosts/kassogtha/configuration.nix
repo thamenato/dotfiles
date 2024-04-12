@@ -3,7 +3,7 @@
   imports =
     [
       ./hardware-configuration.nix
-      ../../nixos
+      ../../nixos-modules
     ];
 
   # Bootloader.
@@ -35,8 +35,9 @@
     # packages = with pkgs; [ ];
   };
 
-  # programs
-  programs.steam.enable = true;
+  # nixos
+  steam.enable = true;
+
   programs.hyprland.enable = true;
 
   # This value determines the NixOS release from which the default

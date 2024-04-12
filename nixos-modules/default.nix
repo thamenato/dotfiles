@@ -3,8 +3,9 @@
 , ...
 }: {
   imports = [
-    ./packages.nix
-    ./services.nix
+    ./system-packages.nix
+    ./services
+    ./programs
   ];
 
   # set zsh as default shell

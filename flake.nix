@@ -78,7 +78,7 @@
 
           modules = [
             nixvim.homeManagerModules.nixvim
-            ./home-manager/home.nix
+            ./home-manager-modules
           ];
         };
         "thales@thales-meer7" = home-manager.lib.homeManagerConfiguration {
