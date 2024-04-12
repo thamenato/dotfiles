@@ -15,30 +15,34 @@
   networking.networkmanager.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.thamenato = {
-    isNormalUser = true;
-    description = "Thales Menato";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      system76-firmware
-      # hyprland/sway dependencies
-      rofi
-      mako
-    ];
-  };
-  users.extraGroups.docker.members = [ "thamenato" ];
-
-  users.users.nmenato = {
-    isNormalUser = true;
-    description = "Natalie Menato";
-    extraGroups = [ "networkmanager" "wheel" ];
-    # packages = with pkgs; [ ];
+  users = {
+    users = {
+      thamenato = {
+        isNormalUser = true;
+        description = "Thales Menato";
+        extraGroups = [ "networkmanager" "wheel" ];
+      };
+      nmenato = {
+        isNormalUser = true;
+        description = "Natalie Menato";
+        extraGroups = [ "networkmanager" "wheel" ];
+      };
+    };
+    extraGroups.docker.members = [ "thamenato" "nmenato" ];
   };
 
-  # nixos
-  steam.enable = true;
+  environment.systemPackages = with pkgs; [
+    system76-firmware
+    # hyprland/sway dependencies
+    rofi
+    mako
+  ];
 
   programs.hyprland.enable = true;
+
+  # nixos-modules
+  steam.enable = true;
+
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

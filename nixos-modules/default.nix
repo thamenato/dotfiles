@@ -13,10 +13,13 @@
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
-  # enable flakes
-  nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
-    allowed-users = [ "thamenato" "thales" ];
+  # nix settings
+  nix = {
+    settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      allowed-users = [ "thamenato" "thales" ];
+    };
+    optimise.automatic = true;
   };
 
   # localization
@@ -60,4 +63,3 @@
     allowReboot = false;
   };
 }
-
