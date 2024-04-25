@@ -25,6 +25,7 @@
     easyeffects
     signal-desktop
     spotify
+    vlc
 
     # browser
     brave
