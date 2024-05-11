@@ -38,7 +38,7 @@
     mako
   ];
 
-  programs.hyprland.enable = true;
+  # programs.hyprland.enable = true;
 
   # nixos-modules
   steam.enable = true;

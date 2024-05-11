@@ -7,7 +7,7 @@
     ./apps/direnv.nix
     ./apps/fzf.nix
     ./apps/git.nix
-    ./apps/hyprland.nix
+    # ./apps/hyprland.nix
     # ./apps/kitty.nix
     ./apps/lazygit.nix
     ./apps/neovim.nix
