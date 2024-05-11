@@ -53,6 +53,13 @@
     # pinentryPackage = null;
   };
 
+  # enable opengl
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
+
   # https://nixos.wiki/wiki/Polkit
   security.polkit.enable = true;
 
