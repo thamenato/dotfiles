@@ -3,20 +3,18 @@
 , ...
 }: {
   imports = [
-    ../../home-manager/apps/alacritty.nix
-    ../../home-manager/apps/direnv.nix
-    ../../home-manager/apps/fzf.nix
-    ../../home-manager/apps/git.nix
-    # ../../home-manager/apps/helix.nix
-    ../../home-manager/apps/hyprland.nix
-    # ../../home-manager/apps/kitty.nix
-    ../../home-manager/apps/lazygit.nix
-    ../../home-manager/apps/neovim.nix
-    ../../home-manager/apps/ripgrep.nix
-    ../../home-manager/apps/vscode.nix
-    ../../home-manager/apps/zellij.nix
-    ../../home-manager/apps/zoxide.nix
-    ../../home-manager/apps/zsh.nix
+    ../../home-manager-modules/apps/alacritty.nix
+    ../../home-manager-modules/apps/direnv.nix
+    ../../home-manager-modules/apps/fzf.nix
+    ../../home-manager-modules/apps/git.nix
+    ../../home-manager-modules/apps/hyprland.nix
+    ../../home-manager-modules/apps/lazygit.nix
+    ../../home-manager-modules/apps/neovim.nix
+    ../../home-manager-modules/apps/ripgrep.nix
+    ../../home-manager-modules/apps/vscode.nix
+    ../../home-manager-modules/apps/zellij.nix
+    ../../home-manager-modules/apps/zoxide.nix
+    ../../home-manager-modules/apps/zsh.nix
   ];
 
   home.username = "thales";
