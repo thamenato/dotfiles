@@ -29,6 +29,7 @@
     unzip
     xxh
     zip
+    devenv
 
     # dependencies/tools
     catppuccin-gtk
