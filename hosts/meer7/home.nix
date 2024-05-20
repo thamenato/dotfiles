@@ -5,6 +5,7 @@
   imports = [
     ../../home-manager-modules/apps/alacritty.nix
     ../../home-manager-modules/apps/direnv.nix
+    ../../home-manager-modules/apps/eza.nix
     ../../home-manager-modules/apps/fzf.nix
     ../../home-manager-modules/apps/git.nix
     ../../home-manager-modules/apps/hyprland.nix
@@ -22,14 +23,15 @@
 
   home.packages = with pkgs; [
     # terminal
+    devenv
     fastfetch
     httpie
     jq
     lazydocker
+    tldr
     unzip
     xxh
     zip
-    devenv
 
     # dependencies/tools
     catppuccin-gtk

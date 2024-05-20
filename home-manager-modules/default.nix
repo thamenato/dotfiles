@@ -5,6 +5,7 @@
   imports = [
     ./apps/alacritty.nix
     ./apps/direnv.nix
+    ./apps/eza.nix
     ./apps/fzf.nix
     ./apps/git.nix
     # ./apps/hyprland.nix

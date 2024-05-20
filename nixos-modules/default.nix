@@ -18,6 +18,7 @@
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
       allowed-users = [ "thamenato" "thales" ];
+      trusted-users = [ "thamenato" "thales" ];
     };
     optimise.automatic = true;
   };
