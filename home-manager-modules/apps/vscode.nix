@@ -45,7 +45,15 @@
       "editor.fontLigatures" = true;
       "editor.formatOnSave" = true;
       "editor.inlineSuggest.enabled" = true;
+      "editor.codeActionsOnSave" = {
+        "source.organizeImports.ruff" = "explicit";
+      };
+
+      # languages
       "[terraform]" = { "editor.tabSize" = 2; };
+      "[python]" = { "editor.defaultFormatter" = "charliermarsh.ruff"; };
+      "[github-actions-workflow]" = { "editor.tabSize" = 2; };
+      "[markdown]" = { "editor.defaultFormatter" = "yzhang.markdown-all-in-one"; };
 
       # extensions
       "codesnap.realLineNumbers" = true;
@@ -74,12 +82,6 @@
         "maxNumberOfProblems" = 100;
         "trace.server" = "off";
       };
-
-      "[github-actions-workflow]" = { "editor.tabSize" = 2; };
-
-      "[markdown]" = { "editor.defaultFormatter" = "yzhang.markdown-all-in-one"; };
-
-      "[python]" = { "editor.defaultFormatter" = "charliermarsh.ruff"; };
     };
   };
 }
