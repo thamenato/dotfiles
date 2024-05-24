@@ -18,6 +18,7 @@
     ./apps/zellij.nix
     ./apps/zoxide.nix
     ./apps/zsh.nix
+    ./appearance.nix
   ];
 
   home.username = "thamenato";
