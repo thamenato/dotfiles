@@ -22,7 +22,7 @@
 
       fastfetch
 
-      export PATH=/home/$USER/.local/bin:$PATH
+      export PATH=$HOME/.local/bin:$HOME/go/bin:$PATH
     '';
 
     shellAliases = {

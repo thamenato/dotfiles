@@ -3,13 +3,12 @@
 , ...
 }: {
   imports = [
+    ./appearance.nix
     ./apps/alacritty.nix
     ./apps/direnv.nix
     ./apps/eza.nix
     ./apps/fzf.nix
     ./apps/git.nix
-    # ./apps/hyprland.nix
-    # ./apps/kitty.nix
     ./apps/lazygit.nix
     ./apps/neovim.nix
     ./apps/ripgrep.nix
@@ -18,7 +17,9 @@
     ./apps/zellij.nix
     ./apps/zoxide.nix
     ./apps/zsh.nix
-    ./appearance.nix
+    ./programming/go.nix
+    # ./apps/hyprland.nix
+    # ./apps/kitty.nix
   ];
 
   home.username = "thamenato";
