@@ -15,6 +15,7 @@
     pinentry
     python3
     wget
+    unixtools.xxd
 
     # terminal
     alacritty
