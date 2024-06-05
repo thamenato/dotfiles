@@ -8,6 +8,7 @@
     ./apps/direnv.nix
     ./apps/eza.nix
     ./apps/fzf.nix
+    ./apps/gh.nix
     ./apps/git.nix
     ./apps/lazygit.nix
     ./apps/neovim.nix
