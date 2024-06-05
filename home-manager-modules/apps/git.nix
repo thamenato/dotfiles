@@ -21,6 +21,7 @@
     extraConfig = {
       push.autoSetupRemote = true;
       fetch.prune = true;
+      init.defaultBranch = "main";
     };
 
     aliases = {

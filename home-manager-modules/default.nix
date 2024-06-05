@@ -33,6 +33,7 @@
     jq
     lazydocker
     nixpkgs-fmt
+    tldr
     unzip
     xxh
     zip
