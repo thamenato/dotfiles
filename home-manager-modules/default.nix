@@ -3,24 +3,9 @@
 , ...
 }: {
   imports = [
-    ./appearance.nix
-    ./apps/alacritty.nix
-    ./apps/direnv.nix
-    ./apps/eza.nix
-    ./apps/fzf.nix
-    ./apps/gh.nix
-    ./apps/git.nix
-    ./apps/lazygit.nix
-    ./apps/neovim.nix
-    ./apps/ripgrep.nix
-    ./apps/rofi.nix
-    ./apps/vscode.nix
-    ./apps/zellij.nix
-    ./apps/zoxide.nix
-    ./apps/zsh.nix
-    ./programming/go.nix
-    # ./apps/hyprland.nix
-    # ./apps/kitty.nix
+    ./appearance
+    ./apps
+    ./programming
   ];
 
   home.username = "thamenato";

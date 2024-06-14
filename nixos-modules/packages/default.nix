@@ -19,7 +19,8 @@
 
     # terminal
     alacritty
-    kitty
+    rofi
+    mako
 
     # apps
     bitwarden
@@ -31,8 +32,5 @@
     # browser
     brave
     firefox
-
-    # theme
-    catppuccin-gtk
   ];
 }

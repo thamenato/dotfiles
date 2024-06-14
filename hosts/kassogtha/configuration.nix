@@ -33,12 +33,7 @@
 
   environment.systemPackages = with pkgs; [
     system76-firmware
-    # hyprland/sway dependencies
-    rofi
-    mako
   ];
-
-  # programs.hyprland.enable = true;
 
   # nixos-modules
   steam.enable = true;
