@@ -7,20 +7,23 @@
     bat
     curl
     dig
-    git
     gnupg
     htop
     lf
     neovim
     pinentry
-    python3
-    wget
     unixtools.xxd
+    wget
+
+    # programming
+    git
+    python3
+    rustup
 
     # terminal
     alacritty
-    rofi
     mako
+    rofi
 
     # apps
     bitwarden

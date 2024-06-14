@@ -18,11 +18,16 @@
     httpie
     jq
     lazydocker
-    nixpkgs-fmt
     tldr
     unzip
     xxh
     zip
+
+    # lsp
+    nil
+
+    # formatter/linter
+    nixpkgs-fmt
 
     # fonts
     (nerdfonts.override {
