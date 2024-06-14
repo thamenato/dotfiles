@@ -24,9 +24,13 @@
     zip
 
     # lsp
+    marksman
     nil
+    terraform-ls
+    yaml-language-server
 
     # formatter/linter
+    dprint
     nixpkgs-fmt
 
     # fonts

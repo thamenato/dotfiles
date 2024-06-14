@@ -36,10 +36,15 @@
 
   # system packages
   environment.systemPackages = with pkgs; [
-    _1password-gui
     _1password
-    tailscale
+    _1password-gui
+    dbeaver-bin
+    signal-desktop
+    slack
+    spotify
     system76-firmware
+    tailscale
+    tidal-hifi
   ];
 
   programs.nix-ld.enable = true;
