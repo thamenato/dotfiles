@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/master";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim = {
@@ -13,26 +13,43 @@
     };
   };
 
-  outputs =
-    { self
-    , nixpkgs
-    , home-manager
-    , nixvim
-    , ...
-    }:
+  outputs = inputs@{ nixpkgs, home-manager, nixvim, ... }:
     let
       system = "x86_64-linux";
       darwin = "aarch64-darwin";
-      lib = nixpkgs.lib;
 
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
       };
       darwin_pkgs = import nixpkgs {
-        system = "${darwin}";
+        inherit darwin;
         config.allowUnfree = true;
       };
+
+      nixosHost = hostname: username: (
+        nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./hosts/${hostname}/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+            }
+          ];
+        }
+      );
+
+      homeManagerSetup = username: system: (
+        home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [
+            ./home-manager-modules
+            nixvim.homeManagerModules.nixvim
+          ];
+        }
+      );
     in
     {
       devShell."${system}" = pkgs.mkShell {
@@ -52,51 +69,16 @@
         ];
       };
 
-      # nixos hosts
       nixosConfigurations = {
-        kassogtha = lib.nixosSystem {
-          inherit system;
-
-          modules = [ ./hosts/kassogtha/configuration.nix ];
-        };
-        zoth-ommog = lib.nixosSystem {
-          inherit system;
-
-          modules = [ ./hosts/zoth-ommog/configuration.nix ];
-        };
-        thales-meer7 = lib.nixosSystem {
-          inherit system;
-
-          modules = [ ./hosts/meer7/configuration.nix ];
-        };
+        kassogtha = nixosHost "kassogtha" "thamenato";
+        zoth-ommog = nixosHost "zoth-ommog" "thamenato";
+        thales-meer7 = nixosHost "thales-meer7" "thales";
       };
 
-      # home-manager
       homeConfigurations = {
-        thamenato = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-
-          modules = [
-            nixvim.homeManagerModules.nixvim
-            ./home-manager-modules
-          ];
-        };
-        "thales@thales-meer7" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-
-          modules = [
-            nixvim.homeManagerModules.nixvim
-            ./hosts/meer7/home.nix
-          ];
-        };
-        "thales@thales-mac" = home-manager.lib.homeManagerConfiguration {
-          pkgs = darwin_pkgs;
-
-          modules = [
-            nixvim.homeManagerModules.nixvim
-            ./hosts/mac/home.nix
-          ];
-        };
+        thamenato = homeManagerSetup "thamenato" "${system}";
+        "thales@thales-meer7" = homeManagerSetup "thales" "${system}";
+        "thales@thales-mac" = homeManagerSetup "thales" "${darwin}";
       };
     };
 }
