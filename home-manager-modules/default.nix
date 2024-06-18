@@ -6,6 +6,7 @@
     ./appearance
     ./apps
     ./programming
+    ./terminal
   ];
 
   home.username = "thamenato";

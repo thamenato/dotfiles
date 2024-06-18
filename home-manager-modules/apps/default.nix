@@ -1,6 +1,5 @@
 {
   imports = [
-    ./alacritty.nix
     ./direnv.nix
     ./eza.nix
     ./fzf.nix
@@ -12,6 +11,5 @@
     ./rofi.nix
     ./vscode.nix
     ./zoxide.nix
-    ./zsh.nix
   ];
 }

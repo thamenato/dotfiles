@@ -1,5 +1,5 @@
 {
-  imports = [
-    ./go.nix
-  ];
+  programs.go = {
+    enable = true;
+  };
 }

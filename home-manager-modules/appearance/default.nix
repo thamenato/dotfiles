@@ -1,5 +1,9 @@
 { pkgs, ... }:
 {
+  imports = [
+    # ./sway.nix
+  ];
+
   home = {
     packages = with pkgs; [
       # themes
