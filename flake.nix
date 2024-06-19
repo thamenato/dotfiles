@@ -41,13 +41,16 @@
         }
       );
 
-      homeManagerSetup = username: system: (
+      homeManagerSetup = username: extra_home: (
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
             ./home-manager-modules
             nixvim.homeManagerModules.nixvim
-          ];
+          ]
+          ++ (if extra_home != "" then
+            [ extra_home ]
+          else [ ]);
         }
       );
     in
@@ -76,9 +79,9 @@
       };
 
       homeConfigurations = {
-        thamenato = homeManagerSetup "thamenato" "${system}";
-        "thales@thales-meer7" = homeManagerSetup "thales" "${system}";
-        "thales@thales-mac" = homeManagerSetup "thales" "${darwin}";
+        thamenato = homeManagerSetup "thales" "";
+        "thales@thales-meer7" = homeManagerSetup "thales" "./hosts/meer7/home.nix";
+        "thales@thales-mac" = homeManagerSetup "thales" "./hosts/mac/home.nix";
       };
     };
 }
