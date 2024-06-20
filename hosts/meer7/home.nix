@@ -12,6 +12,7 @@
 
   home.packages = with pkgs; [
     # dependencies/tools
+    devenv
     python3
     python311Packages.pip
   ];
