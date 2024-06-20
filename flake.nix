@@ -75,13 +75,13 @@
       nixosConfigurations = {
         kassogtha = nixosHost "kassogtha" "thamenato";
         zoth-ommog = nixosHost "zoth-ommog" "thamenato";
-        thales-meer7 = nixosHost "thales-meer7" "thales";
+        thales-meer7 = nixosHost "meer7" "thales";
       };
 
       homeConfigurations = {
         thamenato = homeManagerSetup "thales" "";
-        "thales@thales-meer7" = homeManagerSetup "thales" "./hosts/meer7/home.nix";
-        "thales@thales-mac" = homeManagerSetup "thales" "./hosts/mac/home.nix";
+        "thales@thales-meer7" = homeManagerSetup "thales" ./hosts/meer7/home.nix;
+        # "thales@thales-mac" = homeManagerSetup "thales" "./hosts/mac/home.nix";
       };
     };
 }
