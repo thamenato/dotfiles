@@ -1,5 +1,6 @@
 {
   imports = [
+    ./atuin.nix
     ./direnv.nix
     ./eza.nix
     ./fzf.nix
