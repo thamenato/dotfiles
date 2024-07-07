@@ -1,36 +1,34 @@
-{ pkgs, home, wayland, ... }:
+{ config, pkgs, wayland, lib, ... }:
 let
-  modifier = "Mod4"; # super key
   background = ../../misc/backgrounds/143952-abstract_art-color-blue-atmosphere-violet-2560x1440.jpg;
+  modifier = "Mod4";
+  menu = "wofi -I --show drun | xargs swaymsg exec";
 in
 {
-  # home = {
-  #   file = {
-  #     ".config/sway/background.jpg".source = background;
-  #   };
-  # };
-
   wayland.windowManager.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
 
     config = {
       modifier = modifier;
-      terminal = "alacritty";
+      terminal = "${pkgs.alacritty}/bin/alacritty";
+      menu = menu;
 
-      # keybindings = { };
+      # keybindings = lib.mkOptionDefault {
+      #   "${modifier}+Shift+d" = drun";
+      # };
 
       startup = [
-        { command = "vivaldi"; }
+        # { command = "vivaldi"; }
       ];
 
       output = {
         "*" = { bg = "${background} fit"; };
+        # DP-1 = {
+        #   resolution = "2560x1440";
+        #   position = "0,1080";
+        # };
       };
-      # DP-1 = {
-      #   resolution = "2560x1440";
-      #   position = "0,1080";
-      # };
 
       input = {
         "type:keyboard" = {
