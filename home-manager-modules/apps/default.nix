@@ -9,7 +9,6 @@
     ./lazygit.nix
     ./neovim.nix
     ./ripgrep.nix
-    ./rofi.nix
     ./vscode.nix
     ./zoxide.nix
   ];

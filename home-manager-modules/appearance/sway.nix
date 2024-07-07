@@ -2,7 +2,7 @@
 let
   background = ../../misc/backgrounds/143952-abstract_art-color-blue-atmosphere-violet-2560x1440.jpg;
   modifier = "Mod4";
-  menu = "wofi -I --show drun | xargs swaymsg exec";
+  menu = "rofi -show drun | xargs swaymsg exec";
 in
 {
   wayland.windowManager.sway = {
@@ -25,7 +25,7 @@ in
       output = {
         "*" = { bg = "${background} fit"; };
         # DP-1 = {
-        #   resolution = "2560x1440";
+
         #   position = "0,1080";
         # };
       };

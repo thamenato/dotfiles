@@ -2,7 +2,7 @@
 {
   imports = [
     ./sway.nix
-    ./wofi.nix
+    ./rofi.nix
   ];
 
   home = {
