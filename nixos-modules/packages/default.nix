@@ -11,7 +11,6 @@
     htop
     lf
     neovim
-    pinentry
     unixtools.xxd
     wget
 
@@ -30,6 +29,7 @@
     easyeffects
     signal-desktop
     spotify
+    darktable
     vlc
 
     # browser
