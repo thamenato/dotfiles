@@ -18,8 +18,6 @@
   networking.hostName = "zoth-ommog"; # Define your hostname.
   networking.networkmanager.enable = true;
 
-  services.xserver.desktopManager.xfce.enable = true;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.thamenato = {
     isNormalUser = true;
