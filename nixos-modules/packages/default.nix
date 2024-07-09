@@ -26,7 +26,7 @@
     rofi
 
     # apps
-    bitwarden
+    # bitwarden
     easyeffects
     signal-desktop
     spotify
