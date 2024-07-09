@@ -9,5 +9,5 @@
 
   steam.enable = lib.mkDefault false;
 
-  # programs.sway.enable = true;
+  programs.sway.enable = true;
 }

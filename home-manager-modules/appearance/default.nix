@@ -1,7 +1,8 @@
 { pkgs, ... }:
 {
   imports = [
-    # ./sway.nix
+    ./sway.nix
+    ./rofi.nix
   ];
 
   home = {

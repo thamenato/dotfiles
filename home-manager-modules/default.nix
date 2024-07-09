@@ -12,6 +12,7 @@
   home.username = "thamenato";
   home.homeDirectory = "/home/thamenato";
 
+
   home.packages = with pkgs; [
     # terminal
     alejandra
