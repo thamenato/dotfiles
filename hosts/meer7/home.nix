@@ -34,16 +34,19 @@
     {
       # main
       DP-3 = {
-        position = "0,0";
+        position = "0,580";
         bg = "${ultrawide_bg} fit";
+        res = "3840x1600";
       };
       # right bottom
       HDMI-A-1 = {
-        position = "3840,500";
+        position = "3840,1080";
+        res = "1920x1080";
       };
       # right top
       HDMI-A-2 = {
-        position = "3840,-580";
+        position = "3840,0";
+        res = "1920x1080";
       };
     };
 }
