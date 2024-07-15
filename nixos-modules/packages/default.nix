@@ -26,10 +26,12 @@
 
     # apps
     # bitwarden
+    arandr
+    darktable
     easyeffects
+    pwvucontrol
     signal-desktop
     spotify
-    darktable
     vlc
 
     # browser

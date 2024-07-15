@@ -26,4 +26,24 @@
           +s: zsh
     '';
   };
+
+  wayland.windowManager.sway.config.output =
+    let
+      ultrawide_bg = ../../misc/backgrounds/wallhaven-vql78p_3840x1600.png;
+    in
+    {
+      # main
+      DP-3 = {
+        position = "0,0";
+        bg = "${ultrawide_bg} fit";
+      };
+      # right bottom
+      HDMI-A-1 = {
+        position = "3840,500";
+      };
+      # right top
+      HDMI-A-2 = {
+        position = "3840,-580";
+      };
+    };
 }
