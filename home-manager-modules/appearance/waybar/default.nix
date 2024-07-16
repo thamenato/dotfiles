@@ -143,13 +143,14 @@
         "custom/grimshot" =
           let
             grimshot = "${pkgs.sway-contrib.grimshot}/bin/grimshot";
+            swappy = "${pkgs.swappy}/bin/swappy";
           in
           {
             format = "";
             tooltip = false;
-            on-click-right = "${grimshot} --notify save output - | swappy -f -";
-            on-click-middle = "${grimshot} --notify save window - | swappy -f -";
-            on-click = "${grimshot} --notify save area - | swappy -f -";
+            on-click-right = "${grimshot} --notify save output - | ${swappy} -f -";
+            on-click-middle = "${grimshot} --notify save window - | ${swappy} -f -";
+            on-click = "${grimshot} --notify save area - | ${swappy} -f -";
           };
 
         "idle_inhibitor" = {
@@ -177,5 +178,5 @@
       };
     };
   };
-  home.packages = [ pkgs.playerctl ];
+  home.packages = [ pkgs.playerctl pkgs.sway-contrib.grimshot ];
 }
