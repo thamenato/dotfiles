@@ -11,6 +11,7 @@
     htop
     lf
     neovim
+    pulseaudio
     unixtools.xxd
     wget
 

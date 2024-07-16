@@ -1,0 +1,296 @@
+/* =============================================================================
+ *
+ * Waybar configuration
+ *
+ * Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
+ *
+ * =========================================================================== */
+
+/* -----------------------------------------------------------------------------
+ * Keyframes
+ * -------------------------------------------------------------------------- */
+
+/*
+*
+* Catppuccin Mocha palette
+* Maintainer: rubyowo
+*
+*/
+
+@define-color base #1e1e2e;
+@define-color mantle #181825;
+@define-color crust #11111b;
+
+@define-color text #cdd6f4;
+@define-color subtext0 #a6adc8;
+@define-color subtext1 #bac2de;
+
+@define-color surface0 #313244;
+@define-color surface1 #45475a;
+@define-color surface2 #585b70;
+
+@define-color overlay0 #6c7086;
+@define-color overlay1 #7f849c;
+@define-color overlay2 #9399b2;
+
+@define-color blue #89b4fa;
+@define-color lavender #b4befe;
+@define-color sapphire #74c7ec;
+@define-color sky #89dceb;
+@define-color teal #94e2d5;
+@define-color green #a6e3a1;
+@define-color yellow #f9e2af;
+@define-color peach #fab387;
+@define-color maroon #eba0ac;
+@define-color red #f38ba8;
+@define-color mauve #cba6f7;
+@define-color pink #f5c2e7;
+@define-color flamingo #f2cdcd;
+@define-color rosewater #f5e0dc;
+
+
+@define-color orange-kairos #e46e19;
+
+@keyframes blink-warning {
+    70% {
+        color: @text;
+    }
+
+    to {
+        color: @text;
+        background-color: @peach;
+    }
+}
+
+@keyframes blink-critical {
+    70% {
+        color: @text;
+    }
+
+    to {
+        color: @text;
+        background-color: @red;
+    }
+}
+
+
+
+/* -----------------------------------------------------------------------------
+ * Base styles
+ * -------------------------------------------------------------------------- */
+
+/* Reset all styles */
+* {
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    font-size: 12px;
+    font-family: "JetBrains Mono SemiBold";
+    margin: 0;
+    padding: 0;
+}
+
+/* The whole bar */
+window#waybar {
+    background-color: @base;
+    color: @text;
+}
+
+tooltip {
+    background: none;
+    border: 2px solid @blue;
+    border-radius: 15px;
+}
+
+tooltip label {
+    padding: 10px;
+    color: @subtext0;
+}
+
+/***************************
+    Shared Global Settings
+***************************/
+
+#workspace,
+#workspaces button,
+#mode,
+#custom-spotify,
+#custom-weather,
+#custom-hostname,
+#clock,
+#temperature,
+#memory,
+#cpu,
+#pulseaudio,
+#custom-grimshot,
+#idle_inhibitor,
+#tray,
+#custom-power,
+#window {
+    /* animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate; */
+    border-radius: 15px;
+    margin: 3px 0;
+}
+
+/***************************
+    Modules Left
+***************************/
+.modules-left {}
+
+#custom-hostname {
+    padding: 0 16px;
+    margin-right: 3px;
+    color: @crust;
+    background-color: @orange-kairos;
+    font-family: JetBrains Mono ExtraBold;
+}
+
+#workspaces {
+    font-size: 13px;
+    margin-right: 20px;
+}
+
+#workspaces button {
+    margin: 3px 0;
+    padding: 2px;
+    margin-left: 3px;
+    border: 2px solid @surface1;
+}
+
+#workspaces button.focused {
+    border-color: @sapphire;
+    color: @sapphire;
+}
+
+#workspaces button.urgent {
+    border-color: @red;
+    color: @red;
+}
+
+#window {
+    padding: 0 16px;
+    background-color: @surface1;
+}
+
+/***************************
+    Modules Center
+***************************/
+.modules-center {}
+
+#clock,
+#custom-weather {
+    background-color: @lavender;
+    color: @crust;
+}
+
+#clock {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-right: 0;
+    padding-left: 24px;
+    padding-right: 8px;
+}
+
+#custom-weather {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-left: 0;
+    padding-right: 24px;
+    padding-left: 8px;
+}
+
+
+
+/***************************
+    Modules Right
+***************************/
+
+#custom-spotify,
+#temperature,
+#memory,
+#cpu,
+#pulseaudio,
+#custom-grimshot,
+#idle_inhibitor,
+#tray,
+#custom-power {
+    padding: 0 15px;
+    margin: 3px 2px;
+    background: @mantle;
+}
+
+#custom-spotify {
+    margin: 3px 0;
+    padding: 0 16px;
+    color: @crust;
+    transition: none;
+    background-color: @green;
+}
+
+#temperature {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-right: 0;
+    padding-left: 16px;
+    padding-right: 8px;
+}
+
+#temperature.critical {
+    background-color: @red;
+}
+
+#memory {
+    border-radius: 0;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0 8px;
+}
+
+#memory.warning {
+    color: @peach;
+}
+
+#memory.critical {
+    color: @red;
+    animation-name: blink-critical;
+    animation-duration: 2s;
+}
+
+#cpu {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-left: 0;
+    padding-right: 16px;
+    padding-left: 8px;
+}
+
+#cpu.warning {
+    color: @peach;
+}
+
+#cpu.critical {
+    color: @red;
+}
+
+#pulseaudio {
+    border: 2px solid @blue;
+}
+
+#pulseaudio.muted {
+    color: @teal;
+}
+
+#custom-grimshot {
+    border: 2px solid @blue;
+}
+
+#idle_inhibitor {
+    border: 2px solid @blue;
+}
+
+#custom-power {
+    border: 2px solid @mauve;
+    color: @mauve;
+}
