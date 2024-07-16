@@ -24,10 +24,6 @@ in
 
       output = {
         "*" = { bg = "${background} fit"; };
-        # DP-1 = {
-
-        #   position = "0,1080";
-        # };
       };
 
       input = {

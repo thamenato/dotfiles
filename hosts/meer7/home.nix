@@ -14,7 +14,7 @@
     # dependencies/tools
     devenv
     python3
-    python311Packages.pip
+    pipx
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -27,26 +27,49 @@
     '';
   };
 
-  wayland.windowManager.sway.config.output =
+  wayland.windowManager.sway =
     let
-      ultrawide_bg = ../../misc/backgrounds/wallhaven-vql78p_3840x1600.png;
+      monitor_main = "DP-3";
+      monitor_right_bottom = "HDMI-A-1";
+      monitor_right_top = "HDMI-A-2";
     in
     {
-      # main
-      DP-3 = {
-        position = "0,580";
-        bg = "${ultrawide_bg} fit";
-        res = "3840x1600";
-      };
-      # right bottom
-      HDMI-A-1 = {
-        position = "3840,1080";
-        res = "1920x1080";
-      };
-      # right top
-      HDMI-A-2 = {
-        position = "3840,0";
-        res = "1920x1080";
+      config = {
+        workspaceOutputAssign = [
+          {
+            workspace = "1";
+            output = monitor_main;
+          }
+          {
+            workspace = "2";
+            output = monitor_right_bottom;
+          }
+          {
+            workspace = "3";
+            output = monitor_right_top;
+          }
+        ];
+        output =
+          let
+            ultrawide_bg = ../../misc/backgrounds/wallhaven-vql78p_3840x1600.png;
+            res_fullhd = "1920x1080";
+            res_ultrawide4k = "3840x1600";
+          in
+          {
+            ${monitor_main} = {
+              position = "0,580";
+              bg = "${ultrawide_bg} fit";
+              res = res_ultrawide4k;
+            };
+            ${monitor_right_bottom} = {
+              position = "3840,1080";
+              res = res_fullhd;
+            };
+            ${monitor_right_top} = {
+              position = "3840,0";
+              res = res_fullhd;
+            };
+          };
       };
     };
 }
