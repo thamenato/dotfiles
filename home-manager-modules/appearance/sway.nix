@@ -22,6 +22,10 @@ in
         # { command = "vivaldi"; }
       ];
 
+      # bars = [{
+      #   command = "${pkgs.waybar}/bin/waybar";
+      # }];
+
       output = {
         "*" = { bg = "${background} fit"; };
       };
