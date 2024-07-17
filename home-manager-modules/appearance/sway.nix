@@ -14,13 +14,15 @@ in
       terminal = "${pkgs.alacritty}/bin/alacritty";
       menu = menu;
 
-      # keybindings = lib.mkOptionDefault {
-      #   "${modifier}+Shift+d" = drun";
-      # };
-
-      startup = [
-        # { command = "vivaldi"; }
-      ];
+      keybindings =
+        let
+          grimshot = "${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save";
+        in
+        lib.mkOptionDefault
+          {
+            "print" = "exec ${grimshot} output";
+            "Shift+print" = "exec ${grimshot} area";
+          };
 
       bars = [{
         command = "${pkgs.waybar}/bin/waybar";

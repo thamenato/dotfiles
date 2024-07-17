@@ -69,10 +69,3 @@ set $powermenu ~/.config/waybar/scripts/power-menu.sh
 #
     bindsym $mod+n exec thunar
     bindsym $mod+o exec vivaldi-stable
-
-#
-# Screenshots
-#
-    bindsym print exec /usr/share/sway/scripts/grimshot --notify save output
-    # bindsym Shift+print exec ~/.config/sway/scripts/screenshot.sh
-    bindsym Shift+print exec grimshot --notify save area - | swappy -f -

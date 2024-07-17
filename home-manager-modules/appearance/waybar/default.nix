@@ -142,15 +142,15 @@
 
         "custom/grimshot" =
           let
-            grimshot = "${pkgs.sway-contrib.grimshot}/bin/grimshot";
-            swappy = "${pkgs.swappy}/bin/swappy";
+            grimshot = "${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save";
+            satty = "${pkgs.satty}/bin/satty --filename - --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png";
           in
           {
             format = "";
             tooltip = false;
-            on-click-right = "${grimshot} --notify save output - | ${swappy} -f -";
-            on-click-middle = "${grimshot} --notify save window - | ${swappy} -f -";
-            on-click = "${grimshot} --notify save area - | ${swappy} -f -";
+            on-click-right = "${grimshot} output - | ${satty}";
+            on-click-middle = "${grimshot} window - | ${satty}";
+            on-click = "${grimshot} area - | ${satty}";
           };
 
         "idle_inhibitor" = {
@@ -178,5 +178,5 @@
       };
     };
   };
-  home.packages = [ pkgs.playerctl pkgs.sway-contrib.grimshot ];
+  home.packages = [ pkgs.playerctl ];
 }
