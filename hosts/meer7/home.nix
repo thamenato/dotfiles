@@ -35,6 +35,25 @@
     in
     {
       config = {
+
+        assigns = {
+          "2" = [{ class = "Brave-browser"; }];
+          "3" = [{ class = "Slack"; }];
+        };
+
+        window.commands = [
+          {
+            criteria = { class = "1Password"; };
+            command = "floating enable";
+          }
+        ];
+
+        startup = [
+          { command = "1password --silent"; }
+          { command = "brave"; }
+          { command = "slack --startup"; }
+        ];
+
         workspaceOutputAssign = [
           {
             workspace = "1";
@@ -49,6 +68,7 @@
             output = monitor_right_top;
           }
         ];
+
         output =
           let
             ultrawide_bg = ../../misc/backgrounds/wallhaven-vql78p_3840x1600.png;

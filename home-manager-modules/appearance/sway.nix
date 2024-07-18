@@ -24,6 +24,17 @@ in
             "Shift+print" = "exec ${grimshot} area";
           };
 
+      window.commands = [
+        {
+          criteria = { app_id = "com.gabm.satty"; };
+          command = "floating enable";
+        }
+        {
+          criteria = { app_id = "com.saivert.pwvucontrol"; };
+          command = "floating enable, resize set width 40 ppt height 30 ppt";
+        }
+      ];
+
       bars = [{
         command = "${pkgs.waybar}/bin/waybar";
       }];
