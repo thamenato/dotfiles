@@ -178,5 +178,4 @@
       };
     };
   };
-  home.packages = [ pkgs.playerctl ];
 }

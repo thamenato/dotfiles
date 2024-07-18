@@ -17,11 +17,44 @@ in
       keybindings =
         let
           grimshot = "${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save";
+          playerctl = "${pkgs.playerctl}/bin/playerctl";
+          brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
+          pactl = "${pkgs.pulseaudio}/bin/pactl";
         in
         lib.mkOptionDefault
           {
             "print" = "exec ${grimshot} output";
             "Shift+print" = "exec ${grimshot} area";
+
+            # resize floating windows with mouse scroll
+            "--whole-window --border ${modifier}+button4" = "resize shrink height 5 px or 5 ppt";
+            "--whole-window --border ${modifier}+button5" = "resize grow height 5 px or 5 ppt";
+            "--whole-window --border ${modifier}+Shift+button4" = "resize shrink width 5 px or 5 ppt";
+            "--whole-window --border ${modifier}+Shift+button5" = "resize grow width 5 px or 5 ppt";
+
+            # multimedia audio keys
+            "XF86AudioRaiseVolume" = "exec ${pactl} set-sink-volume @DEFAULT_SINK@ +5%";
+            "XF86AudioLowerVolume" = "exec ${pactl} set-sink-volume @DEFAULT_SINK@ -5%";
+            "XF86AudioMute" = "exec ${pactl} set-sink-mute @DEFAULT_SINK@ toggle";
+            "XF86AudioPlay" = "exec ${playerctl} play";
+            "XF86AudioPause" = "exec ${playerctl} pause";
+            "XF86AudioNext" = "exec ${playerctl} next";
+            "XF86AudioPrev" = "exec ${playerctl} previous";
+
+            # backlight
+            "XF86MonBrightnessUp" = "exec ${brightnessctl} -c backlight set +5%";
+            "XF86MonBrightnessDown" = "exec ${brightnessctl} -c backlight set 5%-";
+          };
+
+      keycodebindings =
+        let
+          playerctl = "${pkgs.playerctl}/bin/playerctl";
+        in
+        lib.mkOptionDefault
+          {
+            # Keychron Play/Pause button
+            # xmodmap -pke | grep -i xf86audioplay
+            "172" = "exec ${playerctl} play-pause";
           };
 
       window.commands = [

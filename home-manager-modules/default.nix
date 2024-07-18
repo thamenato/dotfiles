@@ -20,6 +20,7 @@
     httpie
     jq
     lazydocker
+    playerctl
     tldr
     unzip
     xxh
