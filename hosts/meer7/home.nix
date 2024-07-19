@@ -51,7 +51,8 @@
         startup = [
           { command = "1password --silent"; }
           { command = "brave"; }
-          { command = "slack --startup"; }
+          { command = "easyeffects --gapplication-service"; }
+          { command = "slack"; }
         ];
 
         workspaceOutputAssign = [
