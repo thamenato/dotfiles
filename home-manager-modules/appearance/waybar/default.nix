@@ -56,17 +56,7 @@
           max-length = 50;
         };
 
-        "custom/weather" = {
-          # to use the weather module replace <your_location> with your city or town
-          # note: do not use spaces: new york would be newyork
-          format = "{} °C";
-          exec = "${pkgs.wttrbar}/bin/wttrbar --location Charlotte";
-          return-type = "json";
-          tooltip = true;
-          interval = 3600;
-        };
-
-        "clock" = {
+        clock = {
           format = "{:%H:%M}  ";
           format-alt = "{:%A, %B %d, %Y (%R)}  ";
           tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
@@ -78,14 +68,6 @@
           on-scroll = {
             calendar = 1;
           };
-        };
-
-        "custom/spotify" = {
-          interval = 1;
-          return-type = "json";
-          exec = "${./scripts/spotify.sh}";
-          exec-if = "pgrep spotify";
-          escape = true;
         };
 
         temperature = {
@@ -142,7 +124,6 @@
         };
 
         battery = {
-          bat = "BAT0";
           interval = 60;
           states = {
             warning = 30;
@@ -151,6 +132,37 @@
           format = "{capacity}% {icon}";
           format-icons = [ "" "" "" "" "" ];
           max-length = 25;
+        };
+
+        idle_inhibitor = {
+          format = "{icon} ";
+          format-icons = {
+            activated = "";
+            deactivated = "";
+          };
+        };
+
+        tray = {
+          icon-size = 18;
+          spacing = 8;
+        };
+
+        "custom/weather" = {
+          # to use the weather module replace <your_location> with your city or town
+          # note: do not use spaces: new york would be newyork
+          format = "{} °C";
+          exec = "${pkgs.wttrbar}/bin/wttrbar --location Charlotte";
+          return-type = "json";
+          tooltip = true;
+          interval = 3600;
+        };
+
+        "custom/spotify" = {
+          interval = 1;
+          return-type = "json";
+          exec = "${./scripts/spotify.sh}";
+          exec-if = "pgrep spotify";
+          escape = true;
         };
 
         "custom/grimshot" =
@@ -165,19 +177,6 @@
             on-click-middle = "${grimshot} window - | ${satty}";
             on-click = "${grimshot} area - | ${satty}";
           };
-
-        "idle_inhibitor" = {
-          format = "{icon} ";
-          format-icons = {
-            activated = "";
-            deactivated = "";
-          };
-        };
-
-        "tray" = {
-          icon-size = 18;
-          spacing = 8;
-        };
 
         "custom/power" = {
           format = "⏻";
