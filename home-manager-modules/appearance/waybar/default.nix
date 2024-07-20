@@ -24,6 +24,7 @@
           "temperature"
           "memory"
           "cpu"
+          "battery"
           "pulseaudio"
           "custom/grimshot"
           "idle_inhibitor"
@@ -138,6 +139,18 @@
           on-click = "pwvucontrol";
           on-scroll-up = "pactl set-sink-volume @DEFAULT_SINK@ +2%";
           on-scroll-down = "pactl set-sink-volume @DEFAULT_SINK@ -2%";
+        };
+
+        battery = {
+          bat = "BAT0";
+          interval = 60;
+          states = {
+            warning = 30;
+            critical = 15;
+          };
+          format = "{capacity}% {icon}";
+          format-icons = [ "" "" "" "" "" ];
+          max-length = 25;
         };
 
         "custom/grimshot" =
