@@ -72,6 +72,12 @@ in
         }
       ];
 
+      gaps = {
+        smartGaps = true;
+        inner = 4;
+        outer = -2;
+      };
+
       bars = [{
         command = "${pkgs.waybar}/bin/waybar";
       }];

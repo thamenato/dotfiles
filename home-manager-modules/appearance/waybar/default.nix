@@ -21,24 +21,19 @@
         ];
         modules-right = [
           # "custom/spotify"
+          "disk"
           "temperature"
           "memory"
+          "tray"
           "cpu"
           "battery"
           "pulseaudio"
           "custom/grimshot"
           # "idle_inhibitor"
-          "tray"
-          # "custom/power"
+          "custom/power"
         ];
 
         # modules
-        "custom/hostname" = {
-          format = "{}";
-          exec = "echo \${HOSTNAME^^}";
-          interval = 3600;
-        };
-
         "sway/workspaces" = {
           disable-scroll = false;
           disable-markup = false;
@@ -57,8 +52,7 @@
         };
 
         clock = {
-          format = "{:%H:%M}  ";
-          format-alt = "{:%A, %B %d, %Y (%R)}  ";
+          format = "{:%Y-%m-%d %R}";
           tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
           calendar-weeks-pos = "right";
           today-format = "<span color='#ff6699'><b><u>{}</u></b></span>";
@@ -70,8 +64,13 @@
           };
         };
 
+        disk = {
+          interval = 30;
+          format = " {percentage_used}%";
+          path = "/";
+        };
+
         temperature = {
-          # "thermal-zone": 1,
           hwmon-path = "/sys/class/hwmon/hwmon2/temp1_input";
           critical-threshold = 80;
           format-critical = " {temperatureC}°C";
@@ -90,7 +89,7 @@
 
         cpu = {
           interval = 5;
-          format = " {usage}% ({load})";
+          format = " {usage}%";
           states = {
             warning = 70;
             critical = 90;
@@ -145,6 +144,13 @@
           spacing = 8;
         };
 
+        "custom/hostname" = {
+          format = "{}";
+          exec = "echo \${HOSTNAME^^}";
+          interval = "once";
+          tooltip = false;
+        };
+
         "custom/weather" = {
           # to use the weather module replace <your_location> with your city or town
           # note: do not use spaces: new york would be newyork
@@ -180,10 +186,6 @@
           format = "⏻";
           on-click = "exec ${./scripts/power-menu.sh}";
           tooltip = false;
-        };
-
-        "custom/separator" = {
-          format = " ";
         };
       };
     };

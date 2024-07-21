@@ -1,14 +1,13 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: Roboto, Helvetica, Arial, sans-serif;
-    font-size: 13px;
+    font-family: "Hack Nerd Font";
+    font-size: 11px;
     min-height: 0;
 }
 
 window#waybar {
     background: rgba(43, 48, 59, 0.5);
-    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
     color: white;
 }
 
@@ -25,52 +24,65 @@ tooltip label {
     padding: 0 5px;
     background: transparent;
     color: white;
-    border-bottom: 3px solid transparent;
+    border-bottom: 2px solid rgba(100, 114, 125, 0.5);
 }
 
 #workspaces button.focused {
     background: #64727D;
-    border-bottom: 3px solid white;
+    border-bottom: 2px solid white;
 }
 
 #mode,
 #clock,
-#battery {
+#network,
+#disk,
+#battery,
+#temperature,
+#memory,
+#cpu,
+#pulseaudio,
+#custom-grimshot,
+#custom-power,
+#tray {
     padding: 0 10px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+    margin: 0 2px;
 }
 
 #mode {
     background: #64727D;
-    border-bottom: 3px solid white;
-}
-
-#clock {
-    background-color: #64727D;
+    border-bottom: 2px solid white;
 }
 
 #battery {
-    background-color: #ffffff;
-    color: black;
+    border-bottom: 2px solid white;
 }
 
 #battery.charging {
-    color: white;
-    background-color: #26A65B;
+    border-bottom: 2px solid #26A65B;
 }
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
-        color: black;
+        border-bottom: 2px solid white;
     }
 }
 
 #battery.warning:not(.charging) {
-    background: #f53c3c;
-    color: white;
+    border-bottom: 3px solid #f53c3c;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: steps(12);
     animation-iteration-count: infinite;
     animation-direction: alternate;
+}
+
+#custom-hostname {
+    padding: 0 5px;
+    border-bottom: 2px solid green;
+}
+
+#custom-grimshot:hover,
+#custom-power:hover {
+    border-bottom: 2px solid #64727D;
 }
