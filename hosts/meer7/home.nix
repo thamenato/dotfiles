@@ -51,7 +51,6 @@
         startup = [
           { command = "1password --silent"; }
           { command = "brave"; }
-          { command = "easyeffects --gapplication-service"; }
           { command = "slack"; }
         ];
 

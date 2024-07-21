@@ -57,6 +57,10 @@ in
             "172" = "exec ${playerctl} play-pause";
           };
 
+      startup = [
+        { command = "easyeffects --gapplication-service"; }
+      ];
+
       window.commands = [
         {
           criteria = { app_id = "com.gabm.satty"; };

@@ -9,27 +9,27 @@
       main = {
         layer = "top";
         position = "top";
-        height = 28;
+        height = 26;
         modules-left = [
           "custom/hostname"
           "sway/workspaces"
-          "sway/mode"
+          # "sway/mode"
+          # "custom/weather"
         ];
         modules-center = [
           "clock"
-          "custom/weather"
         ];
         modules-right = [
-          "custom/spotify"
+          # "custom/spotify"
           "temperature"
           "memory"
           "cpu"
           "battery"
           "pulseaudio"
           "custom/grimshot"
-          "idle_inhibitor"
+          # "idle_inhibitor"
           "tray"
-          "custom/power"
+          # "custom/power"
         ];
 
         # modules
@@ -82,7 +82,6 @@
         memory = {
           interval = 5;
           format = " {}%";
-          on-click = "xfce4-terminal -e 'htop'";
           states = {
             warning = 70;
             critical = 90;
@@ -96,7 +95,6 @@
             warning = 70;
             critical = 90;
           };
-          on-click = "xfce4-terminal -e 'htop'";
         };
 
         pulseaudio = {
