@@ -23,8 +23,8 @@ in
         in
         lib.mkOptionDefault
           {
-            "print" = "exec ${grimshot} output";
-            "Shift+print" = "exec ${grimshot} area";
+            "print" = "exec ${grimshot} area";
+            "Shift+print" = "exec ${grimshot} output";
 
             # resize floating windows with mouse scroll
             "--whole-window --border ${modifier}+button4" = "resize shrink height 5 px or 5 ppt";
