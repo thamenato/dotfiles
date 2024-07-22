@@ -1,108 +1,117 @@
 { config, pkgs, wayland, lib, ... }:
 let
   background = ../../misc/backgrounds/143952-abstract_art-color-blue-atmosphere-violet-2560x1440.jpg;
-  modifier = "Mod4";
-  menu = "rofi -show drun | xargs swaymsg exec";
 in
 {
-  wayland.windowManager.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true;
+  #
+  # sway
+  #
+  wayland.windowManager.sway =
+    let
+      modifier = "Mod4";
+      menu = "rofi -show drun | xargs swaymsg exec";
+    in
+    {
 
-    config = {
-      modifier = modifier;
-      terminal = "${pkgs.alacritty}/bin/alacritty";
-      menu = menu;
+      enable = true;
+      wrapperFeatures.gtk = true;
 
-      keybindings =
-        let
-          grimshot = "${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save";
-          playerctl = "${pkgs.playerctl}/bin/playerctl";
-          brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
-          pactl = "${pkgs.pulseaudio}/bin/pactl";
-        in
-        lib.mkOptionDefault
+      config = {
+        modifier = modifier;
+        terminal = "${pkgs.alacritty}/bin/alacritty";
+        menu = menu;
+
+        keybindings =
+          let
+            grimshot = "${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save";
+            playerctl = "${pkgs.playerctl}/bin/playerctl";
+            brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
+            pactl = "${pkgs.pulseaudio}/bin/pactl";
+          in
+          lib.mkOptionDefault
+            {
+              "print" = "exec ${grimshot} area";
+              "Shift+print" = "exec ${grimshot} output";
+
+              # resize floating windows with mouse scroll
+              "--whole-window --border ${modifier}+button4" = "resize shrink height 5 px or 5 ppt";
+              "--whole-window --border ${modifier}+button5" = "resize grow height 5 px or 5 ppt";
+              "--whole-window --border ${modifier}+Shift+button4" = "resize shrink width 5 px or 5 ppt";
+              "--whole-window --border ${modifier}+Shift+button5" = "resize grow width 5 px or 5 ppt";
+
+              # multimedia audio keys
+              "XF86AudioRaiseVolume" = "exec ${pactl} set-sink-volume @DEFAULT_SINK@ +5%";
+              "XF86AudioLowerVolume" = "exec ${pactl} set-sink-volume @DEFAULT_SINK@ -5%";
+              "XF86AudioMute" = "exec ${pactl} set-sink-mute @DEFAULT_SINK@ toggle";
+              "XF86AudioPlay" = "exec ${playerctl} play";
+              "XF86AudioPause" = "exec ${playerctl} pause";
+              "XF86AudioNext" = "exec ${playerctl} next";
+              "XF86AudioPrev" = "exec ${playerctl} previous";
+
+              # backlight
+              "XF86MonBrightnessUp" = "exec ${brightnessctl} -c backlight set +5%";
+              "XF86MonBrightnessDown" = "exec ${brightnessctl} -c backlight set 5%-";
+            };
+
+        keycodebindings =
+          let
+            playerctl = "${pkgs.playerctl}/bin/playerctl";
+          in
+          lib.mkOptionDefault
+            {
+              # Keychron Play/Pause button
+              # xmodmap -pke | grep -i xf86audioplay
+              "172" = "exec ${playerctl} play-pause";
+            };
+
+        startup = [
+          { command = "easyeffects --gapplication-service"; }
+        ];
+
+        window.commands = [
           {
-            "print" = "exec ${grimshot} area";
-            "Shift+print" = "exec ${grimshot} output";
-
-            # resize floating windows with mouse scroll
-            "--whole-window --border ${modifier}+button4" = "resize shrink height 5 px or 5 ppt";
-            "--whole-window --border ${modifier}+button5" = "resize grow height 5 px or 5 ppt";
-            "--whole-window --border ${modifier}+Shift+button4" = "resize shrink width 5 px or 5 ppt";
-            "--whole-window --border ${modifier}+Shift+button5" = "resize grow width 5 px or 5 ppt";
-
-            # multimedia audio keys
-            "XF86AudioRaiseVolume" = "exec ${pactl} set-sink-volume @DEFAULT_SINK@ +5%";
-            "XF86AudioLowerVolume" = "exec ${pactl} set-sink-volume @DEFAULT_SINK@ -5%";
-            "XF86AudioMute" = "exec ${pactl} set-sink-mute @DEFAULT_SINK@ toggle";
-            "XF86AudioPlay" = "exec ${playerctl} play";
-            "XF86AudioPause" = "exec ${playerctl} pause";
-            "XF86AudioNext" = "exec ${playerctl} next";
-            "XF86AudioPrev" = "exec ${playerctl} previous";
-
-            # backlight
-            "XF86MonBrightnessUp" = "exec ${brightnessctl} -c backlight set +5%";
-            "XF86MonBrightnessDown" = "exec ${brightnessctl} -c backlight set 5%-";
-          };
-
-      keycodebindings =
-        let
-          playerctl = "${pkgs.playerctl}/bin/playerctl";
-        in
-        lib.mkOptionDefault
+            criteria = { app_id = "com.gabm.satty"; };
+            command = "floating enable";
+          }
           {
-            # Keychron Play/Pause button
-            # xmodmap -pke | grep -i xf86audioplay
-            "172" = "exec ${playerctl} play-pause";
-          };
+            criteria = { app_id = "com.saivert.pwvucontrol"; };
+            command = "floating enable, resize set width 40 ppt height 30 ppt";
+          }
+        ];
 
-      startup = [
-        { command = "easyeffects --gapplication-service"; }
-      ];
-
-      window.commands = [
-        {
-          criteria = { app_id = "com.gabm.satty"; };
-          command = "floating enable";
-        }
-        {
-          criteria = { app_id = "com.saivert.pwvucontrol"; };
-          command = "floating enable, resize set width 40 ppt height 30 ppt";
-        }
-      ];
-
-      gaps = {
-        smartGaps = true;
-        inner = 4;
-        outer = -2;
-      };
-
-      bars = [{
-        command = "${pkgs.waybar}/bin/waybar";
-      }];
-
-      output = {
-        "*" = { bg = "${background} fit"; };
-      };
-
-      input = {
-        "type:keyboard" = {
-          xkb_layout = "us";
-          xkb_variant = "intl";
-          xkb_options = "terminate:ctrl_alt_bksp";
-          xkb_numlock = "enable";
+        gaps = {
+          smartGaps = true;
+          inner = 4;
+          outer = -2;
         };
 
-        "type:touchpad" = {
-          dwt = "enabled";
-          tap = "enabled";
-          natural_scroll = "enabled";
+        bars = [{
+          command = "${pkgs.waybar}/bin/waybar";
+        }];
+
+        output = {
+          "*" = { bg = "${background} fit"; };
+        };
+
+        input = {
+          "type:keyboard" = {
+            xkb_layout = "us";
+            xkb_variant = "intl";
+            xkb_options = "terminate:ctrl_alt_bksp";
+            xkb_numlock = "enable";
+          };
+
+          "type:touchpad" = {
+            dwt = "enabled";
+            tap = "enabled";
+            natural_scroll = "enabled";
+          };
         };
       };
     };
-  };
-
+  #
+  # swaylock
+  #
   programs.swaylock.settings = {
     image = "${background}";
     indicator-caps-lock = true;

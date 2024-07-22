@@ -1,26 +1,10 @@
 { pkgs, ... }:
 {
   imports = [
-    ./rofi.nix
+    ./rofi
     ./sway.nix
     ./waybar
   ];
-
-  home = {
-    packages = with pkgs; [
-      # themes
-      flat-remix-gtk
-      flat-remix-gnome
-      flat-remix-icon-theme
-    ];
-
-    # pointerCursor = {
-    #   gtk.enable = true;
-    #   package = pkgs.bibata-cursors;
-    #   name = "Bibata-Modern-Ice";
-    #   size = 16;
-    # };
-  };
 
   gtk = {
     enable = true;
