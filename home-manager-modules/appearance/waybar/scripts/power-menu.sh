@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-entries="Logout Suspend Reboot Shutdown"
+entries="Logout\nSuspend\nReboot\nShutdown"
 
-selected=$(printf '%s\n' $entries | wofi --conf=$HOME/.config/wofi/config.power --style=$HOME/.config/wofi/style.widgets.css | awk '{print tolower($1)}')
+selected=$(echo -e $entries | rofi -dmenu | awk '{print tolower($1)}')
 
 case $selected in
   logout)

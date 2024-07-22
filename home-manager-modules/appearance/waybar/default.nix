@@ -29,7 +29,6 @@
           "battery"
           "pulseaudio"
           "custom/grimshot"
-          # "idle_inhibitor"
           "custom/power"
         ];
 
@@ -49,6 +48,12 @@
         "sway/window" = {
           format = "{}";
           max-length = 50;
+        };
+
+        "custom/power" = {
+          format = "";
+          tooltip = false;
+          on-click = "exec ${./scripts/power-menu.sh}";
         };
 
         clock = {
@@ -181,12 +186,6 @@
             on-click-middle = "${grimshot} window - | ${satty}";
             on-click = "${grimshot} area - | ${satty}";
           };
-
-        "custom/power" = {
-          format = "⏻";
-          on-click = "exec ${./scripts/power-menu.sh}";
-          tooltip = false;
-        };
       };
     };
   };
