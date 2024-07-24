@@ -22,7 +22,7 @@
   users.users.thamenato = {
     isNormalUser = true;
     description = "Thales Menato";
-    extraGroups = [ "networkmanager" "wheel" "lp" ];
+    extraGroups = [ "networkmanager" "wheel" "lp" "scanner" ];
   };
 
   users.extraGroups.docker.members = [ "thamenato" ];

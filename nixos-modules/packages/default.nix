@@ -32,6 +32,7 @@
     easyeffects
     pwvucontrol
     signal-desktop
+    simple-scan
     spotify
     vlc
 

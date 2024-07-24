@@ -54,6 +54,9 @@
     driSupport32Bit = true;
   };
 
+  # support SANE scanners
+  hardware.sane.enable = true;
+
   # https://nixos.wiki/wiki/Polkit
   security.polkit.enable = true;
 
