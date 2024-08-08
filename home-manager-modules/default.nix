@@ -40,6 +40,7 @@
     font-awesome
     powerline-fonts
     powerline-symbols
+    ibm-plex
     (nerdfonts.override {
       fonts = [
         "FiraCode"
@@ -47,6 +48,7 @@
         "Hack"
         "Noto"
         "JetBrainsMono"
+        "SpaceMono"
       ];
     })
 

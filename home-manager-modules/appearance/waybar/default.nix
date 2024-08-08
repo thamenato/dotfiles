@@ -24,11 +24,11 @@
           "disk"
           "temperature"
           "memory"
-          "tray"
           "cpu"
           "battery"
           "pulseaudio"
           "custom/grimshot"
+          "tray"
           "custom/power"
         ];
 

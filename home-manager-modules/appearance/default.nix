@@ -29,7 +29,7 @@
     };
 
     font = {
-      name = "Hack Nerd Font";
+      name = "IBM Plex Sans";
       size = 11;
     };
 
