@@ -51,6 +51,9 @@ in
               # backlight
               "XF86MonBrightnessUp" = "exec ${brightnessctl} -c backlight set +5%";
               "XF86MonBrightnessDown" = "exec ${brightnessctl} -c backlight set 5%-";
+
+              # touchpad
+              "XF86TouchpadToggle" = "input \"2321:21128:PNP0C50:0b_0911:5288_Touchpad\" events toggle enabled disabled";
             };
 
         keycodebindings =
@@ -102,9 +105,12 @@ in
           };
 
           "type:touchpad" = {
+            events = "disabled_on_external_mouse";
             dwt = "enabled";
-            tap = "enabled";
+            middle_emulation = "enabled";
             natural_scroll = "enabled";
+            tap = "enabled";
+            drag = "enabled";
           };
         };
       };
