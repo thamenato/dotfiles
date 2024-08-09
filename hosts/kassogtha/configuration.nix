@@ -33,7 +33,23 @@
 
   environment.systemPackages = with pkgs; [
     system76-firmware
+    path-of-building
   ];
+
+  programs.auto-cpufreq = {
+    enable = true;
+    settings = {
+      charger = {
+        governor = "performance";
+        turbo = "auto";
+      };
+
+      battery = {
+        governor = "powersave";
+        turbo = "auto";
+      };
+    };
+  };
 
   # nixos-modules
   steam.enable = true;
