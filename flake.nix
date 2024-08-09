@@ -11,9 +11,13 @@
       url = "github:nix-community/nixvim";
       # inputs.nixpkgs.follows = "nixpkgs";
     };
+    auto-cpufreq = {
+      url = "github:AdnanHodzic/auto-cpufreq";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, nixvim, ... }:
+  outputs = inputs@{ nixpkgs, home-manager, nixvim, auto-cpufreq, ... }:
     let
       system = "x86_64-linux";
       darwin = "aarch64-darwin";
@@ -32,6 +36,7 @@
           system = "x86_64-linux";
           modules = [
             ./hosts/${hostname}/configuration.nix
+            auto-cpufreq.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
