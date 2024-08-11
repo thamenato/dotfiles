@@ -82,8 +82,8 @@
 
       homeConfigurations = {
         thamenato = homeManagerSetup ./home-manager-modules;
+        "thamenato@kassogtha" = homeManagerSetup ./hosts/kassogtha/home.nix;
         "thales@thales-meer7" = homeManagerSetup ./hosts/meer7/home.nix;
-        # "thales@thales-mac" = homeManagerSetup "thales" "./hosts/mac/home.nix";
       };
     };
 }
