@@ -32,8 +32,6 @@
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
-  hardware.opengl.enable = true;
-
   # system packages
   environment.systemPackages = with pkgs; [
     _1password
