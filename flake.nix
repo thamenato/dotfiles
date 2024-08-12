@@ -15,9 +15,10 @@
       url = "github:AdnanHodzic/auto-cpufreq";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, nixvim, auto-cpufreq, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, nixvim, auto-cpufreq, ... }:
     let
       system = "x86_64-linux";
       darwin = "aarch64-darwin";
@@ -55,9 +56,27 @@
           ];
         }
       );
+
     in
     {
+      checks = {
+        pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
+          src = ./.;
+          hooks = {
+            check-added-large-files.enable = true;
+            check-yaml.enable = true;
+            detect-private-keys.enable = true;
+            end-of-file-fixer.enable = true;
+            nixpkgs-fmt.enable = true;
+            trim-trailing-whitespace.enable = true;
+          };
+        };
+      };
+
       devShell."${system}" = pkgs.mkShell {
+        inherit (self.checks.pre-commit-check) shellHook;
+        buildInputs = self.checks.pre-commit-check.enabledPackages;
+
         packages = with pkgs; [
           # tools
           pre-commit
