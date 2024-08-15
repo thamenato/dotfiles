@@ -30,6 +30,8 @@
       co = "checkout";
       cm = "commit";
       st = "status";
+      sw = "switch";
+      root = "rev-parse --show-toplevel";
     };
   };
 }
