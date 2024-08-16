@@ -24,14 +24,15 @@ in
         keybindings =
           let
             grimshot = "${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save";
+            satty = "${pkgs.satty}/bin/satty --filename - --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png";
             playerctl = "${pkgs.playerctl}/bin/playerctl";
             brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
             pactl = "${pkgs.pulseaudio}/bin/pactl";
           in
           lib.mkOptionDefault
             {
-              "print" = "exec ${grimshot} area";
-              "Shift+print" = "exec ${grimshot} output";
+              "print" = "exec ${grimshot} area - | ${satty}";
+              "Shift+print" = "exec ${grimshot} output - | ${satty}";
 
               # resize floating windows with mouse scroll
               "--whole-window --border ${modifier}+button4" = "resize shrink height 5 px or 5 ppt";
