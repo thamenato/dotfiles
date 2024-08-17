@@ -5,6 +5,7 @@
   environment.systemPackages = with pkgs; [
     # tools/cli
     bat
+    cachix
     curl
     dig
     gnupg
@@ -35,6 +36,7 @@
     simple-scan
     spotify
     vlc
+    xfce.thunar
 
     # browser
     brave
