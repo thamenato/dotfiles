@@ -24,6 +24,7 @@
     # terminal
     alacritty
     mako
+    networkmanagerapplet
     rofi
 
     # apps

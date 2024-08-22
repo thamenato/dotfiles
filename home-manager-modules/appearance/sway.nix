@@ -70,6 +70,7 @@ in
 
         startup = [
           { command = "easyeffects --gapplication-service"; }
+          { command = "nm-applet --indicator"; }
         ];
 
         window.commands = [
