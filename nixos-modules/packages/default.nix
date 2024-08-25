@@ -38,9 +38,9 @@
     spotify
     vlc
     xfce.thunar
+    yubikey-manager
 
     # browser
-    brave
     firefox
   ];
 }
