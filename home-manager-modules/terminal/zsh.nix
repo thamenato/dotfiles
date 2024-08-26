@@ -28,19 +28,10 @@
     shellAliases = {
       lg = "lazygit";
     };
-    oh-my-zsh = {
-      enable = true;
-      # theme = "bureau";
-      plugins = [
-        "fzf"
-        "git"
-        "git-auto-fetch"
-        "ripgrep"
-      ];
-    };
   };
+
   programs.oh-my-posh = {
     enable = true;
-    useTheme = "catppuccin_macchiato";
+    useTheme = "multiverse-neon";
   };
 }
