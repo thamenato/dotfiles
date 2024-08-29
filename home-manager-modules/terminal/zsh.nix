@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   programs.zsh = {
     enable = true;
@@ -28,10 +29,17 @@
     shellAliases = {
       lg = "lazygit";
     };
+
+    plugins = [
+      {
+        name = "vi-mode";
+        src = pkgs.zsh-vi-mode;
+        file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
+      }
+    ];
   };
 
-  programs.oh-my-posh = {
+  programs.starship = {
     enable = true;
-    useTheme = "multiverse-neon";
   };
 }
