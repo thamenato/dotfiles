@@ -34,8 +34,6 @@
 
   # system packages
   environment.systemPackages = with pkgs; [
-    _1password
-    _1password-gui
     dbeaver-bin
     signal-desktop
     slack
@@ -45,12 +43,20 @@
     tidal-hifi
   ];
 
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [ ];
+  # enable 1password
+  programs._1password.enable = true;
+  programs._1password-gui = {
+    enable = true;
+    polkitPolicyOwners = [ "thales" ];
+  };
 
   # docker
-  virtualisation.docker.daemon.settings.bip = "172.26.0.1/24";
-  virtualisation.docker.daemon.settings.dns = [ "1.1.1.1" "8.8.8.8" ];
+  virtualisation.docker = {
+    daemon.settings = {
+      bip = "172.26.0.1/24";
+      dns = [ "1.1.1.1" "8.8.8.8" ];
+    };
+  };
   users.extraGroups.docker.members = [ "thales" ];
 
   # services
