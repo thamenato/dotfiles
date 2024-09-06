@@ -41,31 +41,8 @@
         config.allowUnfree = true;
       };
 
-      nixosHost = hostname: username: (
-        nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./hosts/${hostname}/configuration.nix
-            auto-cpufreq.nixosModules.default
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-            }
-          ];
-        }
-      );
-
-      homeManagerSetup = home_module_path: (
-        home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [
-            home_module_path
-            nixvim.homeManagerModules.nixvim
-          ];
-        }
-      );
-
+      # Import helper funcfions
+      libx = import ./lib { inherit self inputs; };
     in
     {
       checks = {
@@ -103,15 +80,15 @@
       };
 
       nixosConfigurations = {
-        kassogtha = nixosHost "kassogtha" "thamenato";
-        zoth-ommog = nixosHost "zoth-ommog" "thamenato";
-        thales-meer7 = nixosHost "meer7" "thales";
+        kassogtha = libx.mkHost "kassogtha" "thamenato";
+        zoth-ommog = libx.mkHost "zoth-ommog" "thamenato";
+        thales-meer7 = libx.mkHost "meer7" "thales";
       };
 
       homeConfigurations = {
-        thamenato = homeManagerSetup ./home-manager-modules;
-        "thamenato@kassogtha" = homeManagerSetup ./hosts/kassogtha/home.nix;
-        "thales@thales-meer7" = homeManagerSetup ./hosts/meer7/home.nix;
+        thamenato = libx.mkHome ./home-manager-modules;
+        "thamenato@kassogtha" = libx.mkHome ./hosts/kassogtha/home.nix;
+        "thales@thales-meer7" = libx.mkHome ./hosts/meer7/home.nix;
       };
     };
 }
