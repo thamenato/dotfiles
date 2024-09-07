@@ -32,7 +32,7 @@
   services.displayManager.ly = {
     enable = true;
     settings = {
-      animation = "doom";
+      animation = "matrix";
       hide_borders = true;
     };
   };
