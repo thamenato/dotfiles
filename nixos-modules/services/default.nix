@@ -29,12 +29,20 @@
   services.openssh.enable = true;
   services.pcscd.enable = true;
 
+  services.displayManager.ly = {
+    enable = true;
+    settings = {
+      animation = "doom";
+      hide_borders = true;
+    };
+  };
   # Enable the windowing system.
   services.xserver = {
     enable = true;
 
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
+    desktopManager = {
+      cinnamon.enable = true;
+    };
   };
 
   # enable docker
@@ -49,4 +57,3 @@
     };
   };
 }
-
