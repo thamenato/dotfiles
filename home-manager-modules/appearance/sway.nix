@@ -72,6 +72,7 @@ in
           { command = "easyeffects --gapplication-service"; }
           { command = "nm-applet --indicator"; }
         ];
+        # { command = "avizo-service"; }
 
         window.commands = [
           {
@@ -135,5 +136,13 @@ in
     ring-ver-color = "#5e81ac98";
     separator-color = "#4c566a";
     text-color = "#d8dee9";
+  };
+
+  services.avizo = {
+    enable = true;
+  };
+
+  services.mako = {
+    enable = true;
   };
 }
