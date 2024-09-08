@@ -2,9 +2,7 @@
   description = "My Dotfiles";
 
   nixConfig = {
-    extra-substituters = [
-      "https://nix-community.cachix.org"
-    ];
+    extra-substituters = [ "https://nix-community.cachix.org" ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
@@ -31,7 +29,8 @@
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, nixvim, auto-cpufreq, ... }:
+  outputs =
+    inputs@{ self, nixpkgs, ... }:
     let
       system = "x86_64-linux";
       darwin = "aarch64-darwin";
@@ -55,9 +54,10 @@
           hooks = {
             check-added-large-files.enable = true;
             check-yaml.enable = true;
+            deadnix.enable = true;
             detect-private-keys.enable = true;
             end-of-file-fixer.enable = true;
-            nixpkgs-fmt.enable = true;
+            nixfmt-rfc-style.enable = true;
             trim-trailing-whitespace.enable = true;
           };
         };
@@ -77,11 +77,7 @@
         ];
       };
 
-      devShell."${darwin}" = darwin_pkgs.mkShell {
-        packages = with darwin_pkgs; [
-          pre-commit
-        ];
-      };
+      devShell."${darwin}" = darwin_pkgs.mkShell { packages = with darwin_pkgs; [ pre-commit ]; };
 
       nixosConfigurations = {
         kassogtha = libx.mkHost "kassogtha" "thamenato";

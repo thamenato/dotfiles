@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.vscode = {
     enable = true;
 
@@ -21,6 +22,7 @@
       mikestead.dotenv
       ms-python.python
       ms-vscode-remote.remote-containers
+      nefrob.vscode-just-syntax
       redhat.ansible
       redhat.vscode-yaml
       streetsidesoftware.code-spell-checker
@@ -40,7 +42,10 @@
       "workbench.iconTheme" = "vscode-icons";
 
       # editor
-      "editor.rulers" = [ 80 120 ];
+      "editor.rulers" = [
+        80
+        120
+      ];
       "editor.fontFamily" = "'JetBrainsMono NF', 'monospace'";
       "editor.fontLigatures" = true;
       "editor.formatOnSave" = true;
@@ -50,10 +55,28 @@
       };
 
       # languages
-      "[terraform]" = { "editor.tabSize" = 2; };
-      "[python]" = { "editor.defaultFormatter" = "charliermarsh.ruff"; };
-      "[github-actions-workflow]" = { "editor.tabSize" = 2; };
-      "[markdown]" = { "editor.defaultFormatter" = "yzhang.markdown-all-in-one"; };
+      "[terraform]" = {
+        "editor.tabSize" = 2;
+      };
+      "[python]" = {
+        "editor.defaultFormatter" = "charliermarsh.ruff";
+      };
+      "[github-actions-workflow]" = {
+        "editor.tabSize" = 2;
+      };
+      "[markdown]" = {
+        "editor.defaultFormatter" = "yzhang.markdown-all-in-one";
+      };
+      "nix.enableLanguageServer" = true;
+      "nix.serverPath" = "nil";
+      "nix.formatterPath" = "nixfmt";
+      "nix.serverSettings" = {
+        "nil" = {
+          "formatting" = {
+            "command" = [ "nixfmt" ];
+          };
+        };
+      };
 
       # extensions
       "codesnap.realLineNumbers" = true;
@@ -64,7 +87,10 @@
       "git.inputValidationLength" = 72;
       "git.inputValidationSubjectLength" = 50;
       "[git-commit]" = {
-        "editor.rulers" = [ 72 50 ];
+        "editor.rulers" = [
+          72
+          50
+        ];
         "editor.wordWrap" = "off";
         "workbench.editor.restoreViewState" = false;
       };

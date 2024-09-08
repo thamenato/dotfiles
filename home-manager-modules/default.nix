@@ -1,7 +1,5 @@
-{ config
-, pkgs
-, ...
-}: {
+{ pkgs, ... }:
+{
   imports = [
     ./appearance
     ./apps
@@ -12,9 +10,9 @@
   home.username = "thamenato";
   home.homeDirectory = "/home/thamenato";
 
-
   home.packages = with pkgs; [
     # terminal
+    age
     alejandra
     fastfetch
     httpie
@@ -34,7 +32,7 @@
 
     # formatter/linter
     dprint
-    nixpkgs-fmt
+    nixfmt-rfc-style
 
     # fonts
     font-awesome
