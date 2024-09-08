@@ -26,7 +26,7 @@
       fsType = "vfat";
     };
 
-  fileSystems."/home/thamenato/Data" =
+  fileSystems."/data" =
     {
       device = "/dev/disk/by-uuid/922c8c6b-1992-4a2b-9cb1-470482f85cdc";
       fsType = "ext4";
