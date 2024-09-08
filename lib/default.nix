@@ -14,6 +14,7 @@ let
         ../hosts/${hostname}/configuration.nix
         inputs.auto-cpufreq.nixosModules.default
         inputs.home-manager.nixosModules.home-manager
+        inputs.disko.nixosModules.disko
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
