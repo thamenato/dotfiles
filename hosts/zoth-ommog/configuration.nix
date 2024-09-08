@@ -1,10 +1,8 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{ config
-, pkgs
-, ...
-}: {
+{ pkgs, ... }:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -23,7 +21,12 @@
   users.users.thamenato = {
     isNormalUser = true;
     description = "Thales Menato";
-    extraGroups = [ "networkmanager" "wheel" "lp" "scanner" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "lp"
+      "scanner"
+    ];
   };
 
   users.extraGroups.docker.members = [ "thamenato" ];

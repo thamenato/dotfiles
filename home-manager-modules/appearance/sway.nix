@@ -1,4 +1,10 @@
-{ config, pkgs, wayland, lib, ... }:
+{
+  config,
+  pkgs,
+  wayland,
+  lib,
+  ...
+}:
 let
   background = ../../misc/backgrounds/143952-abstract_art-color-blue-atmosphere-violet-2560x1440.jpg;
 in
@@ -29,44 +35,42 @@ in
             brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
             pactl = "${pkgs.pulseaudio}/bin/pactl";
           in
-          lib.mkOptionDefault
-            {
-              "print" = "exec ${grimshot} area - | ${satty}";
-              "Shift+print" = "exec ${grimshot} output - | ${satty}";
+          lib.mkOptionDefault {
+            "print" = "exec ${grimshot} area - | ${satty}";
+            "Shift+print" = "exec ${grimshot} output - | ${satty}";
 
-              # resize floating windows with mouse scroll
-              "--whole-window --border ${modifier}+button4" = "resize shrink height 5 px or 5 ppt";
-              "--whole-window --border ${modifier}+button5" = "resize grow height 5 px or 5 ppt";
-              "--whole-window --border ${modifier}+Shift+button4" = "resize shrink width 5 px or 5 ppt";
-              "--whole-window --border ${modifier}+Shift+button5" = "resize grow width 5 px or 5 ppt";
+            # resize floating windows with mouse scroll
+            "--whole-window --border ${modifier}+button4" = "resize shrink height 5 px or 5 ppt";
+            "--whole-window --border ${modifier}+button5" = "resize grow height 5 px or 5 ppt";
+            "--whole-window --border ${modifier}+Shift+button4" = "resize shrink width 5 px or 5 ppt";
+            "--whole-window --border ${modifier}+Shift+button5" = "resize grow width 5 px or 5 ppt";
 
-              # multimedia audio keys
-              "XF86AudioRaiseVolume" = "exec ${pactl} set-sink-volume @DEFAULT_SINK@ +5%";
-              "XF86AudioLowerVolume" = "exec ${pactl} set-sink-volume @DEFAULT_SINK@ -5%";
-              "XF86AudioMute" = "exec ${pactl} set-sink-mute @DEFAULT_SINK@ toggle";
-              "XF86AudioPlay" = "exec ${playerctl} play";
-              "XF86AudioPause" = "exec ${playerctl} pause";
-              "XF86AudioNext" = "exec ${playerctl} next";
-              "XF86AudioPrev" = "exec ${playerctl} previous";
+            # multimedia audio keys
+            "XF86AudioRaiseVolume" = "exec ${pactl} set-sink-volume @DEFAULT_SINK@ +5%";
+            "XF86AudioLowerVolume" = "exec ${pactl} set-sink-volume @DEFAULT_SINK@ -5%";
+            "XF86AudioMute" = "exec ${pactl} set-sink-mute @DEFAULT_SINK@ toggle";
+            "XF86AudioPlay" = "exec ${playerctl} play";
+            "XF86AudioPause" = "exec ${playerctl} pause";
+            "XF86AudioNext" = "exec ${playerctl} next";
+            "XF86AudioPrev" = "exec ${playerctl} previous";
 
-              # backlight
-              "XF86MonBrightnessUp" = "exec ${brightnessctl} -c backlight set +5%";
-              "XF86MonBrightnessDown" = "exec ${brightnessctl} -c backlight set 5%-";
+            # backlight
+            "XF86MonBrightnessUp" = "exec ${brightnessctl} -c backlight set +5%";
+            "XF86MonBrightnessDown" = "exec ${brightnessctl} -c backlight set 5%-";
 
-              # touchpad
-              "XF86TouchpadToggle" = "input \"2321:21128:PNP0C50:0b_0911:5288_Touchpad\" events toggle enabled disabled";
-            };
+            # touchpad
+            "XF86TouchpadToggle" = "input \"2321:21128:PNP0C50:0b_0911:5288_Touchpad\" events toggle enabled disabled";
+          };
 
         keycodebindings =
           let
             playerctl = "${pkgs.playerctl}/bin/playerctl";
           in
-          lib.mkOptionDefault
-            {
-              # Keychron Play/Pause button
-              # xmodmap -pke | grep -i xf86audioplay
-              "172" = "exec ${playerctl} play-pause";
-            };
+          lib.mkOptionDefault {
+            # Keychron Play/Pause button
+            # xmodmap -pke | grep -i xf86audioplay
+            "172" = "exec ${playerctl} play-pause";
+          };
 
         startup = [
           { command = "easyeffects --gapplication-service"; }
@@ -76,11 +80,15 @@ in
 
         window.commands = [
           {
-            criteria = { app_id = "com.gabm.satty"; };
+            criteria = {
+              app_id = "com.gabm.satty";
+            };
             command = "floating enable";
           }
           {
-            criteria = { app_id = "com.saivert.pwvucontrol"; };
+            criteria = {
+              app_id = "com.saivert.pwvucontrol";
+            };
             command = "floating enable, resize set width 40 ppt height 30 ppt";
           }
         ];
@@ -91,12 +99,12 @@ in
           outer = -2;
         };
 
-        bars = [{
-          command = "${pkgs.waybar}/bin/waybar";
-        }];
+        bars = [ { command = "${pkgs.waybar}/bin/waybar"; } ];
 
         output = {
-          "*" = { bg = "${background} fit"; };
+          "*" = {
+            bg = "${background} fit";
+          };
         };
 
         input = {

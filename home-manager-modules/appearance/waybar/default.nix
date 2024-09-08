@@ -16,9 +16,7 @@
           # "sway/mode"
           # "custom/weather"
         ];
-        modules-center = [
-          "clock"
-        ];
+        modules-center = [ "clock" ];
         modules-right = [
           # "custom/spotify"
           "disk"
@@ -116,9 +114,7 @@
             phone = "";
             portable = "";
             car = "";
-            default = [
-              ""
-            ];
+            default = [ "" ];
           };
           on-click = "pwvucontrol";
           on-scroll-up = "pactl set-sink-volume @DEFAULT_SINK@ +2%";
@@ -132,7 +128,13 @@
             critical = 15;
           };
           format = "{capacity}% {icon}";
-          format-icons = [ "" "" "" "" "" ];
+          format-icons = [
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
           max-length = 25;
         };
 

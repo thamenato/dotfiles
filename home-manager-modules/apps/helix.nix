@@ -16,7 +16,10 @@
           name = "hcl";
           formatter = {
             command = "terraform";
-            args = [ "fmt" "-" ];
+            args = [
+              "fmt"
+              "-"
+            ];
           };
         }
         {
@@ -32,7 +35,11 @@
           auto-format = true;
           formatter = {
             command = "dprint";
-            args = [ "fmt" "--stdin" "md" ];
+            args = [
+              "fmt"
+              "--stdin"
+              "md"
+            ];
           };
         }
       ];

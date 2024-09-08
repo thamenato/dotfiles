@@ -1,10 +1,9 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ../../nixos-modules
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ../../nixos-modules
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -20,15 +19,24 @@
       thamenato = {
         isNormalUser = true;
         description = "Thales Menato";
-        extraGroups = [ "networkmanager" "wheel" ];
+        extraGroups = [
+          "networkmanager"
+          "wheel"
+        ];
       };
       nmenato = {
         isNormalUser = true;
         description = "Natalie Menato";
-        extraGroups = [ "networkmanager" "wheel" ];
+        extraGroups = [
+          "networkmanager"
+          "wheel"
+        ];
       };
     };
-    extraGroups.docker.members = [ "thamenato" "nmenato" ];
+    extraGroups.docker.members = [
+      "thamenato"
+      "nmenato"
+    ];
   };
 
   environment.systemPackages = with pkgs; [
@@ -53,7 +61,6 @@
 
   # nixos-modules
   steam.enable = true;
-
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

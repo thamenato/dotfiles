@@ -1,11 +1,6 @@
-{ config
-, pkgs
-, lib
-, ...
-}: {
-  imports = [
-    ../../home-manager-modules
-  ];
+{ pkgs, lib, ... }:
+{
+  imports = [ ../../home-manager-modules ];
 
   home = {
     username = lib.mkForce "thales";
@@ -37,13 +32,15 @@
       config = {
 
         assigns = {
-          "2" = [{ class = "Brave-browser"; }];
-          "3" = [{ class = "Slack"; }];
+          "2" = [ { class = "Brave-browser"; } ];
+          "3" = [ { class = "Slack"; } ];
         };
 
         window.commands = [
           {
-            criteria = { class = "1Password"; };
+            criteria = {
+              class = "1Password";
+            };
             command = "floating enable";
           }
         ];

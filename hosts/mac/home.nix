@@ -1,8 +1,5 @@
-{ config
-, pkgs
-, lib
-, ...
-}: {
+{ pkgs, ... }:
+{
   imports = [
     ../../home-manager/apps/alacritty.nix
     ../../home-manager/apps/direnv.nix

@@ -1,8 +1,13 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
 
   options = {
-    steam.enable =
-      lib.mkEnableOption "Enable Steam";
+    steam.enable = lib.mkEnableOption "Enable Steam";
   };
 
   config = lib.mkIf config.steam.enable {

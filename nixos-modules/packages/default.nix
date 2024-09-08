@@ -1,7 +1,5 @@
-{ config
-, pkgs
-, ...
-}: {
+{ pkgs, ... }:
+{
   environment.systemPackages = with pkgs; [
     # tools/cli
     bat

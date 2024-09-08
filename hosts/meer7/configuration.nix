@@ -1,7 +1,5 @@
-{ config
-, pkgs
-, ...
-}: {
+{ pkgs, ... }:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -29,7 +27,10 @@
   users.users.thales = {
     isNormalUser = true;
     description = "thales";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
   };
 
   # system packages
@@ -54,7 +55,10 @@
   virtualisation.docker = {
     daemon.settings = {
       bip = "172.26.0.1/24";
-      dns = [ "1.1.1.1" "8.8.8.8" ];
+      dns = [
+        "1.1.1.1"
+        "8.8.8.8"
+      ];
     };
   };
   users.extraGroups.docker.members = [ "thales" ];

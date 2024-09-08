@@ -1,7 +1,5 @@
-{ config
-, pkgs
-, ...
-}: {
+{ config, pkgs, ... }:
+{
   # set zsh as default shell
   environment.shells = with pkgs; [ zsh ];
   programs.zsh.enable = true;
@@ -13,9 +11,18 @@
     # package = pkgs.nixVersions.nix_2_23;
     package = pkgs.lix;
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
-      allowed-users = [ "thamenato" "thales" ];
-      trusted-users = [ "thamenato" "thales" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      allowed-users = [
+        "thamenato"
+        "thales"
+      ];
+      trusted-users = [
+        "thamenato"
+        "thales"
+      ];
     };
     optimise.automatic = true;
   };

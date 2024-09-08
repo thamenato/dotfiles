@@ -1,7 +1,5 @@
-{ config
-, lib
-, ...
-}: {
+{ lib, ... }:
+{
   imports = [
     ./steam.nix
     ./nh.nix

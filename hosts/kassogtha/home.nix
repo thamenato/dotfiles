@@ -1,11 +1,6 @@
-{ config
-, pkgs
-, lib
-, ...
-}: {
-  imports = [
-    ../../home-manager-modules
-  ];
+{ ... }:
+{
+  imports = [ ../../home-manager-modules ];
 
   home = {
     # packages = with pkgs; [];
