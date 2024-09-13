@@ -32,7 +32,7 @@
       config = {
 
         assigns = {
-          "2" = [ { class = "Brave-browser"; } ];
+          "2" = [ { class = "firefox"; } ];
           "3" = [ { class = "Slack"; } ];
         };
 
@@ -47,7 +47,7 @@
 
         startup = [
           { command = "1password --silent"; }
-          { command = "brave"; }
+          { command = "firefox"; }
           { command = "slack"; }
         ];
 
