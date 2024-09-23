@@ -1,7 +1,7 @@
 {
   programs.kitty = {
     enable = true;
-    theme = "Chalk";
+    themeFile = "Chalk";
     settings = {
       cursor_shape = "block";
     };
