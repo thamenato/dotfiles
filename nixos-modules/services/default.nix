@@ -34,12 +34,13 @@
       hide_borders = true;
     };
   };
+
   # Enable the windowing system.
   services.xserver = {
     enable = true;
 
     desktopManager = {
-      cinnamon.enable = true;
+      cinnamon.enable = false;
     };
   };
 
