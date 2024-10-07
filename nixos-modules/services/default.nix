@@ -17,6 +17,10 @@
     openFirewall = true;
   };
 
+  # mount thumbdrive
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
+
   # configure keymap in X11
   services.xserver.xkb = {
     variant = "intl";

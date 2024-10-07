@@ -34,6 +34,7 @@
     signal-desktop
     simple-scan
     spotify
+    ventoy
     vlc
     xfce.thunar
     yubikey-manager
