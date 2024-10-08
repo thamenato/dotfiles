@@ -25,9 +25,6 @@
       "networkmanager"
       "wheel"
     ];
-
-    # created using mkpasswd
-    hashedPassword = "$y$j9T$5NqQavn1fhtc5yrOXy2TD0$fsAxu660rh1PJ2p0fMPrBw6dvjy6uSKsBbHsV3pil/4";
   };
 
   users.extraGroups.docker.members = [ "thamenato" ];

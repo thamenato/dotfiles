@@ -89,6 +89,7 @@
       homeConfigurations = {
         "thamenato@zoth-ommog" = libx.mkHome ./hosts/zoth-ommog/home.nix;
         "thamenato@kassogtha" = libx.mkHome ./hosts/kassogtha/home.nix;
+        "thamenato@ythogtha" = libx.mkHome ./hosts/ythogtha/home.nix;
         "thales@thales-meer7" = libx.mkHome ./hosts/meer7/home.nix;
       };
     };
