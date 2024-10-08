@@ -17,9 +17,14 @@
     "ahci"
     "usbhid"
   ];
-  boot.initrd.kernelModules = [ ];
+  boot.initrd.kernelModules = [
+    "joydev"
+    "xpad"
+  ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
+
+  hardware.enableAllFirmware = true;
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/c83b037d-df9f-4053-a9b4-c456837a45ea";
