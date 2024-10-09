@@ -31,9 +31,9 @@
 
         servers = {
           # javascript/typescript
-          ts-ls.enable = true;
+          ts_ls.enable = true;
           # lua
-          lua-ls.enable = true;
+          lua_ls.enable = true;
           # terraform
           terraformls.enable = true;
           # python
