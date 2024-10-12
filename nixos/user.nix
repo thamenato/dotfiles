@@ -7,6 +7,8 @@
       extraGroups = [
         "networkmanager"
         "wheel"
+        "lp"
+        "scanner"
       ];
     };
     extraGroups.docker.members = [ meta.user ];
