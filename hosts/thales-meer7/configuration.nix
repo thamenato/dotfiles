@@ -22,7 +22,6 @@
     spotify
     system76-firmware
     tailscale
-    tidal-hifi
   ];
 
   # enable 1password

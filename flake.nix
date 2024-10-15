@@ -83,7 +83,7 @@
         kassogtha = libx.mkHost "kassogtha" "thamenato";
         zoth-ommog = libx.mkHost "zoth-ommog" "thamenato";
         ythogtha = libx.mkHost "ythogtha" "thamenato";
-        thales-meer7 = libx.mkHost "meer7" "thales";
+        thales-meer7 = libx.mkHost "thales-meer7" "thales";
       };
 
       homeConfigurations = {
