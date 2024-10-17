@@ -26,12 +26,12 @@
       redhat.ansible
       redhat.vscode-yaml
       streetsidesoftware.code-spell-checker
+      sumneko.lua
       tamasfe.even-better-toml
       timonwong.shellcheck
       vscode-icons-team.vscode-icons
       vscodevim.vim
       waderyan.gitblame
-      # xyz.local-history
       yzhang.markdown-all-in-one
     ];
 
@@ -94,15 +94,6 @@
         "editor.wordWrap" = "off";
         "workbench.editor.restoreViewState" = false;
       };
-
-      # "local-history.daysLimit" = 7;
-      # "local-history.exclude" = [
-      #   "**/.vscode/**"
-      #   "**/node_modules/**"
-      #   "**/typings/**"
-      #   "**/out/**"
-      #   "**/Code/User/**"
-      # ];
 
       "terraform.languageServer" = {
         "maxNumberOfProblems" = 100;
