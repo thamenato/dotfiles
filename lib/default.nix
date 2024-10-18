@@ -42,8 +42,9 @@ let
     (inputs.home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
       modules = [
-        ../hosts/${hostName}/home.nix
         inputs.nixvim.homeManagerModules.nixvim
+        ../home-manager
+        ../hosts/${hostName}/home.nix
       ];
     });
 in

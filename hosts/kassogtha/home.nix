@@ -1,7 +1,4 @@
-{ ... }:
 {
-  imports = [ ../../home-manager-modules ];
-
   home = {
     # packages = with pkgs; [];
   };
