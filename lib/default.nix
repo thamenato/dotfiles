@@ -13,7 +13,10 @@ let
   };
 
   mkHost =
-    hostName: user:
+    {
+      hostName,
+      user ? "thamenato",
+    }:
     (inputs.nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 
@@ -35,11 +38,11 @@ let
     });
 
   mkHome =
-    home_module_path:
+    { hostName }:
     (inputs.home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
       modules = [
-        home_module_path
+        ../hosts/${hostName}/home.nix
         inputs.nixvim.homeManagerModules.nixvim
       ];
     });

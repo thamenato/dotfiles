@@ -80,17 +80,20 @@
       devShell."${darwin}" = darwin_pkgs.mkShell { packages = with darwin_pkgs; [ pre-commit ]; };
 
       nixosConfigurations = {
-        kassogtha = libx.mkHost "kassogtha" "thamenato";
-        zoth-ommog = libx.mkHost "zoth-ommog" "thamenato";
-        ythogtha = libx.mkHost "ythogtha" "thamenato";
-        thales-meer7 = libx.mkHost "thales-meer7" "thales";
+        kassogtha = libx.mkHost { hostName = "kassogtha"; };
+        zoth-ommog = libx.mkHost { hostName = "zoth-ommog"; };
+        ythogtha = libx.mkHost { hostName = "ythogtha"; };
+        thales-meer7 = libx.mkHost {
+          hostName = "thales-meer7";
+          user = "thales";
+        };
       };
 
       homeConfigurations = {
-        "thamenato@zoth-ommog" = libx.mkHome ./hosts/zoth-ommog/home.nix;
-        "thamenato@kassogtha" = libx.mkHome ./hosts/kassogtha/home.nix;
-        "thamenato@ythogtha" = libx.mkHome ./hosts/ythogtha/home.nix;
-        "thales@thales-meer7" = libx.mkHome ./hosts/thales-meer7/home.nix;
+        "thamenato@zoth-ommog" = libx.mkHome { hostName = "zoth-ommog"; };
+        "thamenato@kassogtha" = libx.mkHome { hostName = "kassogtha"; };
+        "thamenato@ythogtha" = libx.mkHome { hostName = "ythogtha"; };
+        "thales@thales-meer7" = libx.mkHome { hostName = "thales-meer7"; };
       };
     };
 }
