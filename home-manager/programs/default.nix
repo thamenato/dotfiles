@@ -13,6 +13,7 @@
     ./lazygit.nix
     ./neovim.nix
     ./ripgrep.nix
+    ./swaylock.nix
     ./tmux.nix
     ./vscode.nix
     ./zoxide.nix

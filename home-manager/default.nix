@@ -2,6 +2,7 @@
   imports = [
     ./gtk.nix
     ./packages.nix
+    ./services.nix
     ./sway.nix
     ./programs
   ];
