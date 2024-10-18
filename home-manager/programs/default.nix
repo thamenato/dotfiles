@@ -1,5 +1,6 @@
 {
   imports = [
+    ./alacritty.nix
     ./atuin.nix
     ./btop.nix
     ./direnv.nix
@@ -7,10 +8,16 @@
     ./fzf.nix
     ./gh.nix
     ./git.nix
+    ./go.nix
+    ./kitty.nix
     ./lazygit.nix
     ./neovim.nix
     ./ripgrep.nix
+    ./tmux.nix
     ./vscode.nix
     ./zoxide.nix
+    ./zsh.nix
+    ./rofi
+    ./waybar
   ];
 }

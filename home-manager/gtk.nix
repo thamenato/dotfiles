@@ -1,11 +1,5 @@
 { pkgs, ... }:
 {
-  imports = [
-    ./rofi
-    ./sway.nix
-    ./waybar
-  ];
-
   gtk = {
     enable = true;
 

@@ -1,12 +1,6 @@
-{
-  config,
-  pkgs,
-  wayland,
-  lib,
-  ...
-}:
+{ pkgs, lib, ... }:
 let
-  background = ../../misc/backgrounds/143952-abstract_art-color-blue-atmosphere-violet-2560x1440.jpg;
+  background = ../misc/backgrounds/143952-abstract_art-color-blue-atmosphere-violet-2560x1440.jpg;
 in
 {
   #
