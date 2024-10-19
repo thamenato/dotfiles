@@ -34,7 +34,7 @@
 
         output =
           let
-            ultrawide_bg = ../../misc/backgrounds/wallhaven-2yjp6x_1920x1080.png;
+            ultrawide_bg = ../../misc/backgrounds/wallhaven-kxo38d_1920x1080.png;
             res_fullhd = "1920x1080";
           in
           {
