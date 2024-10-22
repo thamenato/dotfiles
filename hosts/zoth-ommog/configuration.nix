@@ -34,7 +34,10 @@
   '';
 
   # nixos modules
-  nixosModules.steam.enable = true;
+  nixosModules.steam = {
+    enable = true;
+    gamescope = true;
+  };
 
   system.stateVersion = "23.05";
 }
