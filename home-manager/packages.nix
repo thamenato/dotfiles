@@ -17,6 +17,7 @@
     # lsp
     marksman
     nil
+    nixd
     terraform-ls
     yaml-language-server
 

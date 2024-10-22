@@ -1,15 +1,4 @@
-{ ... }:
 {
-  imports = [ ../../home-manager-modules ];
-
-  home.file.".local/bin/steamos-session-select" = {
-    enable = true;
-    executable = true;
-    text = ''
-      steam -shutdown
-    '';
-  };
-
   wayland.windowManager.sway =
     let
       monitorMain = "HDMI-A-1";

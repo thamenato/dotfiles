@@ -4,15 +4,15 @@
 
     extensions = [
       "nix"
-      "catppuccin themes"
+      "catppuccin"
     ];
 
     userSettings = {
       vim_mode = true;
       theme = {
         mode = "system";
-        dark = "Catppuccin Mocha";
-        light = "Catppuccin Mocha";
+        dark = "Catppuccin Frappé";
+        light = "Catppuccin Frappé";
       };
     };
   };
