@@ -1,7 +1,5 @@
 { pkgs, lib, ... }:
 {
-  imports = [ ../../home-manager-modules ];
-
   home = {
     username = lib.mkForce "thales";
     homeDirectory = lib.mkForce "/home/thales";
