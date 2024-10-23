@@ -1,7 +1,4 @@
-{ ... }:
 {
-  imports = [ ../../home-manager-modules ];
-
   wayland.windowManager.sway =
     let
       monitorMain = "DP-1";
