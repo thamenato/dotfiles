@@ -35,14 +35,22 @@ in
         dedicatedServer.openFirewall = true;
         localNetworkGameTransfers.openFirewall = true;
 
+        package = pkgs.steam.override {
+          extraLibraries =
+            p: with p; [
+              (lib.getLib networkmanager)
+              (lib.getLib openal)
+            ];
+        };
         extraCompatPackages = with pkgs; [
-          vkd3d-proton
-          vkd3d
-          proton-ge-bin
           freetype
-          wineWowPackages.waylandFull
           gamescope-wsi
+          # openal
+          proton-ge-bin
+          vkd3d
+          vkd3d-proton
           vulkan-loader
+          wineWowPackages.waylandFull
         ];
 
         gamescopeSession.enable = cfg.gamescope;

@@ -4,6 +4,7 @@
     # terminal
     age
     alejandra
+    devenv
     fastfetch
     httpie
     jq
