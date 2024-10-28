@@ -8,6 +8,21 @@
     ./disko-config.nix
   ];
 
+  # Extra User account
+  users = {
+    users = {
+      nmenato = {
+        isNormalUser = true;
+        description = "Natalie Menato";
+        extraGroups = [
+          "networkmanager"
+          "wheel"
+        ];
+      };
+    };
+    extraGroups.docker.members = [ "nmenato" ];
+  };
+
   # host-specific packages
   environment.systemPackages = with pkgs; [
     amdgpu_top
