@@ -26,8 +26,8 @@
     rofi
 
     # apps
-    # bitwarden
     arandr
+    calibre
     darktable
     easyeffects
     pwvucontrol
