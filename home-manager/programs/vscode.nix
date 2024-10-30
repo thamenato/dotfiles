@@ -70,7 +70,7 @@
         "editor.defaultFormatter" = "yzhang.markdown-all-in-one";
       };
       "nix.enableLanguageServer" = true;
-      "nix.serverPath" = "nil";
+      "nix.serverPath" = "nixd";
       "nix.formatterPath" = "nixfmt";
       "nix.serverSettings" = {
         "nil" = {

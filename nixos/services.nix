@@ -32,16 +32,16 @@
   services.pcscd.enable = true;
 
   # Enable the windowing system.
-  # services.displayManager = {
-  #   ly = {
-  #     enable = true;
-  #   };
-  # };
+  services.displayManager = {
+    ly = {
+      enable = true;
+    };
+  };
 
   services.xserver = {
     enable = true;
 
-    displayManager.gdm.enable = true;
+    # displayManager.gdm.enable = true;
     desktopManager = {
       gnome.enable = true;
     };
