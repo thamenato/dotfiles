@@ -16,6 +16,7 @@
       charliermarsh.ruff
       codezombiech.gitignore
       github.vscode-github-actions
+      hashicorp.hcl
       hashicorp.terraform
       jdinhlife.gruvbox
       jnoortheen.nix-ide
