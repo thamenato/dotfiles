@@ -18,8 +18,8 @@
         "thamenato"
         "thales"
       ];
+      warn-dirty = false;
     };
     optimise.automatic = true;
   };
-
 }

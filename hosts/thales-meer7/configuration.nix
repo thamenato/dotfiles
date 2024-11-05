@@ -19,7 +19,6 @@
     dbeaver-bin
     signal-desktop
     slack
-    spotify
     system76-firmware
     tailscale
   ];
