@@ -33,6 +33,7 @@
       sumneko.lua
       tamasfe.even-better-toml
       timonwong.shellcheck
+      vadimcn.vscode-lldb
       vscode-icons-team.vscode-icons
       vscodevim.vim
       waderyan.gitblame
