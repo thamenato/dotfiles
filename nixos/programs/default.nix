@@ -1,4 +1,3 @@
-{ meta, ... }:
 {
   imports = [ ./steam.nix ];
 
@@ -7,7 +6,7 @@
       enable = true;
       clean.enable = true;
       clean.extraArgs = "--keep-since 4d --keep 3";
-      flake = "/home/${meta.user}/dotfiles";
+      flake = "/home/$USER/dotfiles";
     };
 
     sway.enable = true;
