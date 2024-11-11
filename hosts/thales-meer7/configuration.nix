@@ -41,6 +41,9 @@
     };
   };
 
+  # nixos modules
+  nixosModules.steam.enable = true;
+
   # services
   services.tailscale.enable = true;
 
