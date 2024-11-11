@@ -16,7 +16,6 @@
     ./swaylock.nix
     ./tmux.nix
     ./vscode.nix
-    ./zed-editor.nix
     ./zoxide.nix
     ./zsh.nix
     ./rofi
