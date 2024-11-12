@@ -25,6 +25,7 @@
     # formatter/linter
     dprint
     nixfmt-rfc-style
+    hclfmt
 
     # fonts
     font-awesome
