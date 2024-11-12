@@ -26,19 +26,38 @@
 
   hardware.enableAllFirmware = true;
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/c83b037d-df9f-4053-a9b4-c456837a45ea";
-    fsType = "ext4";
-  };
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-uuid/c83b037d-df9f-4053-a9b4-c456837a45ea";
+      fsType = "ext4";
+    };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/F5B1-7E49";
-    fsType = "vfat";
-  };
+    "/boot" = {
+      device = "/dev/disk/by-uuid/F5B1-7E49";
+      fsType = "vfat";
+    };
 
-  fileSystems."/data" = {
-    device = "/dev/disk/by-uuid/922c8c6b-1992-4a2b-9cb1-470482f85cdc";
-    fsType = "ext4";
+    "/data" = {
+      device = "/dev/disk/by-uuid/922c8c6b-1992-4a2b-9cb1-470482f85cdc";
+      fsType = "ext4";
+      label = "data";
+      options = [
+        "nofail" # prevent system from failing if this drive doesn't mount
+      ];
+    };
+
+    "/mnt/SteamApps" = {
+      depends = [
+        "/data"
+      ];
+      device = "/data/SteamApps";
+      fsType = "bindfs";
+      options = [
+        "perms=0660:+X"
+        "mirror=thamenato:nmeusling"
+        # "bind"
+      ];
+    };
   };
 
   swapDevices = [ { device = "/dev/disk/by-uuid/ff2ad39e-d086-4565-be36-0494b9714973"; } ];
