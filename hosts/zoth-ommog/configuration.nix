@@ -11,7 +11,7 @@
   # Extra User account
   users = {
     users = {
-      nmenato = {
+      nmeusling = {
         isNormalUser = true;
         description = "Natalie Menato";
         extraGroups = [
@@ -20,7 +20,7 @@
         ];
       };
     };
-    extraGroups.docker.members = [ "nmenato" ];
+    extraGroups.docker.members = [ "nmeusling" ];
   };
 
   # host-specific packages
