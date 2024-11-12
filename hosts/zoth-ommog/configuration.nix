@@ -8,21 +8,6 @@
     ./disko-config.nix
   ];
 
-  # Extra User account
-  users = {
-    users = {
-      nmeusling = {
-        isNormalUser = true;
-        description = "Natalie Menato";
-        extraGroups = [
-          "networkmanager"
-          "wheel"
-        ];
-      };
-    };
-    extraGroups.docker.members = [ "nmeusling" ];
-  };
-
   # host-specific packages
   environment.systemPackages = with pkgs; [
     amdgpu_top
@@ -65,9 +50,12 @@
   };
 
   # nixos modules
-  nixosModules.steam = {
-    enable = true;
-    gamescope = true;
+  nixosModules = {
+    users.natalie.enable = true;
+    steam = {
+      enable = true;
+      gamescope = true;
+    };
   };
 
   system.stateVersion = "23.05";

@@ -2,21 +2,6 @@
 {
   imports = [ ./hardware-configuration.nix ];
 
-  # Extra User account
-  users = {
-    users = {
-      nmenato = {
-        isNormalUser = true;
-        description = "Natalie Menato";
-        extraGroups = [
-          "networkmanager"
-          "wheel"
-        ];
-      };
-    };
-    extraGroups.docker.members = [ "nmenato" ];
-  };
-
   environment.systemPackages = with pkgs; [
     system76-firmware
     path-of-building
@@ -39,7 +24,10 @@
   };
 
   # nixos modules
-  nixosModules.steam.enable = true;
+  nixosModules = {
+    users.natalie.enable = true;
+    steam.enable = true;
+  };
 
   system.stateVersion = "23.11";
 }
