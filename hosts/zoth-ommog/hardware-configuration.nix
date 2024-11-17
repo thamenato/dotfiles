@@ -43,19 +43,10 @@
       label = "data";
       options = [
         "nofail" # prevent system from failing if this drive doesn't mount
-      ];
-    };
-
-    "/mnt/SteamApps" = {
-      depends = [
-        "/data"
-      ];
-      device = "/data/SteamApps";
-      fsType = "bindfs";
-      options = [
-        "perms=0660:+X"
-        "mirror=thamenato:nmeusling"
-        # "bind"
+        # "rw"
+        # "relatime"
+        # "default_permissions"
+        # "allow_other"
       ];
     };
   };
