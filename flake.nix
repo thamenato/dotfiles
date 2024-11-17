@@ -74,6 +74,7 @@
         packages = with pkgs; [
           # tools
           just
+          yq
           nixpkgs-fmt
           pre-commit
           sops

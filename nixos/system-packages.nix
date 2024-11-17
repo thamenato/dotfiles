@@ -3,6 +3,7 @@
   environment.systemPackages = with pkgs; [
     # tools/cli
     bat
+    bitwarden-cli
     cachix
     curl
     dig
