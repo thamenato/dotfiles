@@ -73,11 +73,12 @@
 
         packages = with pkgs; [
           # tools
+          bitwarden-cli
           just
-          yq
           nixpkgs-fmt
           pre-commit
           sops
+          yq
           # language server
           yaml-language-server
           nil
