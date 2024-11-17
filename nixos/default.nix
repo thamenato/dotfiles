@@ -8,6 +8,7 @@
     ./nix.nix
     ./security.nix
     ./services.nix
+    ./sops.nix
     ./system-packages.nix
     ./user.nix
     ./virtualization.nix

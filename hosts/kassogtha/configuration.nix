@@ -1,10 +1,12 @@
 { pkgs, ... }:
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [
+    ./hardware-configuration.nix
+    ./disko-config.nix
+  ];
 
   environment.systemPackages = with pkgs; [
     system76-firmware
-    path-of-building
   ];
 
   # laptop battery optimization

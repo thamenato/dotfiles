@@ -13,11 +13,19 @@ in
     natalie.enable = lib.mkEnableOption "Enable Natalie user";
   };
   config = {
+
+    sops.secrets = {
+      # user passwords
+      ${meta.user}.neededForUsers = true;
+      nmeusling.neededForUsers = lib.mkIf cfg.natalie.enable true;
+    };
+
     users = {
       users = {
         ${meta.user} = {
           isNormalUser = true;
           description = "Thales Menato";
+          hashedPasswordFile = config.sops.secrets.${meta.user}.path;
           extraGroups = [
             "networkmanager"
             "wheel"
@@ -28,6 +36,7 @@ in
         nmeusling = lib.mkIf cfg.natalie.enable {
           isNormalUser = true;
           description = "Natalie Menato";
+          hashedPasswordFile = config.sops.secrets.nmeusling.path;
           extraGroups = [
             "networkmanager"
             "wheel"

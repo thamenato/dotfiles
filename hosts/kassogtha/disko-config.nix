@@ -3,15 +3,13 @@
     disk = {
       main = {
         type = "disk";
-        device = "/dev/disk/by-id/nvme-KINGSTON_OM3PGP41024P-A0_50026B728363E2CB";
+        device = "/dev/disk/by-id/nvme-SOLIDIGM_SSDPFKKW512H7_SSB8N723610408S2J";
         content = {
           type = "gpt";
           partitions = {
             ESP = {
-              priority = 1;
-              name = "ESP";
-              size = "500M";
               type = "EF00";
+              size = "500M";
               content = {
                 type = "filesystem";
                 format = "vfat";
@@ -48,7 +46,7 @@
                   "/swap" = {
                     mountpoint = "/.swapvol";
                     swap = {
-                      swapfile.size = "4G";
+                      swapfile.size = "2G";
                     };
                   };
                 };

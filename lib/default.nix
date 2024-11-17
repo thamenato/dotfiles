@@ -31,6 +31,7 @@ let
         inputs.auto-cpufreq.nixosModules.default
         inputs.home-manager.nixosModules.home-manager
         inputs.disko.nixosModules.disko
+        inputs.sops-nix.nixosModules.sops
         hmPkgsConfig
         ../nixos
         ../hosts/${hostName}/configuration.nix

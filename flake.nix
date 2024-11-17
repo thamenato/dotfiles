@@ -26,6 +26,10 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
   };
 
@@ -69,8 +73,10 @@
 
         packages = with pkgs; [
           # tools
-          pre-commit
+          just
           nixpkgs-fmt
+          pre-commit
+          sops
           # language server
           yaml-language-server
           nil
