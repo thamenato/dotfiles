@@ -8,5 +8,8 @@
   # host-specific
   environment.systemPackages = with pkgs; [ gparted ];
 
-  system.stateVersion = "23.05";
+  # my nixos modules
+  nixosModules.steam.enable = true;
+
+  system.stateVersion = "24.05";
 }
