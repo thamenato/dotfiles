@@ -10,6 +10,7 @@
 
   # my nixos modules
   nixosModules.steam.enable = true;
+  nixosModules.users.natalie.enable = true;
 
   system.stateVersion = "24.05";
 }

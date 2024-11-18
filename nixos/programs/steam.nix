@@ -65,5 +65,15 @@ in
       # performance boost
       gamemode.enable = true;
     };
+
+    users.groups.steam = {
+      # create group steam and add current users to it
+      # members = builtins.attrNames config.nixosModules.users;
+      members = [
+        "thamenato"
+        "nmeusling"
+      ];
+    };
+
   };
 }
