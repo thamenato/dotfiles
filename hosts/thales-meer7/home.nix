@@ -22,16 +22,15 @@
 
   wayland.windowManager.sway =
     let
-      monitor_main = "DP-3";
-      monitor_right_bottom = "HDMI-A-1";
-      monitor_right_top = "HDMI-A-2";
+      mainMonitor = "HDMI-A-1";
     in
     {
       config = {
-
         assigns = {
-          "2" = [ { class = "firefox"; } ];
-          "3" = [ { class = "Slack"; } ];
+          "2" = [
+            { class = "firefox"; }
+            { class = "Slack"; }
+          ];
         };
 
         window.commands = [
@@ -52,37 +51,24 @@
         workspaceOutputAssign = [
           {
             workspace = "1";
-            output = monitor_main;
+            output = mainMonitor;
           }
           {
             workspace = "2";
-            output = monitor_right_bottom;
-          }
-          {
-            workspace = "3";
-            output = monitor_right_top;
+            output = mainMonitor;
           }
         ];
 
         output =
           let
-            ultrawide_bg = ../../misc/backgrounds/wallhaven-vql78p_3840x1600.png;
-            res_fullhd = "1920x1080";
-            res_ultrawide4k = "3840x1600";
+            background = ../../misc/backgrounds/wallhaven-1p5y29_5120x1440.png;
+            qhdUltraWide = "5120x1440";
           in
           {
-            ${monitor_main} = {
-              position = "0,580";
-              bg = "${ultrawide_bg} fit";
-              res = res_ultrawide4k;
-            };
-            ${monitor_right_bottom} = {
-              position = "3840,1080";
-              res = res_fullhd;
-            };
-            ${monitor_right_top} = {
-              position = "3840,0";
-              res = res_fullhd;
+            ${mainMonitor} = {
+              position = "0,0";
+              bg = "${background} fit";
+              res = qhdUltraWide;
             };
           };
       };

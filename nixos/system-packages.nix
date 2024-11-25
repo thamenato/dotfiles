@@ -38,10 +38,11 @@
     ventoy
     vlc
     xfce.thunar
+    xwaylandvideobridge
     yubikey-manager
 
     # browser
-    # firefox
     (pkgs.wrapFirefox (pkgs.firefox-unwrapped.override { pipewireSupport = true; }) { })
+    brave
   ];
 }

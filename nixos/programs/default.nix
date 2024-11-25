@@ -9,6 +9,8 @@
       flake = "/home/$USER/dotfiles";
     };
 
+    dconf.enable = true;
+
     sway.enable = true;
 
     zsh.enable = true;
