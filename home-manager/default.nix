@@ -18,6 +18,7 @@
 
   home.sessionVariables = {
     EDITOR = "nvim";
+    XDG_CURRENT_DESKTOP = "sway";
   };
 
   fonts.fontconfig.enable = true;

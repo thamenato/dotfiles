@@ -12,6 +12,7 @@
     ./system-packages.nix
     ./user.nix
     ./virtualization.nix
+    ./xdg.nix
     ./programs
   ];
 
