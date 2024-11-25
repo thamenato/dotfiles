@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 let
-  background = ../misc/backgrounds/143952-abstract_art-color-blue-atmosphere-violet-2560x1440.jpg;
 in
+# background = ../misc/backgrounds/143952-abstract_art-color-blue-atmosphere-violet-2560x1440.jpg;
 {
   #
   # sway
@@ -97,7 +97,7 @@ in
 
         output = {
           "*" = {
-            bg = "${background} fit";
+            # bg = "${background} fit";
           };
         };
 

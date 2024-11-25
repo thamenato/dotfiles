@@ -4,10 +4,10 @@
   #
   programs.swaylock.settings =
     let
-      image = ../../misc/backgrounds/143952-abstract_art-color-blue-atmosphere-violet-2560x1440.jpg;
     in
+    # image = ../../misc/backgrounds/143952-abstract_art-color-blue-atmosphere-violet-2560x1440.jpg;
     {
-      image = "${image}";
+      # image = "${image}";
       indicator-caps-lock = true;
       indicator-radius = 115;
       inside-color = "#2e344098";
