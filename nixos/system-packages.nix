@@ -42,7 +42,6 @@
     yubikey-manager
 
     # browser
-    (pkgs.wrapFirefox (pkgs.firefox-unwrapped.override { pipewireSupport = true; }) { })
-    brave
+    firefox
   ];
 }
