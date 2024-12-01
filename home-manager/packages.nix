@@ -32,16 +32,12 @@
     powerline-fonts
     powerline-symbols
     ibm-plex
-    (nerdfonts.override {
-      fonts = [
-        "FiraCode"
-        "FiraMono"
-        "Hack"
-        "Noto"
-        "JetBrainsMono"
-        "SpaceMono"
-      ];
-    })
+    nerd-fonts.fira-mono
+    nerd-fonts.fira-code
+    nerd-fonts.hack
+    nerd-fonts.noto
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.space-mono
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
