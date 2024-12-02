@@ -9,22 +9,6 @@
     in
     {
       config = {
-
-        # assigns = {
-        #   "1" = [{ class = "Brave-browser"; }];
-        # };
-
-        # window.commands = [
-        #   {
-        #     criteria = { class = "1Password"; };
-        #     command = "floating enable";
-        #   }
-        # ];
-
-        # startup = [
-        #   { command = "brave"; }
-        # ];
-
         workspaceOutputAssign = [
           {
             workspace = "1";
