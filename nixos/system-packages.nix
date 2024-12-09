@@ -29,11 +29,12 @@
     # apps
     arandr
     calibre
-    darktable
+    # darktable
     easyeffects
     pwvucontrol
     signal-desktop
     simple-scan
+    slack
     spotify
     ventoy
     vlc
