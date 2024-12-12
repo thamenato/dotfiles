@@ -18,6 +18,7 @@
       github.vscode-github-actions
       hashicorp.hcl
       hashicorp.terraform
+      james-yu.latex-workshop
       jdinhlife.gruvbox
       jnoortheen.nix-ide
       mikestead.dotenv

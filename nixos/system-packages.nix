@@ -29,9 +29,9 @@
     # apps
     arandr
     calibre
-    # darktable
     easyeffects
     pwvucontrol
+    evince
     signal-desktop
     simple-scan
     slack
