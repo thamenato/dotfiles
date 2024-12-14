@@ -20,6 +20,7 @@
   boot.initrd.kernelModules = [
     "joydev"
     "xpad"
+    "amdgpu"
   ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];

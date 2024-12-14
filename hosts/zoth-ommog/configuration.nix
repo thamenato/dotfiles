@@ -49,6 +49,8 @@
     '';
   };
 
+  services.xserver.videoDrivers = [ "amdgpu" ];
+
   # nixos modules
   nixosModules = {
     users.natalie.enable = true;
