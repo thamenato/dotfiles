@@ -13,10 +13,12 @@
       allowed-users = [
         "thamenato"
         "thales"
+        "nmeusling"
       ];
       trusted-users = [
         "thamenato"
         "thales"
+        "nmeusling"
       ];
       warn-dirty = false;
     };
