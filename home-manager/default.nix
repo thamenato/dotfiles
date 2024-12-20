@@ -4,6 +4,7 @@
     ./packages.nix
     ./services.nix
     ./sway.nix
+    ./xdg.nix
     ./programs
   ];
 
