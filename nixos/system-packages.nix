@@ -30,8 +30,8 @@
     arandr
     calibre
     easyeffects
-    pwvucontrol
     evince
+    pwvucontrol
     signal-desktop
     simple-scan
     slack
