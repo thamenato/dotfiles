@@ -12,6 +12,7 @@
     playerctl
     tldr
     unzip
+    wl-clipboard
     xxh
     zip
 

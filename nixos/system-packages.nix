@@ -31,6 +31,7 @@
     calibre
     easyeffects
     evince
+    onlyoffice-desktopeditors
     pwvucontrol
     signal-desktop
     simple-scan

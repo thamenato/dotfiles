@@ -31,7 +31,11 @@
   };
 
   outputs =
-    inputs@{ self, nixpkgs, ... }:
+    inputs@{
+      self,
+      nixpkgs,
+      ...
+    }:
     let
       system = "x86_64-linux";
 
@@ -40,7 +44,7 @@
         config.allowUnfree = true;
       };
 
-      # Import helper funcfions
+      # Import helper functions
       libx = import ./lib { inherit self inputs; };
     in
     {

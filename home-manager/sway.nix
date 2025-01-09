@@ -1,4 +1,8 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  ...
+}:
 let
 in
 # background = ../misc/backgrounds/143952-abstract_art-color-blue-atmosphere-violet-2560x1440.jpg;
@@ -10,15 +14,15 @@ in
     let
       modifier = "Mod4";
       menu = "rofi -show drun | xargs swaymsg exec";
+      terminal = "${pkgs.ghostty}/bin/ghostty";
     in
     {
-
       enable = true;
       wrapperFeatures.gtk = true;
 
       config = {
         modifier = modifier;
-        terminal = "${pkgs.alacritty}/bin/alacritty";
+        terminal = terminal;
         menu = menu;
 
         keybindings =
