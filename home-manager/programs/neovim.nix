@@ -1,77 +1,41 @@
 { ... }:
 {
-  programs.nixvim = {
+  programs.nvf = {
     enable = true;
-
-    # theme
-    colorschemes.gruvbox.enable = true;
-
-    # vim.g.*
-    globals = { };
-
-    # vim.o.*
-    opts = {
-      number = true;
-      tabstop = 4;
-      shiftwidth = 4;
-      mouse = "a";
-    };
-
-    # plugins supported by nixvim
-    plugins = {
-      lualine.enable = true;
-      luasnip.enable = true;
-      oil.enable = true;
-      telescope.enable = true;
-      treesitter.enable = true;
-      web-devicons.enable = true;
-
+    # your settings need to go into the settings attribute set
+    # most settings are documented in the appendix
+    settings.vim = {
+      viAlias = false;
+      vimAlias = true;
+      theme = {
+        enable = true;
+        name = "gruvbox";
+        style = "dark";
+      };
       lsp = {
         enable = true;
-
-        servers = {
-          # javascript/typescript
-          ts_ls.enable = true;
-          # lua
-          lua_ls.enable = true;
-          # terraform
-          terraformls.enable = true;
-          # python
-          # pylsp.enable = true;
-        };
       };
-
-      # nvim-cmp = {
-      #   enable = true;
-      #   sources = [
-      #     { name = "nvim_lsp"; }
-      #     { name = "path"; }
-      #     { name = "buffer"; }
-      #   ];
-
-      #   mapping = {
-      #     "<CR>" = "cmp.mapping.confirm({ select = true })";
-      #     "<Tab>" = {
-      #       action = ''
-      #         function(fallback)
-      #           if cmp.visible() then
-      #             cmp.select_next_item()
-      #           elseif luasnip.expandable() then
-      #             luasnip.expand()
-      #           elseif luasnip.expand_or_jumpable() then
-      #             luasnip.expand_or_jump()
-      #           elseif check_backscape() then
-      #             fallback()
-      #           else
-      #             fallback()
-      #           end
-      #         end
-      #       '';
-      #       modes = [ "i" "s" ];
-      #     };
-      #   };
-      # };
-
+      languages = {
+        nix.enable = true;
+        python.enable = true;
+        markdown.enable = true;
+        html.enable = true;
+        go.enable = true;
+      };
     };
   };
+
+  # theme
+  # colorschemes.gruvbox.enable = true;
+
+  # vim.g.*
+  # globals = { };
+
+  # vim.o.*
+  # opts = {
+  # number = true;
+  # tabstop = 4;
+  # shiftwidth = 4;
+  # mouse = "a";
+  # };
 }
