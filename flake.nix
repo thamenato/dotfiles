@@ -30,21 +30,16 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
+    pre-commit-hooks.url = "github:cachix/git-hooks.nix";
   };
 
   outputs =
     inputs@{ self, nixpkgs, ... }:
     let
       system = "x86_64-linux";
-      darwin = "aarch64-darwin";
 
       pkgs = import nixpkgs {
         inherit system;
-        config.allowUnfree = true;
-      };
-      darwin_pkgs = import nixpkgs {
-        inherit darwin;
         config.allowUnfree = true;
       };
 
@@ -76,15 +71,12 @@
           just
           yq
           nixpkgs-fmt
-          pre-commit
           sops
           # language server
           yaml-language-server
           nil
         ];
       };
-
-      devShell."${darwin}" = darwin_pkgs.mkShell { packages = with darwin_pkgs; [ pre-commit ]; };
 
       nixosConfigurations = {
         kassogtha = libx.mkHost { hostName = "kassogtha"; };
