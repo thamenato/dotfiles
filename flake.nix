@@ -82,17 +82,12 @@
         kassogtha = libx.mkHost { hostName = "kassogtha"; };
         zoth-ommog = libx.mkHost { hostName = "zoth-ommog"; };
         ythogtha = libx.mkHost { hostName = "ythogtha"; };
-        thales-meer7 = libx.mkHost {
-          hostName = "thales-meer7";
-          user = "thales";
-        };
       };
 
       homeConfigurations = {
         "thamenato@zoth-ommog" = libx.mkHome { hostName = "zoth-ommog"; };
         "thamenato@kassogtha" = libx.mkHome { hostName = "kassogtha"; };
         "thamenato@ythogtha" = libx.mkHome { hostName = "ythogtha"; };
-        "thales@thales-meer7" = libx.mkHome { hostName = "thales-meer7"; };
       };
     };
 }
