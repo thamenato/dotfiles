@@ -3,9 +3,6 @@
   lib,
   ...
 }:
-let
-in
-# background = ../misc/backgrounds/143952-abstract_art-color-blue-atmosphere-violet-2560x1440.jpg;
 {
   #
   # sway
@@ -57,7 +54,8 @@ in
             "XF86MonBrightnessDown" = "exec ${brightnessctl} -c backlight set 5%-";
 
             # touchpad
-            "XF86TouchpadToggle" = "input \"2321:21128:PNP0C50:0b_0911:5288_Touchpad\" events toggle enabled disabled";
+            "XF86TouchpadToggle" =
+              "input \"2321:21128:PNP0C50:0b_0911:5288_Touchpad\" events toggle enabled disabled";
           };
 
         keycodebindings =

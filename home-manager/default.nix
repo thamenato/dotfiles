@@ -3,9 +3,9 @@
     ./gtk.nix
     ./packages.nix
     ./services.nix
-    ./sway.nix
     ./xdg.nix
     ./programs
+    ./wayland
   ];
 
   home.username = "thamenato";
