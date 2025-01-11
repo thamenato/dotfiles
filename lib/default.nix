@@ -21,6 +21,7 @@ let
       system = "x86_64-linux";
 
       specialArgs = {
+        inherit inputs;
         meta = {
           hostName = hostName;
           user = user;

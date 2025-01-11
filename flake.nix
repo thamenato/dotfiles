@@ -28,6 +28,7 @@
     };
     nvf.url = "github:notashelf/nvf";
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
+    hyprland.url = "github:hyprwm/Hyprland";
   };
 
   outputs =

@@ -1,3 +1,4 @@
+{ inputs, pkgs, ... }:
 {
   imports = [ ./steam.nix ];
 
@@ -18,7 +19,13 @@
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
-      # pinentryPackage = null;
+    };
+
+    hyprland = {
+      enable = true;
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      portalPackage =
+        inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     };
   };
 }
