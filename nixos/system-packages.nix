@@ -45,5 +45,6 @@
 
     # browser
     firefox
+    google-chrome
   ];
 }

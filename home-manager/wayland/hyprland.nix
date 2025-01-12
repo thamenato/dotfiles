@@ -5,8 +5,8 @@
       "$mod" = "SUPER";
       bind =
         [
-          "$mod, F, exec, firefox"
-          "$mod, Enter, exec, ghostty"
+          "$mod, F, exec, google-chrome-stable"
+          "$mod, Return, exec, ghostty"
           ", Print, exec, grimblast copy area"
         ]
         ++ (

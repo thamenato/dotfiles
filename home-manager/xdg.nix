@@ -1,5 +1,19 @@
+{ pkgs, ... }:
 {
   xdg = {
+    enable = true;
+
+    portal = {
+      enable = true;
+      xdgOpenUsePortal = true;
+      configPackages = [ pkgs.xdg-desktop-portal-hyprland ];
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-hyprland
+        # xdg-desktop-portal-wlr
+      ];
+    };
+
+    mime.enable = true;
     mimeApps = {
       enable = true;
       defaultApplications =
@@ -16,6 +30,7 @@
           "text/markdown" = text;
         };
     };
+
     desktopEntries = {
       # list of .desktop files
       # ls -l /run/current-system/sw/share/applications
