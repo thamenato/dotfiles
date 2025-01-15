@@ -2,11 +2,12 @@
 {
   programs.nvf = {
     enable = true;
-    # your settings need to go into the settings attribute set
-    # most settings are documented in the appendix
+
     settings.vim = {
       viAlias = false;
       vimAlias = true;
+      preventJunkFiles = true;
+      lineNumberMode = "number";
 
       theme = {
         enable = true;
@@ -35,7 +36,12 @@
             type = "nixfmt";
           };
         };
-        python.enable = true;
+        python = {
+          enable = true;
+          format = {
+            type = "ruff";
+          };
+        };
         terraform.enable = true;
       };
 

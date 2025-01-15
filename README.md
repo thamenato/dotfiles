@@ -20,7 +20,8 @@ home-manager switch --flake .
 
 ## fresh install
 
-* Install python first since dotbot requires it.
-* Run `./install`
-* Update `/etc/nixos/configuration.nix` to import the file `dotfiles-configuration.nix`
-* `sudo nixos-rebuild switch`
+- Install python first since dotbot requires it.
+- Run `./install`
+- Update `/etc/nixos/configuration.nix` to import the file
+  `dotfiles-configuration.nix`
+- `sudo nixos-rebuild switch`
