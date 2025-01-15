@@ -689,16 +689,15 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1736909136,
-        "narHash": "sha256-wuS3ULO0jRUV7udc92vRZ2VR3q0w7tJ9xa2Ox9A4Bn8=",
-        "owner": "thamenato",
+        "lastModified": 1736946667,
+        "narHash": "sha256-7z13M0L4DK9srgXnTXFFnfQsYioL2BrkfQieRI7A7wo=",
+        "owner": "notashelf",
         "repo": "nvf",
-        "rev": "ecf832681c79e9852b474cfa270c1f8d06891959",
+        "rev": "45a6d9b890e97fe8183874aafb1f17b1335f8bdf",
         "type": "github"
       },
       "original": {
-        "owner": "thamenato",
-        "ref": "feat/python-ruff-format",
+        "owner": "notashelf",
         "repo": "nvf",
         "type": "github"
       }

@@ -26,8 +26,7 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # nvf.url = "github:notashelf/nvf";
-    nvf.url = "github:thamenato/nvf/feat/python-ruff-format";
+    nvf.url = "github:notashelf/nvf";
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
     hyprland.url = "github:hyprwm/Hyprland";
   };
