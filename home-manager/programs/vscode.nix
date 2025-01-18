@@ -12,6 +12,7 @@
 
     extensions = with pkgs.vscode-extensions; [
       adpyke.codesnap
+      astro-build.astro-vscode
       bierner.emojisense
       charliermarsh.ruff
       codezombiech.gitignore

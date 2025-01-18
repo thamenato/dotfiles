@@ -28,6 +28,7 @@
         bash.enable = true;
         go.enable = true;
         html.enable = true;
+        astro.enable = true;
         markdown.enable = true;
         nix = {
           enable = true;
