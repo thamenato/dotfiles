@@ -21,15 +21,19 @@
       };
 
       languages = {
+        # defaults
         enableLSP = true;
         enableTreesitter = true;
         enableFormat = true;
 
+        # languages
         bash.enable = true;
         go.enable = true;
         html.enable = true;
-        astro.enable = true;
-        markdown.enable = true;
+        markdown = {
+          enable = true;
+          extensions.render-markdown-nvim.enable = true;
+        };
         nix = {
           enable = true;
           format = {
@@ -59,6 +63,12 @@
         enable = true;
         gitsigns.enable = true;
         gitsigns.codeActions.enable = false;
+      };
+
+      utility = {
+        preview = {
+          markdownPreview.enable = true;
+        };
       };
 
       spellcheck.enable = true;
