@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.vscode = {
     enable = true;
 
@@ -80,7 +79,7 @@
       "nix.serverSettings" = {
         "nil" = {
           "formatting" = {
-            "command" = [ "nixfmt" ];
+            "command" = ["nixfmt"];
           };
         };
       };

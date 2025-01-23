@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   imports = [
     ./boot.nix
     ./hardware.nix
@@ -16,7 +15,7 @@
   ];
 
   # set zsh as default shell
-  environment.shells = with pkgs; [ zsh ];
+  environment.shells = with pkgs; [zsh];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

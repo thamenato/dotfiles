@@ -1,4 +1,3 @@
-{ pkgs, ... }:
 {
   programs.nvf = {
     enable = true;
@@ -8,6 +7,10 @@
       vimAlias = true;
       preventJunkFiles = true;
       lineNumberMode = "number";
+
+      options = {
+        tabspot = 4;
+      };
 
       theme = {
         enable = true;
@@ -36,10 +39,6 @@
         };
         nix = {
           enable = true;
-          format = {
-            package = pkgs.nixfmt-rfc-style;
-            type = "nixfmt";
-          };
         };
         python = {
           enable = true;

@@ -2,9 +2,8 @@
   #
   # swaylock
   #
-  programs.swaylock.settings =
-    let
-    in
+  programs.swaylock.settings = let
+  in
     # image = ../../misc/backgrounds/143952-abstract_art-color-blue-atmosphere-violet-2560x1440.jpg;
     {
       # image = "${image}";

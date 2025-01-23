@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.waybar = {
     enable = true;
 
@@ -16,7 +15,7 @@
           # "sway/mode"
           # "custom/weather"
         ];
-        modules-center = [ "clock" ];
+        modules-center = ["clock"];
         modules-right = [
           # "custom/spotify"
           "disk"
@@ -114,7 +113,7 @@
             phone = "";
             portable = "";
             car = "";
-            default = [ "" ];
+            default = [""];
           };
           on-click = "pwvucontrol";
           on-scroll-up = "pactl set-sink-volume @DEFAULT_SINK@ +2%";
@@ -176,18 +175,16 @@
           escape = true;
         };
 
-        "custom/grimshot" =
-          let
-            grimshot = "${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save";
-            satty = "${pkgs.satty}/bin/satty --filename - --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png";
-          in
-          {
-            format = "";
-            tooltip = false;
-            on-click-right = "${grimshot} output - | ${satty}";
-            on-click-middle = "${grimshot} window - | ${satty}";
-            on-click = "${grimshot} area - | ${satty}";
-          };
+        "custom/grimshot" = let
+          grimshot = "${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save";
+          satty = "${pkgs.satty}/bin/satty --filename - --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png";
+        in {
+          format = "";
+          tooltip = false;
+          on-click-right = "${grimshot} output - | ${satty}";
+          on-click-middle = "${grimshot} window - | ${satty}";
+          on-click = "${grimshot} area - | ${satty}";
+        };
       };
     };
   };

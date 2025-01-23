@@ -11,7 +11,7 @@
               size = "100%";
               content = {
                 type = "btrfs";
-                extraArgs = [ "-f" ];
+                extraArgs = ["-f"];
                 mountpoint = "/nix";
                 mountOptions = [
                   "compress=zstd"

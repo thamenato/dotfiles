@@ -4,6 +4,6 @@
 
     git = true;
     icons = "auto";
-    extraOptions = [ ];
+    extraOptions = [];
   };
 }

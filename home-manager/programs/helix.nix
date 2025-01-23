@@ -6,7 +6,7 @@
     settings = {
       theme = "autumn";
       editor = {
-        rulers = [ 80 ];
+        rulers = [80];
       };
     };
 
@@ -27,7 +27,7 @@
           auto-format = true;
           formatter = {
             command = "black";
-            args = [ "-" ];
+            args = ["-"];
           };
         }
         {

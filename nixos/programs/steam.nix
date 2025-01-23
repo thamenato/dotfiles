@@ -3,11 +3,9 @@
   lib,
   config,
   ...
-}:
-let
+}: let
   cfg = config.nixosModules.steam;
-in
-{
+in {
   options.nixosModules.steam = {
     enable = lib.mkEnableOption "Enable Steam";
     gamescope = lib.mkEnableOption "Enable Gamescope";
@@ -36,8 +34,8 @@ in
         localNetworkGameTransfers.openFirewall = true;
 
         package = pkgs.steam.override {
-          extraLibraries =
-            p: with p; [
+          extraLibraries = p:
+            with p; [
               (lib.getLib networkmanager)
               (lib.getLib openal)
             ];

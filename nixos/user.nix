@@ -4,16 +4,13 @@
   config,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.nixosModules.users;
-in
-{
+in {
   options.nixosModules.users = {
     natalie.enable = lib.mkEnableOption "Enable Natalie user";
   };
   config = {
-
     sops.secrets = {
       # user passwords
       ${meta.user}.neededForUsers = true;

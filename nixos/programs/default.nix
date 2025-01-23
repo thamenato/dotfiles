@@ -1,6 +1,9 @@
-{ inputs, pkgs, ... }:
 {
-  imports = [ ./steam.nix ];
+  inputs,
+  pkgs,
+  ...
+}: {
+  imports = [./steam.nix];
 
   programs = {
     nh = {
