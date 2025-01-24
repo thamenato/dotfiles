@@ -9,13 +9,15 @@
       lineNumberMode = "number";
 
       options = {
-        tabspot = 4;
+        tabstop = 4;
+        shiftwidth = 4;
+        softtabstop = 4;
       };
 
       theme = {
         enable = true;
-        name = "gruvbox";
-        style = "dark";
+        name = "catppuccin";
+        style = "mocha";
       };
 
       lsp = {
@@ -28,6 +30,7 @@
         enableLSP = true;
         enableTreesitter = true;
         enableFormat = true;
+        enableExtraDiagnostics = true;
 
         # languages
         bash.enable = true;
@@ -39,6 +42,7 @@
         };
         nix = {
           enable = true;
+          treesitter.enable = false;
         };
         python = {
           enable = true;
@@ -64,6 +68,8 @@
         gitsigns.codeActions.enable = false;
       };
 
+      autopairs.nvim-autopairs.enable = true;
+
       utility = {
         preview = {
           markdownPreview.enable = true;
@@ -71,9 +77,28 @@
       };
 
       spellcheck.enable = true;
-      statusline.lualine.enable = true;
+      statusline = {
+        lualine = {
+          enable = true;
+          theme = "catppuccin";
+        };
+      };
+
       telescope.enable = true;
+      snippets.luasnip.enable = true;
       autocomplete.nvim-cmp.enable = true;
+      ui = {
+        noice.enable = true;
+        smartcolumn = {
+          enable = true;
+          setupOpts.custom_colorcolumn = {
+            markdown = "80";
+            python = "80";
+            nix = "110";
+            go = ["90" "130"];
+          };
+        };
+      };
     };
   };
 }

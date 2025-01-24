@@ -1,6 +1,7 @@
 {
   wayland.windowManager.hyprland = {
     enable = true;
+    # https://github.com/hyprwm/Hyprland/blob/main/example/hyprland.conf
     settings = {
       "$mod" = "SUPER";
       env = [];
