@@ -19,9 +19,11 @@
         "HYPRCURSOR_THEME,${cursorName}"
         "HYPRCURSOR_SIZE,${cursorSize}"
       ];
+
       exec-once = [
         "systemctl --user start hyprpolkitagent"
         "hyprctl setcursor ${cursorName} ${cursorSize}"
+        "waybar"
       ];
 
       monitor = [

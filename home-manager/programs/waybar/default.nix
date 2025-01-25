@@ -3,7 +3,6 @@
     enable = true;
 
     style = ./style.css;
-    systemd.enable = true;
 
     settings = {
       main = {
