@@ -3,6 +3,7 @@
     enable = true;
 
     style = ./style.css;
+    systemd.enable = true;
 
     settings = {
       main = {
@@ -12,6 +13,7 @@
         modules-left = [
           "custom/hostname"
           "sway/workspaces"
+          "hyprland/workspaces"
           # "sway/mode"
           # "custom/weather"
         ];
@@ -30,6 +32,12 @@
         ];
 
         # modules
+        "hyprland/workspaces" = {
+          format = "{icon}";
+          on-scroll-up = "hyprctl dispatch workspace e+1";
+          on-scroll-down = "hyprctl dispatch workspace e-1";
+        };
+
         "sway/workspaces" = {
           disable-scroll = false;
           disable-markup = false;

@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     # tools/cli
-    bat
     bitwarden-cli
     cachix
     curl
@@ -16,11 +15,9 @@
 
     # programming
     git
-    python3
-    rustup
 
     # terminal
-    alacritty
+    ghostty
     mako
     networkmanagerapplet
     rofi
@@ -39,11 +36,14 @@
     ventoy
     vlc
     xfce.thunar
-    xwaylandvideobridge
+    # xwaylandvideobridge
     yubikey-manager
 
     # browser
     firefox
     google-chrome
+
+    # hyprland dependencies
+    hyprpolkitagent
   ];
 }
