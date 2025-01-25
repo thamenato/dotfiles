@@ -26,7 +26,7 @@
     };
     # xbox one controller
     # https://github.com/atar-axis/xpadneo
-    xpadneo.enable = true;
+    xpadneo.enable = false;
   };
 
   services = {
