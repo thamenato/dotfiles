@@ -33,7 +33,8 @@
       general = {
         # https://wiki.hyprland.org/Configuring/Variables/#general
         gaps_in = 5;
-        gaps_out = 20;
+        # gaps_out = 20;
+        gaps_out = 10;
         border_size = 2;
         # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
         "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
@@ -50,7 +51,7 @@
 
       decoration = {
         # https://wiki.hyprland.org/Configuring/Variables/#decoration
-        rounding = 10;
+        rounding = 0;
 
         # Change transparency of focused and unfocused windows
         active_opacity = 1.0;
@@ -133,8 +134,11 @@
 
       bind =
         [
-          "$mod, F, exec, ${terminal}"
-          "$mod, D, exec, ${menu} --show drun"
+          "$mod, f, fullscreen,"
+          "$mod, d, exec, ${menu} --show drun"
+          "$mod, q, killactive,"
+          "$mod SHIFT, SPACE, togglefloating,"
+          "Ctrl Alt, Delete, exit,"
           "$mod, Return, exec, ${terminal}"
           ", Print, exec, grimblast copy area"
 
