@@ -126,13 +126,16 @@
 
       bind =
         [
-          "$mod, f, fullscreen,"
           "$mod, d, exec, ${menu} --show drun"
           "$mod, q, killactive,"
-          "$mod SHIFT, SPACE, togglefloating,"
-          "Ctrl Alt, Delete, exit,"
-          "$mod, Return, exec, ${terminal}"
+          "ctrl alt, delete, exit,"
+          "ctrl alt, l, exec, hyprlock"
+          "$mod, return, exec, ${terminal}"
           ", Print, exec, grimblast copy area"
+
+          # window modes
+          "$mod, f, fullscreen,"
+          "$mod shift, space, togglefloating,"
 
           # move focus
           "$mod, left, movefocus, l"
@@ -145,14 +148,14 @@
           "$mod, j, movefocus, d"
 
           # move window
-          "$mod SHIFT, left, movewindow, l"
-          "$mod SHIFT, right, movewindow, r"
-          "$mod SHIFT, up, movewindow, u"
-          "$mod SHIFT, down, movewindow, d"
-          "$mod SHIFT, h, movewindow, l"
-          "$mod SHIFT, l, movewindow, r"
-          "$mod SHIFT, k, movewindow, u"
-          "$mod SHIFT, j, movewindow, d"
+          "$mod shift, left, movewindow, l"
+          "$mod shift, right, movewindow, r"
+          "$mod shift, up, movewindow, u"
+          "$mod shift, down, movewindow, d"
+          "$mod shift, h, movewindow, l"
+          "$mod shift, l, movewindow, r"
+          "$mod shift, k, movewindow, u"
+          "$mod shift, j, movewindow, d"
         ]
         ++ (
           # workspaces
