@@ -5,7 +5,7 @@
     settings = let
       modifier = "SUPER";
       terminal = "${pkgs.ghostty}/bin/ghostty";
-      menu = "${pkgs.rofi}/bin/rofi -show drun | xargs hyprctl dispatch exec --";
+      menu = "${pkgs.rofi}/bin/rofi -show drun";
     in {
       "$mod" = "${modifier}";
 
@@ -15,6 +15,7 @@
 
       exec-once = [
         "systemctl --user start hyprpolkitagent"
+        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "waybar"
       ];
 

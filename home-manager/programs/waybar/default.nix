@@ -11,14 +11,10 @@
         height = 26;
         modules-left = [
           "custom/hostname"
-          "sway/workspaces"
           "hyprland/workspaces"
-          # "sway/mode"
-          # "custom/weather"
         ];
         modules-center = ["clock"];
         modules-right = [
-          # "custom/spotify"
           "disk"
           "temperature"
           "memory"
@@ -35,29 +31,6 @@
           format = "{icon}";
           on-scroll-up = "hyprctl dispatch workspace e+1";
           on-scroll-down = "hyprctl dispatch workspace e-1";
-        };
-
-        "sway/workspaces" = {
-          disable-scroll = false;
-          disable-markup = false;
-          all-outputs = false;
-          format = "{name}";
-        };
-
-        "sway/mode" = {
-          format = "{}";
-          tooltip = false;
-        };
-
-        "sway/window" = {
-          format = "{}";
-          max-length = 50;
-        };
-
-        "custom/power" = {
-          format = "";
-          tooltip = false;
-          on-click = "exec ${./scripts/power-menu.sh}";
         };
 
         clock = {
@@ -144,17 +117,15 @@
           max-length = 25;
         };
 
-        idle_inhibitor = {
-          format = "{icon} ";
-          format-icons = {
-            activated = "";
-            deactivated = "";
-          };
-        };
-
         tray = {
           icon-size = 18;
           spacing = 8;
+        };
+
+        "custom/power" = {
+          format = "";
+          tooltip = false;
+          on-click = "exec ${./scripts/power-menu.sh}";
         };
 
         "custom/hostname" = {
