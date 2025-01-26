@@ -2,6 +2,7 @@
   imports = [
     ./gtk.nix
     ./packages.nix
+    ./qt.nix
     ./services.nix
     ./programs
     ./wayland
