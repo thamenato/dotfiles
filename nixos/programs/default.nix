@@ -15,7 +15,7 @@
 
     dconf.enable = true;
 
-    sway.enable = true;
+    sway.enable = false;
 
     zsh.enable = true;
 

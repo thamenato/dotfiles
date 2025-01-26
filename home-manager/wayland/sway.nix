@@ -3,21 +3,18 @@
   lib,
   ...
 }: {
-  #
-  # sway
-  #
   wayland.windowManager.sway = let
     modifier = "Mod4";
     menu = "rofi -show drun | xargs swaymsg exec";
     terminal = "${pkgs.ghostty}/bin/ghostty";
   in {
-    enable = true;
+    enable = false;
     wrapperFeatures.gtk = true;
 
     config = {
-      modifier = modifier;
-      terminal = terminal;
-      menu = menu;
+      inherit modifier;
+      inherit terminal;
+      inherit menu;
 
       keybindings = let
         grimshot = "${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save";
@@ -66,7 +63,6 @@
         {command = "easyeffects --gapplication-service";}
         {command = "nm-applet --indicator";}
       ];
-      # { command = "avizo-service"; }
 
       window.commands = [
         {
