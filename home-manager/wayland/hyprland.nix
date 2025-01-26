@@ -1,28 +1,20 @@
 {pkgs, ...}: {
   wayland.windowManager.hyprland = {
-    # https://github.com/hyprwm/Hyprland/blob/main/example/hyprland.conf
     enable = true;
 
     settings = let
       modifier = "SUPER";
       terminal = "${pkgs.ghostty}/bin/ghostty";
-      # fileManager = "${pkgs.dolphin}/bin/dolphin";
       menu = "${pkgs.wofi}/bin/wofi";
-      # browser = "${pkgs.firefox}/bin/firefox";
-      cursorName = "Bibata-Modern-Classic-Hyprcursor";
-      cursorSize = "16";
     in {
       "$mod" = "${modifier}";
 
       env = [
         "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
-        "HYPRCURSOR_THEME,${cursorName}"
-        "HYPRCURSOR_SIZE,${cursorSize}"
       ];
 
       exec-once = [
         "systemctl --user start hyprpolkitagent"
-        "hyprctl setcursor ${cursorName} ${cursorSize}"
         "waybar"
       ];
 

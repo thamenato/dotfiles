@@ -10,6 +10,7 @@
     ./ghostty.nix
     ./git.nix
     ./go.nix
+    ./hyprlock.nix
     ./kitty.nix
     ./lazygit.nix
     ./neovim.nix
