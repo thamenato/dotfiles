@@ -5,7 +5,7 @@
     settings = let
       modifier = "SUPER";
       terminal = "${pkgs.ghostty}/bin/ghostty";
-      menu = "${pkgs.wofi}/bin/wofi";
+      menu = "${pkgs.rofi}/bin/rofi -show drun | xargs hyprctl dispatch exec --";
     in {
       "$mod" = "${modifier}";
 
@@ -126,7 +126,7 @@
 
       bind =
         [
-          "$mod, d, exec, ${menu} --show drun"
+          "$mod, d, exec, ${menu}"
           "$mod, q, killactive,"
           "ctrl alt, delete, exit,"
           "ctrl alt, l, exec, hyprlock"

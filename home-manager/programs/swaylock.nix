@@ -1,11 +1,7 @@
 {
-  #
-  # swaylock
-  #
-  programs.swaylock.settings = let
-  in
-    # image = ../../misc/backgrounds/143952-abstract_art-color-blue-atmosphere-violet-2560x1440.jpg;
-    {
+  programs.swaylock = {
+    enable = false;
+    settings = {
       # image = "${image}";
       indicator-caps-lock = true;
       indicator-radius = 115;
@@ -21,4 +17,5 @@
       separator-color = "#4c566a";
       text-color = "#d8dee9";
     };
+  };
 }
