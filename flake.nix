@@ -37,14 +37,21 @@
     ...
   }: let
     system = "x86_64-linux";
+    username = "thamenato";
 
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
     };
 
-    # Import helper functions
-    libx = import ./lib {inherit self inputs;};
+    mkHome = {hostName}: (inputs.home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      modules = [
+        inputs.nvf.homeManagerModules.default
+        ./home-manager
+        ./hosts/${hostName}/home.nix
+      ];
+    });
   in {
     checks = {
       pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
@@ -52,7 +59,6 @@
         hooks = {
           check-added-large-files.enable = true;
           check-yaml.enable = true;
-
           deadnix.enable = true;
           detect-private-keys.enable = true;
           end-of-file-fixer.enable = true;
@@ -78,16 +84,10 @@
       ];
     };
 
-    nixosConfigurations = {
-      kassogtha = libx.mkHost {hostName = "kassogtha";};
-      zoth-ommog = libx.mkHost {hostName = "zoth-ommog";};
-      ythogtha = libx.mkHost {hostName = "ythogtha";};
-    };
-
     homeConfigurations = {
-      "thamenato@zoth-ommog" = libx.mkHome {hostName = "zoth-ommog";};
-      "thamenato@kassogtha" = libx.mkHome {hostName = "kassogtha";};
-      "thamenato@ythogtha" = libx.mkHome {hostName = "ythogtha";};
+      "${username}@zoth-ommog" = mkHome {hostName = "zoth-ommog";};
+      "${username}@kassogtha" = mkHome {hostName = "kassogtha";};
+      "${username}@ythogtha" = mkHome {hostName = "ythogtha";};
     };
   };
 }
