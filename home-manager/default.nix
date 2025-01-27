@@ -12,6 +12,11 @@
     username = "thamenato";
     homeDirectory = "/home/thamenato";
 
+    shellAliases = {
+      nh-home = "nh home switch -a $HOME/dotfiles";
+      nh-os = "nh os switch -a $HOME/Projects/nixos-hosts";
+    };
+
     file = {
       ".gnupg/gpg-agent.conf".text = ''
         pinentry-program /run/current-system/sw/bin/pinentry
