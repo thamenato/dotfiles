@@ -5,6 +5,7 @@
     ./qt.nix
     ./services.nix
     ./programs
+    ./services
     ./wayland
   ];
 
