@@ -21,6 +21,7 @@
     nvf.url = "github:notashelf/nvf";
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
     hyprland.url = "github:hyprwm/Hyprland";
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
   outputs = inputs @ {
@@ -38,6 +39,11 @@
 
     mkHome = {hostName}: (inputs.home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
+
+      extraSpecialArgs = {
+        zen-browser = inputs.zen-browser.packages."${system}".default;
+      };
+
       modules = [
         inputs.nvf.homeManagerModules.default
         ./home-manager

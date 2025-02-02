@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  zen-browser,
+  ...
+}: {
   home.packages = with pkgs; [
     # terminal
     age
@@ -38,6 +42,8 @@
     nerd-fonts.noto
     nerd-fonts.jetbrains-mono
     nerd-fonts.space-mono
+
+    zen-browser
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
