@@ -37,11 +37,21 @@
       config.allowUnfree = true;
     };
 
+    mkReadFolder = dir: let
+      fileList = builtins.readDir dir;
+      mkFileAttr = name: type:
+        if type == "regular"
+        then "${dir}/${name}"
+        else null;
+    in
+      pkgs.lib.filterAttrs (_name: value: value != null) (pkgs.lib.mapAttrs mkFileAttr fileList);
+
     mkHome = {hostName}: (inputs.home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
 
       extraSpecialArgs = {
         zen-browser = inputs.zen-browser.packages."${system}".default;
+        backgrounds = mkReadFolder ./misc/backgrounds;
       };
 
       modules = [

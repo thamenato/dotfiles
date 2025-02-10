@@ -1,25 +1,19 @@
 {
-  wayland.windowManager.sway = let
-    monitorMain = "DP-1";
+  lib,
+  backgrounds,
+  ...
+}: {
+  wayland.windowManager = let
+    qhdUltraWide = "5120x1440@120";
   in {
-    config = {
-      workspaceOutputAssign = [
-        {
-          workspace = "1";
-          output = monitorMain;
-        }
-      ];
-
-      output = let
-        qhdUltraWide = "5120x1440";
-        bgMain = ../../misc/backgrounds/wallhaven-d522z3_5120x1440.png;
-      in {
-        ${monitorMain} = {
-          position = "0,0";
-          bg = "${bgMain} fit";
-          res = qhdUltraWide;
-        };
+    hyprland = {
+      settings = {
+        monitor = lib.mkForce [",${qhdUltraWide},auto,1"];
       };
     };
+  };
+  services.hyprpaper.settings = {
+    preload = builtins.attrValues backgrounds;
+    wallpaper = [",${backgrounds."wallhaven-1p5y29_5120x1440.png"}"];
   };
 }
