@@ -16,6 +16,7 @@
       exec-once = [
         "systemctl --user start hyprpolkitagent"
         "waybar"
+        "hyprpaper"
       ];
 
       monitor = [
