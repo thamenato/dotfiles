@@ -14,6 +14,6 @@
   };
   services.hyprpaper.settings = {
     preload = builtins.attrValues backgrounds;
-    wallpaper = [",${backgrounds."wallhaven-1p5y29_5120x1440.png"}"];
+    wallpaper = [",${backgrounds."wallhaven-oxlo85_5120x1440.png"}"];
   };
 }
