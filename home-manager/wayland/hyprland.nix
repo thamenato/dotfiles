@@ -195,14 +195,16 @@
       ];
 
       # laptop multimedia keys
-      bindel = [
+      bindel = let
+        brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
+      in [
         # volume
         ", XF86AudioRaiseVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 5%+"
         ", XF86AudioLowerVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 5%-"
 
         # backlight
-        ", XF86MonBrightnessUp, exec, brightnessctl s 10%+"
-        ", XF86MonBrightnessDown, exec, brightnessctl s 10%-"
+        ", XF86MonBrightnessUp, exec, ${brightnessctl} s 10%+"
+        ", XF86MonBrightnessDown, exec, ${brightnessctl} s 10%-"
       ];
     };
   };
