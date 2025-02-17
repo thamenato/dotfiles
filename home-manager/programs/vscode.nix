@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   programs.vscode = {
-    enable = true;
+    enable = false;
 
     # do not let VSCode alter the folder, only Home-Manager
     mutableExtensionsDir = false;
