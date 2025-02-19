@@ -8,12 +8,19 @@
 in {
   targets.genericLinux.enable = true;
 
-  home.packages = with pkgs; [
-    nh
-    slack
-    _1password-gui
-    _1password-cli
-  ];
+  home = {
+    sessionVariables = {
+      GTK_THEME = "Sweet-Dark";
+    };
+
+    packages = with pkgs; [
+      _1password-cli
+      _1password-gui
+      gnome-tweaks
+      nh
+      slack
+    ];
+  };
 
   programs = {
     alacritty.enable = disabled;
@@ -24,20 +31,33 @@ in {
     rofi.enable = disabled;
     # vscode.enable = enabled;
     waybar.enable = disabled;
-    gnome-shell = {
-      enable = true;
-      theme = {
-        name = "Plata-Noir";
-        package = pkgs.plata-theme;
-      };
-      extensions = [
-        {package = pkgs.gnomeExtensions.tailscale-status;}
-      ];
-    };
   };
 
   services = {
     hyprpaper.enable = disabled;
+    easyeffects.enable = disabled;
+  };
+
+  gtk = {
+    gtk3.extraConfig = lib.mkForce {
+      gtk-application-prefer-dark-theme = 1;
+    };
+
+    gtk4.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
+    };
+  };
+
+  dconf.settings = {
+    "org/gnome/shell" = {
+      disable-user-extensions = false;
+    };
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+    };
+    "org/gnome/shell/extensions/user-theme" = {
+      name = "Sweet-Dark";
+    };
   };
 
   wayland.windowManager.hyprland.enable = disabled;
