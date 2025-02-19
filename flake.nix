@@ -96,6 +96,7 @@
       "${username}@zoth-ommog" = mkHome {hostName = "zoth-ommog";};
       "${username}@kassogtha" = mkHome {hostName = "kassogtha";};
       "${username}@ythogtha" = mkHome {hostName = "ythogtha";};
+      "${username}@thales-precision-5490" = mkHome {hostName = "thales-precision-5490";};
     };
   };
 }
