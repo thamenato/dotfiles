@@ -29,7 +29,7 @@ in {
     hyprlock.enable = disabled;
     kitty.enable = enabled;
     rofi.enable = disabled;
-    # vscode.enable = enabled;
+    vscode.enable = enabled;
     waybar.enable = disabled;
   };
 

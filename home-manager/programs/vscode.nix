@@ -29,7 +29,7 @@
       nefrob.vscode-just-syntax
       redhat.ansible
       redhat.vscode-yaml
-      rust-lang.rust-analyzer
+      # rust-lang.rust-analyzer
       streetsidesoftware.code-spell-checker
       sumneko.lua
       tamasfe.even-better-toml
