@@ -66,6 +66,7 @@
         enable = true;
         gitsigns.enable = true;
         gitsigns.codeActions.enable = false;
+        git-conflict.enable = true;
       };
 
       autopairs.nvim-autopairs.enable = true;
