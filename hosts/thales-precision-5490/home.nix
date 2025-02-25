@@ -16,6 +16,7 @@ in {
     packages = with pkgs; [
       _1password-cli
       _1password-gui
+      devbox
       gnome-tweaks
       nh
       slack
@@ -45,13 +46,29 @@ in {
 
   programs = {
     alacritty.enable = disabled;
-    ghostty.enable = disabled;
     go.enable = disabled;
     hyprlock.enable = disabled;
-    kitty.enable = enabled;
+    kitty.enable = disabled;
     rofi.enable = disabled;
     vscode.enable = enabled;
     waybar.enable = disabled;
+
+    ghostty = {
+      package = null;
+      settings = {
+        ###########################
+        # Neutron
+        # Raycast_Dark
+        # Monokai Soda
+        # Mathias
+        # GitHub-Dark-High-Contrast
+        theme = "Neutron";
+        ###########################
+
+        window-decoration = lib.mkForce true;
+        background-opacity = 0.98;
+      };
+    };
   };
 
   services = {

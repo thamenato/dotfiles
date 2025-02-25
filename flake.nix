@@ -22,6 +22,10 @@
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
     hyprland.url = "github:hyprwm/Hyprland";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    # ghostty-shaders = {
+    #   url = "github:hackr-sh/ghostty-shaders";
+    #   flake = false;
+    # };
   };
 
   outputs = inputs @ {
