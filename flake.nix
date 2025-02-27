@@ -61,7 +61,7 @@
       modules = [
         inputs.nvf.homeManagerModules.default
         ./home-manager
-        ./hosts/${hostName}/home.nix
+        ./hosts/${hostName}
       ];
     });
   in {
