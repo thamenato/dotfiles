@@ -40,6 +40,9 @@
           "XF86AudioLowerVolume" = "${pactl} set-sink-volume @DEFAULT_SINK@ -10% && ${refresh_i3status}";
           "XF86AudioMute" = "${pactl} set-sink-mute @DEFAULT_SINK@ toggle && ${refresh_i3status}";
           "XF86AudioMicMute" = "${pactl} set-source-mute @DEFAULT_SOURCE@ toggle && ${refresh_i3status}";
+
+          # monitor stuff bc X11 sucks
+          "${modifier}+F12" = "exec --no-startup-id autorandr --change";
         };
 
       gaps = {
