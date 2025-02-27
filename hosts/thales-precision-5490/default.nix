@@ -23,6 +23,7 @@
       devbox
       gnome-tweaks
       nh
+      signal-desktop
       slack
     ];
   };
