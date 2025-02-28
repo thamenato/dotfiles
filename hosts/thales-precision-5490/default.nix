@@ -7,7 +7,7 @@
     ./dconf.nix
     ./gtk.nix
     ./i3.nix
-    ./programs.nix
+    ./programs
     ./services.nix
     ./xdg.nix
   ];
