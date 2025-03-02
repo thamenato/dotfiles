@@ -128,7 +128,7 @@
       bind =
         [
           "$mod, d, exec, ${menu}"
-          "$mod, q, killactive,"
+          "$mod shift, q, killactive,"
           "ctrl alt, delete, exit,"
           "ctrl alt, l, exec, hyprlock"
           "$mod, return, exec, ${terminal}"
