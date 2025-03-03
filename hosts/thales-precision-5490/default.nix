@@ -8,7 +8,7 @@
     ./gtk.nix
     ./i3.nix
     ./programs
-    ./services.nix
+    ./services
     ./xdg.nix
   ];
 
