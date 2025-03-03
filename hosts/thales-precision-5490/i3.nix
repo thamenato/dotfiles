@@ -4,7 +4,9 @@
   config,
   ...
 }: {
-  xsession.windowManager.i3 = {
+  xsession.windowManager.i3 = let
+    background = ../../misc/backgrounds/wallhaven-oxlo85_5120x1440.png;
+  in {
     enable = true;
 
     config = {
@@ -91,53 +93,22 @@
         };
       };
 
-      bars = [
-        # {
-        #   mode = "dock";
-        #   hiddenState = "hide";
-        #   position = "top";
-        #   workspaceButtons = true;
-        #   workspaceNumbers = true;
-        #   statusCommand = "${pkgs.i3status}/bin/i3status";
-        #   fonts = {
-        #     names = ["monospace"];
-        #     size = 8.0;
-        #   };
-        #   trayOutput = "primary";
-        #   colors = {
-        #     background = "#000000";
-        #     statusline = "#ffffff";
-        #     separator = "#666666";
-        #     focusedWorkspace = {
-        #       border = "#4c7899";
-        #       background = "#285577";
-        #       text = "#ffffff";
-        #     };
-        #     activeWorkspace = {
-        #       border = "#333333";
-        #       background = "#5f676a";
-        #       text = "#ffffff";
-        #     };
-        #     inactiveWorkspace = {
-        #       border = "#333333";
-        #       background = "#222222";
-        #       text = "#888888";
-        #     };
-        #     urgentWorkspace = {
-        #       border = "#2f343a";
-        #       background = "#900000";
-        #       text = "#ffffff";
-        #     };
-        #     bindingMode = {
-        #       border = "#2f343a";
-        #       background = "#900000";
-        #       text = "#ffffff";
-        #     };
-        #   };
-        # }
-      ];
+      # disable bars, using services.polybar instead
+      bars = [];
 
       startup = [
+        {
+          # define current window config
+          command = "${pkgs.autorandr}/bin/autorandr --change";
+          always = false;
+          notification = false;
+        }
+        {
+          # restart polybar if window size changed
+          command = "systemctl --user restart polybar.service";
+          always = false;
+          notification = false;
+        }
         {
           # NetworkManager is the most popular way to manage wireless networks on Linux,
           # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -160,6 +131,12 @@
         {
           # audio tray applet
           command = "systemctl --user start pasystray.service";
+          always = false;
+          notification = false;
+        }
+        {
+          # background
+          command = "${pkgs.feh}/bin/feh --bg-scale ${background}";
           always = false;
           notification = false;
         }
