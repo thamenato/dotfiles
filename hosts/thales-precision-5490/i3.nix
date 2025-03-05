@@ -55,18 +55,29 @@
       };
 
       assigns = {
-        "2" = [{class = "^slack$";}];
+        "2" = [{class = "slack";}];
       };
 
       floating = {
         criteria = [{class = "Pavucontrol";}];
       };
 
-      window = {
+      colors.focused = {
+        background = "#285577";
+        border = "#29c238";
+        text = "#ffffff";
+        indicator = "#2e9ef4";
+        childBorder = "#29c238";
+      };
+
+      window = let
+        borderSize = 2;
+      in {
+        border = borderSize;
         commands = [
           {
             # force border on ghostty, default doesn't work
-            command = "border pixel 2";
+            command = "border pixel ${toString borderSize}";
             criteria = {
               class = "ghostty";
             };

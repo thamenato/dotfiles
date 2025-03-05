@@ -14,7 +14,7 @@
       window.opacity = 0.9;
 
       font = {
-        size = 11;
+        size = 10;
         normal = {
           family = "JetBrainsMono NF";
           style = "Regular";

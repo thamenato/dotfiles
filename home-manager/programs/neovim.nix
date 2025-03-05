@@ -16,8 +16,8 @@
 
       theme = {
         enable = true;
-        name = "catppuccin";
-        style = "mocha";
+        name = "oxocarbon";
+        style = "dark";
       };
 
       lsp = {
@@ -78,10 +78,15 @@
       };
 
       spellcheck.enable = true;
+
+      comments = {
+        comment-nvim.enable = true;
+      };
+
       statusline = {
         lualine = {
           enable = true;
-          theme = "catppuccin";
+          # theme = "catppuccin";
         };
       };
 

@@ -1,4 +1,8 @@
-{lib, ...}: let
+{
+  lib,
+  pkgs,
+  ...
+}: let
   disabled = lib.mkForce false;
   enabled = lib.mkForce true;
 in {
@@ -9,7 +13,10 @@ in {
   ];
 
   programs = {
-    alacritty.enable = disabled;
+    alacritty = {
+      enable = enabled;
+      package = pkgs.emptyDirectory;
+    };
     go.enable = disabled;
     hyprlock.enable = disabled;
     kitty.enable = disabled;
