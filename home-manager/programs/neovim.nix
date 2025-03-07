@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   programs.nvf = {
     enable = true;
 
@@ -103,6 +103,13 @@
             nix = "110";
             go = ["90" "130"];
           };
+        };
+      };
+
+      lazy.plugins = with pkgs.vimPlugins; {
+        vim-just = {
+          package = vim-just;
+          ft = "just";
         };
       };
     };
