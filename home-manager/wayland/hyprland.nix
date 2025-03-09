@@ -104,7 +104,7 @@
         follow_mouse = 1;
         sensitivity = 0; # 0 means no modification.
         touchpad = {
-          natural_scroll = false;
+          natural_scroll = true;
         };
       };
 
