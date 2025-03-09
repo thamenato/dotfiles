@@ -3,6 +3,7 @@
     enable = true;
 
     settings.vim = {
+      # neovim config
       viAlias = false;
       vimAlias = true;
       preventJunkFiles = true;
@@ -20,6 +21,7 @@
         style = "dark";
       };
 
+      # nvf plugins
       lsp = {
         enable = true;
         formatOnSave = true;
@@ -53,6 +55,15 @@
         terraform.enable = true;
       };
 
+      mini = {
+        diff.enable = true;
+        files.enable = true;
+        git.enable = true;
+        icons.enable = true;
+        statusline.enable = true;
+        # tabline.enable = true;
+      };
+
       filetree = {
         neo-tree.enable = true;
       };
@@ -63,9 +74,7 @@
       };
 
       git = {
-        enable = true;
         gitsigns.enable = true;
-        gitsigns.codeActions.enable = false;
         git-conflict.enable = true;
       };
 
@@ -80,19 +89,23 @@
       spellcheck.enable = true;
 
       comments = {
+        # https://github.com/numToStr/Comment.nvim
         comment-nvim.enable = true;
       };
 
-      statusline = {
-        lualine = {
-          enable = true;
-          # theme = "catppuccin";
-        };
-      };
+      # statusline = {
+      #   lualine = {
+      #     enable = true;
+      #     # theme = "catppuccin";
+      #   };
+      # };
 
       telescope.enable = true;
+
       snippets.luasnip.enable = true;
+
       autocomplete.nvim-cmp.enable = true;
+
       ui = {
         noice.enable = true;
         smartcolumn = {
@@ -106,6 +119,7 @@
         };
       };
 
+      # custom plugins
       lazy.plugins = with pkgs.vimPlugins; {
         vim-just = {
           package = vim-just;
