@@ -115,6 +115,13 @@
           notification = false;
         }
         {
+          # configure display power mgmt via xorg-xset
+          # https://wiki.archlinux.org/title/Display_Power_Management_Signaling
+          command = "xset s off";
+          always = false;
+          notification = false;
+        }
+        {
           # restart polybar if window size changed
           command = "systemctl --user restart polybar.service";
           always = false;
@@ -148,7 +155,7 @@
         {
           # background
           command = "${pkgs.feh}/bin/feh --bg-scale ${background}";
-          always = false;
+          always = true;
           notification = false;
         }
       ];
