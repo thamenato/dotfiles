@@ -60,6 +60,18 @@
         ./hosts/${hostName}
       ];
     });
+
+    mkHomeConfigurations = hosts:
+      builtins.listToAttrs (
+        map
+        (hostName: {
+          name = "${username}@${hostName}";
+          value = mkHome {inherit hostName;};
+        })
+        hosts
+      );
+
+    hostDirs = builtins.attrNames (builtins.readDir ./hosts);
   in {
     checks = {
       pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
@@ -92,11 +104,6 @@
       ];
     };
 
-    homeConfigurations = {
-      "${username}@zoth-ommog" = mkHome {hostName = "zoth-ommog";};
-      "${username}@kassogtha" = mkHome {hostName = "kassogtha";};
-      "${username}@ythogtha" = mkHome {hostName = "ythogtha";};
-      "${username}@thales-precision-5490" = mkHome {hostName = "thales-precision-5490";};
-    };
+    homeConfigurations = mkHomeConfigurations hostDirs;
   };
 }
