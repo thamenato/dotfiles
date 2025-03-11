@@ -59,7 +59,10 @@
       };
 
       floating = {
-        criteria = [{class = "Pavucontrol";}];
+        criteria = [
+          {class = "Pavucontrol";}
+          {class = "zoom";}
+        ];
       };
 
       colors.focused = {
