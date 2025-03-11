@@ -17,6 +17,7 @@
       lg = "lazygit";
       nh-home = "nh home switch -a $HOME/dotfiles";
       nh-os = "nh os switch -a $HOME/Projects/nixos-hosts";
+      man = "batman";
     };
 
     file = {
