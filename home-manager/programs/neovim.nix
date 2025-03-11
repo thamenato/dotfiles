@@ -21,7 +21,6 @@
         style = "dark";
       };
 
-      # nvf plugins
       lsp = {
         enable = true;
         formatOnSave = true;
@@ -36,6 +35,7 @@
 
         # languages
         bash.enable = true;
+        cue.enable = true;
         go.enable = true;
         html.enable = true;
         markdown = {
@@ -65,7 +65,7 @@
       };
 
       filetree = {
-        neo-tree.enable = true;
+        nvimTree.enable = true;
       };
 
       binds = {
@@ -92,13 +92,6 @@
         # https://github.com/numToStr/Comment.nvim
         comment-nvim.enable = true;
       };
-
-      # statusline = {
-      #   lualine = {
-      #     enable = true;
-      #     # theme = "catppuccin";
-      #   };
-      # };
 
       telescope.enable = true;
 
