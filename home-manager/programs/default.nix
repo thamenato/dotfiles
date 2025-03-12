@@ -8,6 +8,7 @@
     ./eza.nix
     ./fd.nix
     ./fzf.nix
+    ./gh.nix
     ./ghostty.nix
     ./git.nix
     ./go.nix
