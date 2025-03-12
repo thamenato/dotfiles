@@ -35,7 +35,6 @@
     font-awesome
     powerline-fonts
     powerline-symbols
-    ibm-plex
     nerd-fonts.fira-mono
     nerd-fonts.fira-code
     nerd-fonts.hack

@@ -61,7 +61,10 @@
         git.enable = true;
         icons.enable = true;
         statusline.enable = true;
-        # tabline.enable = true;
+      };
+
+      visuals = {
+        nvim-web-devicons.enable = true;
       };
 
       filetree = {

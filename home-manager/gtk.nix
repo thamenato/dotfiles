@@ -18,7 +18,7 @@
     };
 
     font = {
-      name = "IBM Plex Sans";
+      name = "JetBrainMono NF";
       size = 11;
     };
 
