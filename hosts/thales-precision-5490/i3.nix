@@ -20,6 +20,9 @@
         inherit (config.xsession.windowManager.i3.config) modifier;
         pactl = "exec --no-startup-id pactl";
         refresh_i3status = "killall -SIGUSR1 i3status";
+        maim = "exec --no-startup-id ${pkgs.maim}/bin/maim";
+        xdotool = "${pkgs.xdotool}/bin/xdotool getactivewindow";
+        ssOutput = "/home/$USER/Pictures/$(date -u +%Y-%m-%d_%H-%M-%S)-screenshot.jpg";
       in
         lib.mkOptionDefault {
           "${modifier}+Shift+q" = "kill";
@@ -45,6 +48,11 @@
 
           # monitor stuff bc X11 sucks
           "${modifier}+F12" = "exec --no-startup-id autorandr --change";
+
+          # screenshot
+          "Print" = "${maim} ${ssOutput}";
+          "${modifier}+Print" = "${maim} --window $(${xdotool}) ${ssOutput}";
+          "Shift+Print" = "${maim} --select ${ssOutput}";
         };
 
       gaps = {
