@@ -10,7 +10,10 @@
       # UltraViolent
       # xcodedarkhc
       theme = "xcodedarkhc";
-      font-size = 10;
+      # font
+      font-family = "ZedMono NF";
+      font-size = 11;
+      # window
       title = " ";
       window-decoration = false;
     };

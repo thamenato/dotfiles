@@ -18,7 +18,7 @@
     };
 
     font = {
-      name = "JetBrainMono NF";
+      name = "Iosevka NF";
       size = 11;
     };
 

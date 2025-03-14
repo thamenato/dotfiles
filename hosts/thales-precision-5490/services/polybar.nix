@@ -58,7 +58,7 @@
         # separator = "|";
         # separator-foreground = colorGray;
 
-        font-0 = "Hack Nerd Font:size=9;0";
+        font-0 = "Iosevka Nerd Font:size=9;0";
 
         modules-left = "i3";
         modules-center = "date";

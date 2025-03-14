@@ -33,14 +33,11 @@
 
     # fonts
     font-awesome
-    powerline-fonts
-    powerline-symbols
-    nerd-fonts.fira-mono
-    nerd-fonts.fira-code
-    nerd-fonts.hack
-    nerd-fonts.noto
+    # powerline-fonts
+    # powerline-symbols
     nerd-fonts.jetbrains-mono
-    nerd-fonts.space-mono
+    nerd-fonts.iosevka
+    nerd-fonts.zed-mono
 
     zen-browser
 
