@@ -18,7 +18,7 @@
         transparency = 10;
         # frame_color = "#eceff1";
         frame_width = 2;
-        font = "Hack 9";
+        font = "Iosevka NF 10";
       };
 
       urgency_normal = {
