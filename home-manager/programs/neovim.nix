@@ -63,6 +63,10 @@
         statusline.enable = true;
       };
 
+      treesitter.grammars = with pkgs.tree-sitter-grammars; [
+        tree-sitter-just
+      ];
+
       visuals = {
         nvim-web-devicons.enable = true;
       };
@@ -115,13 +119,13 @@
         };
       };
 
-      # custom plugins
-      lazy.plugins = with pkgs.vimPlugins; {
-        vim-just = {
-          package = vim-just;
-          ft = "just";
-        };
-      };
+      # custom lazy plugins
+      # lazy.plugins = with pkgs.vimPlugins; {
+      #   vim-just = {
+      #     package = vim-just;
+      #     ft = "just";
+      #   };
+      # };
     };
   };
 }
