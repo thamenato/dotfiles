@@ -14,6 +14,10 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixGL = {
+      url = "github:nix-community/nixGL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -27,6 +31,7 @@
   outputs = inputs @ {
     self,
     nixpkgs,
+    nixGL,
     ...
   }: let
     system = "x86_64-linux";
@@ -34,7 +39,10 @@
 
     pkgs = import nixpkgs {
       inherit system;
-      config.allowUnfree = true;
+      config = {
+        allowUnfree = true;
+        allowUnfreePredicate = _: true;
+      };
     };
 
     mkReadFolder = dir: let
@@ -50,6 +58,7 @@
       inherit pkgs;
 
       extraSpecialArgs = {
+        inherit nixGL;
         zen-browser = inputs.zen-browser.packages."${system}".default;
         backgrounds = mkReadFolder ./misc/backgrounds;
       };

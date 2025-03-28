@@ -1,6 +1,10 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   programs.ghostty = {
-    package = null;
+    package = config.lib.nixGL.wrap pkgs.ghostty;
     settings = {
       gtk-custom-css = let
         customCSS = pkgs.writeText "custom.css" ''

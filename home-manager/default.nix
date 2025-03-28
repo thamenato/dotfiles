@@ -13,9 +13,12 @@
     username = "thamenato";
     homeDirectory = "/home/thamenato";
 
-    shellAliases = {
+    shellAliases = let
+      nhHome = "nh home switch -a $HOME/dotfiles";
+    in {
       lg = "lazygit";
-      nh-home = "nh home switch -a $HOME/dotfiles";
+      nh-home = nhHome;
+      nh-ubuntu = "${nhHome} -- --impure";
       nh-os = "nh os switch -a $HOME/Projects/nixos-hosts";
       man = "batman";
     };

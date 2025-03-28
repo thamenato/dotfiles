@@ -1,16 +1,18 @@
 {
+  config,
   pkgs,
-  lib,
+  nixGL,
   ...
 }: {
   imports = [
     ./dconf.nix
     ./gtk.nix
-    ./i3.nix
+    # ./i3.nix
     ./programs
     ./services
-    # ./xdg.nix
   ];
+
+  targets.genericLinux.enable = true;
 
   home = {
     sessionVariables = {
@@ -28,8 +30,23 @@
       slack
       spotify
     ];
+
+    file = {
+      ".config/nixpkgs/config.nix".text = ''
+        { allowUnfree = true; }
+      '';
+    };
   };
 
-  targets.genericLinux.enable = true;
-  wayland.windowManager.hyprland.enable = lib.mkForce false;
+  xdg.configFile."environment.d/envvars.conf".text = ''
+    PATH="$HOME/.nix-profile/bin:$PATH"
+  '';
+
+  nixGL = {
+    inherit (nixGL) packages;
+
+    defaultWrapper = "nvidiaPrime";
+  };
+
+  wayland.windowManager.hyprland.package = config.lib.nixGL.wrap pkgs.hyprland;
 }
