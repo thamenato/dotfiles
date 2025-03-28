@@ -98,6 +98,7 @@
         yq
         nixpkgs-fmt
         sops
+        nh
         # language server
         yaml-language-server
         nil

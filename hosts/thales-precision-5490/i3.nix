@@ -5,7 +5,7 @@
   ...
 }: {
   xsession.windowManager.i3 = let
-    background = ../../misc/backgrounds/wallhaven-oxlo85_5120x1440.png;
+    background = ../../misc/backgrounds/wallhaven-rrvygj_5120x1440.png;
   in {
     enable = true;
 
