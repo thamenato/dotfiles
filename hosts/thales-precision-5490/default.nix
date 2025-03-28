@@ -9,12 +9,13 @@
     ./i3.nix
     ./programs
     ./services
-    ./xdg.nix
+    # ./xdg.nix
   ];
 
   home = {
     sessionVariables = {
       GTK_THEME = "Sweet-Dark";
+      BROWSER = "zen";
     };
 
     packages = with pkgs; [
@@ -25,6 +26,7 @@
       nh
       signal-desktop
       slack
+      spotify
     ];
   };
 
