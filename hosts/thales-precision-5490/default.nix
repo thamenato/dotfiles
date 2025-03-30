@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   nixGL,
   ...
@@ -7,9 +6,9 @@
   imports = [
     ./dconf.nix
     ./gtk.nix
-    # ./i3.nix
     ./programs
     ./services
+    ./wayland.nix
   ];
 
   targets.genericLinux.enable = true;
@@ -45,8 +44,6 @@
   nixGL = {
     inherit (nixGL) packages;
 
-    defaultWrapper = "nvidiaPrime";
+    defaultWrapper = "mesa";
   };
-
-  wayland.windowManager.hyprland.package = config.lib.nixGL.wrap pkgs.hyprland;
 }

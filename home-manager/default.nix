@@ -18,7 +18,7 @@
     in {
       lg = "lazygit";
       nh-home = nhHome;
-      nh-ubuntu = "${nhHome} -- --impure";
+      nh-impure = "${nhHome} -- --impure";
       nh-os = "nh os switch -a $HOME/Projects/nixos-hosts";
       man = "batman";
     };
