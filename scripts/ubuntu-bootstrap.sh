@@ -23,6 +23,9 @@ sudo ubuntu-drivers install
 curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/noble.noarmor.gpg | sudo tee /usr/share/keyrings/tailscale-archive-keyring.gpg >/dev/null
 curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/noble.tailscale-keyring.list | sudo tee /etc/apt/sources.list.d/tailscale.list
 
+# Install zoom-client
+sudo snap install zoom-client
+
 # Configure sway entry
 sudo tee /usr/share/wayland-sessions/sway.desktop <<EOF
 [Desktop Entry]
