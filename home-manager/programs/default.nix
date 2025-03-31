@@ -17,12 +17,13 @@
     ./lazygit.nix
     ./neovim.nix
     ./ripgrep.nix
+    ./rofi
     ./swaylock.nix
     ./tmux.nix
     ./vscode.nix
+    ./waybar
+    ./yazi.nix
     ./zoxide.nix
     ./zsh.nix
-    ./rofi
-    ./waybar
   ];
 }
