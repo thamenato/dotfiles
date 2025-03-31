@@ -3,10 +3,6 @@
   backgrounds,
   ...
 }: {
-  # home = {
-  #   packages = with pkgs; [];
-  # };
-
   wayland.windowManager = let
     output = "eDP-1";
     resolution = "1920x1080@144.00Hz";

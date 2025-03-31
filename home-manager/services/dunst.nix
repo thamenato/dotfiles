@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   services.dunst = {
     # notification
-    enable = true;
+    enable = false;
 
     iconTheme = {
       package = pkgs.adwaita-icon-theme;

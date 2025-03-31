@@ -32,6 +32,11 @@ tooltip label {
     border-bottom: 2px solid white;
 }
 
+#workspaces button.focused {
+    background: #64727D;
+    border-bottom: 2px solid white;
+}
+
 #mode,
 #clock,
 #network,
@@ -87,8 +92,9 @@ tooltip label {
 }
 
 #custom-hostname {
+    font-size: 9px;
     padding: 0 5px;
-    border-bottom: 2px solid green;
+    /* border-bottom: 2px solid green; */
 }
 
 #custom-grimshot:hover,

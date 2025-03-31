@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   services.polybar = {
-    enable = true;
+    enable = false;
     package = pkgs.polybarFull;
     script = ''
       polybar top &

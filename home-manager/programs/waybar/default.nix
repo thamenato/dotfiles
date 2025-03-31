@@ -10,7 +10,8 @@
         position = "top";
         height = 26;
         modules-left = [
-          "custom/hostname"
+          # "custom/hostname"
+          "sway/workspaces"
           "hyprland/workspaces"
         ];
         modules-center = ["clock"];
@@ -27,6 +28,8 @@
         ];
 
         # modules
+        "sway/workspaces" = {
+        };
         "hyprland/workspaces" = {
           format = "{icon}";
           on-scroll-up = "hyprctl dispatch workspace e+1";

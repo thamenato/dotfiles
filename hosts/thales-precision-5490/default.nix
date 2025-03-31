@@ -7,7 +7,7 @@
     ./dconf.nix
     ./gtk.nix
     ./programs
-    ./services
+    ./services.nix
     ./wayland.nix
   ];
 
