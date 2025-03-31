@@ -9,6 +9,7 @@
     ./programs
     ./services.nix
     ./wayland.nix
+    ./xdg.nix
   ];
 
   targets.genericLinux.enable = true;
@@ -22,11 +23,14 @@
     packages = with pkgs; [
       _1password-cli
       _1password-gui
+      arandr
       devbox
       gnome-tweaks
       nh
+      pwvucontrol
       signal-desktop
       slack
+      slurp
       spotify
     ];
 

@@ -111,5 +111,24 @@
         };
       };
     };
+    extraConfig = ''
+      # only disable laptop monitor when external monitor is connected
+      bindswitch --reload --locked lid:on exec "[ $(swaymsg -t get_outputs | jq '. | length') -gt 1 ] && swaymsg output eDP-1 disable"
+      bindswitch --reload --locked lid:off output eDP-1 enable
+
+      # xdg portal config
+      exec systemctl --user set-environment XDG_CURRENT_DESKTOP=sway
+
+      exec systemctl --user import-environment DISPLAY \
+        SWAYSOCK \
+        WAYLAND_DISPLAY \
+        XDG_CURRENT_DESKTOP
+
+      exec hash dbus-update-activation-environment 2>/dev/null && \
+        dbus-update-activation-environment --systemd DISPLAY \
+          SWAYSOCK \
+          XDG_CURRENT_DESKTOP=sway \
+          WAYLAND_DISPLAY
+    '';
   };
 }

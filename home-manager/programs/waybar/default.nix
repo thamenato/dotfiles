@@ -81,7 +81,10 @@
           };
         };
 
-        pulseaudio = {
+        pulseaudio = let
+          pwvucontrol = "${pkgs.pwvucontrol}/bin/pwvucontrol";
+          pactl = "${pkgs.pulseaudio}/bin/pactl";
+        in {
           scroll-step = 1; # %, can be a float
           format = "{volume}% {icon}";
           format-bluetooth = "{volume}% {icon}  {format_source}";
@@ -98,9 +101,9 @@
             car = "";
             default = [""];
           };
-          on-click = "pwvucontrol";
-          on-scroll-up = "pactl set-sink-volume @DEFAULT_SINK@ +2%";
-          on-scroll-down = "pactl set-sink-volume @DEFAULT_SINK@ -2%";
+          on-click = "${pwvucontrol}";
+          on-scroll-up = "${pactl} set-sink-volume @DEFAULT_SINK@ +5%";
+          on-scroll-down = "${pactl} set-sink-volume @DEFAULT_SINK@ -5%";
         };
 
         battery = {

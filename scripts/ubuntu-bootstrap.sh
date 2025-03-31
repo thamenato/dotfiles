@@ -3,7 +3,10 @@
 sudo apt-get update -y
 sudo apt-get upgrade -y
 
-sudo apt-get install curl git -y
+sudo apt-get install -y \
+    curl \
+    git \
+    xdg-desktop-portal-wlr
 
 # Install nix
 curl --proto '=https' --tlsv1.2 -sSf \
