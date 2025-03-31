@@ -24,10 +24,11 @@ curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/noble.noarmor.gpg | sudo tee
 curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/noble.tailscale-keyring.list | sudo tee /etc/apt/sources.list.d/tailscale.list
 
 # Configure sway entry
-echo """[Desktop Entry]
+sudo tee /usr/share/wayland-sessions/sway.desktop <<EOF
+[Desktop Entry]
 Name=Sway
 Comment=An i3-compatible Wayland compositor
 Exec=$(which sway)
 Type=Application
 DesktopNames=sway;wlroots
-""" | sudo tee /usr/share/wayland-sessions/sway.desktop
+EOF
