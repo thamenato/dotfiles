@@ -5,10 +5,12 @@ in {
   imports = [
     ./ghostty.nix
     ./starship.nix
+    ./tofi.nix
   ];
 
   programs = {
     go.enable = disabled;
     vscode.enable = enabled;
+    rofi.enable = disabled;
   };
 }

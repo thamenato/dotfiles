@@ -5,7 +5,7 @@
     settings = let
       modifier = "SUPER";
       terminal = "${pkgs.ghostty}/bin/ghostty";
-      menu = "${pkgs.rofi}/bin/rofi -show drun -show-icons";
+      menu = "rofi -show drun -show-icons";
     in {
       "$mod" = "${modifier}";
 

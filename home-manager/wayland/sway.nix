@@ -5,7 +5,7 @@
 }: {
   wayland.windowManager.sway = let
     modifier = "Mod4";
-    menu = "rofi -show drun | xargs swaymsg exec";
+    menu = "tofi-drun | xargs swaymsg exec";
     terminal = "${pkgs.ghostty}/bin/ghostty";
   in {
     enable = false;
@@ -60,8 +60,9 @@
         };
 
       startup = [
-        {command = "easyeffects --gapplication-service";}
         {command = "nm-applet --indicator";}
+        {command = "slack";}
+        {command = "1password";}
       ];
 
       window.commands = [
@@ -88,6 +89,7 @@
       bars = [{command = "${pkgs.waybar}/bin/waybar";}];
 
       output = {
+        # overwrite this per-host not here
         "*" = {
           # bg = "${background} fit";
         };
