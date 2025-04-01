@@ -25,13 +25,13 @@
       _1password-gui
       arandr
       devbox
-      gnome-tweaks
       nh
       pwvucontrol
       signal-desktop
       slack
       slurp
       spotify
+      uv
     ];
 
     file = {
