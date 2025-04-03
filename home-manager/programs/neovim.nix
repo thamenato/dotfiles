@@ -40,7 +40,9 @@
         html.enable = true;
         markdown = {
           enable = true;
+          format.enable = false;
           extensions.render-markdown-nvim.enable = true;
+          extraDiagnostics.enable = true;
         };
         nix = {
           enable = true;

@@ -5,7 +5,6 @@ in {
   imports = [
     ./ghostty.nix
     ./starship.nix
-    ./tofi.nix
   ];
 
   programs = {

@@ -25,6 +25,7 @@
       _1password-gui
       arandr
       devbox
+      image-roll
       nh
       pwvucontrol
       signal-desktop
@@ -32,6 +33,7 @@
       slurp
       spotify
       uv
+      xfce.thunar
     ];
 
     file = {
