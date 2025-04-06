@@ -89,11 +89,7 @@
 
       autopairs.nvim-autopairs.enable = true;
 
-      utility = {
-        preview = {
-          markdownPreview.enable = true;
-        };
-      };
+      utility = {};
 
       spellcheck.enable = true;
 
@@ -137,20 +133,36 @@
             "venv-selector.cached_venv"
           ];
         };
+        # had this merged to nixpkgs, can remove once it hits unstable
+        neovim-trunk = pkgs.vimUtils.buildVimPlugin {
+          pname = "neovim-trunk";
+          version = "0.1.3";
+          src = pkgs.fetchFromGitHub {
+            owner = "trunk-io";
+            repo = "neovim-trunk";
+            rev = "4465bd62095741812e63b5c0a017889420c212bf";
+            sha256 = "1kwdl25m211crfqzpj1b459qjd955w1i2p675j25dav917bqmwf5";
+          };
+          meta.homepage = "https://github.com/trunk-io/neovim-trunk";
+        };
       in {
         "venv-selector.nvim" = {
           package = venv-selector;
           setup = "require('venv-selector').setup {}";
         };
+        trunk = {
+          package = neovim-trunk;
+          setup = "require('trunk').setup {}";
+        };
       };
 
       # custom lazy plugins
-      # lazy.plugins = with pkgs.vimPlugins; {
-      #   vim-just = {
-      #     package = vim-just;
-      #     ft = "just";
-      #   };
-      # };
+      lazy.plugins = {
+        # vim-just = {
+        #   package = vim-just;
+        #   ft = "just";
+        # };
+      };
     };
   };
 }
