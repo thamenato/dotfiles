@@ -22,8 +22,14 @@
       };
 
       lsp = {
-        enable = true;
         formatOnSave = true;
+        lspSignature.enable = true;
+        lspsaga.enable = true;
+        nvim-docs-view.enable = true;
+      };
+
+      notify = {
+        nvim-notify.enable = true;
       };
 
       languages = {
@@ -71,6 +77,15 @@
 
       visuals = {
         nvim-web-devicons.enable = true;
+        nvim-cursorline = {
+          enable = true;
+          setupOpts = {
+            cursorline.enable = true;
+            cursorword.enable = true;
+          };
+        };
+        highlight-undo.enable = true;
+        indent-blankline.enable = true;
       };
 
       filetree = {
@@ -103,6 +118,20 @@
       snippets.luasnip.enable = true;
 
       autocomplete.nvim-cmp.enable = true;
+
+      # diagnostics = {
+      #   enable = true;
+      #   config = {
+      #     float = {
+      #       focusable = false;
+      #       style = "minimal";
+      #       border = "rounded";
+      #       source = "always";
+      #       header = "";
+      #       prefix = "";
+      #     };
+      #   };
+      # };
 
       ui = {
         noice.enable = true;
