@@ -25,7 +25,7 @@
         mikestead.dotenv
         mkhl.direnv
         # ms-python.debugpy
-        # ms-python.python
+        ms-python.python
         ms-vscode-remote.remote-containers
         nefrob.vscode-just-syntax
         redhat.ansible

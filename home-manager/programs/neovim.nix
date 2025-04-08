@@ -21,6 +21,16 @@
         style = "dark";
       };
 
+      keymaps = [
+        {
+          key = "<leader>tf";
+          mode = ["n"];
+          action = ":lua MiniFiles.open()<cr>";
+          desc = "Open mini.files";
+          silent = true;
+        }
+      ];
+
       lsp = {
         formatOnSave = true;
         lspSignature.enable = true;
@@ -88,10 +98,6 @@
         indent-blankline.enable = true;
       };
 
-      filetree = {
-        nvimTree.enable = true;
-      };
-
       binds = {
         whichKey.enable = true;
         cheatsheet.enable = true;
@@ -119,19 +125,23 @@
 
       autocomplete.nvim-cmp.enable = true;
 
-      # diagnostics = {
-      #   enable = true;
-      #   config = {
-      #     float = {
-      #       focusable = false;
-      #       style = "minimal";
-      #       border = "rounded";
-      #       source = "always";
-      #       header = "";
-      #       prefix = "";
-      #     };
-      #   };
-      # };
+      diagnostics = {
+        enable = true;
+
+        config = {
+          virtual_text = true;
+          underline = false;
+          signs = true;
+          float = {
+            focusable = false;
+            style = "minimal";
+            border = "rounded";
+            source = "always";
+            header = "";
+            prefix = "";
+          };
+        };
+      };
 
       ui = {
         noice.enable = true;
