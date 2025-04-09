@@ -37,10 +37,6 @@
         lspSignature.enable = true;
       };
 
-      notify = {
-        nvim-notify.enable = true;
-      };
-
       languages = {
         # defaults
         enableLSP = true;
@@ -75,11 +71,15 @@
       };
 
       mini = {
+        ai.enable = true;
         diff.enable = true;
         files.enable = true;
         git.enable = true;
         icons.enable = true;
+        notify.enable = true;
+        starter.enable = true;
         statusline.enable = true;
+        surround.enable = true;
       };
 
       treesitter.grammars = with pkgs.tree-sitter-grammars; [
