@@ -18,6 +18,7 @@
     ./neovim.nix
     ./ripgrep.nix
     ./rofi
+    ./ruff.nix
     ./swaylock.nix
     ./tmux.nix
     ./vscode.nix

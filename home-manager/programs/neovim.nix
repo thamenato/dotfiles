@@ -17,7 +17,7 @@
 
       theme = {
         enable = true;
-        name = "oxocarbon";
+        name = "dracula";
         style = "dark";
       };
 
@@ -32,10 +32,9 @@
       ];
 
       lsp = {
+        enable = true;
         formatOnSave = true;
         lspSignature.enable = true;
-        lspsaga.enable = true;
-        nvim-docs-view.enable = true;
       };
 
       notify = {
@@ -45,6 +44,7 @@
       languages = {
         # defaults
         enableLSP = true;
+        enableDAP = true;
         enableTreesitter = true;
         enableFormat = true;
         enableExtraDiagnostics = true;
@@ -67,6 +67,7 @@
         python = {
           enable = true;
           format = {
+            enable = false;
             type = "ruff";
           };
         };
@@ -124,6 +125,21 @@
       snippets.luasnip.enable = true;
 
       autocomplete.nvim-cmp.enable = true;
+
+      formatter = {
+        conform-nvim = {
+          enable = true;
+          setupOpts = {
+            formatters_by_ft = {
+              python = [
+                "ruff_fix"
+                "ruff_format"
+                "ruff_organize_imports"
+              ];
+            };
+          };
+        };
+      };
 
       diagnostics = {
         enable = true;
