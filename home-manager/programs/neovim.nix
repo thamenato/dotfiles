@@ -62,10 +62,15 @@
         };
         python = {
           enable = true;
-          format = {
-            enable = false;
-            type = "ruff";
-          };
+          format.type = "ruff";
+          lsp.settings = ''
+            {
+                basedpyright = {
+                  basedOrganizeImports = true,
+                  typeCheckingMode = 'off',
+                }
+            }
+          '';
         };
         terraform.enable = true;
       };

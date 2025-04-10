@@ -625,15 +625,16 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1744048802,
-        "narHash": "sha256-/xSghWjpyevtOBprC0gjAn2KWc8Jp9A9h9HiUjaCChg=",
-        "owner": "notashelf",
+        "lastModified": 1744250291,
+        "narHash": "sha256-5LZ9lrS9V5ZD3Uk9YvaL1R5hJ6LNpTz5bSBYFDINQRc=",
+        "owner": "thamenato",
         "repo": "nvf",
-        "rev": "851dbc92fb5b280207bfc8234c33369b01b8efcd",
+        "rev": "6fb22fe5a4a76924c7b9af5328fb4cfcf7b7f09a",
         "type": "github"
       },
       "original": {
-        "owner": "notashelf",
+        "owner": "thamenato",
+        "ref": "feat/python-setupOpts",
         "repo": "nvf",
         "type": "github"
       }
