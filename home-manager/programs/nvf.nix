@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   programs.nvf = {
-    enable = true;
+    enable = false;
 
     settings.vim = {
       # neovim config
@@ -63,14 +63,6 @@
         python = {
           enable = true;
           format.type = "ruff";
-          lsp.settings = ''
-            {
-                basedpyright = {
-                  basedOrganizeImports = true,
-                  typeCheckingMode = 'off',
-                }
-            }
-          '';
         };
         terraform.enable = true;
       };

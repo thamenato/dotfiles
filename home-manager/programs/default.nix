@@ -15,7 +15,8 @@
     ./hyprlock.nix
     ./kitty.nix
     ./lazygit.nix
-    ./neovim.nix
+    ./nixvim
+    ./nvf.nix
     ./ripgrep.nix
     ./rofi
     ./ruff.nix

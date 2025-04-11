@@ -14,19 +14,31 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
+
     nixGL = {
       url = "github:nix-community/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # nvf.url = "github:notashelf/nvf";
-    nvf.url = "github:thamenato/nvf/feat/python-setupOpts";
-    pre-commit-hooks.url = "github:cachix/git-hooks.nix";
+
+    nvf = {
+      url = "github:notashelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     hyprland.url = "github:hyprwm/Hyprland";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+
+    pre-commit-hooks.url = "github:cachix/git-hooks.nix";
   };
 
   outputs = inputs @ {
@@ -66,6 +78,7 @@
 
       modules = [
         inputs.nvf.homeManagerModules.default
+        inputs.nixvim.homeManagerModules.nixvim
         ./home-manager
         ./hosts/${hostName}
       ];
