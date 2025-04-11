@@ -1,5 +1,6 @@
 {
   imports = [
+    ./conform.nix
     ./lsp.nix
     ./mini.nix
     ./telescope.nix
