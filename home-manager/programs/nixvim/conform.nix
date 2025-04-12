@@ -6,7 +6,9 @@
     extraPackages = with pkgs; [
       alejandra # nix
       ruff # python
-      stylua # lua code
+      stylua # lua
+      yamlfmt # yaml
+      shfmt # bash
     ];
 
     # Autoformat
@@ -29,15 +31,10 @@
         '';
         formatters_by_ft = {
           lua = ["stylua"];
-          python = [["ruff" "black"]];
+          python = ["ruff" "black"];
           nix = ["alejandra"];
-
-          # Conform can also run multiple formatters sequentially
-          # python = [ "isort "black" ];
-          #
-          # You can use a sublist to tell conform to run *until* a formatter
-          # is found
-          # javascript = [ [ "prettierd" "prettier" ] ];
+          yaml = ["yamlfmt"];
+          bash = ["shfmt"];
         };
       };
     };
