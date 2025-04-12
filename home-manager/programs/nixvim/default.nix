@@ -1,11 +1,13 @@
 # Credits:
 #  - loosely copied/inspired by https://github.com/JMartJonesy/kickstart.nixvim
 #
-{
+{pkgs, ...}: {
   imports = [
+    ./autopairs.nix
     ./conform.nix
     ./lsp.nix
     ./mini.nix
+    ./nvim-cmp.nix
     ./telescope.nix
     ./which-key.nix
   ];
@@ -15,10 +17,11 @@
     defaultEditor = true;
 
     colorschemes = {
-      tokyonight = {
-        enable = true;
-        settings.style = "night";
-      };
+      rose-pine.enable = true;
+      # tokyonight = {
+      #   enable = true;
+      #   settings.style = "night";
+      # };
     };
 
     # https://nix-community.github.io/nixvim/NeovimOptions/index.html?highlight=globals#globals
@@ -70,6 +73,13 @@
       # https://nix-community.github.io/nixvim/plugins/sleuth/index.html
       sleuth.enable = true;
     };
+
+    # https://nix-community.github.io/nixvim/NeovimOptions/index.html?highlight=extraplugi#extraplugins
+    extraPlugins = with pkgs.vimPlugins; [
+      # NOTE: This is where you would add a vim plugin that is not implemented in Nixvim, also see extraConfigLuaPre below
+      #
+      # TODO: Add luvit-meta when Nixos package is added
+    ];
 
     # The line beneath this is called `modeline`. See `:help modeline`
     # https://nix-community.github.io/nixvim/NeovimOptions/index.html?highlight=extraplugins#extraconfigluapost

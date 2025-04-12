@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   programs.nixvim = {
     # Dependencies
-    #
     # https://nix-community.github.io/nixvim/NeovimOptions/index.html?highlight=extraplugins#extrapackages
     extraPackages = with pkgs; [
       alejandra # nix
