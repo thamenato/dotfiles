@@ -11,6 +11,7 @@
     ./smartcolumn.nix
     ./telescope.nix
     ./treesitter.nix
+    ./venv-selector.nix
     ./which-key.nix
   ];
 }
