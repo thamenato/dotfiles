@@ -47,6 +47,17 @@
         };
       };
     };
+    keymaps = [
+      {
+        key = "<leader>f";
+        mode = ["n"];
+        action = ":lua MiniFiles.open()<cr>";
+        options = {
+          desc = "Open mini.files";
+          silent = true;
+        };
+      }
+    ];
 
     # You can configure sections in the statusline by overriding their
     # default behavior. For example, here we set the section for

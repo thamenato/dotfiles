@@ -59,8 +59,11 @@
             enable = true;
             settings = {
               basedpyright = {
-                basedOrganizeImports = true;
+                disableOrganizeImports = true;
                 typeCheckingMode = "off";
+                analysis = {
+                  ignore = "*";
+                };
               };
             };
           };
