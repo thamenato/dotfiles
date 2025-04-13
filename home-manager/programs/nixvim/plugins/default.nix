@@ -4,6 +4,8 @@
     ./comment.nix
     ./conform.nix
     ./cursorline.nix
+    ./gitsigns.nix
+    ./lint.nix
     ./lsp.nix
     ./mini.nix
     ./nvim-cmp.nix
