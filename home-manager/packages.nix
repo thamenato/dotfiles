@@ -28,8 +28,9 @@
 
     # formatter/linter
     dprint
-    nixfmt-rfc-style
     hclfmt
+    markdownlint-cli2
+    nixfmt-rfc-style
 
     # fonts
     font-awesome
