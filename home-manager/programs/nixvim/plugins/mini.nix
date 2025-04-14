@@ -22,8 +22,6 @@
 
         files = {};
 
-        git = {};
-
         icons = {};
 
         notify = {};
