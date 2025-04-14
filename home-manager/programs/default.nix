@@ -16,7 +16,7 @@
     ./kitty.nix
     ./lazygit.nix
     ./nixvim
-    ./nvf.nix
+    # ./nvf.nix
     ./ripgrep.nix
     ./rofi
     ./ruff.nix

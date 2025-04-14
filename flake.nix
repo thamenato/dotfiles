@@ -25,10 +25,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nvf = {
-      url = "github:notashelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # nvf = {
+    #   url = "github:notashelf/nvf";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     nixvim = {
       url = "github:nix-community/nixvim";
@@ -77,7 +77,7 @@
       };
 
       modules = [
-        inputs.nvf.homeManagerModules.default
+        # inputs.nvf.homeManagerModules.default
         inputs.nixvim.homeManagerModules.nixvim
         ./home-manager
         ./hosts/${hostName}
