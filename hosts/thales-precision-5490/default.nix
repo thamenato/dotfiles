@@ -28,7 +28,7 @@
       image-roll
       nh
       pwvucontrol
-      signal-desktop
+      signal-desktop-bin
       slack
       slurp
       spotify
