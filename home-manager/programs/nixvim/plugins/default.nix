@@ -5,6 +5,7 @@
     ./conform.nix
     ./cursorline.nix
     ./dashboard.nix
+    ./git-conflict.nix
     ./gitsigns.nix
     ./lint.nix
     ./lsp.nix
