@@ -6,7 +6,7 @@
       alejandra # nix
       ruff # python
       stylua # lua
-      yamlfmt # yaml
+      prettierd # yaml/js/html
       shfmt # bash
     ];
 
@@ -32,7 +32,7 @@
           lua = ["stylua"];
           python = ["ruff_fix" "ruff_format" "ruff_organize_imports"];
           nix = ["alejandra"];
-          yaml = ["yamlfmt"];
+          yaml = ["prettierd"];
           bash = ["shfmt"];
         };
       };

@@ -118,7 +118,7 @@
       packages = with pkgs; [
         # tools
         just
-        yq
+        yq-go
         nixpkgs-fmt
         sops
         nh
