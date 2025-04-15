@@ -11,6 +11,7 @@
       fetch.prune = true;
       init.defaultBranch = "main";
       pull.rebase = true;
+      rerere.enabled = true;
     };
 
     aliases = {
