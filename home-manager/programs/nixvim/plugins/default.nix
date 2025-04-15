@@ -1,10 +1,10 @@
 {
   imports = [
-    ./alpha.nix
     ./autopairs.nix
     ./comment.nix
     ./conform.nix
     ./cursorline.nix
+    ./dashboard.nix
     ./gitsigns.nix
     ./lint.nix
     ./lsp.nix
