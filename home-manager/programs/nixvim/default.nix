@@ -1,7 +1,7 @@
 # Credits:
 #  - loosely copied/inspired by https://github.com/JMartJonesy/kickstart.nixvim
 #
-{pkgs, ...}: {
+{
   imports = [
     ./plugins
   ];
@@ -79,11 +79,6 @@
         prefix = "";
       };
     };
-
-    extraPlugins = with pkgs.vimPlugins; [
-      # https://nix-community.github.io/nixvim/NeovimOptions/index.html?highlight=extraplugi#extraplugins
-      neovim-trunk
-    ];
 
     # https://nix-community.github.io/nixvim/NeovimOptions/index.html?highlight=extraplugins#extraconfigluapost
     # The line beneath this is called `modeline`. See `:help modeline`
