@@ -6,7 +6,10 @@
     ];
 
     extraConfigLuaPost = ''
-      require('trunk').setup {}
+      if vim.fn.executable('trunk') == 1 then
+        -- Only require and setup the trunk plugin if the binary exists
+        require('trunk').setup({})
+      end
     '';
   };
 }
