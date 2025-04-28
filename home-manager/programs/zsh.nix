@@ -14,7 +14,7 @@
       size = 10000;
     };
 
-    initExtra = ''
+    initContent = ''
       setopt HIST_SAVE_NO_DUPS
       setopt HIST_FIND_NO_DUPS
 

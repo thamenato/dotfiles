@@ -66,17 +66,19 @@
       spelllang = ["en_us"];
     };
 
-    diagnostics = {
-      virtual_text = true;
-      underline = false;
-      signs = true;
-      float = {
-        focusable = false;
-        style = "minimal";
-        border = "rounded";
-        source = "always";
-        header = "";
-        prefix = "";
+    diagnostic = {
+      config = {
+        virtual_text = true;
+        underline = false;
+        signs = true;
+        float = {
+          focusable = false;
+          style = "minimal";
+          border = "rounded";
+          source = "always";
+          header = "";
+          prefix = "";
+        };
       };
     };
 
