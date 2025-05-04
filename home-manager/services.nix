@@ -5,8 +5,10 @@
     mako = {
       enable = true;
 
-      anchor = "top-right";
-      defaultTimeout = 30000; # milliseconds
+      settings = {
+        anchor = "top-right";
+        defaultTimeout = "30000"; # milliseconds
+      };
     };
   };
 }

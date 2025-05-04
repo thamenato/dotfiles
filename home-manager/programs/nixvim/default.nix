@@ -67,7 +67,7 @@
     };
 
     diagnostic = {
-      config = {
+      settings = {
         virtual_text = true;
         underline = false;
         signs = true;
