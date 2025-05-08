@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   nixGL,
   ...
@@ -28,10 +29,12 @@
       image-roll
       nh
       pwvucontrol
+      (config.lib.nixGL.wrap satty)
       signal-desktop-bin
       slack
       slurp
       spotify
+      sway-contrib.grimshot
       uv
       xfce.thunar
     ];

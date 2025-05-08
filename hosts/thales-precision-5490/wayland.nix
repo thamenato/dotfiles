@@ -1,7 +1,5 @@
 {
-  config,
   lib,
-  pkgs,
   backgrounds,
   ...
 }: {
@@ -9,7 +7,7 @@
     hyprland.enable = lib.mkForce false;
     sway = {
       enable = lib.mkForce true;
-      package = config.lib.nixGL.wrap pkgs.sway;
+      package = null;
       config = {
         output = {
           "eDP-1" = {

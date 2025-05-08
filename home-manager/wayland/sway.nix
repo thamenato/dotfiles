@@ -6,7 +6,7 @@
   wayland.windowManager.sway = let
     modifier = "Mod4";
     menu = "${pkgs.ulauncher}/bin/ulauncher | xargs swaymsg exec --";
-    terminal = "${pkgs.ghostty}/bin/ghostty";
+    terminal = "ghostty";
   in {
     enable = false;
     wrapperFeatures.gtk = true;
@@ -17,8 +17,8 @@
       inherit menu;
 
       keybindings = let
-        grimshot = "${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save";
-        satty = "${pkgs.satty}/bin/satty --filename - --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png";
+        grimshot = "grimshot --notify save";
+        satty = "satty --filename - --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png";
         playerctl = "${pkgs.playerctl}/bin/playerctl";
         brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
         pactl = "${pkgs.pulseaudio}/bin/pactl";
