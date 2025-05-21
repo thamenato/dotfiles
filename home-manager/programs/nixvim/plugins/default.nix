@@ -10,7 +10,7 @@
     ./lint.nix
     ./lsp.nix
     ./mini.nix
-    ./neovim-trunk.nix
+    # ./neovim-trunk.nix
     ./nvim-cmp.nix
     ./sleuth.nix
     ./smartcolumn.nix

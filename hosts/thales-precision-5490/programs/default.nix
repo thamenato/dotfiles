@@ -10,6 +10,6 @@ in {
   programs = {
     go.enable = disabled;
     vscode.enable = enabled;
-    rofi.enable = disabled;
+    rofi.enable = enabled;
   };
 }

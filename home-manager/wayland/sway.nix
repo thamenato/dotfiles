@@ -5,7 +5,7 @@
 }: {
   wayland.windowManager.sway = let
     modifier = "Mod4";
-    menu = "${pkgs.ulauncher}/bin/ulauncher | xargs swaymsg exec --";
+    menu = "rofi -show drun -show-icons | xargs swaymsg exec --";
     terminal = "ghostty";
   in {
     enable = false;
