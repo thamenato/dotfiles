@@ -1,12 +1,9 @@
-{
-  pkgs,
-  zen-browser,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     # terminal
     age
     alejandra
+    bluetui
     devenv
     fastfetch
     httpie
@@ -39,8 +36,6 @@
     nerd-fonts.jetbrains-mono
     nerd-fonts.iosevka
     nerd-fonts.zed-mono
-
-    zen-browser
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your

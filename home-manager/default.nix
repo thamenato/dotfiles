@@ -7,6 +7,7 @@
     ./programs
     ./services
     ./wayland
+    ./modules/zen.nix
   ];
 
   home = {
