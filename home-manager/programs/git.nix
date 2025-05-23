@@ -12,6 +12,7 @@
       init.defaultBranch = "main";
       pull.rebase = true;
       rerere.enabled = true;
+      merge.conflictStyle = "diff3";
     };
 
     aliases = {
