@@ -160,8 +160,8 @@
         };
 
         "custom/grimshot" = let
-          grimshot = "${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save";
-          satty = "${pkgs.satty}/bin/satty --filename - --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png";
+          grimshot = "grimshot --notify save";
+          satty = "satty --filename - --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png";
         in {
           format = "";
           tooltip = false;
