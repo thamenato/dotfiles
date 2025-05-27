@@ -13,14 +13,12 @@
           "eDP-1" = {
             # laptop
             bg = "${backgrounds."wallhaven-kxo38d_1920x1080.png"} fit";
-            pos = "0 960";
-            # pos = "5120 0";
+            pos = "5120 0";
           };
           "DP-2" = {
             # external
             bg = "${backgrounds."wallhaven-rrvygj_5120x1440.png"} center";
-            pos = "1920 0";
-            # pos = "0 0";
+            pos = "0 0";
           };
         };
       };
