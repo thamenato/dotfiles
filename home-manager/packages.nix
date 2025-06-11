@@ -5,14 +5,21 @@
     alejandra
     bluetui
     devenv
+    dua
+    dust
     fastfetch
     httpie
+    hyperfine
     jq
     lazydocker
+    # ncspot
     playerctl
+    presenterm
     tldr
+    tokei
     unzip
     wl-clipboard
+    xh
     xxh
     zip
 
