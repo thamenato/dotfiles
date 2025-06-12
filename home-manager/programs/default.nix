@@ -28,6 +28,6 @@
     ./yazi.nix
     ./zen.nix
     ./zoxide.nix
-    ./zsh.nix
+    ./zsh
   ];
 }

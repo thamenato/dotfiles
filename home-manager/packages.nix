@@ -8,6 +8,7 @@
     dua
     dust
     fastfetch
+    gitoxide
     httpie
     hyperfine
     jq
