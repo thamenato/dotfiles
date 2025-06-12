@@ -12,7 +12,6 @@
     hyperfine
     jq
     lazydocker
-    # ncspot
     playerctl
     presenterm
     tldr

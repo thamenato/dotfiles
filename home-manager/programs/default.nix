@@ -16,6 +16,7 @@
     ./kitty.nix
     ./lazygit.nix
     ./mergiraf.nix
+    ./ncspot.nix
     ./nixvim
     ./ripgrep.nix
     ./rofi

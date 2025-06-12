@@ -11,5 +11,6 @@ in {
     go.enable = disabled;
     vscode.enable = enabled;
     rofi.enable = enabled;
+    ncspot.enable = disabled;
   };
 }
