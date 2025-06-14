@@ -15,6 +15,12 @@
       merge.conflictStyle = "diff3";
     };
 
+    signing = {
+      format = "ssh";
+      key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGkoP+Uu+fdknJf1b4J6ydudNe4FeTqMpDxBmvJiTkzM";
+      signByDefault = true;
+    };
+
     aliases = {
       pu = "push";
       co = "checkout";
