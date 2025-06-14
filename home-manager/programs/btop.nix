@@ -5,7 +5,9 @@
   # repo: https://github.com/aristocratos/btop
   programs.btop = {
     enable = true;
-    # settings = {};
-    # extraConfig = '''';
+    settings = {
+      vim_keys = true;
+      color_theme = "dracula";
+    };
   };
 }
