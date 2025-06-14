@@ -23,6 +23,9 @@
     xxh
     zip
 
+    # apps
+    bitwarden-desktop
+
     # lsp
     marksman
     nil

@@ -33,6 +33,11 @@
         fastfetch
 
         export PATH=$HOME/.local/bin:$HOME/go/bin:$PATH
+
+        # use bitwarden ssh agent, if bitwarden-desktop is installed
+        if command -v bitwarden >/dev/null 2>&1; then
+          export SSH_AUTH_SOCK=$HOME/.bitwarden-ssh-agent.sock
+        fi
       ''
     ];
 
