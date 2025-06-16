@@ -1,4 +1,8 @@
-{lib, ...}: let
+{
+  lib,
+  pkgs,
+  ...
+}: let
   disabled = lib.mkForce false;
   enabled = lib.mkForce true;
 in {
@@ -10,6 +14,9 @@ in {
     go.enable = disabled;
     vscode.enable = enabled;
     rofi.enable = enabled;
-    ncspot.enable = disabled;
+
+    ncspot = {
+      package = pkgs.emptyDirectory;
+    };
   };
 }
