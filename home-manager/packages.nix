@@ -15,7 +15,7 @@
     lazydocker
     playerctl
     presenterm
-    tldr
+    tlrc
     tokei
     unzip
     wl-clipboard
