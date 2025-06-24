@@ -15,8 +15,8 @@
     homeDirectory = "/home/thamenato";
 
     shellAliases = let
-      nhHome = "nh home switch $HOME/dotfiles --ask --update --backup-extension .bak";
-      nhOS = "nh os switch $HOME/Projects/nixos-hosts --ask --update";
+      nhHome = "nh home switch $HOME/dotfiles --ask --backup-extension .bak";
+      nhOS = "nh os switch $HOME/Projects/nixos-hosts --ask";
     in {
       lg = "lazygit";
       nh-home = nhHome;
