@@ -13,6 +13,7 @@
     ./git.nix
     ./go.nix
     ./hyprlock.nix
+    ./k9s
     ./kitty.nix
     ./lazygit.nix
     ./mergiraf.nix
