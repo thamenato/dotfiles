@@ -11,11 +11,13 @@
     defaultEditor = true;
 
     colorschemes = {
-      rose-pine.enable = true;
-      # tokyonight = {
-      #   enable = true;
-      #   settings.style = "night";
-      # };
+      cyberdream = {
+        enable = true;
+        settings = {
+          transparent = true;
+        };
+      };
+      # rose-pine.enable = true;
     };
 
     # https://nix-community.github.io/nixvim/NeovimOptions/index.html?highlight=globals#globals
