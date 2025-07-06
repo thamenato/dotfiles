@@ -1,6 +1,6 @@
 {
   imports = [
-    ./alacritty.nix
+    ./alacritty
     ./atuin.nix
     ./bat.nix
     ./btop.nix
@@ -26,6 +26,7 @@
     ./tmux.nix
     ./vscode.nix
     ./waybar
+    ./wezterm
     ./yazi.nix
     ./zen.nix
     ./zoxide.nix

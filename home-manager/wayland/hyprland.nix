@@ -4,7 +4,7 @@
 
     settings = let
       modifier = "SUPER";
-      terminal = "${pkgs.ghostty}/bin/ghostty";
+      terminal = "wezterm";
       menu = "rofi -show drun -show-icons";
     in {
       "$mod" = "${modifier}";
