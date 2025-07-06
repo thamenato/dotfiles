@@ -87,7 +87,15 @@
     # https://nix-community.github.io/nixvim/NeovimOptions/index.html?highlight=extraplugins#extraconfigluapost
     # The line beneath this is called `modeline`. See `:help modeline`
     extraConfigLuaPost = ''
-      -- vim: ts=2 sts=2 sw=2 et
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "lua",
+        callback = function()
+          vim.opt_local.tabstop = 4
+          vim.opt_local.shiftwidth = 4
+          vim.opt_local.softtabstop = 4
+          vim.opt_local.expandtab = true  -- Use spaces instead of tabs
+        end,
+      })
     '';
   };
 }

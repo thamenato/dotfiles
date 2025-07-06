@@ -22,4 +22,16 @@ config.colors = {
 	indexed = { [16] = "#ffbd5e", [17] = "#ff6e5e" },
 }
 
+-- Font settings
+config.font = wezterm.font("JetBrains Mono")
+config.font_size = 12
+
+-- Window padding
+config.window_padding = {
+	left = 10,
+	right = 10,
+	top = 10,
+	bottom = 10,
+}
+
 return config
