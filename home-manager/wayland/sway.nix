@@ -6,7 +6,7 @@
   wayland.windowManager.sway = let
     modifier = "Mod4";
     menu = "rofi -show drun -show-icons | xargs swaymsg exec --";
-    terminal = "ghostty";
+    terminal = "wezterm";
   in {
     enable = false;
     wrapperFeatures.gtk = true;

@@ -1,5 +1,6 @@
 {
   lib,
+  config,
   pkgs,
   ...
 }: let
@@ -18,5 +19,7 @@ in {
     ncspot = {
       package = pkgs.emptyDirectory;
     };
+
+    wezterm.package = config.lib.nixGL.wrap pkgs.wezterm;
   };
 }

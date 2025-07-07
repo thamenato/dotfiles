@@ -1,9 +1,11 @@
 local wezterm = require("wezterm")
-local config = {}
+local config = wezterm.config_builder()
 
+-- background transparency
 config.window_background_opacity = 0.85
+
+-- cyberdream theme for wezterm
 config.colors = {
-	-- cyberdream theme for wezterm
 	foreground = "#ffffff",
 	background = "#16181a",
 
@@ -22,16 +24,16 @@ config.colors = {
 	indexed = { [16] = "#ffbd5e", [17] = "#ff6e5e" },
 }
 
--- Font settings
+-- font settings
 config.font = wezterm.font("JetBrains Mono")
-config.font_size = 12
+config.font_size = 10
 
--- Window padding
+-- window padding
 config.window_padding = {
-	left = 10,
-	right = 10,
-	top = 10,
-	bottom = 10,
+	left = 5,
+	right = 5,
+	top = 5,
+	bottom = 5,
 }
 
 return config
