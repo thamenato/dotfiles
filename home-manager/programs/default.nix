@@ -23,6 +23,7 @@
     ./rofi
     ./ruff.nix
     ./swaylock.nix
+    ./taskwarrior.nix
     ./tmux.nix
     ./vscode.nix
     ./waybar
