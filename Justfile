@@ -1,3 +1,6 @@
+_default:
+    @just --list
+
 # New install on a remote machine
 remote-install HOSTNAME USER IP:
     #!/usr/bin/env bash
