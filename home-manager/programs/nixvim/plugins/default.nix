@@ -19,6 +19,7 @@
     ./treesitter.nix
     ./twilight.nix
     ./venv-selector.nix
+    ./vimwiki.nix
     ./which-key.nix
   ];
 }
