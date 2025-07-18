@@ -14,6 +14,7 @@
     ./mini.nix
     ./numbertoggle.nix
     ./nvim-cmp.nix
+    ./nvim-tree.nix
     ./render-markdown.nix
     ./sleuth.nix
     ./smartcolumn.nix
