@@ -1,5 +1,6 @@
 {
   imports = [
+    # ./neovim-trunk.nix
     ./autopairs.nix
     ./comment.nix
     ./conform.nix
@@ -11,7 +12,7 @@
     ./lint.nix
     ./lsp.nix
     ./mini.nix
-    # ./neovim-trunk.nix
+    ./numbertoggle.nix
     ./nvim-cmp.nix
     ./render-markdown.nix
     ./sleuth.nix
