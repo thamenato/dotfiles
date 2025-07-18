@@ -1,6 +1,6 @@
 {
   programs.nixvim.plugins.vimwiki = {
-    enable = true;
+    enable = false;
 
     settings = {
       # autowriteall = 0;
