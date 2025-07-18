@@ -7,6 +7,7 @@
     ./dashboard.nix
     ./git-conflict.nix
     ./gitsigns.nix
+    ./hardtime.nix
     ./lint.nix
     ./lsp.nix
     ./mini.nix
