@@ -17,6 +17,7 @@
         "systemctl --user start hyprpolkitagent"
         "systemctl --user enable --now hyprpaper.service"
         "waybar"
+        "bitwarden"
       ];
 
       monitor = [
