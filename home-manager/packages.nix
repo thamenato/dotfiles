@@ -6,6 +6,7 @@
     bluetui
     devenv
     dua
+    duf
     dust
     fastfetch
     gitoxide
