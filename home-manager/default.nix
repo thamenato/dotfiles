@@ -14,13 +14,8 @@
     username = "thamenato";
     homeDirectory = "/home/thamenato";
 
-    shellAliases = let
-      nhHome = "nh home switch $HOME/dotfiles --ask --backup-extension .bak";
-      nhOS = "nh os switch $HOME/Projects/nixos-hosts --ask";
-    in {
+    shellAliases = {
       lg = "lazygit";
-      nh-home = nhHome;
-      nh-os = nhOS;
       man = "batman";
     };
 
@@ -28,6 +23,10 @@
       ".gnupg/gpg-agent.conf".text = ''
         pinentry-program /run/current-system/sw/bin/pinentry
       '';
+      ".local/bin/nh-update" = {
+        source = ../scripts/nh-update.sh;
+        executable = true;
+      };
     };
 
     sessionVariables = {

@@ -3,6 +3,7 @@
     # terminal
     age
     alejandra
+    argc
     bluetui
     devenv
     dua
