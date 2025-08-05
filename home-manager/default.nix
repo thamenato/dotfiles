@@ -23,10 +23,6 @@
       ".gnupg/gpg-agent.conf".text = ''
         pinentry-program /run/current-system/sw/bin/pinentry
       '';
-      ".local/bin/nh-update" = {
-        source = ../scripts/nh-update.sh;
-        executable = true;
-      };
     };
 
     sessionVariables = {
