@@ -74,7 +74,7 @@
       };
 
       modules = [
-        inputs.nixvim.homeManagerModules.nixvim
+        inputs.nixvim.homeModules.nixvim
         ./home-manager
         ./hosts/${hostName}
       ];
