@@ -84,6 +84,21 @@
       };
     };
 
+    autoCmd = [
+      {
+        event = ["BufRead" "BufNewFile"];
+        pattern = [
+          "*/ansible/*.yml"
+          "*/ansible/*.yaml"
+          "*/playbooks/*.yml"
+          "*/playbooks/*.yaml"
+          "*/roles/*.yml"
+          "*/roles/*.yaml"
+        ];
+        command = "set filetype=yaml.ansible";
+      }
+    ];
+
     # https://nix-community.github.io/nixvim/NeovimOptions/index.html?highlight=extraplugins#extraconfigluapost
     # The line beneath this is called `modeline`. See `:help modeline`
     extraConfigLuaPost = ''

@@ -43,7 +43,10 @@
 
         servers = {
           # ansible
-          ansiblels.enable = true;
+          ansiblels = {
+            enable = true;
+            filetypes = ["yaml.ansible" "ansible"];
+          };
           # bash/shell
           bashls.enable = true;
           # cue
@@ -51,7 +54,10 @@
           # go
           gopls.enable = true;
           # yaml
-          yamlls.enable = true;
+          yamlls = {
+            enable = true;
+            filetypes = ["yaml"];
+          };
           # nix
           nixd.enable = true;
           # python

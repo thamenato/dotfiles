@@ -29,6 +29,7 @@
     bitwarden-desktop
 
     # lsp
+    ansible-lint
     marksman
     nil
     nixd

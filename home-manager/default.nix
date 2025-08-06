@@ -27,6 +27,7 @@
 
     sessionVariables = {
       EDITOR = "nvim";
+      NH_HOME_FLAKE = "$HOME/dotfiles";
     };
 
     pointerCursor = {
