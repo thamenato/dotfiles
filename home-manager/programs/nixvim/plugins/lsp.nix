@@ -42,6 +42,8 @@
         enable = true;
 
         servers = {
+          # ansible
+          ansiblels.enable = true;
           # bash/shell
           bashls.enable = true;
           # cue
@@ -51,9 +53,7 @@
           # yaml
           yamlls.enable = true;
           # nix
-          nixd = {
-            enable = true;
-          };
+          nixd.enable = true;
           # python
           basedpyright = {
             enable = true;
