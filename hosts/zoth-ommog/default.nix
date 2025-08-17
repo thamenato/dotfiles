@@ -9,7 +9,7 @@
   in {
     hyprland = {
       settings = {
-        monitor = lib.mkForce ["${output},${resolution},auto,2"];
+        monitor = lib.mkForce ["${output},${resolution},auto,1"];
       };
     };
   };
