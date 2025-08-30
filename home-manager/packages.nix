@@ -37,7 +37,7 @@
     yaml-language-server
 
     # formatter/linter
-    dprint
+    # dprint
     hclfmt
     markdownlint-cli2
     nixfmt-rfc-style
