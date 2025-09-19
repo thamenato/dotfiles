@@ -99,6 +99,9 @@
       }
     ];
 
+    extraConfigLuaPre = ''
+      local luasnip = require("luasnip")
+    '';
     # https://nix-community.github.io/nixvim/NeovimOptions/index.html?highlight=extraplugins#extraconfigluapost
     # The line beneath this is called `modeline`. See `:help modeline`
     extraConfigLuaPost = ''

@@ -11,6 +11,7 @@
     ./hardtime.nix
     ./lint.nix
     ./lsp.nix
+    ./luasnip.nix
     ./mini.nix
     ./numbertoggle.nix
     ./nvim-cmp.nix
