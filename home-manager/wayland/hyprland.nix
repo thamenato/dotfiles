@@ -121,10 +121,10 @@
         disable_hyprland_logo = false; # If true disables the random hyprland logo / anime girl background. :(
       };
 
-      gestures = {
-        # https://wiki.hyprland.org/Configuring/Variables/#gestures
-        workspace_swipe = false;
-      };
+      # gestures = {
+      #   # https://wiki.hyprland.org/Configuring/Variables/#gestures
+      #   workspace_swipe = false;
+      # };
 
       bind =
         [
