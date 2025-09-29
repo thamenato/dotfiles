@@ -45,6 +45,7 @@
           # ansible
           ansiblels = {
             enable = true;
+            package = null;
             filetypes = ["yaml.ansible" "ansible"];
           };
           # bash/shell
