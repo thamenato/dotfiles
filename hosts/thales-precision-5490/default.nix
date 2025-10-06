@@ -27,6 +27,7 @@
       arandr
       devbox
       image-roll
+      (config.lib.nixGL.wrap niri)
       nh
       pwvucontrol
       (config.lib.nixGL.wrap satty)
