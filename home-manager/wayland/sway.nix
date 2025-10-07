@@ -63,7 +63,6 @@
         {command = "nm-applet --indicator";}
         {command = "slack";}
         {command = "1password";}
-        {command = "bitwarden";}
       ];
 
       window.commands = [
