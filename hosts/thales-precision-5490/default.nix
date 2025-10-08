@@ -24,16 +24,15 @@
     packages = with pkgs; [
       _1password-cli
       _1password-gui
-      arandr
       devbox
       image-roll
       nh
       pwvucontrol
       (config.lib.nixGL.wrap satty)
       signal-desktop-bin
-      slack
+      # slack
       slurp
-      spotify
+      # spotify
       sway-contrib.grimshot
       uv
       xfce.thunar
