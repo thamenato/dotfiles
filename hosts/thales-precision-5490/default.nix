@@ -54,6 +54,7 @@
     inherit (nixGL) packages;
 
     defaultWrapper = "mesa";
-    offloadWrapper = "mesaPrime";
+    offloadWrapper = "nvidiaPrime";
+    installScripts = ["mesa" "nvidiaPrime"];
   };
 }

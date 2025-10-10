@@ -18,7 +18,9 @@
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
     nixGL = {
-      url = "github:nix-community/nixGL";
+      # using my own fork which includes patches
+      # due to nix-community/nixGL being abandoned
+      url = "github:thamenato/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
