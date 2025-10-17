@@ -55,8 +55,39 @@
       };
 
       window-rules = [
-        {draw-border-with-background = false;}
-        {block-out-from = "screen-capture";}
+        {
+          # do not draw solid background when drawing a border this is
+          # required for applications with transparent backgrounds
+          draw-border-with-background = false;
+        }
+        {
+          # block certain windows from showing up when sharing screen
+          matches = [
+            {app-id = "1Password";}
+            {app-id = "Bitwarden";}
+          ];
+          block-out-from = "screencast";
+        }
+        {
+          # show a border in windows that are currently being shared
+          matches = [
+            {
+              is-window-cast-target = true;
+            }
+          ];
+          focus-ring = {
+            active.color = "#f38ba8";
+            inactive.color = "#f38ba8";
+          };
+          border = {
+            enable = true;
+            inactive.color = "#f38ba8";
+          };
+          tab-indicator = {
+            active.color = "#f38ba8";
+            inactive.color = "#7d0d2d";
+          };
+        }
       ];
 
       cursor = {
