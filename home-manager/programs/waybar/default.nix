@@ -12,7 +12,7 @@
         modules-left = [
           # "custom/hostname"
           "sway/workspaces"
-          "hyprland/workspaces"
+          "niri/workspaces"
         ];
         modules-center = ["clock"];
         modules-right = [
