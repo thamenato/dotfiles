@@ -5,10 +5,12 @@
     extra-substituters = [
       "https://nix-cache.cthyllaxy.xyz"
       "https://nix-community.cachix.org"
+      "https://niri.cachix.org"
     ];
     extra-trusted-public-keys = [
       "nix-cache.cthyllaxy.xyz:JIJkt6Drj50OAeIy/5XTbV0AP1d38IAanVkxjvTBTzY="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
     ];
   };
 
@@ -35,6 +37,8 @@
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
+
+    niri.url = "github:sodiboo/niri-flake";
   };
 
   outputs = inputs @ {
@@ -74,6 +78,7 @@
 
       modules = [
         inputs.nixvim.homeModules.nixvim
+        inputs.niri.homeModules.niri
         ./home-manager
         ./hosts/${hostName}
       ];

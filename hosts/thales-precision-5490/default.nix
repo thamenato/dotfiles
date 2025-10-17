@@ -42,7 +42,7 @@
       ".config/nixpkgs/config.nix".text = ''
         { allowUnfree = true; }
       '';
-      ".config/niri/config.kdl".source = ./niri/config.kdl;
+      # ".config/niri/config.kdl".source = ./niri/config.kdl;
     };
   };
 
