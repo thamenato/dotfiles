@@ -1,13 +1,13 @@
 {pkgs, ...}: {
   imports = [
     ./gtk.nix
-    ./packages.nix
-    ./qt.nix
-    ./services.nix
-    ./programs
-    ./services
-    ./wayland
     ./modules/zen.nix
+    ./packages.nix
+    ./programs
+    ./qt.nix
+    ./services
+    ./services.nix
+    ./wayland
   ];
 
   home = {
@@ -20,15 +20,15 @@
     };
 
     file = {
-      ".gnupg/gpg-agent.conf".text = ''
-        pinentry-program /run/current-system/sw/bin/pinentry
-      '';
       ".config/niri/config.kdl".source = ./config/niri/config.kdl;
     };
 
     sessionVariables = {
       EDITOR = "nvim";
       NH_HOME_FLAKE = "$HOME/dotfiles";
+      ELECTRON_OZONE_PLATFORM_HINT = "wayland";
+      OZONE_PLATFORM = "wayland";
+      GDK_BACKEND = "wayland";
     };
 
     pointerCursor = {

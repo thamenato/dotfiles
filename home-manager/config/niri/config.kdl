@@ -70,13 +70,14 @@ input {
 }
 
 environment {
-    SSH_AUTH_SOCK "/home/thamenato/.1password/agent.sock"
-    DISPLAY ":0"
-    WAYLAND_DISPLAY "wayland-1"
-    OP_BIOMETRIC_UNLOCK_ENABLED "true"
-    ELECTRON_OZONE_PLATFORM_HINT "auto"
-    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
-    QT_QPA_PLATFORMTHEME "gtk"
+    // DISPLAY ":0"
+    // WAYLAND_DISPLAY "wayland-1"
+    // OP_BIOMETRIC_UNLOCK_ENABLED "true"
+    // ELECTRON_OZONE_PLATFORM_HINT "wayland"
+    // OZONE_PLATFORM = "wayland"
+    // GDK_BACKEND = "wayland"
+    // // QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+    // QT_QPA_PLATFORMTHEME "gtk"
 }
 
 // You can configure outputs by their name, which you can find
@@ -85,12 +86,12 @@ environment {
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
-// output "DP-2" {
-//     // external monitor
-//     mode "5120x1440@120.000"
-//     scale 1
-//     position x=0 y=0
-// }
+output "HDMI-A-1" {
+    // LG C2
+    mode "4096x2160@120.000"
+    scale 2
+    position x=0 y=0
+}
 //
 // output "eDP-1" {
 //     // built-in display
@@ -263,6 +264,7 @@ layout {
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "waybar"
+spawn-at-startup "bitwarden"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
