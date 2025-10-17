@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   wayland.windowManager.hyprland = {
-    enable = true;
+    enable = false;
 
     settings = let
       modifier = "SUPER";
