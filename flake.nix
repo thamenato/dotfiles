@@ -17,13 +17,6 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
-    nixGL = {
-      # using my own fork which includes patches
-      # due to nix-community/nixGL being abandoned
-      url = "github:thamenato/nixGL";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -34,11 +27,24 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
 
+    # needed for non-NixOS host
+    nixGL = {
+      # using my own fork which includes patches
+      # due to nix-community/nixGL being abandoned
+      url = "github:thamenato/nixGL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # applications
     niri.url = "github:sodiboo/niri-flake";
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
   outputs = inputs @ {
@@ -72,13 +78,14 @@
 
       extraSpecialArgs = {
         inherit nixGL;
-        zen-browser = inputs.zen-browser.packages."${system}".default;
         backgrounds = mkReadFolder ./misc/backgrounds;
       };
 
       modules = [
         inputs.nixvim.homeModules.nixvim
         inputs.niri.homeModules.niri
+        inputs.stylix.homeModules.stylix
+        inputs.zen-browser.homeModules.beta
         ./home-manager
         ./hosts/${hostName}
       ];
