@@ -1,12 +1,12 @@
 {pkgs, ...}: {
   imports = [
     ./gtk.nix
-    ./modules/zen.nix
     ./packages.nix
     ./programs
     ./qt.nix
     ./services
     ./services.nix
+    ./stylix.nix
     ./wayland
   ];
 

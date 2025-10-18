@@ -40,7 +40,7 @@
       #     - UltraDark
       #     - UltraViolent
       #     - xcodedarkhc
-      theme = "cyberdream";
+      # theme = "cyberdream";
       background-opacity = 0.85;
       # font
       font-family = "ZedMono NF";

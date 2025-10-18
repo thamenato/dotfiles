@@ -20,7 +20,7 @@
     ./ncspot.nix
     ./nixvim
     ./ripgrep.nix
-    ./rofi
+    ./rofi.nix
     ./ruff.nix
     ./swaylock.nix
     ./taskwarrior.nix
