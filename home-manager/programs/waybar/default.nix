@@ -1,18 +1,61 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   programs.waybar = {
     enable = true;
+
+    style = lib.mkAfter ''
+      * {
+        border: none;
+        border-radius: 0;
+        min-height: 0;
+      }
+
+      @keyframes blink {
+        to {
+          border-bottom: 2px solid white;
+        }
+      }
+
+      #battery.warning:not(.charging) {
+        border-bottom: 3px solid #ffd415;
+        animation-name: blink;
+        animation-duration: 0.5s;
+        animation-timing-function: steps(12);
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+      }
+
+      #battery.critical:not(.charging) {
+        border-bottom: 3px solid #fa2424;
+        animation-name: blink;
+        animation-duration: 0.5s;
+        animation-timing-function: steps(12);
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+      }
+
+      #custom-power,
+      #tray {
+        padding: 0 10px;
+        margin: 0 2px;
+      }
+    '';
 
     settings = {
       main = {
         layer = "top";
         position = "top";
         height = 26;
+
         modules-left = [
-          # "custom/hostname"
-          "sway/workspaces"
           "niri/workspaces"
         ];
-        modules-center = ["clock"];
+        modules-center = [
+          "clock"
+        ];
         modules-right = [
           "disk"
           "temperature"
@@ -25,12 +68,7 @@
         ];
 
         # modules
-        "sway/workspaces" = {
-        };
-        "hyprland/workspaces" = {
-          format = "{icon}";
-          on-scroll-up = "hyprctl dispatch workspace e+1";
-          on-scroll-down = "hyprctl dispatch workspace e-1";
+        "niri/workspaces" = {
         };
 
         clock = {
@@ -78,6 +116,23 @@
           };
         };
 
+        battery = {
+          interval = 60;
+          states = {
+            warning = 30;
+            critical = 15;
+          };
+          format = "{capacity}% {icon}";
+          format-icons = [
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
+          max-length = 25;
+        };
+
         pulseaudio = let
           pwvucontrol = "${pkgs.pwvucontrol}/bin/pwvucontrol";
           pactl = "${pkgs.pulseaudio}/bin/pactl";
@@ -103,23 +158,6 @@
           on-scroll-down = "${pactl} set-sink-volume @DEFAULT_SINK@ -5%";
         };
 
-        battery = {
-          interval = 60;
-          states = {
-            warning = 30;
-            critical = 15;
-          };
-          format = "{capacity}% {icon}";
-          format-icons = [
-            ""
-            ""
-            ""
-            ""
-            ""
-          ];
-          max-length = 25;
-        };
-
         tray = {
           icon-size = 18;
           spacing = 8;
@@ -129,23 +167,6 @@
           format = "";
           tooltip = false;
           on-click = "exec ${./scripts/power-menu.sh}";
-        };
-
-        "custom/hostname" = {
-          format = "{}";
-          exec = "echo \${HOSTNAME^^}";
-          interval = "once";
-          tooltip = false;
-        };
-
-        "custom/weather" = {
-          # to use the weather module replace <your_location> with your city or town
-          # note: do not use spaces: new york would be newyork
-          format = "{} °C";
-          exec = "${pkgs.wttrbar}/bin/wttrbar --location Charlotte";
-          return-type = "json";
-          tooltip = true;
-          interval = 3600;
         };
       };
     };
