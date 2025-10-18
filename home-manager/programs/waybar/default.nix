@@ -2,8 +2,6 @@
   programs.waybar = {
     enable = true;
 
-    style = ./style.css;
-
     settings = {
       main = {
         layer = "top";
@@ -22,7 +20,6 @@
           "cpu"
           "battery"
           "pulseaudio"
-          "custom/grimshot"
           "tray"
           "custom/power"
         ];
@@ -149,25 +146,6 @@
           return-type = "json";
           tooltip = true;
           interval = 3600;
-        };
-
-        "custom/spotify" = {
-          interval = 1;
-          return-type = "json";
-          exec = "${./scripts/spotify.sh}";
-          exec-if = "pgrep spotify";
-          escape = true;
-        };
-
-        "custom/grimshot" = let
-          grimshot = "grimshot --notify save";
-          satty = "satty --filename - --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png";
-        in {
-          format = "";
-          tooltip = false;
-          on-click-right = "${grimshot} output - | ${satty}";
-          on-click-middle = "${grimshot} window - | ${satty}";
-          on-click = "${grimshot} area - | ${satty}";
         };
       };
     };
