@@ -24,6 +24,7 @@
     xh
     xxh
     zip
+    swaybg
 
     # apps
     bitwarden-desktop

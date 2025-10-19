@@ -12,8 +12,5 @@
       };
     };
   };
-  services.hyprpaper.settings = {
-    preload = builtins.attrValues backgrounds;
-    wallpaper = [",${backgrounds."wallhaven-rrvygj_5120x1440.png"}"];
-  };
+  stylix.image = "${backgrounds."wallhaven-rrvygj_5120x1440.png"}";
 }

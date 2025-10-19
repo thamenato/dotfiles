@@ -1,5 +1,9 @@
 # Reference docs: https://github.com/sodiboo/niri-flake/blob/main/docs.md
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   programs.niri = let
     terminal = "ghostty";
     menu = "rofi -show drun -show-icons";
@@ -12,6 +16,9 @@
         skip-at-startup = true;
       };
 
+      environment = {
+        "NIXOS_OZONE_WL" = "1";
+      };
       input = {
         # Focus windows and outputs automatically when moving the mouse into them.
         # Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
@@ -40,9 +47,9 @@
         focus-ring = {
           width = 4;
         };
-        border = {
-          enable = false;
-        };
+        # border = {
+        #   enable = false;
+        # };
         shadow = {
           enable = false;
         };
@@ -101,6 +108,9 @@
 
       spawn-at-startup = [
         {argv = ["waybar"];}
+        {argv = ["nm-applet"];}
+        {argv = ["${pkgs.swaybg}/bin/swaybg" "-m" "fill" "-i" "${config.stylix.image}"];}
+        {argv = ["bitwarden"];}
       ];
 
       binds = with config.lib.niri.actions; {

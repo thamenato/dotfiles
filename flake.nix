@@ -84,6 +84,7 @@
       modules = [
         inputs.nixvim.homeModules.nixvim
         inputs.niri.homeModules.niri
+        inputs.niri.homeModules.stylix
         inputs.stylix.homeModules.stylix
         inputs.zen-browser.homeModules.beta
         ./home-manager
