@@ -5,7 +5,6 @@
     ./programs
     ./qt.nix
     ./services
-    ./services.nix
     ./stylix.nix
     ./wayland
   ];

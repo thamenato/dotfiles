@@ -36,8 +36,7 @@
     targets = {
       waybar.enable = true;
       rofi.enable = true;
-
-      # zen-browser.profileNames = ["default"];
+      mako.enable = true;
     };
   };
 }
