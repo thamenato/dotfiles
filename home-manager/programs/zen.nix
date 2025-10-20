@@ -40,6 +40,9 @@
 
       ExtensionSettings = mkExtensionSettings {
         "{446900e4-71c2-419f-a6a7-df9c091e268b}" = "bitwarden-password-manager";
+        "{3e4d2037-d300-4e95-859d-3cba866f46d3}" = "private-internet-access-ext";
+        "uBlock0@raymondhill.net" = "ublock-origin";
+        "languagetool-webextension@languagetool.org" = "languagetool";
       };
     };
 

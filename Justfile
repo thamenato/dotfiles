@@ -58,3 +58,21 @@ restore-ssh-key host=`hostname` user=`whoami` key="id_ed25519":
     else
         echo "Not doing anything"
     fi
+
+# Get Firefox Extension Id
+get-firefox-ext-id link:
+    #!/usr/bin/env bash
+    ext_name=$(
+        echo "{{ link }}" \
+         | sed -E 's|https://addons.mozilla.org/firefox/downloads/file/[0-9]+/([^/]+)-[^/]+\.xpi|\1|' \
+         | tr '_' '-'
+    )
+    download=$(
+        echo "$ext_name" \
+         | awk '{print "https://addons.mozilla.org/firefox/downloads/latest/" $1 "/latest.xpi"}'
+    )
+    cd $(mktemp -d)
+    wget "$download"
+    unzip latest.xpi -d my-extension && cd my-extension
+    ext_id=$(cat manifest.json | jq -r '.browser_specific_settings.gecko.id')
+    echo "\"${ext_id}\" = \"${ext_name}\";"
