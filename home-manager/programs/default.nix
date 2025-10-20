@@ -27,7 +27,6 @@
     ./tmux.nix
     ./vscode.nix
     ./waybar
-    ./wezterm
     ./yazi.nix
     ./zen.nix
     ./zoxide.nix
