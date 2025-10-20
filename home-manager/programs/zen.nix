@@ -8,6 +8,19 @@
   in {
     enable = true;
 
+    # Enabled Zen Mods:
+    # - Animations Plus
+    # - Better Active Tab
+    # - Better Unloaded Tabs
+    # - Cleaned URL bar
+    # - Lean
+    # - No Gaps
+    # - SuperPins
+
+    # Extensions:
+    # - Private Internet Access
+    # - uBlock Origin
+    # - AI Grammar Check
     policies = {
       AutofillAddressEnabled = true;
       AutofillCreditCardEnabled = false;
