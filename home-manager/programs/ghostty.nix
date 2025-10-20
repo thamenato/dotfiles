@@ -36,7 +36,7 @@
     settings = {
       # window
       title = " ";
-      window-decoration = false;
+      window-theme = "ghostty";
       # style
       theme = "cyberdream";
       background-opacity = 0.95;
