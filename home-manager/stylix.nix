@@ -1,7 +1,15 @@
 {pkgs, ...}: {
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
+    autoEnable = false;
+
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-moon.yaml";
+    polarity = "dark";
+
+    # cursor = {
+    #   package = pkgs.bibata-cursors;
+    #   name = "Bibata-Modern-Ice";
+    # };
 
     fonts = with pkgs; {
       serif = {
@@ -26,8 +34,10 @@
     };
 
     targets = {
-      zen-browser.profileNames = ["default"];
-      hyprlock.enable = false;
+      waybar.enable = true;
+      rofi.enable = true;
+
+      # zen-browser.profileNames = ["default"];
     };
   };
 }

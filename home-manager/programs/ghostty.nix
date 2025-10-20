@@ -34,20 +34,15 @@
     };
 
     settings = {
-      # looks & feel
-      #   previously used themes:
-      #     - 0x96f
-      #     - UltraDark
-      #     - UltraViolent
-      #     - xcodedarkhc
-      # theme = "cyberdream";
-      background-opacity = 0.85;
-      # font
-      font-family = "ZedMono NF";
-      font-size = 11;
       # window
       title = " ";
       window-decoration = false;
+      # style
+      theme = "cyberdream";
+      background-opacity = 0.95;
+
+      font-size = 11;
+      font-family = "ZedMono NF";
     };
   };
 }

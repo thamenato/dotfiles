@@ -1,4 +1,4 @@
-{
+{config, ...}: {
   programs.zen-browser = let
     # extensions: https://github.com/0xc000022070/zen-browser-flake?tab=readme-ov-file#extensions
     mkExtensionSettings = builtins.mapAttrs (_: pluginId: {
@@ -53,6 +53,16 @@
           color = "purple";
           icon = "fingerprint";
           id = 1;
+        };
+      };
+      spacesForce = true;
+      spaces = let
+        containers = config.programs.zen-browser.profiles."default".containers;
+      in {
+        "Personal" = {
+          id = "787d0fd7-5d70-4dbc-801d-3dfae851658b";
+          container = containers."Personal".id;
+          position = 1000;
         };
       };
     };
