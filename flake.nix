@@ -64,6 +64,8 @@
       };
     };
 
+    utils = import ./utils.nix {inherit pkgs;};
+
     mkReadFolder = dir: let
       fileList = builtins.readDir dir;
       mkFileAttr = name: type:
@@ -77,7 +79,7 @@
       inherit pkgs;
 
       extraSpecialArgs = {
-        inherit nixGL;
+        inherit nixGL utils;
         backgrounds = mkReadFolder ./misc/backgrounds;
       };
 

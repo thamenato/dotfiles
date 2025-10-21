@@ -1,21 +1,24 @@
 {
-  pkgs,
   backgrounds,
-  lib,
+  utils,
   ...
 }: let
-  bg_laptop = "${backgrounds."wallhaven-kxo38d_1920x1080.png"}";
-  swaybg = "${pkgs.swaybg}/bin/swaybg";
-  bg_monitor = "${backgrounds."wallhaven-rrvygj_5120x1440.png"}";
-  bg_command = "${swaybg} -m fill -o DP-2 -i ${bg_monitor} -o eDP-1 -i ${bg_laptop}";
+  background = utils.mkSwaybg [
+    {
+      output = "DP-2";
+      image = "${backgrounds."wallhaven-kxo38d_1920x1080.png"}";
+    }
+    {
+      output = "eDP-1";
+      image = "${backgrounds."wallhaven-rrvygj_5120x1440.png"}";
+    }
+  ];
 in {
-  stylix.image = bg_laptop;
-
   programs.niri = {
     settings = {
       spawn-at-startup = [
+        background
         {argv = ["1password"];}
-        {argv = lib.strings.splitString " " bg_command;}
       ];
 
       outputs = {

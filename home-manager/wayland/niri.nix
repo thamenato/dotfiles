@@ -1,9 +1,5 @@
 # Reference docs: https://github.com/sodiboo/niri-flake/blob/main/docs.md
-{
-  config,
-  pkgs,
-  ...
-}: {
+{config, ...}: {
   programs.niri = let
     terminal = "ghostty";
     menu = "rofi -show drun -show-icons";
@@ -109,7 +105,6 @@
       spawn-at-startup = [
         {argv = ["waybar"];}
         {argv = ["nm-applet"];}
-        {argv = ["${pkgs.swaybg}/bin/swaybg" "-m" "fill" "-i" "${config.stylix.image}"];}
         {argv = ["bitwarden"];}
       ];
 
