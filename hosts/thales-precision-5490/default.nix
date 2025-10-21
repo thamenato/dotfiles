@@ -5,8 +5,6 @@
   ...
 }: {
   imports = [
-    ./dconf.nix
-    ./gtk.nix
     ./programs
     ./services.nix
     ./wayland.nix

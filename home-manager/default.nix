@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   imports = [
+    ./dconf.nix
     ./gtk.nix
     ./packages.nix
     ./programs
