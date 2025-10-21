@@ -242,9 +242,9 @@
         };
 
         # screenshot
-        # "Print".action = screenshot;
-        # "Ctrl+Print".action = screenshot-screen;
-        # "Alt+Print".action = screenshot-window;
+        "Print".action.screenshot = [];
+        "Ctrl+Print".action.screenshot-screen = [];
+        "Alt+Print".action.screenshot-window = [];
 
         # workspaces
         "Mod+1".action = focus-workspace 1;
