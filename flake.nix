@@ -50,7 +50,6 @@
   outputs = inputs @ {
     self,
     nixpkgs,
-    nixGL,
     ...
   }: let
     system = "x86_64-linux";
@@ -64,45 +63,7 @@
       };
     };
 
-    utils = import ./utils.nix {inherit pkgs;};
-
-    mkReadFolder = dir: let
-      fileList = builtins.readDir dir;
-      mkFileAttr = name: type:
-        if type == "regular"
-        then "${dir}/${name}"
-        else null;
-    in
-      pkgs.lib.filterAttrs (_name: value: value != null) (pkgs.lib.mapAttrs mkFileAttr fileList);
-
-    mkHome = {hostName}: (inputs.home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-
-      extraSpecialArgs = {
-        inherit nixGL utils;
-        backgrounds = mkReadFolder ./misc/backgrounds;
-      };
-
-      modules = [
-        inputs.nixvim.homeModules.nixvim
-        inputs.niri.homeModules.niri
-        inputs.niri.homeModules.stylix
-        inputs.stylix.homeModules.stylix
-        inputs.zen-browser.homeModules.beta
-        ./home-manager
-        ./hosts/${hostName}
-      ];
-    });
-
-    mkHomeConfigurations = hosts:
-      builtins.listToAttrs (
-        map
-        (hostName: {
-          name = "${username}@${hostName}";
-          value = mkHome {inherit hostName;};
-        })
-        hosts
-      );
+    utils = import ./utils.nix {inherit pkgs inputs;};
 
     hostDirs = builtins.attrNames (builtins.readDir ./hosts);
   in {
@@ -139,6 +100,6 @@
       ];
     };
 
-    homeConfigurations = mkHomeConfigurations hostDirs;
+    homeConfigurations = utils.mkHomeConfigurations username hostDirs;
   };
 }
