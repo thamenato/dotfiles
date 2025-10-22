@@ -1,5 +1,9 @@
 # Reference docs: https://github.com/sodiboo/niri-flake/blob/main/docs.md
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   programs.niri = let
     terminal = "ghostty";
     menu = "rofi -show drun -show-icons";
@@ -108,7 +112,9 @@
         {argv = ["bitwarden"];}
       ];
 
-      binds = with config.lib.niri.actions; {
+      binds = with config.lib.niri.actions; let
+        brightnessclt = "${pkgs.brightnessctl}/bin/brightnessctl";
+      in {
         # show a list of important hotkeys
         "Mod+Shift+Slash".action = show-hotkey-overlay;
 
@@ -233,11 +239,11 @@
           allow-when-locked = true;
         };
         "XF86MonBrightnessUp" = {
-          action = spawn "brightnessctl" "--class=backlight" "set" "+10%";
+          action = spawn "${brightnessclt}" "--class=backlight" "set" "+10%";
           allow-when-locked = true;
         };
         "XF86MonBrightnessDown" = {
-          action = spawn "brightnessctl" "--class=backlight" "set" "10%-";
+          action = spawn "${brightnessclt}" "--class=backlight" "set" "10%-";
           allow-when-locked = true;
         };
 
