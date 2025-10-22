@@ -4,7 +4,6 @@
     ./packages.nix
     ./programs
     ./services.nix
-    ./wayland.nix
     ./xdg.nix
   ];
 

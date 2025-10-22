@@ -16,7 +16,7 @@ in {
     ncspot.package = pkgs.emptyDirectory;
     ghostty.package = config.lib.nixGL.wrapOffload pkgs.ghostty;
     git = {
-      extraConfig = {
+      settings = {
         gpg.ssh.program = "op-ssh-sign";
       };
       signing = {
