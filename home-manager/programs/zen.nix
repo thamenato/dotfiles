@@ -47,6 +47,16 @@
     };
 
     profiles."default" = {
+      settings = {
+        "zen.urlbar.behavior" = "float";
+        "zen.view.compact.enable-at-startup" = false;
+        "zen.view.compact.hide-toolbar" = false;
+        "zen.view.compact.toolbar-flash-popup" = false;
+        "zen.view.use-single-toolbar" = false;
+        "zen.view.window.scheme" = 0;
+        "zen.welcome-screen.seen" = true;
+        "zen.workspaces.continue-where-left-off" = true;
+      };
       containersForce = true;
       containers = {
         "Personal" = {
