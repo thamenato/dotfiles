@@ -18,5 +18,6 @@
     sway-contrib.grimshot
     uv
     xfce.thunar
+    (config.lib.nixGL.wrap zoom-us)
   ];
 }

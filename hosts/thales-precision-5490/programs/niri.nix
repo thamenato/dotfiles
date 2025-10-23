@@ -1,15 +1,17 @@
 {
   backgrounds,
   utils,
+  config,
+  lib,
   ...
 }: let
   background = utils.mkSwaybg [
     {
-      output = "DP-2";
+      output = "eDP-1";
       image = "${backgrounds."wallhaven-kxo38d_1920x1080.png"}";
     }
     {
-      output = "eDP-1";
+      output = "DP-2";
       image = "${backgrounds."wallhaven-rrvygj_5120x1440.png"}";
     }
   ];
@@ -20,6 +22,13 @@ in {
         background
         {argv = ["1password"];}
       ];
+
+      binds = with config.lib.niri.actions; {
+        "Ctrl+Alt+L" = lib.mkForce {
+          action = spawn "swaylock";
+          hotkey-overlay.title = "Lock the Screen: swaylock";
+        };
+      };
 
       outputs = {
         "DP-2" = {

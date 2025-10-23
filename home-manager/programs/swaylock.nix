@@ -1,8 +1,9 @@
-{
+{backgrounds, ...}: {
   programs.swaylock = {
     enable = false;
+
     settings = {
-      # image = "${image}";
+      image = "${backgrounds."wallhaven-exj8pw.jpg"}";
       indicator-caps-lock = true;
       indicator-radius = 115;
       inside-color = "#2e344098";
