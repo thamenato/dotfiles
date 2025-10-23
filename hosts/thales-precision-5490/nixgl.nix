@@ -1,6 +1,6 @@
-{nixGL, ...}: {
+{inputs, ...}: {
   nixGL = {
-    inherit (nixGL) packages;
+    inherit (inputs.nixGL) packages;
 
     defaultWrapper = "mesa";
     offloadWrapper = "nvidiaPrime";

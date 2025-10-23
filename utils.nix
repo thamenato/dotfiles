@@ -32,11 +32,12 @@
     inherit pkgs;
 
     extraSpecialArgs = {
+      inherit inputs;
+
+      backgrounds = mkReadFolder ./misc/backgrounds;
       utils = {
         mkSwaybg = mkSwaybg;
       };
-      nixGL = inputs.nixGL;
-      backgrounds = mkReadFolder ./misc/backgrounds;
     };
 
     modules = [
