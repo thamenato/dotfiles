@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   services.swayidle = {
     enable = true;
 
@@ -16,8 +16,8 @@
       }
       {
         timeout = 600;
-        command = "niri msg action power-off-monitors";
-        resumeCommand = "niri msg action power-on-monitors";
+        command = "${pkgs.niri}/bin/niri msg action power-off-monitors";
+        resumeCommand = "${pkgs.niri}/bin/niri msg action power-on-monitors";
       }
     ];
   };
