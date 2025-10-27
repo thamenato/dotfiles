@@ -1,48 +1,12 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+# Look for icons using https://www.nerdfonts.com/cheat-sheet
+{pkgs, ...}: let
+  pwvucontrol = "${pkgs.pwvucontrol}/bin/pwvucontrol";
+  pactl = "${pkgs.pulseaudio}/bin/pactl";
+in {
   programs.waybar = {
     enable = true;
 
-    style = lib.mkAfter ''
-      * {
-        border: none;
-        border-radius: 0;
-        min-height: 0;
-      }
-
-      @keyframes blink {
-        to {
-          border-bottom: 2px solid white;
-        }
-      }
-
-      #battery.warning:not(.charging) {
-        border-bottom: 3px solid #ffd415;
-        animation-name: blink;
-        animation-duration: 0.5s;
-        animation-timing-function: steps(12);
-        animation-iteration-count: infinite;
-        animation-direction: alternate;
-      }
-
-      #battery.critical:not(.charging) {
-        border-bottom: 3px solid #fa2424;
-        animation-name: blink;
-        animation-duration: 0.5s;
-        animation-timing-function: steps(12);
-        animation-iteration-count: infinite;
-        animation-direction: alternate;
-      }
-
-      #custom-power,
-      #tray {
-        padding: 0 10px;
-        margin: 0 2px;
-      }
-    '';
+    style = builtins.readFile ./style.css;
 
     settings = {
       main = {
@@ -51,28 +15,36 @@
         height = 26;
 
         modules-left = [
-          "niri/workspaces"
-        ];
-        modules-center = [
           "clock"
-        ];
-        modules-right = [
           "disk"
           "temperature"
           "memory"
           "cpu"
-          "battery"
-          "pulseaudio"
+        ];
+        modules-center = [
+          "niri/workspaces"
+        ];
+        modules-right = [
           "tray"
+          "network"
+          "wireplumber"
+          "battery"
           "custom/power"
         ];
 
         # modules
         "niri/workspaces" = {
+          format = "{icon}";
+          on-click = "activate";
+          format-icons = {
+            "active" = "";
+            "default" = "";
+          };
+          icon-size = 10;
         };
 
         clock = {
-          format = "{:%Y-%m-%d %R}";
+          format = " {:%Y-%m-%d %R}";
           tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
           calendar-weeks-pos = "right";
           today-format = "<span color='#ff6699'><b><u>{}</u></b></span>";
@@ -82,6 +54,13 @@
           on-scroll = {
             calendar = 1;
           };
+        };
+
+        wireplumber = {
+          "format" = " {volume}%";
+          "max-volume" = 100;
+          "scroll-step" = 5;
+          on-click = "${pwvucontrol}";
         };
 
         disk = {
@@ -107,6 +86,24 @@
           };
         };
 
+        network = {
+          format = "";
+          format-ethernet = "󰈀 ";
+          format-wifi = "{icon}";
+          format-disconnected = "󰲛 ";
+          format-icons = [
+            "󰤯 "
+            "󰤟 "
+            "󰤢 "
+            "󰤥 "
+            "󰤨 "
+          ];
+          tooltip-format-wifi = "{essid} ({signalStrength}%)";
+          tooltip-format-ethernet = "{ifname}";
+          tooltip-format-disconnected = "Disconnected";
+          on-click = "nm-connection-editor";
+        };
+
         cpu = {
           interval = 5;
           format = " {usage}%";
@@ -122,7 +119,7 @@
             warning = 30;
             critical = 15;
           };
-          format = "{capacity}% {icon}";
+          format = "{icon} {capacity}%";
           format-icons = [
             ""
             ""
@@ -133,12 +130,9 @@
           max-length = 25;
         };
 
-        pulseaudio = let
-          pwvucontrol = "${pkgs.pwvucontrol}/bin/pwvucontrol";
-          pactl = "${pkgs.pulseaudio}/bin/pactl";
-        in {
+        pulseaudio = {
           scroll-step = 1; # %, can be a float
-          format = "{volume}% {icon}";
+          format = "{icon} {volume}%";
           format-bluetooth = "{volume}% {icon}  {format_source}";
           format-bluetooth-muted = " {icon}  {format_source}";
           format-muted = "婢 {format_source}";
@@ -159,8 +153,8 @@
         };
 
         tray = {
-          icon-size = 18;
-          spacing = 8;
+          icon-size = 16;
+          spacing = 16;
         };
 
         "custom/power" = {

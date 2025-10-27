@@ -1,0 +1,152 @@
+window#waybar, tooltip {
+    background: alpha(@base00, 1.000000);
+}
+
+* {
+    font-family: "Iosevka NFM";
+    font-size: 10pt;
+}
+
+@define-color base00 #232136; @define-color base01 #2a273f;
+@define-color base02 #393552; @define-color base03 #6e6a86;
+@define-color base04 #908caa; @define-color base05 #e0def4;
+@define-color base06 #e0def4; @define-color base07 #56526e;
+
+@define-color base08 #eb6f92; @define-color base09 #f6c177;
+@define-color base0A #ea9a97; @define-color base0B #3e8fb0;
+@define-color base0C #9ccfd8; @define-color base0D #c4a7e7;
+@define-color base0E #f6c177; @define-color base0F #56526e;
+window#waybar, tooltip {
+    color: @base05;
+}
+
+tooltip {
+    border-color: @base0D;
+}
+
+tooltip label {
+    color: @base05;
+}
+#wireplumber,
+#pulseaudio,
+#sndio {
+  padding: 0 5px;
+}
+#wireplumber.muted,
+#pulseaudio.muted,
+#sndio.muted {
+  padding: 0 5px;
+}
+#upower,
+#battery {
+  padding: 0 5px;
+}
+#upower.charging,
+#battery.Charging {
+  padding: 0 5px;
+}
+#network {
+  padding: 0 5px;
+}
+#network.disconnected {
+  padding: 0 5px;
+}
+#user {
+  padding: 0 5px;
+}
+#clock {
+  padding: 0 5px;
+}
+#backlight {
+  padding: 0 5px;
+}
+#cpu {
+  padding: 0 5px;
+}
+#disk {
+  padding: 0 5px;
+}
+#idle_inhibitor {
+  padding: 0 5px;
+}
+#temperature {
+  padding: 0 5px;
+}
+#mpd {
+  padding: 0 5px;
+}
+#language {
+  padding: 0 5px;
+}
+#keyboard-state {
+  padding: 0 5px;
+}
+#memory {
+  padding: 0 5px;
+}
+#window {
+  padding: 0 5px;
+}
+#bluetooth {
+  padding: 0 5px;
+}
+#bluetooth.disabled {
+  padding: 0 5px;
+}
+.modules-left #workspaces button {
+    border-bottom: 3px solid transparent;
+}
+.modules-left #workspaces button.focused,
+.modules-left #workspaces button.active {
+    border-bottom: 3px solid @base05;
+}
+.modules-center #workspaces button {
+    border-bottom: 3px solid transparent;
+}
+.modules-center #workspaces button.focused,
+.modules-center #workspaces button.active {
+    border-bottom: 3px solid @base05;
+}
+.modules-right #workspaces button {
+    border-bottom: 3px solid transparent;
+}
+.modules-right #workspaces button.focused,
+.modules-right #workspaces button.active {
+    border-bottom: 3px solid @base05;
+}
+
+* {
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+}
+
+@keyframes blink {
+  to {
+    border-bottom: 2px solid white;
+  }
+}
+
+#battery.warning:not(.charging) {
+  border-bottom: 3px solid #ffd415;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: steps(12);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#battery.critical:not(.charging) {
+  border-bottom: 3px solid #fa2424;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: steps(12);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#custom-power,
+#tray {
+  padding: 0 10px;
+  margin: 0 2px;
+}

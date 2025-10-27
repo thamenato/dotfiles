@@ -108,7 +108,6 @@
 
       spawn-at-startup = [
         {argv = ["waybar"];}
-        {argv = ["nm-applet"];}
         {argv = ["bitwarden"];}
       ];
 

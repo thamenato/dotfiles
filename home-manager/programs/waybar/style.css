@@ -1,0 +1,85 @@
+/*
+* Global
+*/
+
+@define-color foreground #eeeeee;
+@define-color foreground-inactive #aaaaaa;
+@define-color background #000000;
+
+* {
+	font-family: "JetBrainsMono NFP";
+	font-size: 14px;
+	margin: 0;
+	min-height: 0;
+	padding: 0;
+}
+
+#waybar {
+	color: @foreground;
+	background-color: alpha(@background, 0.75);
+}
+
+/*
+* Modules Left
+*/
+
+#clock,
+#disk,
+#temperature,
+#memory,
+#cpu {
+	padding-left: 1em;
+}
+
+/*
+* Modules Center
+*/
+
+#workspaces button {
+	color: @foreground;
+	min-width: 1.5em;
+}
+
+#workspaces button.empty {
+	color: @foreground-inactive;
+}
+
+/*
+* Modules Right
+*/
+
+#network,
+#wireplumber,
+#battery,
+#tray,
+#custom-power {
+	padding-right: 1em;
+}
+
+/*
+* Battery Animation
+*/
+
+@keyframes blink {
+	to {
+		color: @foreground;
+	}
+}
+
+#battery.warning:not(.charging) {
+	color: #ffd415;
+	animation-name: blink;
+	animation-duration: 0.5s;
+	animation-timing-function: steps(12);
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+
+#battery.critical:not(.charging) {
+	color: #fa2424;
+	animation-name: blink;
+	animation-duration: 0.5s;
+	animation-timing-function: steps(12);
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}

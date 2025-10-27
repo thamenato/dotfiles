@@ -52,6 +52,8 @@
           bashls.enable = true;
           # cue
           cue.enable = true;
+          # css
+          cssls.enable = true;
           # go
           gopls.enable = true;
           # yaml

@@ -15,9 +15,9 @@
     };
 
     file = {
-      ".config/nixpkgs/config.nix".text = ''
-        { allowUnfree = true; }
-      '';
+      #       ".config/nixpkgs/config.nix".text = ''
+      #         { allowUnfree = true; }
+      #       '';
     };
   };
 }
