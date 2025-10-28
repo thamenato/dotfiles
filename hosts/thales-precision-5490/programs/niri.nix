@@ -21,6 +21,7 @@ in {
       spawn-at-startup = [
         background
         {argv = ["1password"];}
+        {argv = ["slack"];}
       ];
 
       binds = with config.lib.niri.actions; {

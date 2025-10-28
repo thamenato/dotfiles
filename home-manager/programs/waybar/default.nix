@@ -98,8 +98,8 @@ in {
             "󰤥 "
             "󰤨 "
           ];
-          tooltip-format-wifi = "{essid} ({signalStrength}%)";
-          tooltip-format-ethernet = "{ifname}";
+          tooltip-format-wifi = "{essid}({signalStrength}%) {ipaddr}";
+          tooltip-format-ethernet = "{ifname} {ipaddr}";
           tooltip-format-disconnected = "Disconnected";
           on-click = "nm-connection-editor";
         };
