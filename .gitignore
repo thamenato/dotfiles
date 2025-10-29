@@ -5,6 +5,9 @@ Pipfile*
 *.log
 .direnv
 
+# nix-build
+result
+
 # Hyper stuff
 Hyper/blob_storage
 Hyper/Cache

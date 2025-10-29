@@ -23,6 +23,7 @@
 * Modules Left
 */
 
+#custom-spotify,
 #clock,
 #disk,
 #temperature,
@@ -30,6 +31,11 @@
 #cpu {
 	padding-left: 1em;
 }
+
+#custom-spotify {
+	color: #1DB954;
+}
+
 
 /*
 * Modules Center

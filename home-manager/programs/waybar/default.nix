@@ -20,6 +20,7 @@ in {
           "temperature"
           "memory"
           "cpu"
+          "custom/spotify"
         ];
         modules-center = [
           "niri/workspaces"
@@ -155,6 +156,15 @@ in {
         tray = {
           icon-size = 16;
           spacing = 16;
+        };
+
+        "custom/spotify" = {
+          format = " {text}";
+          max-length = 40;
+          interval = 5;
+          exec = "${./scripts/spotify.sh}";
+          exec-if = "pgrep spotify";
+          return-type = "json";
         };
 
         "custom/power" = {
