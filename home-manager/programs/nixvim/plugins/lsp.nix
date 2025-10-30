@@ -41,6 +41,12 @@
         # https://nix-community.github.io/nixvim/plugins/lsp/index.html
         enable = true;
 
+        luaConfig = {
+          pre = ''
+            vim.lsp.set_log_level("off")
+          '';
+        };
+
         servers = {
           # ansible
           ansiblels = {

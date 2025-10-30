@@ -22,10 +22,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # nixvim uses its own instance of nixpkgs to ensure
+    # things are tested and work as expected
+    nixvim.url = "github:nix-community/nixvim";
 
     stylix = {
       url = "github:nix-community/stylix";
