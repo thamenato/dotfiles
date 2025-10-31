@@ -2,6 +2,7 @@
 {pkgs, ...}: let
   pwvucontrol = "${pkgs.pwvucontrol}/bin/pwvucontrol";
   pactl = "${pkgs.pulseaudio}/bin/pactl";
+  playerctl = "${pkgs.playerctl}/bin/playerctl";
 in {
   programs.waybar = {
     enable = true;
@@ -14,6 +15,7 @@ in {
         position = "top";
         height = 26;
 
+        # instantiate modules
         modules-left = [
           "clock"
           "disk"
@@ -22,9 +24,11 @@ in {
           "cpu"
           "custom/spotify"
         ];
+
         modules-center = [
           "niri/workspaces"
         ];
+
         modules-right = [
           "tray"
           "network"
@@ -33,15 +37,22 @@ in {
           "custom/power"
         ];
 
-        # modules
-        "niri/workspaces" = {
-          format = "{icon}";
-          on-click = "activate";
-          format-icons = {
-            "active" = "";
-            "default" = "";
+        # waybar module configuration
+        battery = {
+          interval = 60;
+          states = {
+            warning = 30;
+            critical = 15;
           };
-          icon-size = 10;
+          format = "{icon} {capacity}%";
+          format-icons = [
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
+          max-length = 25;
         };
 
         clock = {
@@ -57,25 +68,19 @@ in {
           };
         };
 
-        wireplumber = {
-          "format" = " {volume}%";
-          "max-volume" = 100;
-          "scroll-step" = 5;
-          on-click = "${pwvucontrol}";
+        cpu = {
+          interval = 5;
+          format = " {usage}%";
+          states = {
+            warning = 70;
+            critical = 90;
+          };
         };
 
         disk = {
           interval = 30;
           format = " {percentage_used}%";
           path = "/";
-        };
-
-        temperature = {
-          hwmon-path = "/sys/class/hwmon/hwmon2/temp1_input";
-          critical-threshold = 80;
-          format-critical = " {temperatureC}°C";
-          format = " {temperatureC}°C";
-          interval = 2;
         };
 
         memory = {
@@ -105,32 +110,54 @@ in {
           on-click = "nm-connection-editor";
         };
 
-        cpu = {
+        "niri/workspaces" = {
+          format = "{icon}";
+          on-click = "activate";
+          format-icons = {
+            "active" = "";
+            "default" = "";
+          };
+          icon-size = 10;
+        };
+
+        temperature = {
+          hwmon-path = "/sys/class/hwmon/hwmon2/temp1_input";
+          critical-threshold = 80;
+          format-critical = " {temperatureC}°C";
+          format = " {temperatureC}°C";
+          interval = 2;
+        };
+
+        tray = {
+          icon-size = 16;
+          spacing = 16;
+        };
+
+        wireplumber = {
+          "format" = " {volume}%";
+          "max-volume" = 100;
+          "scroll-step" = 5;
+          on-click = "${pwvucontrol}";
+        };
+
+        # my custom modules
+        "custom/power" = {
+          format = "";
+          tooltip = false;
+          on-click = "exec ${./scripts/power-menu.sh}";
+        };
+
+        "custom/spotify" = {
+          format = " {text}";
+          max-length = 40;
           interval = 5;
-          format = " {usage}%";
-          states = {
-            warning = 70;
-            critical = 90;
-          };
+          exec = "${./scripts/spotify.sh}";
+          exec-if = "pgrep spotify";
+          return-type = "json";
+          on-click = "${playerctl} -p spotify play-pause";
         };
 
-        battery = {
-          interval = 60;
-          states = {
-            warning = 30;
-            critical = 15;
-          };
-          format = "{icon} {capacity}%";
-          format-icons = [
-            ""
-            ""
-            ""
-            ""
-            ""
-          ];
-          max-length = 25;
-        };
-
+        # deprecated modules - keeping it just in case
         pulseaudio = {
           scroll-step = 1; # %, can be a float
           format = "{icon} {volume}%";
@@ -151,26 +178,6 @@ in {
           on-click = "${pwvucontrol}";
           on-scroll-up = "${pactl} set-sink-volume @DEFAULT_SINK@ +5%";
           on-scroll-down = "${pactl} set-sink-volume @DEFAULT_SINK@ -5%";
-        };
-
-        tray = {
-          icon-size = 16;
-          spacing = 16;
-        };
-
-        "custom/spotify" = {
-          format = " {text}";
-          max-length = 40;
-          interval = 5;
-          exec = "${./scripts/spotify.sh}";
-          exec-if = "pgrep spotify";
-          return-type = "json";
-        };
-
-        "custom/power" = {
-          format = "";
-          tooltip = false;
-          on-click = "exec ${./scripts/power-menu.sh}";
         };
       };
     };
