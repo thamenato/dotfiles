@@ -5,12 +5,12 @@
       # based on https://github.com/NixOS/nixpkgs/issues/378818
       venv-selector = pkgs.vimUtils.buildVimPlugin {
         pname = "venv-selector.nvim";
-        version = "2025-03-22";
+        version = "2025-10-21";
         src = pkgs.fetchFromGitHub {
           owner = "linux-cultist";
           repo = "venv-selector.nvim";
-          rev = "c677caa1030808a9f90092e522de7cc20c1390dd";
-          sha256 = "1wz9fci60ii4c2k04vxzd74vrdhfyg60s6smm0xbyvc8x57ph1x2";
+          rev = "9d528643ab17795c69dc42ce018120c397a36f8b";
+          sha256 = "03jag019p5kfwghff0f1w0xk3sfkpza71pprpm7gnwxi49y77pvi";
         };
         meta.homepage = "https://github.com/linux-cultist/venv-selector.nvim/";
         nvimSkipModule = [

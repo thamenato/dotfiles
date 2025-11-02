@@ -1,7 +1,6 @@
 {
   programs.nixvim = {
     plugins = {
-      lazydev.enable = true; # autoEnableSources not enough
       cmp = {
         # Autocompletion
         # See `:help cmp`

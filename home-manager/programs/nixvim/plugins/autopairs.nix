@@ -1,7 +1,7 @@
 {
   programs.nixvim = {
     plugins.nvim-autopairs = {
-      # Inserts matching pairs of parens, brackets, etc.
+      # Inserts matching pairs of parentheses, brackets, etc.
       # https://nix-community.github.io/nixvim/plugins/nvim-autopairs/index.html
       enable = true;
     };

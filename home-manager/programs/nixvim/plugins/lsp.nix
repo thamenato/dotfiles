@@ -27,16 +27,6 @@
 {
   programs.nixvim = {
     plugins = {
-      cmp-nvim-lsp = {
-        # Allows extra capabilities providied by nvim-cmp
-        # https://nix-community.github.io/nixvim/plugins/cmp-nvim-lsp.html
-        enable = true;
-      };
-      fidget = {
-        # Useful status updates for LSP.
-        # https://nix-community.github.io/nixvim/plugins/fidget/index.html
-        enable = true;
-      };
       lsp = {
         # https://nix-community.github.io/nixvim/plugins/lsp/index.html
         enable = true;

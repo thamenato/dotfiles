@@ -2,13 +2,15 @@
   imports = [
     # ./neovim-trunk.nix
     ./autopairs.nix
+    ./cmp-nvim-lsp.nix
     ./comment.nix
     ./conform.nix
     ./cursorline.nix
-    ./dashboard.nix
+    ./fidget.nix
     ./git-conflict.nix
     ./gitsigns.nix
     ./hardtime.nix
+    ./lazydev.nix
     ./lint.nix
     ./lsp.nix
     ./luasnip.nix
@@ -23,7 +25,6 @@
     ./treesitter.nix
     ./twilight.nix
     ./venv-selector.nix
-    ./vimwiki.nix
     ./which-key.nix
   ];
 }
