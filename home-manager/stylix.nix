@@ -18,18 +18,18 @@
       };
 
       serif = {
-        package = nerd-fonts.iosevka;
-        name = "Iosevka NF";
+        package = nerd-fonts.zed-mono;
+        name = "ZedMono NF";
       };
 
       sansSerif = {
-        package = nerd-fonts.iosevka;
-        name = "Iosevka NF";
+        package = nerd-fonts.zed-mono;
+        name = "ZedMono NF";
       };
 
       monospace = {
-        package = nerd-fonts.iosevka;
-        name = "Iosevka NFM";
+        package = nerd-fonts.zed-mono;
+        name = "ZedMono NFM";
       };
 
       emoji = {
@@ -39,9 +39,10 @@
     };
 
     targets = {
-      # waybar.enable = true;
       rofi.enable = true;
       mako.enable = true;
+      lazygit.enable = true;
+      ghostty.enable = true;
       gtk = {
         enable = false;
         extraCss = ''
