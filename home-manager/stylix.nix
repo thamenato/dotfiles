@@ -13,6 +13,10 @@
     };
 
     fonts = with pkgs; {
+      sizes = {
+        popups = 15;
+      };
+
       serif = {
         package = nerd-fonts.iosevka;
         name = "Iosevka NF";
