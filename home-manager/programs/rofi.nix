@@ -5,20 +5,66 @@
     theme = let
       inherit (config.lib.formats.rasi) mkLiteral;
     in {
-      # https://man.archlinux.org/man/rofi-theme.5
+      # References:
+      # - https://man.archlinux.org/man/rofi-theme.5
+      # - https://github.com/newmanls/rofi-themes-collection/blob/master/themes/template/rounded-template.rasi
+
+      "*" = {
+        margin = mkLiteral "0px";
+        padding = mkLiteral "0px";
+        spacing = mkLiteral "0px";
+      };
+
+      "window" = {
+        location = mkLiteral "north";
+        y-offset = mkLiteral "calc(50% - 176px)";
+        width = mkLiteral "480";
+        border-radius = mkLiteral "24px";
+      };
+
+      "mainbox" = {
+        padding = mkLiteral "12px";
+      };
+
+      "inputbar" = {
+        border = mkLiteral "2px";
+        border-radius = mkLiteral "16px";
+
+        padding = mkLiteral "8px 16px";
+        spacing = mkLiteral "8px";
+        children = map mkLiteral ["prompt" "entry"];
+      };
 
       "entry" = {
         placeholder = "Search...";
       };
 
+      "message" = {
+        margin = mkLiteral "12px 0 0";
+        border-radius = mkLiteral "16px";
+      };
+
+      "textbox" = {
+        padding = mkLiteral "8px 24px";
+      };
+
+      "listview" = {
+        margin = mkLiteral "12px 0 0";
+        lines = mkLiteral "8";
+        columns = mkLiteral "1";
+
+        fixed-height = false;
+      };
+
       "element" = {
-        orientation = mkLiteral "horizontal";
-        children = map mkLiteral ["element-icon" "element-text"];
+        padding = mkLiteral "8px 16px";
         spacing = mkLiteral "15px";
+        border-radius = mkLiteral "16px";
       };
 
       "element-icon" = {
-        size = mkLiteral "1.5em";
+        size = mkLiteral "1em";
+        vertical-align = mkLiteral "0.5";
       };
     };
   };
