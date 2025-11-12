@@ -1,5 +1,5 @@
 {inputs, ...}: {
-  nixGL = {
+  targets.genericLinux.nixGL = {
     inherit (inputs.nixGL) packages;
 
     defaultWrapper = "mesa";
