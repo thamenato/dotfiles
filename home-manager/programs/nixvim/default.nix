@@ -112,6 +112,7 @@
           vim.opt_local.shiftwidth = 4
           vim.opt_local.softtabstop = 4
           vim.opt_local.expandtab = true  -- Use spaces instead of tabs
+          vim.opt_local.swapfile = false
         end,
       })
     '';
