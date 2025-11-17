@@ -60,19 +60,8 @@
           # nix
           nixd.enable = true;
           # python
-          basedpyright = {
-            enable = true;
-            settings = {
-              basedpyright = {
-                disableOrganizeImports = true;
-                typeCheckingMode = "off";
-                analysis = {
-                  ignore = "*";
-                };
-              };
-            };
-          };
           ruff.enable = true;
+          pylsp.enable = true;
           # markdown
           marksman.enable = true;
           # lua

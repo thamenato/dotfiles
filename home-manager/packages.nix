@@ -15,8 +15,10 @@
     hyperfine
     jq
     lazydocker
+    opencode
     playerctl
     presenterm
+    swaybg
     tlrc
     tokei
     unzip
@@ -24,7 +26,6 @@
     xh
     xxh
     zip
-    swaybg
 
     # apps
     bitwarden-desktop
