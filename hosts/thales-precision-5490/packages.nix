@@ -13,6 +13,7 @@
     (config.lib.nixGL.wrap satty)
     (config.lib.nixGL.wrapOffload signal-desktop-bin)
     (config.lib.nixGL.wrapOffload slack)
+    (config.lib.nixGL.wrap xwayland-satellite)
     slurp
     spotify
     uv
