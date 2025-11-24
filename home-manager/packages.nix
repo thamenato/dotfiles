@@ -15,7 +15,6 @@
     hyperfine
     jq
     lazydocker
-    opencode
     playerctl
     presenterm
     swaybg
