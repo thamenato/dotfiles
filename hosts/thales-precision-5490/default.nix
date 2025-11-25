@@ -13,11 +13,5 @@
     sessionVariables = {
       BROWSER = "zen";
     };
-
-    file = {
-      #       ".config/nixpkgs/config.nix".text = ''
-      #         { allowUnfree = true; }
-      #       '';
-    };
   };
 }

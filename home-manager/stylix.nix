@@ -12,6 +12,8 @@
       size = 24;
     };
 
+    opacity.terminal = 0.9;
+
     fonts = with pkgs; {
       sizes = {
         popups = 15;
@@ -42,7 +44,7 @@
       rofi.enable = true;
       mako.enable = true;
       lazygit.enable = true;
-      ghostty.enable = true;
+      alacritty.enable = true;
       gtk = {
         enable = false;
         extraCss = ''

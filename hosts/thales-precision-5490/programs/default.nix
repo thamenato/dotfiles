@@ -14,7 +14,7 @@ in {
   programs = {
     go.enable = disabled;
     ncspot.package = pkgs.emptyDirectory;
-    ghostty.package = config.lib.nixGL.wrapOffload pkgs.ghostty;
+    alacritty.package = config.lib.nixGL.wrapOffload pkgs.alacritty;
     git = {
       settings = {
         gpg.ssh.program = "op-ssh-sign";

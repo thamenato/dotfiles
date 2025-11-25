@@ -5,7 +5,7 @@
   ...
 }: {
   programs.niri = let
-    terminal = "ghostty";
+    terminal = "alacritty";
     menu = "rofi -show drun -show-icons";
     lockscreen = "hyprlock";
   in {
@@ -20,6 +20,12 @@
         "NIXOS_OZONE_WL" = "1";
       };
       input = {
+        keyboard = {
+          xkb = {
+            layout = "us";
+            variant = "intl";
+          };
+        };
         # Focus windows and outputs automatically when moving the mouse into them.
         # Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
         focus-follows-mouse = {
@@ -120,7 +126,7 @@
         # main binds
         "Mod+Return" = {
           action = spawn "${terminal}";
-          hotkey-overlay.title = "Open a Terminal: ghostty";
+          hotkey-overlay.title = "Open a Terminal: ${terminal}";
         };
         "Mod+Shift+E" = {
           action = quit;
