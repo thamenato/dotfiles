@@ -29,6 +29,7 @@
     ./vscode.nix
     ./waybar
     ./yazi.nix
+    ./zellij.nix
     ./zen.nix
     ./zoxide.nix
     ./zsh
