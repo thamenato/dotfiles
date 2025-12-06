@@ -20,12 +20,9 @@ in {
     services.swayidle = {
       enable = true;
 
-      events = [
-        {
-          event = "before-sleep";
-          command = "${cfg.lockscreenCommand}";
-        }
-      ];
+      events = {
+        "before-sleep" = "${cfg.lockscreenCommand}";
+      };
 
       timeouts = [
         {
