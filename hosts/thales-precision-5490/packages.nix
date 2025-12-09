@@ -2,22 +2,30 @@
   config,
   pkgs,
   ...
-}: {
-  home.packages = with pkgs; [
+}:
+with pkgs; {
+  home.packages = let
+    satty-nixgl = config.lib.nixGL.wrap satty;
+    signal-desktop-bin-nixgl = config.lib.nixGL.wrapOffload signal-desktop-bin;
+    slack-nixgl = config.lib.nixGL.wrapOffload slack;
+    xwayland-satellite-nixgl = config.lib.nixGL.wrap xwayland-satellite;
+    zoom-us-nixgl = config.lib.nixGL.wrap zoom-us;
+  in [
     _1password-cli
     _1password-gui
     devbox
     image-roll
+    jiratui
     nh
     pwvucontrol
-    (config.lib.nixGL.wrap satty)
-    (config.lib.nixGL.wrapOffload signal-desktop-bin)
-    (config.lib.nixGL.wrapOffload slack)
-    (config.lib.nixGL.wrap xwayland-satellite)
+    satty-nixgl
+    signal-desktop-bin-nixgl
+    slack-nixgl
     slurp
     spotify
     uv
     xfce.thunar
-    (config.lib.nixGL.wrap zoom-us)
+    xwayland-satellite-nixgl
+    zoom-us-nixgl
   ];
 }
