@@ -28,6 +28,7 @@
 
     # apps
     bitwarden-desktop
+    vlc
 
     # lsp
     ansible-lint
@@ -38,7 +39,6 @@
     yaml-language-server
 
     # formatter/linter
-    # dprint
     hclfmt
     markdownlint-cli2
     nixfmt-rfc-style
