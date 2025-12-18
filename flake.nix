@@ -2,6 +2,8 @@
   description = "My Dotfiles";
 
   nixConfig = {
+    fallback = true;
+
     extra-substituters = [
       "https://nix-cache.cthyllaxy.xyz"
       "https://nix-community.cachix.org"
