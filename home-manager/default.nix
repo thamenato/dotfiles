@@ -21,7 +21,6 @@
 
     sessionVariables = {
       EDITOR = "nvim";
-      NH_HOME_FLAKE = "$HOME/dotfiles";
       ELECTRON_OZONE_PLATFORM_HINT = "wayland";
       OZONE_PLATFORM = "wayland";
       GDK_BACKEND = "wayland";

@@ -18,6 +18,7 @@
     ./lazygit.nix
     ./mergiraf.nix
     ./ncspot.nix
+    ./nh.nix
     ./nixvim
     ./opencode.nix
     ./ripgrep.nix

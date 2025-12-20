@@ -16,7 +16,6 @@ with pkgs; {
     devbox
     image-roll
     jiratui
-    nh
     pwvucontrol
     satty-nixgl
     signal-desktop-bin-nixgl
