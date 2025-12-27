@@ -19,7 +19,7 @@
     ./mergiraf.nix
     ./ncspot.nix
     ./nh.nix
-    ./nixvim
+    ./nvf.nix
     ./opencode.nix
     ./ripgrep.nix
     ./rofi.nix

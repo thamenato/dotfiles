@@ -24,11 +24,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # nixvim uses its own instance of nixpkgs to ensure
-    # things are tested and work as expected
-    nixvim.url = "github:nix-community/nixvim";
-
-    nvf.url = "github:notashelf/nvf";
+    nvf = {
+      url = "github:notashelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     stylix = {
       url = "github:nix-community/stylix";

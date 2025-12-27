@@ -1,13 +1,13 @@
 {pkgs, ...}: {
   programs.nvf = {
-    enable = false;
+    enable = true;
 
     settings.vim = {
       # neovim config
       viAlias = false;
       vimAlias = true;
       preventJunkFiles = true;
-      lineNumberMode = "number";
+      lineNumberMode = "relative";
 
       options = {
         tabstop = 4;
@@ -15,21 +15,21 @@
         softtabstop = 4;
       };
 
-      theme = {
-        enable = true;
-        name = "dracula";
-        style = "dark";
-      };
+      # theme = {
+      #   enable = true;
+      #   name = "dracula";
+      #   style = "dark";
+      # };
 
-      keymaps = [
-        {
-          key = "<leader>tf";
-          mode = ["n"];
-          action = ":lua MiniFiles.open()<cr>";
-          desc = "Open mini.files";
-          silent = true;
-        }
-      ];
+      # keymaps = [
+      #   {
+      #     key = "<leader>tf";
+      #     mode = ["n"];
+      #     action = ":lua MiniFiles.open()<cr>";
+      #     desc = "Open mini.files";
+      #     silent = true;
+      #   }
+      # ];
 
       lsp = {
         enable = true;

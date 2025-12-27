@@ -41,12 +41,13 @@
     };
 
     modules = with inputs; [
+      # external dependencies
       niri.homeModules.niri
       niri.homeModules.stylix
-      nixvim.homeModules.nixvim
       nvf.homeManagerModules.default
       stylix.homeModules.stylix
       zen-browser.homeModules.beta
+      # internal
       ./home-manager
       ./hosts/${hostName}
     ];
