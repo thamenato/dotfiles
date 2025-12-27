@@ -40,12 +40,13 @@
       };
     };
 
-    modules = [
-      inputs.nixvim.homeModules.nixvim
-      inputs.niri.homeModules.niri
-      inputs.niri.homeModules.stylix
-      inputs.stylix.homeModules.stylix
-      inputs.zen-browser.homeModules.beta
+    modules = with inputs; [
+      niri.homeModules.niri
+      niri.homeModules.stylix
+      nixvim.homeModules.nixvim
+      nvf.homeManagerModules.default
+      stylix.homeModules.stylix
+      zen-browser.homeModules.beta
       ./home-manager
       ./hosts/${hostName}
     ];

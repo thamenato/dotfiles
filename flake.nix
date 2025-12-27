@@ -28,6 +28,8 @@
     # things are tested and work as expected
     nixvim.url = "github:nix-community/nixvim";
 
+    nvf.url = "github:notashelf/nvf";
+
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
