@@ -2,7 +2,7 @@
   programs.nh = {
     enable = true;
 
-    homeFlake = "~/dotfiles";
-    osFlake = "~/Projects/nixos-hosts";
+    homeFlake = "$HOME/dotfiles";
+    osFlake = "$HOME/Projects/nixos-hosts";
   };
 }
