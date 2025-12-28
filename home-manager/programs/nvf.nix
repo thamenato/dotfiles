@@ -13,33 +13,49 @@
         tabstop = 4;
         shiftwidth = 4;
         softtabstop = 4;
+
+        # Save undo history
+        undofile = true;
+
+        # Case-insensitive searching UNLESS \C or one or more capital letters in the search term
+        ignorecase = true;
+        smartcase = true;
+
+        # Keep signcolumn on by default
+        signcolumn = "yes";
+
+        # if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
+        # instead raise a dialog asking if you wish to save the current file(s)
+        # See `:help 'confirm'`
+        confirm = true;
       };
 
-      # theme = {
-      #   enable = true;
-      #   name = "dracula";
-      #   style = "dark";
-      # };
+      theme = {
+        enable = true;
+        name = "rose-pine";
+        style = "main";
+        transparent = true;
+      };
 
-      # keymaps = [
-      #   {
-      #     key = "<leader>tf";
-      #     mode = ["n"];
-      #     action = ":lua MiniFiles.open()<cr>";
-      #     desc = "Open mini.files";
-      #     silent = true;
-      #   }
-      # ];
+      clipboard = {
+        enable = true;
+        registers = "unnamedplus";
+      };
+
+      filetree = {
+        nvimTree = {
+          enable = true;
+        };
+      };
 
       lsp = {
         enable = true;
         formatOnSave = true;
-        lspSignature.enable = true;
+        # lspSignature.enable = true;
       };
 
       languages = {
         # defaults
-        enableLSP = true;
         enableDAP = true;
         enableTreesitter = true;
         enableFormat = true;
@@ -62,7 +78,8 @@
         };
         python = {
           enable = true;
-          format.type = "ruff";
+          format.type = ["ruff"];
+          lsp.servers = ["python-lsp-server"];
         };
         terraform.enable = true;
       };
@@ -70,11 +87,9 @@
       mini = {
         ai.enable = true;
         diff.enable = true;
-        files.enable = true;
-        git.enable = true;
+        # git.enable = true;
         icons.enable = true;
         notify.enable = true;
-        starter.enable = true;
         statusline.enable = true;
         surround.enable = true;
       };
@@ -97,8 +112,9 @@
       };
 
       binds = {
-        whichKey.enable = true;
         cheatsheet.enable = true;
+        hardtime-nvim.enable = true;
+        whichKey.enable = true;
       };
 
       git = {
@@ -108,7 +124,9 @@
 
       autopairs.nvim-autopairs.enable = true;
 
-      utility = {};
+      utility = {
+        direnv.enable = true;
+      };
 
       spellcheck.enable = true;
 
@@ -119,15 +137,42 @@
 
       telescope.enable = true;
 
-      snippets.luasnip.enable = true;
+      snippets.luasnip = {
+        enable = true;
+        customSnippets.snipmate = {
+          sh = [
+            {
+              trigger = "header";
+              body = ''
+                ################################################################################
+                # $1
+                ################################################################################
+              '';
+            }
+          ];
+        };
+      };
 
-      autocomplete.nvim-cmp.enable = true;
+      autocomplete.blink-cmp = {
+        enable = true;
+        friendly-snippets.enable = true;
+        mappings = {
+          complete = "<C-Space>";
+          confirm = "<C-y>";
+          next = "<C-n>";
+          previous = "<C-p>";
+        };
+        setupOpts = {
+          signature.enable = true;
+        };
+      };
 
       formatter = {
         conform-nvim = {
           enable = true;
           setupOpts = {
             formatters_by_ft = {
+              nix = ["alejandra"];
               python = [
                 "ruff_fix"
                 "ruff_format"
@@ -169,51 +214,29 @@
         };
       };
 
-      extraPlugins = let
-        # based on https://github.com/NixOS/nixpkgs/issues/378818
-        venv-selector = pkgs.vimUtils.buildVimPlugin {
-          pname = "venv-selector.nvim";
-          version = "2025-03-22";
-          src = pkgs.fetchFromGitHub {
-            owner = "linux-cultist";
-            repo = "venv-selector.nvim";
-            rev = "c677caa1030808a9f90092e522de7cc20c1390dd";
-            sha256 = "1wz9fci60ii4c2k04vxzd74vrdhfyg60s6smm0xbyvc8x57ph1x2";
-          };
-          meta.homepage = "https://github.com/linux-cultist/venv-selector.nvim/";
-          nvimSkipModule = [
-            "venv-selector.cached_venv"
+      autocmds = [
+        {
+          event = ["BufRead" "BufNewFile"];
+          pattern = [
+            "*/ansible/*.yml"
+            "*/ansible/*.yaml"
+            "*/playbooks/*.yml"
+            "*/playbooks/*.yaml"
+            "*/roles/*.yml"
+            "*/roles/*.yaml"
           ];
-        };
-        # had this merged to nixpkgs, can remove once it hits unstable
-        neovim-trunk = pkgs.vimUtils.buildVimPlugin {
-          pname = "neovim-trunk";
-          version = "0.1.3";
-          src = pkgs.fetchFromGitHub {
-            owner = "trunk-io";
-            repo = "neovim-trunk";
-            rev = "4465bd62095741812e63b5c0a017889420c212bf";
-            sha256 = "1kwdl25m211crfqzpj1b459qjd955w1i2p675j25dav917bqmwf5";
-          };
-          meta.homepage = "https://github.com/trunk-io/neovim-trunk";
-        };
-      in {
+          command = "set filetype=yaml.ansible";
+        }
+      ];
+      extraPlugins = with pkgs.vimPlugins; {
         "venv-selector.nvim" = {
-          package = venv-selector;
+          package = venv-selector-nvim;
           setup = "require('venv-selector').setup {}";
         };
         trunk = {
           package = neovim-trunk;
           setup = "require('trunk').setup {}";
         };
-      };
-
-      # custom lazy plugins
-      lazy.plugins = {
-        # vim-just = {
-        #   package = vim-just;
-        #   ft = "just";
-        # };
       };
     };
   };
