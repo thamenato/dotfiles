@@ -56,7 +56,7 @@ in {
         };
 
         clock = {
-          format = " {:%Y-%m-%d %R}";
+          format = " {:%A, %d %b %Y %H:%M}";
           tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
           calendar-weeks-pos = "right";
           today-format = "<span color='#ff6699'><b><u>{}</u></b></span>";
