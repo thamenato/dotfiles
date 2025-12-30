@@ -88,7 +88,7 @@
       lazygit.enable = true;
       mako.enable = true;
       rofi.enable = true;
-      zellij.enable = true;
+      tmux.enable = true;
     };
   };
 }

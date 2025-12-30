@@ -50,7 +50,6 @@
     # applications
     niri.url = "github:sodiboo/niri-flake";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
-    zjstatus.url = "github:dj95/zjstatus";
   };
 
   outputs = inputs @ {
@@ -67,12 +66,6 @@
         allowUnfree = true;
         allowUnfreePredicate = _: true;
       };
-
-      overlays = with inputs; [
-        (_: prev: {
-          zjstatus = zjstatus.packages.${prev.system}.default;
-        })
-      ];
     };
 
     utils = import ./utils.nix {inherit pkgs inputs;};
