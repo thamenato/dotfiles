@@ -40,16 +40,16 @@
         fi
       ''
       # Auto-start tmux at the end
-      (lib.mkAfter ''
-        # Auto-start tmux with session management
-        if command -v tmux &> /dev/null && [ -z "$TMUX" ] && [ -z "$NO_TMUX" ]; then
-          # Check if we're in an interactive shell
-          if [[ $- == *i* ]]; then
-            # Try to attach to 'default' session, or create it if it doesn't exist
-            tmux attach-session -t default 2>/dev/null || tmux new-session -s default
-          fi
-        fi
-      '')
+      # (lib.mkAfter ''
+      #   # Auto-start tmux with session management
+      #   if command -v tmux &> /dev/null && [ -z "$TMUX" ] && [ -z "$NO_TMUX" ]; then
+      #     # Check if we're in an interactive shell
+      #     if [[ $- == *i* ]]; then
+      #       # Try to attach to 'default' session, or create it if it doesn't exist
+      #       tmux attach-session -t default 2>/dev/null || tmux new-session -s default
+      #     fi
+      #   fi
+      # '')
     ];
 
     plugins = [

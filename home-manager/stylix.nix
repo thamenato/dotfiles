@@ -89,6 +89,7 @@
       mako.enable = true;
       rofi.enable = true;
       tmux.enable = true;
+      zellij.enable = true;
     };
   };
 }

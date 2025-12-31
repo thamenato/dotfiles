@@ -1,6 +1,6 @@
-{pkgs, ...}: {
+{
   programs.zellij = {
-    enable = false;
+    enable = true;
 
     attachExistingSession = true;
     enableZshIntegration = true;
@@ -27,54 +27,77 @@
 
     layouts = {
       default = ''
-         layout {
-             default_tab_template {
-               pane size=1 borderless=true {
-                   plugin location="file:${pkgs.zjstatus}/bin/zjstatus.wasm" {
-                       format_left   "#[fg=#89B4FA,bold]{command_hostname} {mode}"
-                       format_center "{tabs}"
-                       format_right  "{datetime}"
-                       format_space  ""
+        layout {
+          default_tab_template {
+            pane size=1 borderless=true {
+              plugin location="https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm" {
+                // pine rose theme
+                color_base "#232136"
+                color_surface "#2a273f"
+                color_overlay "#393552"
+                color_muted "#6e6a86"
+                color_subtle "#908caa"
+                color_text "#e0def4"
+                color_love "#eb6f92"
+                color_gold "#f6c177"
+                color_rose "#ea9a97"
+                color_pine "#3e8fb0"
+                color_foam "#9ccfd8"
+                color_Iris "#c4a7e7"
+                color_highlight_low "#2a283e"
+                color_highlight_med "#44415a"
+                color_highlight_high "#56526e"
 
-                       border_enabled  "false"
-                       border_char     "─"
-                       border_format   "#[fg=#6C7086]{char}"
-                       border_position "bottom"
-                       hide_frame_for_single_pane "false"
+                format_left   "{tabs}"
+                format_center "#[fg=$text] {mode}#[]"
+                format_right  " {command_host}  {session} "
+                format_space  ""
 
-                       command_hostname_command "hostname -s"
-                       command_hostname_format "{stdout}"
-                       command_hostname_interval "60"
-                       command_hostname_rendermode "static"
+                border_enabled  "false"
+                border_char     "─"
+                border_format   "#[fg=$base]{char}"
+                border_position "top"
 
-                       mode_normal        "#[fg=#A6E3A1] NORMAL"
-                       mode_locked        "#[fg=#FAB387] LOCKED"
-                       mode_resize        "#[fg=#F9E2AF] RESIZE"
-                       mode_pane          "#[fg=#CBA6F7] PANE"
-                       mode_tab           "#[fg=#89B4FA] TAB"
-                       mode_scroll        "#[fg=#F38BA8] SCROLL"
-                       mode_enter_search  "#[fg=#F9E2AF] SEARCH"
-                       mode_search        "#[fg=#F9E2AF] SEARCH"
-                       mode_rename_tab    "#[fg=#89B4FA] RENAME_TAB"
-                       mode_rename_pane   "#[fg=#CBA6F7] RENAME_PANE"
-                       mode_session       "#[fg=#F5C2E7] SESSION"
-                       mode_move          "#[fg=#F5E0DC] MOVE"
-                       mode_prompt        "#[fg=#94E2D5] PROMPT"
-                       mode_tmux          "#[fg=#FAE3B0] TMUX"
+                hide_frame_for_single_pane "false"
 
-                       tab_normal   "#[fg=#6C7086] {name} "
-                       tab_active   "#[fg=#9399B2,bold,italic] {name} "
+                mode_normal        "#[fg=$text] NORMAL "
+                mode_locked        "#[fg=$muted] LOCKED "
+                mode_pane          "#[fg=$pine,bold] PANE "
+                mode_tab           "#[fg=$rose,bold] TAB "
+                mode_scroll        "#[fg=$foam,bold] SCROLL "
+                mode_enter_search  "#[fg=$text,bold] ENT-SEARCH "
+                mode_search        "#[fg=$subtle,bold] SEARCH "
+                mode_resize        "#[fg=$gold,bold] RESIZE "
+                mode_rename_tab    "#[fg=$gold,bold] RENAME TAB "
+                mode_rename_pane   "#[fg=$gold,bold] RENAME PANE "
+                mode_move          "#[fg=$gold,bold] MOVE "
+                mode_session       "#[fg=$love,bold] SESSION "
+                mode_prompt        "#[fg=$love,bold] PROMPT "
 
-                       datetime        "#[fg=#6C7086,bold] {format} "
-                       datetime_format "%Y-%m-%d %R"
-                       datetime_timezone "America/New_York"
-                  }
-                }
-               children
-               pane size=1 borderless=true {
-                   plugin location="zellij:status-bar"
-               }
-            }
+                tab_normal              "#[fg=$subtle]  {index} #[fg=$subtle]{floating_indicator} "
+                tab_normal_fullscreen   "#[fg=$subtle]  {index} #[fg=$subtle]{fullscreen_indicator} "
+                tab_normal_sync         "#[fg=$subtle]  {index} #[fg=$subtle]{sync_indicator} "
+                tab_active              "#[bg=$overlay,fg=$text]  {index} #[bg=$overlay,fg=$text,bold]{floating_indicator} "
+                tab_active_fullscreen   "#[bg=$overlay,fg=$text]  {index} #[bg=$overlay,fg=$text,bold]{fullscreen_indicator} "
+                tab_active_sync         "#[bg=$overlay,fg=$text]  {index} #[bg=$overlay,fg=$text,bold]{sync_indicator} "
+                tab_separator           " "
+
+                tab_sync_indicator       ""
+                tab_fullscreen_indicator "󰊓"
+                tab_floating_indicator   "󰹙"
+
+                command_host_command    "uname -n"
+                command_host_format     "{stdout}"
+                command_host_interval   "0"
+                command_host_rendermode "static"
+
+                datetime        "#[fg=$base,bold] {format} "
+                datetime_format "%A, %d %b %Y %H:%M"
+                datetime_timezone "America/New_York"
+              }
+           }
+           children
+           }
         }'';
     };
   };
