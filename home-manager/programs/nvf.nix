@@ -45,6 +45,15 @@
       filetree = {
         nvimTree = {
           enable = true;
+          setupOpts = {
+            actions = {
+              open_file = {
+                window_picker = {
+                  enable = true;
+                };
+              };
+            };
+          };
         };
       };
 
@@ -209,14 +218,20 @@
             markdown = "80";
             python = "80";
             nix = "110";
-            go = ["90" "130"];
+            go = [
+              "90"
+              "130"
+            ];
           };
         };
       };
 
       autocmds = [
         {
-          event = ["BufRead" "BufNewFile"];
+          event = [
+            "BufRead"
+            "BufNewFile"
+          ];
           pattern = [
             "*/ansible/*.yml"
             "*/ansible/*.yaml"
@@ -236,6 +251,24 @@
         trunk = {
           package = neovim-trunk;
           setup = "require('trunk').setup {}";
+        };
+        "auto-session" = {
+          package = auto-session;
+          setup = ''
+            require('auto-session').setup {
+              auto_session_enabled = true,
+              auto_save_enabled = true,
+              auto_restore_enabled = true,
+              auto_session_suppress_dirs = { "~/", "~/Downloads", "/" },
+              -- Git integration
+              git_use_branch_name = true,
+              git_auto_restore_on_branch_change = true,
+              session_lens = {
+                load_on_setup = true,
+                theme_conf = { border = true },
+              },
+            }
+          '';
         };
       };
     };
