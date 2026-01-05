@@ -4,7 +4,7 @@
 
     attachExistingSession = true;
     enableZshIntegration = true;
-    exitShellOnExit = true;
+    exitShellOnExit = false;
 
     settings = {
       ui = {
