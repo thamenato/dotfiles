@@ -39,14 +39,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # needed for non-NixOS host
-    nixGL = {
-      # using my own fork which includes patches
-      # due to nix-community/nixGL being abandoned
-      url = "github:thamenato/nixGL";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # applications
     niri.url = "github:sodiboo/niri-flake";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";

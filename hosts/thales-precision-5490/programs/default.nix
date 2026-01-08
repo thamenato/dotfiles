@@ -1,5 +1,4 @@
 {
-  config,
   lib,
   pkgs,
   ...
@@ -14,7 +13,6 @@ in {
   programs = {
     go.enable = disabled;
     ncspot.package = pkgs.emptyDirectory;
-    alacritty.package = config.lib.nixGL.wrapOffload pkgs.alacritty;
     git = {
       settings = {
         gpg.ssh.program = "op-ssh-sign";
