@@ -44,6 +44,10 @@
     nixfmt-rfc-style
 
     # fonts
+    # microsoft stuff
+    corefonts
+    vista-fonts
+
     font-awesome
     # powerline-fonts
     # powerline-symbols
