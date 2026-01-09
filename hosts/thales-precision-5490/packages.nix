@@ -8,7 +8,7 @@ with pkgs; {
     jiratui
     pwvucontrol
     satty
-    signal-desktop-bin
+    signal-desktop
     slack
     slurp
     spotify
