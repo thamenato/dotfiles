@@ -19,6 +19,7 @@
     ./mergiraf.nix
     ./ncspot.nix
     ./nh.nix
+    ./noctalia.nix
     ./nvf.nix
     ./opencode.nix
     ./ripgrep.nix

@@ -113,7 +113,8 @@
       };
 
       spawn-at-startup = [
-        {argv = ["waybar"];}
+        {command = ["noctalia-shell"];}
+        # {argv = ["waybar"];}
         {argv = ["bitwarden"];}
       ];
 

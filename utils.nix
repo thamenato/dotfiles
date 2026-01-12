@@ -36,7 +36,7 @@
 
       backgrounds = mkReadFolder ./misc/backgrounds;
       utils = {
-        mkSwaybg = mkSwaybg;
+        inherit mkSwaybg;
       };
     };
 
@@ -44,6 +44,7 @@
       # external dependencies
       niri.homeModules.niri
       niri.homeModules.stylix
+      noctalia.homeModules.default
       nvf.homeManagerModules.default
       stylix.homeModules.stylix
       zen-browser.homeModules.beta

@@ -39,6 +39,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # applications
     niri.url = "github:sodiboo/niri-flake";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
