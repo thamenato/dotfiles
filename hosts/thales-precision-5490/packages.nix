@@ -13,7 +13,7 @@ with pkgs; {
     slurp
     spotify
     uv
-    xfce.thunar
+    thunar
     xwayland-satellite
     zoom-us
   ];

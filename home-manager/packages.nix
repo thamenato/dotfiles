@@ -41,7 +41,7 @@
     # formatter/linter
     hclfmt
     markdownlint-cli2
-    nixfmt-rfc-style
+    nixfmt
 
     # fonts
     # microsoft stuff
