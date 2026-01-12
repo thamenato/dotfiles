@@ -1,25 +1,21 @@
 {
   backgrounds,
-  utils,
   config,
   lib,
   ...
-}: let
-  background = utils.mkSwaybg [
-    {
-      output = "eDP-1";
-      image = "${backgrounds."wallhaven-kxo38d_1920x1080.png"}";
-    }
-    {
-      output = "DP-2";
-      image = "${backgrounds."wallhaven-rrvygj_5120x1440.png"}";
-    }
-  ];
-in {
+}: {
+  home.file.".cache/noctalia/wallpapers.json" = {
+    text = builtins.toJSON {
+      defaultWallpaper = "${backgrounds."wallhaven-rrvygj_5120x1440.png"}";
+      wallpapers = {
+        "DP-2" = "${backgrounds."wallhaven-rrvygj_5120x1440.png"}";
+        "eDP-1" = "${backgrounds."wallhaven-kxo38d_1920x1080.png"}";
+      };
+    };
+  };
   programs.niri = {
     settings = {
       spawn-at-startup = [
-        background
         {argv = ["1password"];}
         {argv = ["slack"];}
       ];

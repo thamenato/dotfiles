@@ -6,7 +6,7 @@
 }: {
   programs.niri = let
     terminal = "alacritty";
-    menu = "rofi -show drun -show-icons";
+    menu = "noctalia-shell ipc call launcher toggle";
     lockscreen = "hyprlock";
   in {
     enable = true;
@@ -76,6 +76,15 @@
           # do not draw solid background when drawing a border this is
           # required for applications with transparent backgrounds
           draw-border-with-background = false;
+
+          # noctalia-shell recommendations
+          geometry-corner-radius = {
+            bottom-left = 20.0;
+            bottom-right = 20.0;
+            top-left = 20.0;
+            top-right = 20.0;
+          };
+          clip-to-geometry = true;
         }
         {
           # block certain windows from showing up when sharing screen
@@ -107,6 +116,16 @@
         }
       ];
 
+      layer-rules = [
+        {
+          # noctalia-shell: blurred overview wallpaper
+          matches = [
+            {namespace = "^noctalia-overview*";}
+          ];
+          place-within-backdrop = true;
+        }
+      ];
+
       cursor = {
         theme = "default";
         size = 24;
@@ -135,7 +154,6 @@
         };
         "Mod+D" = {
           action = spawn-sh "${menu}";
-          hotkey-overlay.title = "Run an Application: rofi";
         };
         "Ctrl+Alt+L" = {
           action = spawn "${lockscreen}";

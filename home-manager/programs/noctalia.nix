@@ -17,9 +17,10 @@
               usePrimaryColor = true;
             }
             {
-              alwaysShowPercentage = true;
-              id = "Battery";
-              warningThreshold = 30;
+              id = "SystemMonitor";
+            }
+            {
+              id = "MediaMini";
             }
           ];
           center = [
@@ -31,10 +32,18 @@
           ];
           right = [
             {
+              id = "Tray";
+            }
+            {
               id = "WiFi";
             }
             {
               id = "Bluetooth";
+            }
+            {
+              alwaysShowPercentage = true;
+              id = "Battery";
+              warningThreshold = 30;
             }
             {
               id = "ControlCenter";
@@ -50,7 +59,7 @@
       };
       location = {
         monthBeforeDay = true;
-        name = "Charlotte, United States";
+        name = "Charlotte, NC";
       };
     };
     # this may also be a string or a path to a JSON file.
