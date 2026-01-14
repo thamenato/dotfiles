@@ -29,6 +29,7 @@
     # apps
     bitwarden-desktop
     vlc
+    bruno
 
     # lsp
     ansible-lint
