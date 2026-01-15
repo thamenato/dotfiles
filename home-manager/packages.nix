@@ -33,9 +33,15 @@
 
     # lsp
     ansible-lint
+    bash-language-server
+    cuelsp
+    docker-compose-language-service
+    gopls
     marksman
     nil
     nixd
+    ruff
+    superhtml
     terraform-ls
     yaml-language-server
 

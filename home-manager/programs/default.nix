@@ -12,6 +12,7 @@
     ./ghostty.nix
     ./git.nix
     ./go.nix
+    ./helix.nix
     ./hyprlock.nix
     ./k9s
     ./kitty.nix

@@ -5,12 +5,12 @@
     fallback = true;
 
     extra-substituters = [
-      # "https://nix-cache.cthyllaxy.xyz"
+      "https://nix-cache.cthyllaxy.xyz"
       "https://nix-community.cachix.org"
       "https://niri.cachix.org"
     ];
     extra-trusted-public-keys = [
-      # "nix-cache.cthyllaxy.xyz:JIJkt6Drj50OAeIy/5XTbV0AP1d38IAanVkxjvTBTzY="
+      "nix-cache.cthyllaxy.xyz:JIJkt6Drj50OAeIy/5XTbV0AP1d38IAanVkxjvTBTzY="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
     ];
@@ -93,10 +93,11 @@
         cachix
         just
         nh
-        nixpkgs-fmt
+        nixfmt
         sops
         yq-go
         # language server
+        alejandra
         nil
         yaml-language-server
       ];
