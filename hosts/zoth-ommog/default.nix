@@ -1,20 +1,13 @@
-{
-  utils,
-  backgrounds,
-  ...
-}: let
-  background = utils.mkSwaybg [
-    {
-      output = "HDMI-A-1";
-      image = "${backgrounds."wallhaven-d6jzvg_3840x2160.png"}";
-    }
-  ];
-in {
+{backgrounds, ...}: {
+  home.file.".cache/noctalia/wallpapers.json" = {
+    text = builtins.toJSON {
+      defaultWallpaper = "${backgrounds."wallhaven-d6jzvg_3840x2160.png"}";
+      wallpapers = {
+        "HDMI-A-1" = "${backgrounds."wallhaven-d6jzvg_3840x2160.png"}";
+      };
+    };
+  };
   programs.niri.settings = {
-    spawn-at-startup = [
-      background
-    ];
-
     outputs = {
       "HDMI-A-1" = {
         mode = {
