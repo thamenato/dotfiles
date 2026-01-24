@@ -10,7 +10,7 @@
         widgets = {
           left = [
             {
-              formatHorizontal = "HH:mm";
+              formatHorizontal = "yyyy-MM-dd HH:mm";
               formatVertical = "HH mm";
               id = "Clock";
               useMonospacedFont = true;
