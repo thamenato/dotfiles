@@ -91,6 +91,7 @@
           lsp.servers = ["python-lsp-server"];
         };
         terraform.enable = true;
+        yaml.enable = true;
       };
 
       mini = {
@@ -268,6 +269,21 @@
                 theme_conf = { border = true },
               },
             }
+          '';
+        };
+        "nvim-lint" = {
+          package = nvim-lint;
+          setup = ''
+            require('lint').linters_by_ft = {
+              ['yaml.ansible'] = {'ansible_lint'},
+            }
+
+            -- Run linter on save and when entering buffer
+            vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter" }, {
+              callback = function()
+                require("lint").try_lint()
+              end,
+            })
           '';
         };
       };
