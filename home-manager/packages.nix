@@ -18,6 +18,7 @@
     playerctl
     presenterm
     swaybg
+    tlp
     tlrc
     tokei
     unzip
