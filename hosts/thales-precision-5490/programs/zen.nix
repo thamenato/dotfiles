@@ -31,6 +31,7 @@
           id = 2;
         };
       };
+      spacesForce = true;
       spaces = let
         containers = config.programs.zen-browser.profiles."default".containers;
       in {

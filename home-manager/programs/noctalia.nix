@@ -1,6 +1,24 @@
 {
   programs.noctalia-shell = {
     enable = true;
+
+    plugins = {
+      sources = [
+        {
+          enabled = true;
+          name = "Official Noctalia Plugins";
+          url = "https://github.com/noctalia-dev/noctalia-plugins";
+        }
+      ];
+      states = {
+        tailscale = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
+      };
+      version = 2;
+    };
+
     settings = {
       # configure noctalia here
       bar = {
@@ -21,6 +39,9 @@
             }
             {
               id = "MediaMini";
+            }
+            {
+              id = "Tailcale";
             }
           ];
           center = [
