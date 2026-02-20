@@ -39,6 +39,25 @@
           id = "61890944-4b85-438a-a4fc-c044f71bc9e7";
           container = containers."Work".id;
           position = 2000;
+          theme = {
+            type = "gradient";
+            colors = [
+              {
+                red = 121;
+                green = 57;
+                blue = 137;
+                algorithm = "floating";
+              }
+              {
+                red = 74;
+                green = 165;
+                blue = 144;
+                algorithm = "complementary";
+              }
+            ];
+            opacity = 0.4;
+            texture = 0.5;
+          };
         };
       };
     };

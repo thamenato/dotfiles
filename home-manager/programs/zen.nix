@@ -73,6 +73,25 @@
           id = "787d0fd7-5d70-4dbc-801d-3dfae851658b";
           container = containers."Personal".id;
           position = 1000;
+          theme = {
+            type = "gradient";
+            colors = [
+              {
+                red = 97;
+                green = 122;
+                blue = 184;
+                algorithm = "floating";
+              }
+              {
+                red = 96;
+                green = 184;
+                blue = 174;
+                algorithm = "complementary";
+              }
+            ];
+            opacity = 0.4;
+            texture = 0.5;
+          };
         };
       };
     };
