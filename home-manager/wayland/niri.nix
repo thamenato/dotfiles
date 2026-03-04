@@ -132,9 +132,13 @@
       };
 
       spawn-at-startup = [
-        {command = ["noctalia-shell"];}
+        {
+          command = ["noctalia-shell"];
+        }
         # {argv = ["waybar"];}
-        {argv = ["bitwarden"];}
+        {
+          argv = ["bitwarden"];
+        }
       ];
 
       binds = with config.lib.niri.actions; let

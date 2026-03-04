@@ -5,7 +5,7 @@ with pkgs; {
     _1password-gui
     devbox
     image-roll
-    jiratui
+    # jiratui
     pwvucontrol
     satty
     signal-desktop
