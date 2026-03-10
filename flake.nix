@@ -5,14 +5,17 @@
     fallback = true;
 
     extra-substituters = [
+      "https://cache.flox.dev"
+      "https://niri.cachix.org"
       "https://nix-cache.cthyllaxy.xyz"
       "https://nix-community.cachix.org"
-      "https://niri.cachix.org"
     ];
+
     extra-trusted-public-keys = [
+      "flox-cache-public-1:7F4OyH7ZCnFhcze3fJdfyXYLQw/aV7GEed86nQ7IsOs="
+      "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
       "nix-cache.cthyllaxy.xyz:JIJkt6Drj50OAeIy/5XTbV0AP1d38IAanVkxjvTBTzY="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
     ];
   };
 
@@ -51,6 +54,7 @@
     };
 
     # applications
+    flox.url = "github:flox/flox/latest";
     niri.url = "github:sodiboo/niri-flake";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
