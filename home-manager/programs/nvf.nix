@@ -77,9 +77,10 @@
         html.enable = true;
         markdown = {
           enable = true;
-          format.enable = false;
           extensions.render-markdown-nvim.enable = true;
           extraDiagnostics.enable = true;
+          format.enable = false;
+          lsp.servers = ["rumdl"];
         };
         nix = {
           enable = true;
@@ -249,10 +250,10 @@
           package = venv-selector-nvim;
           setup = "require('venv-selector').setup {}";
         };
-        trunk = {
-          package = neovim-trunk;
-          setup = "require('trunk').setup {}";
-        };
+        # trunk = {
+        #   package = neovim-trunk;
+        #   setup = "require('trunk').setup {}";
+        # };
         "auto-session" = {
           package = auto-session;
           setup = ''
