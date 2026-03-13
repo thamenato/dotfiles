@@ -10,6 +10,8 @@
         doom_loop = "ask";
         external_directory = "ask";
       };
+
+      plugin = ["opencode-gemini-auth@latest"];
     };
   };
 }
