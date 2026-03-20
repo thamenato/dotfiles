@@ -1,6 +1,6 @@
-{lib, ...}: {
+{
   services = {
-    easyeffects.enable = lib.mkForce false;
+    # easyeffects.enable = lib.mkForce false;
     gnome-keyring = {
       enable = true;
       components = ["secrets"];
