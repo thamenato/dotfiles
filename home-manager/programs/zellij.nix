@@ -96,7 +96,10 @@
                 datetime_timezone "America/New_York"
               }
            }
-           children
+            children
+            pane size=1 borderless=true {
+                plugin location="zellij:status-bar"
+            }
            }
         }'';
     };
