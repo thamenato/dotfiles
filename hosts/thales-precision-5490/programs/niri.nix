@@ -28,20 +28,8 @@
       };
 
       outputs = {
-        "DP-2" = {
-          # monitor
-          mode = {
-            width = 5120;
-            height = 1440;
-            refresh = 120.000;
-          };
-          position = {
-            x = 0;
-            y = 0;
-          };
-        };
         "eDP-1" = {
-          # laptop
+          # laptop (left)
           mode = {
             width = 1920;
             height = 1200;
@@ -49,7 +37,31 @@
           };
           scale = 1;
           position = {
-            x = 5120;
+            x = 0;
+            y = 0;
+          };
+        };
+        "DP-3" = {
+          # sceptre (middle)
+          mode = {
+            width = 1920;
+            height = 1080;
+            refresh = 60.000;
+          };
+          position = {
+            x = 1920;
+            y = 0;
+          };
+        };
+        "DP-2" = {
+          # portable (right)
+          mode = {
+            width = 1920;
+            height = 1080;
+            refresh = 60.000;
+          };
+          position = {
+            x = 1920 * 2;
             y = 0;
           };
         };
