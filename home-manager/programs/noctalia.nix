@@ -41,7 +41,7 @@
               id = "MediaMini";
             }
             {
-              id = "Tailcale";
+              id = "Tailscale";
             }
           ];
           center = [
