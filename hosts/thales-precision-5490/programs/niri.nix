@@ -8,7 +8,7 @@
     text = builtins.toJSON {
       defaultWallpaper = "${backgrounds."wallhaven-rrvygj_5120x1440.png"}";
       wallpapers = {
-        "DP-2" = "${backgrounds."wallhaven-rrvygj_5120x1440.png"}";
+        "DP-3" = "${backgrounds."wallhaven-rrvygj_5120x1440.png"}";
         "eDP-1" = "${backgrounds."wallhaven-kxo38d_1920x1080.png"}";
       };
     };
@@ -28,6 +28,18 @@
       };
 
       outputs = {
+        "DP-3" = {
+          # samsung (main)
+          mode = {
+            width = 5120;
+            height = 1440;
+            refresh = 143.987;
+          };
+          position = {
+            x = 0;
+            y = 0;
+          };
+        };
         "eDP-1" = {
           # laptop (left)
           mode = {
@@ -37,34 +49,22 @@
           };
           scale = 1;
           position = {
-            x = 0;
+            x = 5120;
             y = 0;
           };
         };
-        "DP-3" = {
-          # sceptre (middle)
-          mode = {
-            width = 1920;
-            height = 1080;
-            refresh = 60.000;
-          };
-          position = {
-            x = 1920;
-            y = 0;
-          };
-        };
-        "DP-2" = {
-          # portable (right)
-          mode = {
-            width = 1920;
-            height = 1080;
-            refresh = 60.000;
-          };
-          position = {
-            x = 1920 * 2;
-            y = 0;
-          };
-        };
+        #"DP-2" = {
+        #  # portable (right)
+        #  mode = {
+        #    width = 1920;
+        #    height = 1080;
+        #    refresh = 60.000;
+        #  };
+        #  position = {
+        #    x = 1920 * 2;
+        #    y = 0;
+        #  };
+        #};
       };
     };
   };
