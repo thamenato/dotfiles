@@ -4,6 +4,7 @@
     ./atuin.nix
     ./bat.nix
     ./btop.nix
+    ./claude-code.nix
     ./direnv.nix
     ./eza.nix
     ./fd.nix
