@@ -22,13 +22,11 @@
       self.homeModules."programs/fzf"
       self.homeModules."programs/gh-dash"
       self.homeModules."programs/gh"
-      self.homeModules."programs/ghostty"
       self.homeModules."programs/git"
       self.homeModules."programs/go"
       self.homeModules."programs/helix"
       self.homeModules."programs/hyprlock"
       self.homeModules."programs/k9s"
-      self.homeModules."programs/kitty"
       self.homeModules."programs/lazygit"
       self.homeModules."programs/mergiraf"
       self.homeModules."programs/ncspot"
@@ -39,10 +37,7 @@
       self.homeModules."programs/ripgrep"
       self.homeModules."programs/rofi"
       self.homeModules."programs/ruff"
-      self.homeModules."programs/swaylock"
       self.homeModules."programs/taskwarrior"
-      self.homeModules."programs/tmux"
-      self.homeModules."programs/vscode"
       self.homeModules."programs/waybar"
       self.homeModules."programs/yazi"
       self.homeModules."programs/zellij"
@@ -54,11 +49,6 @@
       self.homeModules."services/easyeffects"
       self.homeModules."services/mako"
       self.homeModules."services/swayidle"
-
-      # Wayland
-      self.homeModules."wayland/hyprland"
-      self.homeModules."wayland/niri"
-      self.homeModules."wayland/sway"
     ];
 
     home = {
