@@ -20,6 +20,10 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    # Flake framework
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    import-tree.url = "github:denful/import-tree";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -56,60 +60,7 @@
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
-  outputs = inputs @ {
-    self,
-    nixpkgs,
-    ...
-  }: let
-    system = "x86_64-linux";
-    username = "thamenato";
-
-    pkgs = import nixpkgs {
-      inherit system;
-      config = {
-        allowUnfree = true;
-        allowUnfreePredicate = _: true;
-      };
-    };
-
-    utils = import ./utils.nix {inherit pkgs inputs;};
-
-    hostDirs = builtins.attrNames (builtins.readDir ./hosts);
-  in {
-    checks = {
-      pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
-        src = ./.;
-        hooks = {
-          check-added-large-files.enable = true;
-          check-yaml.enable = true;
-          deadnix.enable = true;
-          detect-private-keys.enable = true;
-          end-of-file-fixer.enable = true;
-          alejandra.enable = true;
-          trim-trailing-whitespace.enable = true;
-        };
-      };
-    };
-
-    devShells."${system}".default = pkgs.mkShell {
-      inherit (self.checks.pre-commit-check) shellHook;
-      buildInputs = self.checks.pre-commit-check.enabledPackages;
-
-      packages = with pkgs; [
-        # tools
-        cachix
-        just
-        nh
-        nixfmt
-        sops
-        yq-go
-        # language server
-        alejandra
-        nil
-        yaml-language-server
-      ];
-    };
-
-    homeConfigurations = utils.mkHomeConfigurations username hostDirs;
-  };
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake {inherit inputs;}
+    (inputs.import-tree ./modules);
 }
