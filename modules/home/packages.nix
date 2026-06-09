@@ -31,7 +31,7 @@
       zip
 
       # apps
-      bitwarden-desktop
+      # bitwarden-desktop  # TODO: uses EOL electron-39, waiting on nixpkgs#526914
       vlc
       bruno
 

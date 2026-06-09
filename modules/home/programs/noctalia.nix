@@ -1,28 +1,10 @@
 # modules/home/programs/noctalia.nix
 {...}: {
   flake.homeModules."programs/noctalia" = {...}: {
-    programs.noctalia-shell = {
+    programs.noctalia = {
       enable = true;
 
-      plugins = {
-        sources = [
-          {
-            enabled = true;
-            name = "Official Noctalia Plugins";
-            url = "https://github.com/noctalia-dev/noctalia-plugins";
-          }
-        ];
-        states = {
-          tailscale = {
-            enabled = true;
-            sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-          };
-        };
-        version = 2;
-      };
-
       settings = {
-        # configure noctalia here
         bar = {
           density = "compact";
           position = "top";
@@ -85,7 +67,6 @@
           name = "Charlotte, NC";
         };
       };
-      # this may also be a string or a path to a JSON file.
     };
   };
 }
