@@ -38,6 +38,15 @@ tailscale_install() {
         sudo tee /etc/apt/sources.list.d/tailscale.list
 }
 
+gdm_setup() {
+    echo ">>> gdm: disable Wayland greeter to prevent DRM contention with niri"
+    # GDM's Wayland greeter holds exclusive DRM access on the Intel i915 device
+    # (card2, which owns all display outputs). When niri starts at login, the DRM
+    # handoff races with DP link re-negotiation, causing random single-monitor boots.
+    # X11 greeter mode does a clean DRM release before niri acquires the device.
+    sudo sed -i 's/#WaylandEnable=false/WaylandEnable=false/' /etc/gdm3/custom.conf
+}
+
 niri_setup() {
     echo ">>> niri: symlinks, wayland session, and systemd units"
     sudo ln -sf "$(which niri)" /usr/bin/niri
@@ -91,6 +100,7 @@ nix_install
 apparmor_setup
 drivers_install
 tailscale_install
+gdm_setup
 niri_setup
 noctalia_pam_setup
 
