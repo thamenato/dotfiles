@@ -8,8 +8,8 @@
   }: {
     programs.niri = let
       terminal = "alacritty";
-      menu = "noctalia ipc call launcher toggle";
-      lockscreen = "hyprlock";
+      menu = "noctalia msg panel-toggle launcher";
+      lockscreen = "noctalia msg lock";
     in {
       enable = true;
       settings = {
@@ -163,7 +163,7 @@
           };
           "Ctrl+Alt+L" = {
             action = spawn "${lockscreen}";
-            hotkey-overlay.title = "Lock the Screen: swaylock";
+            hotkey-overlay.title = "Lock the Screen: noctalia";
           };
           "Mod+Shift+P" = {
             action = power-off-monitors;
