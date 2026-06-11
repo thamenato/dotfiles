@@ -8,7 +8,7 @@
   }: {
     programs.niri = let
       terminal = "alacritty";
-      menu = "noctalia-shell ipc call launcher toggle";
+      menu = "noctalia ipc call launcher toggle";
       lockscreen = "hyprlock";
     in {
       enable = true;
@@ -135,7 +135,7 @@
 
         spawn-at-startup = [
           {
-            command = ["noctalia-shell"];
+            command = ["noctalia"];
           }
           # {argv = ["waybar"];}
           {
