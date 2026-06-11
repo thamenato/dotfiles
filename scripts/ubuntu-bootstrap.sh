@@ -1,38 +1,97 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
-sudo apt-get update -y
-sudo apt-get upgrade -y
+# --- functions ---
 
-sudo apt-get install -y \
-    curl \
-    git \
-    xdg-desktop-portal-wlr \
-    sway
+apt_setup() {
+    echo ">>> apt: update & install base packages"
+    sudo apt-get update -y
+    sudo apt-get upgrade -y
+    sudo apt-get install -y \
+        curl \
+        git \
+        xdg-desktop-portal-wlr \
+        sway
+}
 
-# Install lix (nix)
-curl -sSf -L https://install.lix.systems/lix | sh -s -- install
+nix_install() {
+    echo ">>> nix: install lix"
+    curl -sSf -L https://install.lix.systems/lix | sh -s -- install
+}
 
-# Permanently disable AppArmor restrictions
-echo 'kernel.apparmor_restrict_unprivileged_userns = 0' |
-    sudo tee /etc/sysctl.d/20-apparmor-donotrestrict.conf
+apparmor_setup() {
+    echo ">>> apparmor: disable unprivileged userns restrictions"
+    echo 'kernel.apparmor_restrict_unprivileged_userns = 0' |
+        sudo tee /etc/sysctl.d/20-apparmor-donotrestrict.conf
+}
 
-# Install drivers
-sudo ubuntu-drivers install
+drivers_install() {
+    echo ">>> drivers: install ubuntu-drivers"
+    sudo ubuntu-drivers install
+}
 
-# Install tailscale
-curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/noble.noarmor.gpg | sudo tee /usr/share/keyrings/tailscale-archive-keyring.gpg >/dev/null
-curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/noble.tailscale-keyring.list | sudo tee /etc/apt/sources.list.d/tailscale.list
+tailscale_install() {
+    echo ">>> tailscale: add repo and install"
+    curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/noble.noarmor.gpg |
+        sudo tee /usr/share/keyrings/tailscale-archive-keyring.gpg >/dev/null
+    curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/noble.tailscale-keyring.list |
+        sudo tee /etc/apt/sources.list.d/tailscale.list
+}
 
-# Configure niri files (due to home-manager only supporting the package itself)
-sudo ln -s "$(which niri)" /usr/bin/niri
-sudo ln -s "$(which niri-session)" /usr/bin/niri-session
-# gdm/wayland
-curl https://raw.githubusercontent.com/YaLTeR/niri/refs/heads/main/resources/niri.desktop -o niri.desktop
-sudo mv niri.desktop /usr/local/share/wayland-sessions/niri.desktop
-curl https://raw.githubusercontent.com/YaLTeR/niri/refs/heads/main/resources/niri-portals.conf -o niri-portals.conf
-sudo mv niri-portals.conf /usr/loca/share/xdg-desktop-portal/niri-portals.conf
-# systemd config
-curl https://raw.githubusercontent.com/YaLTeR/niri/refs/heads/main/resources/niri.service -o niri.service
-sudo mv niri.service /etc/systemd/user/niri.service
-curl https://raw.githubusercontent.com/YaLTeR/niri/refs/heads/main/resources/niri-shutdown.target -o niri-shutdown.target
-sudo mv niri-shutdown.target /etc/systemd/user/niri-shutdown.target
+niri_setup() {
+    echo ">>> niri: symlinks, wayland session, and systemd units"
+    sudo ln -sf "$(which niri)" /usr/bin/niri
+    sudo ln -sf "$(which niri-session)" /usr/bin/niri-session
+
+    curl https://raw.githubusercontent.com/YaLTeR/niri/refs/heads/main/resources/niri.desktop -o niri.desktop
+    sudo mv niri.desktop /usr/local/share/wayland-sessions/niri.desktop
+
+    curl https://raw.githubusercontent.com/YaLTeR/niri/refs/heads/main/resources/niri-portals.conf -o niri-portals.conf
+    sudo mv niri-portals.conf /usr/loca/share/xdg-desktop-portal/niri-portals.conf
+
+    curl https://raw.githubusercontent.com/YaLTeR/niri/refs/heads/main/resources/niri.service -o niri.service
+    sudo mv niri.service /etc/systemd/user/niri.service
+
+    curl https://raw.githubusercontent.com/YaLTeR/niri/refs/heads/main/resources/niri-shutdown.target -o niri-shutdown.target
+    sudo mv niri-shutdown.target /etc/systemd/user/niri-shutdown.target
+}
+
+noctalia_pam_setup() {
+    echo ">>> noctalia: configure lock screen PAM"
+    # noctalia links against nix's libpam, whose pam_unix.so hardcodes
+    # /run/wrappers/bin/unix_chkpwd (NixOS-only path). We symlink it to the
+    # system's setgid /usr/sbin/unix_chkpwd so password auth works on Ubuntu.
+    # noctalia uses "noctalia" as PAM service name (patched in the nix derivation).
+
+    sudo tee /etc/pam.d/noctalia <<'EOF'
+#%PAM-1.0
+# noctalia lock screen - Ubuntu 24.04 (non-NixOS home-manager)
+# nix's pam_unix.so hardcodes /run/wrappers/bin/unix_chkpwd (NixOS path).
+# We symlink it to /usr/sbin/unix_chkpwd (setgid shadow) via tmpfiles.d.
+auth    required    pam_unix.so nullok
+account required    pam_permit.so
+session required    pam_permit.so
+EOF
+
+    sudo tee /etc/tmpfiles.d/noctalia-pam.conf <<'EOF'
+d /run/wrappers     0755 root root -
+d /run/wrappers/bin 0755 root root -
+L+ /run/wrappers/bin/unix_chkpwd - - - - /usr/sbin/unix_chkpwd
+EOF
+
+    sudo systemd-tmpfiles --create /etc/tmpfiles.d/noctalia-pam.conf
+}
+
+# --- main ---
+# To re-run a specific step: source this script and call the function directly.
+# Example: . scripts/ubuntu-bootstrap.sh; noctalia_pam_setup
+
+apt_setup
+nix_install
+apparmor_setup
+drivers_install
+tailscale_install
+niri_setup
+noctalia_pam_setup
+
+echo ">>> bootstrap complete"

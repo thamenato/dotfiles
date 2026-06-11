@@ -24,8 +24,8 @@
 
         binds = with config.lib.niri.actions; {
           "Ctrl+Alt+L" = lib.mkForce {
-            action = spawn "swaylock";
-            hotkey-overlay.title = "Lock the Screen: swaylock";
+            action = spawn "noctalia" "msg" "session" "lock";
+            hotkey-overlay.title = "Lock the Screen";
           };
         };
 
