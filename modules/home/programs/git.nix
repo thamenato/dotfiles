@@ -28,6 +28,10 @@
         };
       };
 
+      extraConfig = {
+        git-town.sync-feature-strategy = "rebase";
+      };
+
       signing = {
         format = "ssh";
         key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGkoP+Uu+fdknJf1b4J6ydudNe4FeTqMpDxBmvJiTkzM";

@@ -41,6 +41,7 @@
         package = null; # using swaylock from apt due to PAM issues
       };
       noctalia.package = lib.mkForce patchedNoctalia;
+      obs-studio.enable = true;
     };
   };
 }
