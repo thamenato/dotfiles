@@ -76,3 +76,28 @@ get-firefox-ext-id link:
     unzip latest.xpi -d my-extension && cd my-extension
     ext_id=$(cat manifest.json | jq -r '.browser_specific_settings.gecko.id')
     echo "\"${ext_id}\" = \"${ext_name}\";"
+
+# Set up / refresh GPU drivers on non-NixOS hosts (targets.genericLinux.gpu)
+gpu-setup host=`hostname` user=`whoami`:
+    #!/usr/bin/env bash
+    set -e
+
+    setup="{{ home_dir() }}/.nix-profile/bin/non-nixos-gpu-setup"
+    if [ ! -x "$setup" ]; then
+        echo "non-nixos-gpu-setup not found — is targets.genericLinux.gpu enabled for {{ user }}@{{ host }}?"
+        exit 1
+    fi
+
+    new=$(nix eval --raw ".#homeConfigurations.\"{{ user }}@{{ host }}\".config.targets.genericLinux.gpu.drivers")
+    current=$(readlink /run/opengl-driver || true)
+
+    if [ "$current" = "$new" ]; then
+        echo "GPU drivers already up to date ($new)"
+        exit 0
+    fi
+
+    echo "GPU drivers stale or missing:"
+    echo "  current: ${current:-<none>}"
+    echo "  new:     $new"
+    echo "Running: sudo $setup"
+    sudo "$setup"
