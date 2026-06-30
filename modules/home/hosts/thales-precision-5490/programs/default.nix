@@ -16,7 +16,7 @@
         (old.postPatch or "")
         + ''
           substituteInPlace src/auth/pam_authenticator.cpp \
-            --replace-fail 'pam_start("login"' 'pam_start("noctalia"'
+            --replace-fail '"login"' '"noctalia"'
         '';
     });
   in {
