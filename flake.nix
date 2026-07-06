@@ -52,6 +52,12 @@
     # applications
     niri.url = "github:sodiboo/niri-flake";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+
+    # Claude Code plugins
+    waza = {
+      url = "github:tw93/Waza";
+      flake = false;
+    };
   };
 
   outputs = inputs:

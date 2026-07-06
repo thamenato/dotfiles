@@ -494,6 +494,7 @@
         "nvf": "nvf",
         "pre-commit-hooks": "pre-commit-hooks",
         "stylix": "stylix",
+        "waza": "waza",
         "zen-browser": "zen-browser"
       }
     },
@@ -606,6 +607,22 @@
       "original": {
         "owner": "tinted-theming",
         "repo": "base16-zed",
+        "type": "github"
+      }
+    },
+    "waza": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1783237114,
+        "narHash": "sha256-11rwRaeSuh+1KfzwWGjJbPg7AaXpmQanWMjuaa7m0uo=",
+        "owner": "tw93",
+        "repo": "Waza",
+        "rev": "ff037c6cfd2e7f043e4ccdf582c40fbffd256e28",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tw93",
+        "repo": "Waza",
         "type": "github"
       }
     },
