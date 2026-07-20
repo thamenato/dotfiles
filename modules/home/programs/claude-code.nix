@@ -25,6 +25,12 @@
 
         # Git workflow
         - Always rebase onto main (`git fetch origin && git rebase origin/main`), never merge main into a feature branch.
+
+        # Python style
+        - Prefer `pathlib` over `os.path` for filesystem operations.
+        - Model structured data with dataclasses or Pydantic models, not raw dicts.
+        - File layout follows Clean Code's stepdown rule (read top-to-bottom like a newspaper): module-level globals first, then classes, then public functions, then the private helpers they call (each helper below its caller).
+        - Use `ruff` for both linting and formatting.
       '';
     };
   };
