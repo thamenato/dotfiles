@@ -2,6 +2,10 @@
 # Stylix theming configuration
 {...}: {
   flake.homeModules.stylix = {pkgs, ...}: {
+    # Stylix drives the cursor via `stylix.cursor`, but newer Home Manager
+    # requires the home-level cursor generation to be enabled explicitly.
+    home.pointerCursor.enable = true;
+
     stylix = {
       enable = true;
       autoEnable = false;
@@ -85,7 +89,7 @@
       in {
         alacritty.enable = true;
         gtk = {
-          enable = false;
+          enable = true;
           extraCss = gtkExtraCss;
         };
         lazygit.enable = true;

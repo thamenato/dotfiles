@@ -16,36 +16,45 @@
       kanshi = {
         enable = true;
         systemdTarget = "graphical-session.target";
-        profiles = {
-          dual.outputs = [
-            {
-              criteria = "Samsung Electric Company Odyssey G91SD HNTYC00800";
-              mode = "5120x1440@143.987";
-              position = "0,0";
-            }
-            {
-              criteria = "AU Optronics 0xF99A Unknown";
-              mode = "1920x1200@60.026";
-              position = "5120,0";
-              scale = 1.0;
-            }
-          ];
-          laptop.outputs = [
-            {
-              criteria = "AU Optronics 0xF99A Unknown";
-              mode = "1920x1200@60.026";
-              position = "0,0";
-              scale = 1.0;
-            }
-          ];
-          external.outputs = [
-            {
-              criteria = "Samsung Electric Company Odyssey G91SD HNTYC00800";
-              mode = "5120x1440@143.987";
-              position = "0,0";
-            }
-          ];
-        };
+        settings = [
+          {
+            profile.name = "dual";
+            profile.outputs = [
+              {
+                criteria = "Samsung Electric Company Odyssey G91SD HNTYC00800";
+                mode = "5120x1440@143.987";
+                position = "0,0";
+              }
+              {
+                criteria = "AU Optronics 0xF99A Unknown";
+                mode = "1920x1200@60.026";
+                position = "5120,0";
+                scale = 1.0;
+              }
+            ];
+          }
+          {
+            profile.name = "laptop";
+            profile.outputs = [
+              {
+                criteria = "AU Optronics 0xF99A Unknown";
+                mode = "1920x1200@60.026";
+                position = "0,0";
+                scale = 1.0;
+              }
+            ];
+          }
+          {
+            profile.name = "external";
+            profile.outputs = [
+              {
+                criteria = "Samsung Electric Company Odyssey G91SD HNTYC00800";
+                mode = "5120x1440@143.987";
+                position = "0,0";
+              }
+            ];
+          }
+        ];
       };
     };
   };

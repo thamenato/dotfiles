@@ -26,9 +26,7 @@
           sw = "switch";
           root = "rev-parse --show-toplevel";
         };
-      };
 
-      extraConfig = {
         git-town.sync-feature-strategy = "rebase";
       };
 
