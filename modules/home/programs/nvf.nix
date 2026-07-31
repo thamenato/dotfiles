@@ -91,7 +91,7 @@
           python = {
             enable = true;
             format.type = ["ruff"];
-            lsp.servers = ["python-lsp-server"];
+            lsp.servers = ["basedpyright"];
           };
           terraform.enable = true;
           yaml.enable = true;
@@ -99,10 +99,8 @@
 
         mini = {
           ai.enable = true;
-          diff.enable = true;
           # git.enable = true;
           icons.enable = true;
-          notify.enable = true;
           statusline.enable = true;
           surround.enable = true;
         };
@@ -112,20 +110,17 @@
         ];
 
         visuals = {
-          nvim-web-devicons.enable = true;
           nvim-cursorline = {
             enable = true;
             setupOpts = {
               cursorline.enable = true;
-              cursorword.enable = true;
+              cursorword.enable = false;
             };
           };
-          highlight-undo.enable = true;
           indent-blankline.enable = true;
         };
 
         binds = {
-          cheatsheet.enable = true;
           hardtime-nvim.enable = true;
           whichKey.enable = true;
         };
@@ -143,10 +138,7 @@
 
         spellcheck.enable = true;
 
-        comments = {
-          # https://github.com/numToStr/Comment.nvim
-          comment-nvim.enable = true;
-        };
+        # Commenting uses Neovim's built-in gc/gcc (native since 0.10).
 
         telescope.enable = true;
 
@@ -256,24 +248,6 @@
           #   package = neovim-trunk;
           #   setup = "require('trunk').setup {}";
           # };
-          "auto-session" = {
-            package = auto-session;
-            setup = ''
-              require('auto-session').setup {
-                auto_session_enabled = true,
-                auto_save_enabled = true,
-                auto_restore_enabled = true,
-                auto_session_suppress_dirs = { "~/", "~/Downloads", "/" },
-                -- Git integration
-                git_use_branch_name = true,
-                git_auto_restore_on_branch_change = true,
-                session_lens = {
-                  load_on_setup = true,
-                  theme_conf = { border = true },
-                },
-              }
-            '';
-          };
           "nvim-lint" = {
             package = nvim-lint;
             setup = ''
@@ -281,8 +255,8 @@
                 ['yaml.ansible'] = {'ansible_lint'},
               }
 
-              -- Run linter on save and when entering buffer
-              vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter" }, {
+              -- Run linter on save
+              vim.api.nvim_create_autocmd({ "BufWritePost" }, {
                 callback = function()
                   require("lint").try_lint()
                 end,
