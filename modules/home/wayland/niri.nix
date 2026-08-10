@@ -3,6 +3,7 @@
 {...}: {
   flake.homeModules."wayland/niri" = {
     config,
+    inputs,
     pkgs,
     ...
   }: {
@@ -12,6 +13,13 @@
       lockscreen = "noctalia msg lock";
     in {
       enable = true;
+
+      # Workaround: niri-flake's builder asserts on `libdisplay-info_0_2`, which
+      # nixpkgs removed (unused there since its own niri moved to 0.3). Building
+      # from niri-flake's own pinned nixpkgs keeps the attr available, and these
+      # are the exact derivations niri.cachix.org serves. Drop this once upstream
+      # niri-flake builds against libdisplay-info 0.3.
+      package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri-stable;
       settings = {
         prefer-no-csd = true;
         hotkey-overlay = {
