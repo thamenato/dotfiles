@@ -48,11 +48,30 @@
           nvimTree = {
             enable = true;
             setupOpts = {
+              view = {
+                # An attrset (rather than an int) sizes the window dynamically to
+                # the longest visible line, between min and max.
+                width = {
+                  min = 30;
+                  max = 70;
+                  padding = 1;
+                };
+                preserve_window_proportions = true;
+              };
+              renderer = {
+                indent_width = 1; # default 2; halves the per-level indent cost
+                group_empty = true; # collapse single-child directory chains
+                full_name = true; # float the full name when it is truncated
+              };
               actions = {
+                # Re-rooting with <C-]> issues :cd rather than :lcd, so telescope
+                # and grep follow the new root instead of only the tree window.
+                change_dir.global = true;
                 open_file = {
                   window_picker = {
                     enable = true;
                   };
+                  resize_window = true;
                 };
               };
             };
@@ -104,6 +123,14 @@
           statusline.enable = true;
           surround.enable = true;
         };
+
+        # nvim-tree resolves icons only via require("nvim-web-devicons") and nvf's
+        # nvimTree module never enables that plugin, so it renders without icons.
+        # Register mini.icons under that module name instead of pulling in a second
+        # icon provider. Must run after mini.icons setup, which luaConfigPost does.
+        luaConfigPost = ''
+          require("mini.icons").mock_nvim_web_devicons()
+        '';
 
         treesitter.grammars = with pkgs.tree-sitter-grammars; [
           tree-sitter-just
