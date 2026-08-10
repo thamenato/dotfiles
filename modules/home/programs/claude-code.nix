@@ -9,9 +9,25 @@
     programs.claude-code = {
       enable = true;
 
-      # Waza marketplace + auto-enable its plugin (skills as /waza:think, /waza:check, …)
-      marketplaces.waza = inputs.waza;
-      settings.enabledPlugins."waza@waza" = true;
+      # Marketplaces are declared through `settings` rather than the `marketplaces`
+      # option: that option hardcodes source = "directory" (so it can't express a
+      # GitHub marketplace) and takes ownership of plugins/known_marketplaces.json,
+      # which Claude Code must stay able to write when it clones/refreshes glyd-ai.
+      settings.extraKnownMarketplaces = {
+        waza.source = {
+          source = "directory";
+          path = "${inputs.waza}";
+        };
+        glyd-ai.source = {
+          source = "github";
+          repo = "glydways/glyd";
+        };
+      };
+
+      settings.enabledPlugins = {
+        "waza@waza" = true;
+        "devplat@glyd-ai" = true;
+      };
 
       # Waza statusline: context window %, 5h quota, 7d quota
       settings.statusLine = {
