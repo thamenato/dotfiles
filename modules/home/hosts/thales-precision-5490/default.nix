@@ -17,7 +17,7 @@
 
     home = {
       sessionVariables = {
-        BROWSER = "zen";
+        BROWSER = "zen-beta";
       };
     };
   };
