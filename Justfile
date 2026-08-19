@@ -101,3 +101,68 @@ gpu-setup host=`hostname` user=`whoami`:
     echo "  new:     $new"
     echo "Running: sudo $setup"
     sudo "$setup"
+
+# Scaffold a new non-NixOS host module, cloned from an existing one
+new-host HOSTNAME=`hostname` TEMPLATE="thales-precision-5490":
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    src="modules/home/hosts/{{ TEMPLATE }}"
+    dst="modules/home/hosts/{{ HOSTNAME }}"
+    cfg="modules/home/default.nix"
+
+    if [ ! -d "$src" ]; then
+        echo "template host not found: $src"
+        exit 1
+    fi
+    if [ -d "$dst" ]; then
+        echo "$dst already exists -- nothing to do"
+        exit 1
+    fi
+
+    echo ">>> copying $src -> $dst"
+    cp -r "$src" "$dst"
+
+    # Every reference inside the host module is of the form
+    # hosts/<name>[/sub], including the header comments, so one substitution
+    # renames the module attributes, the imports and the comments together.
+    find "$dst" -type f -name '*.nix' -exec \
+        sed -i 's|hosts/{{ TEMPLATE }}|hosts/{{ HOSTNAME }}|g' {} +
+
+    if grep -q '"${username}@{{ HOSTNAME }}"' "$cfg"; then
+        echo ">>> $cfg already lists {{ HOSTNAME }}, leaving it alone"
+    else
+        echo ">>> registering {{ HOSTNAME }} in flake.homeConfigurations"
+        entry='    "${username}@{{ HOSTNAME }}" = mkHome "{{ HOSTNAME }}";'
+        awk -v entry="$entry" '
+            /flake\.homeConfigurations = \{/ { inblock = 1; print; next }
+            inblock && index($0, "@") && !placed && $0 > entry {
+                print entry
+                placed = 1
+            }
+            inblock && $0 ~ /^[[:space:]]*\};/ && !placed {
+                print entry
+                placed = 1
+            }
+            /^[[:space:]]*\};/ { inblock = 0 }
+            { print }
+        ' "$cfg" > "$cfg.tmp"
+        mv "$cfg.tmp" "$cfg"
+    fi
+
+    if command -v alejandra >/dev/null 2>&1; then
+        alejandra --quiet "$dst" "$cfg" >/dev/null 2>&1 || true
+    fi
+
+    echo
+    echo ">>> scaffolded {{ HOSTNAME }} from {{ TEMPLATE }}"
+    echo
+    echo "Machine-specific bits you still need to review before switching:"
+    echo "  $dst/services.nix          kanshi profiles (monitor criteria + modes)"
+    echo "  $dst/programs/niri.nix     outputs, per-output wallpapers, spawn-at-startup"
+    echo "  $dst/programs/default.nix  git signing key"
+    echo "  $dst/packages.nix          host package list"
+    echo
+    echo "Then verify and switch:"
+    echo "  nix eval .#homeConfigurations --apply builtins.attrNames"
+    echo "  nh home switch"

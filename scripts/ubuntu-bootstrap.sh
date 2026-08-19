@@ -140,10 +140,12 @@ phase2() {
     info "    git clone <dotfiles-remote> $DOTFILES"
     info "    cd $DOTFILES"
     info "    nix develop          # gets you nh, just, sops"
+    info "    just new-host        # scaffold this host's module (first time only)"
     info "    nh home switch       # builds the home-manager generation"
     info ""
-    info "Note: '$USER@$(hostname)' must exist in flake.homeConfigurations"
-    info "(modules/home/default.nix) or the switch will fail."
+    info "'just new-host' clones the thales-precision-5490 module and registers"
+    info "'$USER@$(hostname)' in flake.homeConfigurations. Without that entry the"
+    info "switch fails. Review the monitor/kanshi bits it prints before switching."
     info ""
     info "Once the switch finishes, come back and run:"
     info ""
@@ -307,6 +309,7 @@ status() {
         info "Next:  ./scripts/ubuntu-bootstrap.sh phase2"
     elif ! has_home_manager; then
         info "Next:  cd $DOTFILES && nix develop"
+        info "       just new-host      # if this host has no module yet"
         info "       nh home switch"
     elif ! phase3_done; then
         info "Next:  ./scripts/ubuntu-bootstrap.sh phase3"
