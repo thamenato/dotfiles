@@ -28,6 +28,7 @@
         # tools
         cachix
         just
+        neovim
         nh
         nixfmt
         sops
