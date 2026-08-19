@@ -74,6 +74,7 @@
 in {
   flake.homeConfigurations = {
     "${username}@kassogtha" = mkHome "kassogtha";
+    "${username}@thales-nuc-minisforum" = mkHome "thales-nuc-minisforum";
     "${username}@thales-precision-5490" = mkHome "thales-precision-5490";
     "${username}@ythogtha" = mkHome "ythogtha";
     "${username}@zoth-ommog" = mkHome "zoth-ommog";
