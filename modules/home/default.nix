@@ -44,6 +44,11 @@
   };
 
   backgrounds = mkReadFolder ../../misc/backgrounds;
+  profiles = mkReadFolder ../../misc/profile;
+
+  # Store path of the backgrounds folder itself, i.e. the directory the
+  # `backgrounds` entries live under. Used for noctalia's wallpaper picker.
+  backgroundsDir = "${../../misc/backgrounds}";
 
   # Creates a home configuration for a specific host
   mkHome = hostName:
@@ -51,7 +56,7 @@
       inherit pkgs;
 
       extraSpecialArgs = {
-        inherit inputs backgrounds;
+        inherit inputs backgrounds backgroundsDir profiles;
         utils = {inherit mkSwaybg;};
       };
 

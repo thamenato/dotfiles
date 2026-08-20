@@ -1,19 +1,10 @@
 # modules/home/hosts/thales-nuc-minisforum/programs/niri.nix
 {...}: {
   flake.homeModules."hosts/thales-nuc-minisforum/programs/niri" = {
-    backgrounds,
     config,
     lib,
     ...
   }: {
-    home.file.".cache/noctalia/wallpapers.json" = {
-      text = builtins.toJSON {
-        defaultWallpaper = "${backgrounds."wallhaven-d6jzvg_3840x2160.png"}";
-        wallpapers = {
-          "DP-1" = "${backgrounds."wallhaven-d6jzvg_3840x2160.png"}";
-        };
-      };
-    };
     programs.niri = {
       settings = {
         spawn-at-startup = [

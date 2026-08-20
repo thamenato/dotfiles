@@ -1,20 +1,10 @@
 # modules/home/hosts/thales-precision-5490/programs/niri.nix
 {...}: {
   flake.homeModules."hosts/thales-precision-5490/programs/niri" = {
-    backgrounds,
     config,
     lib,
     ...
   }: {
-    home.file.".cache/noctalia/wallpapers.json" = {
-      text = builtins.toJSON {
-        defaultWallpaper = "${backgrounds."wallhaven-rrvygj_5120x1440.png"}";
-        wallpapers = {
-          "DP-3" = "${backgrounds."wallhaven-rrvygj_5120x1440.png"}";
-          "eDP-1" = "${backgrounds."wallhaven-kxo38d_1920x1080.png"}";
-        };
-      };
-    };
     programs.niri = {
       settings = {
         spawn-at-startup = [

@@ -43,36 +43,16 @@ behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
 [lockscreen_widgets]
 enabled = false
 schema_version = 2
-widget_order = [ "lockscreen-login-box@DP-3", "lockscreen-login-box@eDP-1" ]
 
     [lockscreen_widgets.grid]
     cell_size = 16
     major_interval = 4
     visible = true
 
-    [lockscreen_widgets.widget."lockscreen-login-box@DP-3"]
-    box_height = 0.0
-    box_width = 0.0
-    cx = 2560.0
-    cy = 1317.0
-    output = "DP-3"
-    rotation = 0.0
-    type = "login_box"
-
-    [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
-    box_height = 0.0
-    box_width = 0.0
-    cx = 960.0
-    cy = 1077.0
-    output = "eDP-1"
-    rotation = 0.0
-    type = "login_box"
-
 [plugins]
 enabled = [ "noctalia/bongocat" ]
 
 [shell]
-avatar_path = "/home/drfoobar/.face"
 
     [[shell.session.actions]]
     action = "lock"
@@ -110,18 +90,6 @@ builtin = "Eldritch"
     [theme.templates]
     enable_builtin_templates = false
     enable_community_templates = false
-
-[wallpaper]
-directory = "/home/thamenato/dotfiles/misc/backgrounds"
-
-    [wallpaper.last]
-    path = "/home/thamenato/dotfiles/misc/backgrounds/wallhaven-kxo38d_1920x1080.png"
-
-    [wallpaper.monitors.DP-3]
-    path = "/home/thamenato/dotfiles/misc/backgrounds/wallhaven-rrvygj_5120x1440.png"
-
-    [wallpaper.monitors.eDP-1]
-    path = "/home/thamenato/dotfiles/misc/backgrounds/wallhaven-kxo38d_1920x1080.png"
 
 [widget.Date_Space]
 length = 20

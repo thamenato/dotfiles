@@ -1,12 +1,14 @@
 # modules/home/hosts/thales-nuc-minisforum/programs/default.nix
 {self, ...}: {
   flake.homeModules."hosts/thales-nuc-minisforum/programs" = {
+    backgrounds,
     lib,
     pkgs,
     inputs,
     ...
   }: let
     disabled = lib.mkForce false;
+    wallpaper = "${backgrounds."wallhaven-kxo38d_5120x1440.png"}";
 
     # Patch noctalia to use "noctalia" as PAM service name instead of "login".
     # On Ubuntu (non-NixOS), nix's libpam can't parse /etc/pam.d/login (@include syntax),
@@ -36,7 +38,13 @@
           key = lib.mkForce "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB5BLR7Qc8IUUyRbdUY4YYKQOI8/vXaVaMkFKyUpBduP";
         };
       };
-      noctalia.package = lib.mkForce patchedNoctalia;
+      noctalia = {
+        package = lib.mkForce patchedNoctalia;
+        settings.wallpaper = {
+          default.path = wallpaper;
+          monitors."DP-1".path = wallpaper;
+        };
+      };
       obs-studio.enable = true;
     };
   };

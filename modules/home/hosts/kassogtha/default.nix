@@ -5,13 +5,9 @@
       self.homeModules."wayland/niri"
     ];
 
-    home.file.".cache/noctalia/wallpapers.json" = {
-      text = builtins.toJSON {
-        defaultWallpaper = "${backgrounds."wallhaven-kxo38d_1920x1080.png"}";
-        wallpapers = {
-          "eDP-1" = "${backgrounds."wallhaven-kxo38d_1920x1080.png"}";
-        };
-      };
+    programs.noctalia.settings.wallpaper = {
+      default.path = "${backgrounds."wallhaven-kxo38d_1920x1080.png"}";
+      monitors."eDP-1".path = "${backgrounds."wallhaven-kxo38d_1920x1080.png"}";
     };
   };
 }

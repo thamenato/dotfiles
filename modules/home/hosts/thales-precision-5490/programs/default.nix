@@ -1,6 +1,7 @@
 # modules/home/hosts/thales-precision-5490/programs/default.nix
 {self, ...}: {
   flake.homeModules."hosts/thales-precision-5490/programs" = {
+    backgrounds,
     lib,
     pkgs,
     inputs,
@@ -40,7 +41,47 @@
         enable = lib.mkForce true;
         package = null; # using swaylock from apt due to PAM issues
       };
-      noctalia.package = lib.mkForce patchedNoctalia;
+      noctalia = {
+        package = lib.mkForce patchedNoctalia;
+        settings = {
+          wallpaper = {
+            default.path = "${backgrounds."wallhaven-rrvygj_5120x1440.png"}";
+            monitors = {
+              "DP-3".path = "${backgrounds."wallhaven-rrvygj_5120x1440.png"}";
+              "eDP-1".path = "${backgrounds."wallhaven-kxo38d_1920x1080.png"}";
+            };
+          };
+
+          # Login-box geometry is per-output, so it belongs to the host rather
+          # than the shared noctalia config.
+          lockscreen_widgets = {
+            widget_order = [
+              "lockscreen-login-box@DP-3"
+              "lockscreen-login-box@eDP-1"
+            ];
+            widget = {
+              "lockscreen-login-box@DP-3" = {
+                box_height = 0.0;
+                box_width = 0.0;
+                cx = 2560.0;
+                cy = 1317.0;
+                output = "DP-3";
+                rotation = 0.0;
+                type = "login_box";
+              };
+              "lockscreen-login-box@eDP-1" = {
+                box_height = 0.0;
+                box_width = 0.0;
+                cx = 960.0;
+                cy = 1077.0;
+                output = "eDP-1";
+                rotation = 0.0;
+                type = "login_box";
+              };
+            };
+          };
+        };
+      };
       obs-studio.enable = true;
     };
   };

@@ -6,7 +6,6 @@
         # jiratui
         _1password-cli
         _1password-gui
-        devbox
         image-roll
         pwvucontrol
         satty
