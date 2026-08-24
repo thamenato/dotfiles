@@ -5,7 +5,6 @@
       self.homeModules."wayland/niri"
       self.homeModules."hosts/thales-nuc-minisforum/packages"
       self.homeModules."hosts/thales-nuc-minisforum/services"
-      self.homeModules."hosts/thales-nuc-minisforum/xdg"
       self.homeModules."hosts/thales-nuc-minisforum/programs"
     ];
 

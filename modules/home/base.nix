@@ -9,6 +9,7 @@
       self.homeModules.dconf
       self.homeModules.gtk
       self.homeModules.qt
+      self.homeModules.xdg
 
       # All programs
       self.homeModules."programs/alacritty"
