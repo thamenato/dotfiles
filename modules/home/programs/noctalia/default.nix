@@ -6,6 +6,12 @@
     lib,
     ...
   }: {
+    # home-manager gained its own `programs.noctalia` module (modules/programs/noctalia.nix).
+    # We stick with noctalia-shell's own home module, which ships alongside the flake
+    # package we actually install, so disable the home-manager one to avoid a duplicate
+    # option declaration.
+    disabledModules = ["programs/noctalia.nix"];
+
     programs.noctalia = {
       enable = true;
 

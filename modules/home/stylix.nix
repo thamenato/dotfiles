@@ -19,7 +19,13 @@
         size = 24;
       };
 
-      opacity.terminal = 0.9;
+      opacity = {
+        terminal = 0.9;
+        # `desktop` covers noctalia's dock; `popups` covers noctalia's
+        # notifications and OSD, plus mako and rofi.
+        desktop = 0.9;
+        popups = 0.9;
+      };
 
       fonts = with pkgs; {
         sizes = {
@@ -97,7 +103,14 @@
         rofi.enable = true;
         tmux.enable = true;
         zellij.enable = true;
-        noctalia-shell.enable = true;
+        # `noctalia-shell` targeted Noctalia v4 and is a no-op now (it gates on
+        # `programs.noctalia-shell`, which no longer exists); `noctalia` is the v5
+        # target. Wallpapers stay host-managed via `programs.noctalia.settings.wallpaper`,
+        # so keep stylix out of that one option to avoid conflicting definitions.
+        noctalia = {
+          enable = true;
+          image.enable = false;
+        };
         helix.enable = true;
       };
     };

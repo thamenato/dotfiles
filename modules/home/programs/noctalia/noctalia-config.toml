@@ -84,8 +84,9 @@ enabled = [ "noctalia/bongocat" ]
     shortcut = "5"
     variant = "destructive"
 
+# theme.source / theme.custom_palette / theme.mode come from stylix
+# (stylix.targets.noctalia), which writes a "stylix" custom palette.
 [theme]
-builtin = "Eldritch"
 
     [theme.templates]
     enable_builtin_templates = false
