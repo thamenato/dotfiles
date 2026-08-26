@@ -109,8 +109,25 @@
           };
           python = {
             enable = true;
-            format.type = ["ruff"];
-            lsp.servers = ["basedpyright"];
+            # conform preset names, applied in list order: lint --fix, then
+            # format. These are nvf's presets (store-path-pinned ruff), not
+            # conform's builtin ruff_fix / ruff_format names.
+            format.type = [
+              "ruff-fix"
+              "ruff"
+            ];
+            # ty owns types, ruff's server owns lint and code actions. ty is
+            # still pre-1.0; swap "ty" for "basedpyright" if it falls short, and
+            # pin basedpyright's typeCheckingMode to "standard" if you do -- its
+            # own default is "recommended", which errors on every unannotated
+            # parameter, unknown inferred type and missing stub.
+            lsp.servers = [
+              "ty"
+              "ruff"
+            ];
+            # A bare nix mypy has none of the project's dependencies installed,
+            # so it reports import-untyped for every third-party import.
+            extraDiagnostics.enable = false;
           };
           terraform.enable = true;
           yaml.enable = true;
@@ -199,24 +216,18 @@
           };
         };
 
-        formatter = {
-          conform-nvim = {
-            enable = true;
-            setupOpts = {
-              formatters_by_ft = {
-                nix = ["alejandra"];
-                python = [
-                  "ruff_fix"
-                  "ruff_format"
-                  "ruff_organize_imports"
-                ];
-              };
-            };
-          };
-        };
+        # formatters_by_ft is deliberately left unset: it is types.attrs, so a
+        # definition here shallow-merges last-write-wins against the entries
+        # vim.languages.<lang>.format.type generates, and can silently lose.
+        formatter.conform-nvim.enable = true;
 
         diagnostics = {
           enable = true;
+
+          # Set through nvf's option rather than a raw `linters_by_ft = {...}` in
+          # a plugin setup string, which replaces the whole table and so clobbers
+          # the linters nvf registers for every other filetype.
+          nvim-lint.linters_by_ft."yaml.ansible" = ["ansible_lint"];
 
           config = {
             virtual_text = true;
@@ -269,27 +280,31 @@
         extraPlugins = with pkgs.vimPlugins; {
           "venv-selector.nvim" = {
             package = venv-selector-nvim;
-            setup = "require('venv-selector').setup {}";
+            # The stock cwd/workspace/file searches pass -I (ignore .gitignore)
+            # and -L (follow symlinks), so inside a bazel repo they walk the
+            # output base through the bazel-* convenience symlinks and offer
+            # bazel's hermetic toolchain interpreters as if they were venvs.
+            # Excluding bazel-* keeps the picker to real project venvs.
+            setup = ''
+              require('venv-selector').setup {
+                search = {
+                  cwd = {
+                    command = "$FD '/bin/python$' '$CWD' --full-path --color never -HI -a -L -E /proc -E .git/ -E 'bazel-*' -E site-packages/",
+                  },
+                  workspace = {
+                    command = "$FD '/bin/python$' '$WORKSPACE_PATH' --full-path --color never -HI -a -L -E /proc -E .git/ -E 'bazel-*' -E site-packages/",
+                  },
+                  file = {
+                    command = "$FD '/bin/python$' '$FILE_DIR' --full-path --color never -HI -a -L -E /proc -E .git/ -E 'bazel-*' -E site-packages/",
+                  },
+                },
+              }
+            '';
           };
           # trunk = {
           #   package = neovim-trunk;
           #   setup = "require('trunk').setup {}";
           # };
-          "nvim-lint" = {
-            package = nvim-lint;
-            setup = ''
-              require('lint').linters_by_ft = {
-                ['yaml.ansible'] = {'ansible_lint'},
-              }
-
-              -- Run linter on save
-              vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-                callback = function()
-                  require("lint").try_lint()
-                end,
-              })
-            '';
-          };
         };
       };
     };
