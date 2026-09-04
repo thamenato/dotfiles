@@ -27,6 +27,7 @@
       settings.enabledPlugins = {
         "waza@waza" = true;
         "devplat@glyd-ai" = true;
+        "compute-platform@glyd-ai" = true;
       };
 
       # Waza statusline: context window %, 5h quota, 7d quota
