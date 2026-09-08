@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "thamenato",
+  "description": "Personal Claude Code skills, tracked in ~/dotfiles.",
+  "owner": {
+    "name": "Thales Menato"
+  },
+  "plugins": [
+    {
+      "name": "thamenato",
+      "description": "Personal task capture and review backed by Taskwarrior, with assigned Jira issues folded in when the Atlassian connector is available. Registers /thamenato:todo and /thamenato:wip.",
+      "version": "0.2.0",
+      "category": "productivity",
+      "source": "./"
+    }
+  ]
+}

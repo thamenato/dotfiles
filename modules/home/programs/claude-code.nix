@@ -1,6 +1,6 @@
 # modules/home/programs/claude-code.nix
 {inputs, ...}: {
-  flake.homeModules."programs/claude-code" = {...}: {
+  flake.homeModules."programs/claude-code" = {config, ...}: {
     home.file.".claude/statusline.sh" = {
       source = "${inputs.waza}/scripts/statusline.sh";
       executable = true;
@@ -22,13 +22,28 @@
           source = "github";
           repo = "glydways/glyd";
         };
+        # Points at the working tree rather than the store so skill edits apply
+        # without a rebuild.
+        thamenato.source = {
+          source = "directory";
+          path = "${config.home.homeDirectory}/dotfiles/claude";
+        };
       };
 
       settings.enabledPlugins = {
         "waza@waza" = true;
         "devplat@glyd-ai" = true;
         "compute-platform@glyd-ai" = true;
+        "thamenato@thamenato" = true;
       };
+
+      # Claude manages the task list directly; a prompt on every `task` call would
+      # make that unusable. The Jira entry is the read-only JQL search /thamenato:wip
+      # runs on every invocation.
+      settings.permissions.allow = [
+        "Bash(task:*)"
+        "mcp__claude_ai_Atlassian__searchJiraIssuesUsingJql"
+      ];
 
       # Waza statusline: context window %, 5h quota, 7d quota
       settings.statusLine = {
