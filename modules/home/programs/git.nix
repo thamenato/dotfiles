@@ -25,6 +25,7 @@
           st = "status";
           sw = "switch";
           root = "rev-parse --show-toplevel";
+          lfs-sync = "lfs push origin --all";
         };
 
         git-town.sync-feature-strategy = "rebase";
