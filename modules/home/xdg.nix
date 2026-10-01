@@ -12,6 +12,13 @@
     ...
   }: {
     xdg = lib.mkIf config.targets.genericLinux.enable {
+      # Flatpak's export dirs, so its .desktop files and icons show up in
+      # launchers. Merged into the list targets.genericLinux already sets.
+      systemDirs.data = [
+        "${config.xdg.dataHome}/flatpak/exports/share"
+        "/var/lib/flatpak/exports/share"
+      ];
+
       configFile = {
         "environment.d/envvars.conf".text = ''
           PATH="$HOME/.nix-profile/bin:$PATH"
