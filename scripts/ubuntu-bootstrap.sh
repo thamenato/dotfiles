@@ -156,15 +156,26 @@ nix_install() {
     step "nix: install Determinate Nix"
     # --determinate installs Determinate Systems' Nix distribution (determinate-nixd,
     # /etc/nix/nix.conf managed by the installer) rather than upstream Nix.
-    # The installer also sets trusted-users, which the flake's extra-substituters
-    # (niri.cachix.org, nix-cache.cthyllaxy.xyz) need in order to be honored.
     if has_nix; then
         ok "/nix already exists, skipping installer"
+    else
+        curl -fsSL https://install.determinate.systems/nix | sh -s -- install --determinate
+        ok "installed"
+    fi
+
+    # The daemon only honors the flake's extra-substituters (niri.cachix.org,
+    # nix-cache.cthyllaxy.xyz, ...) for trusted users, and the installer leaves
+    # trusted-users at root. nix.conf is overwritten on upgrades, so the line
+    # goes in nix.custom.conf, which nix.conf includes.
+    local line="trusted-users = root $USER"
+    if grep -qxF "$line" /etc/nix/nix.custom.conf; then
+        ok "$USER already a trusted nix user"
         return
     fi
 
-    curl -fsSL https://install.determinate.systems/nix | sh -s -- install --determinate
-    ok "installed"
+    echo "$line" | sudo tee -a /etc/nix/nix.custom.conf >/dev/null
+    sudo systemctl restart nix-daemon
+    ok "added $USER to trusted-users"
 }
 
 # --- phase 3: everything that needs the home-manager generation ---
