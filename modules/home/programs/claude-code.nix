@@ -22,6 +22,10 @@
           source = "github";
           repo = "glydways/glyd";
         };
+        mattpocock.source = {
+          source = "github";
+          repo = "mattpocock/skills";
+        };
         # Points at the working tree rather than the store so skill edits apply
         # without a rebuild.
         thamenato.source = {
@@ -35,6 +39,7 @@
         "devplat@glyd-ai" = true;
         "compute-platform@glyd-ai" = true;
         "thamenato@thamenato" = true;
+        "mattpocock-skills@mattpocock" = true;
       };
 
       # Claude manages the task list directly; a prompt on every `task` call would
