@@ -40,6 +40,7 @@
       self.homeModules."programs/ruff"
       self.homeModules."programs/taskwarrior"
       self.homeModules."programs/waybar"
+      self.homeModules."programs/worktrunk"
       self.homeModules."programs/yazi"
       self.homeModules."programs/zellij"
       self.homeModules."programs/zen"

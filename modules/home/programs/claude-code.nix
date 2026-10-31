@@ -62,6 +62,7 @@
 
         # Git workflow
         - Always rebase onto main (`git fetch origin && git rebase origin/main`), never merge main into a feature branch.
+        - Do branch work in a worktree, not by switching branches in the primary checkout. Create it with `wt` (worktrunk) so it lands under the sibling `<repo>-worktrees/` directory, e.g. `~/Projects/glyd-worktrees/<branch>`; never ad-hoc paths like `../glyd-foo`.
 
         # Python style
         - Prefer `pathlib` over `os.path` for filesystem operations.
