@@ -15,6 +15,12 @@
     programs.noctalia = {
       enable = true;
 
+      # Run as a user service (rather than niri spawn-at-startup) so apps launched
+      # from noctalia get their own units via `shell.launch_apps_as_systemd_services`.
+      # Otherwise they share noctalia's scope, and an OOM kill of e.g. a browser tab
+      # stops the whole scope, killing the lockscreen and leaving niri's red screen.
+      systemd.enable = true;
+
       # Read as an attrset rather than handed over as a path, so hosts can
       # contribute their own `wallpaper.monitors.<connector>` entries; noctalia's
       # `settings` option merges nested tables across modules.

@@ -17,8 +17,8 @@
       postPatch =
         (old.postPatch or "")
         + ''
-          substituteInPlace src/auth/pam_authenticator.cpp \
-            --replace-fail 'pam_start(service.data()' 'pam_start("noctalia"'
+          substituteInPlace src/shell/lockscreen/lock_screen.cpp \
+            --replace-fail 'const std::string pamService = "login";' 'const std::string pamService = "noctalia";'
         '';
     });
   in {

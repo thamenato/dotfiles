@@ -53,6 +53,7 @@ schema_version = 2
 enabled = [ "noctalia/bongocat" ]
 
 [shell]
+launch_apps_as_systemd_services = true
 
     [[shell.session.actions]]
     action = "lock"

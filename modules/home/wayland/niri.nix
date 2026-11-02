@@ -141,10 +141,8 @@
           size = 24;
         };
 
+        # noctalia is started by its own systemd user service (programs.noctalia.systemd)
         spawn-at-startup = [
-          {
-            command = ["noctalia"];
-          }
           # {argv = ["waybar"];}
           {
             argv = ["bitwarden"];
