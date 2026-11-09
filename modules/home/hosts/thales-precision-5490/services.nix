@@ -34,6 +34,24 @@
             ];
           }
           {
+            # Portable display on DP-3, laptop on the left.
+            # Must stay after "dual" (Samsung is also DP-3).
+            profile.name = "portable";
+            profile.outputs = [
+              {
+                criteria = "AU Optronics 0xF99A Unknown";
+                mode = "1920x1200@60.026";
+                position = "0,0";
+                scale = 1.0;
+              }
+              {
+                criteria = "DP-3";
+                mode = "1920x1080@60.000";
+                position = "1920,0";
+              }
+            ];
+          }
+          {
             profile.name = "laptop";
             profile.outputs = [
               {
