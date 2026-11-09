@@ -288,6 +288,7 @@
 
           # screenshot
           "Print".action.screenshot = [];
+          "Mod+Shift+S".action.screenshot = []; # 75% keyboard has no Print key
           "Ctrl+Print".action.screenshot-screen = [];
           "Alt+Print".action.screenshot-window = [];
 
