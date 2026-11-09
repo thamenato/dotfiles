@@ -19,7 +19,10 @@
       # from niri-flake's own pinned nixpkgs keeps the attr available, and these
       # are the exact derivations niri.cachix.org serves. Drop this once upstream
       # niri-flake builds against libdisplay-info 0.3.
-      package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri-stable;
+      # niri >= 25.11 ships a service file without /usr/bin for niri-flake's stable fixup to replace.
+      package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri-stable.override {
+        replace-service-with-usr-bin = false;
+      };
       settings = {
         prefer-no-csd = true;
         hotkey-overlay = {

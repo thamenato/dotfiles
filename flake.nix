@@ -50,7 +50,11 @@
     };
 
     # applications
-    niri.url = "github:sodiboo/niri-flake";
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      # niri-flake still pins stable to v25.08; ignore-drm-device needs >= 25.11.
+      inputs.niri-stable.url = "github:YaLTeR/niri/v26.04";
+    };
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
     # Claude Code plugins

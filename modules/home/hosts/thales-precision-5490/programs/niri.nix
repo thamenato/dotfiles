@@ -5,6 +5,9 @@
     lib,
     ...
   }: {
+    # Shadows /etc/xdg/systemd/user/niri.service, which starts a hand-installed /usr/bin/niri.
+    xdg.configFile."systemd/user/niri.service".source = "${config.programs.niri.package}/share/systemd/user/niri.service";
+
     programs.niri = {
       settings = {
         spawn-at-startup = [
@@ -17,6 +20,12 @@
             action = spawn "noctalia" "msg" "session" "lock";
             hotkey-overlay.title = "Lock the Screen";
           };
+        };
+
+        # The NVIDIA dGPU drives no outputs; holding it open keeps it out of runtime D3.
+        debug = {
+          render-drm-device = ["/dev/dri/by-path/pci-0000:00:02.0-render"];
+          ignore-drm-device = ["/dev/dri/by-path/pci-0000:01:00.0-render"];
         };
 
         outputs = {
