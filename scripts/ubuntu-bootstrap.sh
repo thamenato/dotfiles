@@ -16,6 +16,7 @@ set -euo pipefail
 DOTFILES="${DOTFILES:-$HOME/dotfiles}"
 NIX_ZSH="$HOME/.nix-profile/bin/zsh"
 NIX_NIRI="$HOME/.nix-profile/bin/niri"
+NVIDIA_DRIVER="${NVIDIA_DRIVER:-nvidia-driver-580-open}"
 
 # --- output helpers ---
 
@@ -54,7 +55,9 @@ preflight() {
     [[ $EUID -ne 0 ]] || die "do not run this as root -- it uses sudo where needed"
     command -v apt-get >/dev/null 2>&1 ||
         die "apt-get not found -- this script is for Ubuntu"
-    sudo -v || die "sudo is required"
+    # `sudo -v` prompts even under NOPASSWD when another sudoers rule (e.g.
+    # %sudo) still wants a password, so try a no-op non-interactively first.
+    sudo -n true 2>/dev/null || sudo -v || die "sudo is required"
 }
 
 # --- phase 1: everything that only needs apt ---
@@ -81,10 +84,13 @@ apt_setup() {
     step "apt: update & install base packages"
     sudo apt-get update -y
     sudo apt-get upgrade -y
+    # build-essential: a fresh desktop install has no gcc, and the NVIDIA DKMS
+    # build fails its CC sanity check without the compiler the kernel used.
     sudo apt-get install -y \
+        build-essential \
         curl \
         git
-    ok "curl and git installed"
+    ok "build-essential, curl and git installed"
 }
 
 tailscale_install() {
@@ -124,7 +130,35 @@ apparmor_setup() {
 drivers_install() {
     step "drivers: install ubuntu-drivers"
     sudo ubuntu-drivers install
+    nvidia_install
     ok "installed -- needs a reboot to load"
+}
+
+nvidia_install() {
+    # ubuntu-drivers only installs what its modalias list knows. Newer GPUs
+    # (e.g. the RTX PRO 500 Blackwell in the ThinkPad P14s Gen 6) are missing
+    # from it, so it silently installs no NVIDIA driver at all.
+    lspci | grep -qiE '(vga|3d).*nvidia' || return 0
+
+    if ! dpkg -l 'nvidia-driver-*' 2>/dev/null | grep -q '^ii'; then
+        step "nvidia: ubuntu-drivers skipped the GPU, installing $NVIDIA_DRIVER"
+        # The prebuilt, signed module for the running kernel avoids DKMS where
+        # it exists; DKMS still covers any other installed kernels.
+        sudo apt-get install -y "$NVIDIA_DRIVER"
+        sudo apt-get install -y "linux-modules-${NVIDIA_DRIVER#nvidia-driver-}-$(uname -r)" ||
+            warn "no prebuilt module for $(uname -r) -- relying on DKMS"
+    fi
+
+    # nvidia_drm (the driver package sets modeset=1) froze boot on the P14s
+    # Gen 6 at the gdm handoff. The dGPU drives no outputs and niri renders on
+    # the iGPU, so keep compute (nvidia, nvidia_uvm) but never load KMS.
+    sudo tee /etc/modprobe.d/zz-no-nvidia-drm.conf >/dev/null <<'EOF'
+# Written by ubuntu-bootstrap.sh: nvidia_drm froze boot on hybrid laptops.
+blacklist nvidia_drm
+install nvidia_drm /bin/false
+EOF
+    sudo update-initramfs -u -k all
+    ok "nvidia compute driver installed, nvidia_drm blocked"
 }
 
 # --- phase 2: nix ---
@@ -159,7 +193,8 @@ nix_install() {
     if has_nix; then
         ok "/nix already exists, skipping installer"
     else
-        curl -fsSL https://install.determinate.systems/nix | sh -s -- install --determinate
+        # --no-confirm: without a TTY (e.g. over ssh) the installer refuses to run.
+        curl -fsSL https://install.determinate.systems/nix | sh -s -- install --determinate --no-confirm
         ok "installed"
     fi
 
@@ -295,7 +330,8 @@ zsh_setup() {
         return
     fi
 
-    chsh -s "$NIX_ZSH" "$USER"
+    # sudo: a plain chsh asks for the user's password via PAM.
+    sudo chsh -s "$NIX_ZSH" "$USER"
     ok "login shell set (takes effect on next login)"
 }
 
