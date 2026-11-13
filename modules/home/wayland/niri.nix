@@ -3,7 +3,6 @@
 {...}: {
   flake.homeModules."wayland/niri" = {
     config,
-    inputs,
     pkgs,
     ...
   }: {
@@ -14,15 +13,12 @@
     in {
       enable = true;
 
-      # Workaround: niri-flake's builder asserts on `libdisplay-info_0_2`, which
-      # nixpkgs removed (unused there since its own niri moved to 0.3). Building
-      # from niri-flake's own pinned nixpkgs keeps the attr available, and these
-      # are the exact derivations niri.cachix.org serves. Drop this once upstream
-      # niri-flake builds against libdisplay-info 0.3.
-      # niri >= 25.11 ships a service file without /usr/bin for niri-flake's stable fixup to replace.
-      package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri-stable.override {
-        replace-service-with-usr-bin = false;
-      };
+      # Must come from our nixpkgs, not niri-flake's pinned one: on non-NixOS
+      # hosts niri loads mesa from /run/opengl-driver (targets.genericLinux.gpu),
+      # which is built from our nixpkgs. A niri linked against an older glibc
+      # fails to dlopen that mesa ("GLIBC_2.43 not found"), finds no GPU and
+      # never lights an output -- the session looks frozen.
+      package = pkgs.niri;
       settings = {
         prefer-no-csd = true;
         hotkey-overlay = {
