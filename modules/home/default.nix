@@ -78,6 +78,7 @@
     };
 in {
   flake.homeConfigurations = {
+    "${username}@glyd-24ba7c" = mkHome "glyd-24ba7c";
     "${username}@kassogtha" = mkHome "kassogtha";
     "${username}@thales-nuc-minisforum" = mkHome "thales-nuc-minisforum";
     "${username}@thales-precision-5490" = mkHome "thales-precision-5490";
