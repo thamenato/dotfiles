@@ -103,7 +103,7 @@ gpu-setup host=`hostname` user=`whoami`:
     sudo "$setup"
 
 # Scaffold a new non-NixOS host module, cloned from an existing one
-new-host HOSTNAME=`hostname` TEMPLATE="thales-precision-5490":
+new-host HOSTNAME=`hostname` TEMPLATE="glyd-24ba7c":
     #!/usr/bin/env bash
     set -euo pipefail
 

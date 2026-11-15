@@ -177,7 +177,7 @@ phase2() {
     info "    just new-host        # scaffold this host's module (first time only)"
     info "    nh home switch       # builds the home-manager generation"
     info ""
-    info "'just new-host' clones the thales-precision-5490 module and registers"
+    info "'just new-host' clones the glyd-24ba7c module and registers"
     info "'$USER@$(hostname)' in flake.homeConfigurations. Without that entry the"
     info "switch fails. Review the monitor/kanshi bits it prints before switching."
     info ""
