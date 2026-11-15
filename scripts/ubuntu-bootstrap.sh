@@ -11,6 +11,7 @@ set -euo pipefail
 #   ./ubuntu-bootstrap.sh phase1       # apt, tailscale, apparmor, gpu drivers
 #   ./ubuntu-bootstrap.sh phase2       # Determinate Nix
 #   ./ubuntu-bootstrap.sh phase3       # niri session, noctalia PAM, gdm, zsh
+#   ./ubuntu-bootstrap.sh doctor       # read-only health check (also: just doctor)
 #   ./ubuntu-bootstrap.sh gdm_setup    # or run any single step by name
 
 DOTFILES="${DOTFILES:-$HOME/dotfiles}"
@@ -36,6 +37,9 @@ has_nix() { [[ -d /nix/store ]]; }
 has_home_manager() { [[ -x "$NIX_NIRI" ]]; }
 has_niri_session() { [[ -e /usr/share/wayland-sessions/niri.desktop ]]; }
 has_tailscale() { command -v tailscale >/dev/null 2>&1; }
+# No `grep -q`: under pipefail it can exit before lspci finishes writing,
+# and lspci's SIGPIPE then makes the whole test fail on an NVIDIA host.
+has_nvidia() { lspci 2>/dev/null | grep -iE '(vga|3d).*nvidia' >/dev/null; }
 
 userns_unrestricted() {
     [[ "$(sysctl -n kernel.apparmor_restrict_unprivileged_userns 2>/dev/null || echo 1)" == "0" ]]
@@ -138,7 +142,7 @@ nvidia_install() {
     # ubuntu-drivers only installs what its modalias list knows. Newer GPUs
     # (e.g. the RTX PRO 500 Blackwell in the ThinkPad P14s Gen 6) are missing
     # from it, so it silently installs no NVIDIA driver at all.
-    lspci | grep -qiE '(vga|3d).*nvidia' || return 0
+    has_nvidia || return 0
 
     if ! dpkg -l 'nvidia-driver-*' 2>/dev/null | grep -q '^ii'; then
         step "nvidia: ubuntu-drivers skipped the GPU, installing $NVIDIA_DRIVER"
@@ -272,7 +276,8 @@ noctalia_pam_setup() {
     # noctalia links against nix's libpam, whose pam_unix.so hardcodes
     # /run/wrappers/bin/unix_chkpwd (NixOS-only path). We symlink it to the
     # system's setgid /usr/sbin/unix_chkpwd so password auth works on Ubuntu.
-    # noctalia uses "noctalia" as PAM service name (patched in the nix derivation).
+    # noctalia uses "noctalia" as PAM service name (-Dpam_service in the host's
+    # programs/default.nix).
 
     sudo tee /etc/pam.d/noctalia >/dev/null <<'EOF'
 #%PAM-1.0
@@ -362,8 +367,178 @@ status() {
         info "Next:  ./scripts/ubuntu-bootstrap.sh phase3"
     else
         ok "All phases complete."
+        doctor
+        return
     fi
     printf '\n'
+}
+
+# --- doctor ---
+# Read-only: never fixes anything and never prompts for sudo. Each failing
+# check names the step that fixes it. Exits non-zero if any check fails.
+
+doctor() {
+    banner "DOCTOR"
+    DOCTOR_FAILS=0
+
+    _check_ubuntu_host
+    _check_niri
+    _check_noctalia_pam
+    _check_gpu_drivers
+    _check_nvidia
+
+    printf '\n'
+    if ((DOCTOR_FAILS == 0)); then
+        ok "All checks passed."
+        printf '\n'
+        return 0
+    fi
+    warn "$DOCTOR_FAILS check(s) failed."
+    printf '\n'
+    return 1
+}
+
+_pass() { ok "$1"; }
+_skip() { printf '\033[2m    - %s -- skipped: %s\033[0m\n' "$1" "$2"; }
+_fail() {
+    printf '\033[1;31m    x %s\033[0m\n' "$1"
+    info "  fix: $2"
+    DOCTOR_FAILS=$((DOCTOR_FAILS + 1))
+}
+
+# _expect NAME FIX TEST...: pass if TEST... succeeds, otherwise fail with FIX.
+_expect() {
+    local name=$1 fix=$2
+    shift 2
+    if "$@"; then _pass "$name"; else _fail "$name" "$fix"; fi
+}
+
+_nix() {
+    if command -v nix >/dev/null 2>&1; then
+        nix "$@" 2>/dev/null
+    else
+        /nix/var/nix/profiles/default/bin/nix "$@" 2>/dev/null
+    fi
+}
+
+_home_attr() { printf '%s@%s' "$USER" "$(hostname)"; }
+
+_check_ubuntu_host() {
+    local me="./scripts/ubuntu-bootstrap.sh"
+    _expect "nix installed" "$me phase2" has_nix
+
+    if has_nix; then
+        _expect "$(_home_attr) in flake.homeConfigurations" "just new-host" _has_home_config
+    else
+        _skip "$(_home_attr) in flake.homeConfigurations" "no nix"
+    fi
+
+    _expect "home-manager generation active" "cd $DOTFILES && nh home switch" has_home_manager
+    _expect "niri wayland session registered" "$me niri_setup" has_niri_session
+    _expect "display-manager.service is gdm" "$me gdm_setup" _dm_is_gdm
+    _expect "login shell is the nix zsh (and in /etc/shells)" "$me zsh_setup" _zsh_ok
+}
+
+_has_home_config() {
+    _nix eval --json "$DOTFILES#homeConfigurations" --apply builtins.attrNames |
+        grep -F "\"$(_home_attr)\"" >/dev/null
+}
+
+_dm_is_gdm() {
+    [[ "$(readlink -f /etc/systemd/system/display-manager.service)" == */gdm.service ]]
+}
+
+_zsh_ok() { login_shell_is_nix_zsh && grep -qxF "$NIX_ZSH" /etc/shells; }
+
+_check_niri() {
+    local unit="$HOME/.config/systemd/user/niri.service"
+    _expect "niri.service comes from home-manager with X-SwitchMethod=keep-old" \
+        "add the niri.service override (see modules/home/hosts/glyd-24ba7c/programs/niri.nix), then nh home switch" \
+        _niri_unit_ok "$unit"
+    _expect "no stray niri.service outside a niri login session" \
+        "systemctl --user stop niri.service, then log in to niri again" \
+        _no_stray_niri
+}
+
+_niri_unit_ok() {
+    [[ "$(readlink -f "$1")" == /nix/store/* ]] &&
+        grep -qxF 'X-SwitchMethod=keep-old' "$1"
+}
+
+# After a switch restarts niri, sd-switch can leave niri.service running with
+# no session behind it; niri-session then refuses to start at the next login.
+# A real login keeps the niri-session wrapper alive for the whole session (gdm
+# leaves logind's Desktop property empty, so that can't be used instead).
+_no_stray_niri() {
+    systemctl --user is-active --quiet niri.service || return 0
+    pgrep -u "$USER" -f 'bin/niri-session' >/dev/null
+}
+
+_check_noctalia_pam() {
+    _expect "/etc/pam.d/noctalia and the unix_chkpwd wrapper in place" \
+        "./scripts/ubuntu-bootstrap.sh noctalia_pam_setup" _pam_files_ok
+
+    local helper
+    helper="$(dirname "$(readlink -f "$HOME/.nix-profile/bin/noctalia" 2>/dev/null || echo /nonexistent)")/../libexec/noctalia/noctalia-pam-helper"
+    if [[ ! -f "$helper" ]]; then
+        _skip "noctalia PAM helper uses the 'noctalia' service" "helper not found"
+        return
+    fi
+    _expect "noctalia PAM helper uses the 'noctalia' service" \
+        "set mesonFlags -Dpam_service=noctalia in the host's programs/default.nix, then nh home switch" \
+        _pam_helper_ok "$helper"
+}
+
+_pam_files_ok() {
+    [[ -f /etc/pam.d/noctalia ]] &&
+        [[ "$(readlink /run/wrappers/bin/unix_chkpwd)" == /usr/sbin/unix_chkpwd ]]
+}
+
+# The service name is compiled in as a NUL-terminated string literal.
+_pam_helper_ok() {
+    local strings
+    strings="$(tr '\0' '\n' <"$1")"
+    grep -qx noctalia <<<"$strings" && ! grep -qx login <<<"$strings"
+}
+
+_check_gpu_drivers() {
+    local name="/run/opengl-driver matches this generation's GPU drivers"
+    if ! has_nix; then
+        _skip "$name" "no nix"
+        return
+    fi
+    local want
+    want="$(_nix eval --raw "$DOTFILES#homeConfigurations.\"$(_home_attr)\".config.targets.genericLinux.gpu.drivers")" || true
+    if [[ -z "$want" ]]; then
+        _skip "$name" "targets.genericLinux.gpu not enabled"
+        return
+    fi
+    _expect "$name" "just gpu-setup" test "$(readlink /run/opengl-driver)" = "$want"
+}
+
+_check_nvidia() {
+    if ! has_nvidia; then
+        _skip "NVIDIA checks" "no NVIDIA GPU"
+        return
+    fi
+    _expect "NVIDIA driver package installed" \
+        "./scripts/ubuntu-bootstrap.sh nvidia_install" _nvidia_pkg_installed
+    _expect "nvidia module built for $(uname -r)" \
+        "sudo apt-get install linux-modules-${NVIDIA_DRIVER#nvidia-driver-}-$(uname -r) (or check DKMS)" \
+        _nvidia_module_built
+    _expect "nvidia_drm blocked and not loaded" \
+        "./scripts/ubuntu-bootstrap.sh nvidia_install, then reboot" _nvidia_drm_blocked
+}
+
+_nvidia_pkg_installed() {
+    dpkg -l 'nvidia-driver-*' 2>/dev/null | grep '^ii' >/dev/null
+}
+
+_nvidia_module_built() { modinfo nvidia >/dev/null 2>&1; }
+
+_nvidia_drm_blocked() {
+    grep -hqx 'install nvidia_drm /bin/false' /etc/modprobe.d/*.conf 2>/dev/null &&
+        ! grep -q '^nvidia_drm ' /proc/modules
 }
 
 # --- main ---

@@ -102,6 +102,10 @@ gpu-setup host=`hostname` user=`whoami`:
     echo "Running: sudo $setup"
     sudo "$setup"
 
+# Read-only health check of a non-NixOS host (never fixes, never prompts for sudo)
+doctor:
+    ./scripts/ubuntu-bootstrap.sh doctor
+
 # Scaffold a new non-NixOS host module, cloned from an existing one
 new-host HOSTNAME=`hostname` TEMPLATE="glyd-24ba7c":
     #!/usr/bin/env bash
