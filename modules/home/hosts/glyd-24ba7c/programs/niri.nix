@@ -3,10 +3,17 @@
   flake.homeModules."hosts/glyd-24ba7c/programs/niri" = {
     config,
     lib,
+    pkgs,
     ...
   }: {
     # Shadows /etc/xdg/systemd/user/niri.service, which starts a hand-installed /usr/bin/niri.
-    xdg.configFile."systemd/user/niri.service".source = "${config.programs.niri.package}/share/systemd/user/niri.service";
+    # X-SwitchMethod=keep-old: without it, sd-switch restarts niri whenever the unit changes
+    # (every niri bump), killing the session and leaving an orphaned niri.service behind
+    # that makes the next niri-session login fail with "A niri session is already running".
+    xdg.configFile."systemd/user/niri.service".source = pkgs.runCommand "niri.service" {} ''
+      cat ${config.programs.niri.package}/share/systemd/user/niri.service > $out
+      printf '\n[Unit]\nX-SwitchMethod=keep-old\n' >> $out
+    '';
 
     programs.niri = {
       settings = {
