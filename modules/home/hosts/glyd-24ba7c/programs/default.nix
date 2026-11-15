@@ -9,16 +9,11 @@
   }: let
     disabled = lib.mkForce false;
 
-    # Patch noctalia to use "noctalia" as PAM service name instead of "login".
+    # Build noctalia with "noctalia" as its PAM service instead of "login".
     # On Ubuntu (non-NixOS), nix's libpam can't parse /etc/pam.d/login (@include syntax),
     # so we point it at /etc/pam.d/noctalia which uses absolute paths to system modules.
     patchedNoctalia = inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs (old: {
-      postPatch =
-        (old.postPatch or "")
-        + ''
-          substituteInPlace src/shell/lockscreen/lock_screen.cpp \
-            --replace-fail 'const std::string pamService = "login";' 'const std::string pamService = "noctalia";'
-        '';
+      mesonFlags = (old.mesonFlags or []) ++ [(lib.mesonOption "pam_service" "noctalia")];
     });
   in {
     imports = [
