@@ -38,6 +38,11 @@ behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
     # Disabled: some USB-C monitors (e.g. the RTK portable on glyd-24ba7c's DP-3) re-send
     # hotplug every ~10s once powered off, and niri 26.04 keeps ~200 MB of GEM buffers per
     # hotplug until the outputs power back on. ~20 min of screen-off OOM-kills the session.
+    # Re-enable once a niri release (> 26.04) fixes it; tracking:
+    #   https://github.com/niri-wm/niri/issues/3295  (memory climbs while screens are off)
+    #   https://github.com/niri-wm/niri/issues/4461  (leak on every reconnect while off)
+    #   https://github.com/niri-wm/niri/pull/4675, https://github.com/niri-wm/niri/pull/4771  (partial fixes on main)
+    # Re-test with a 20-min lock while DP-3 is connected and watch niri's drm-total-system0 in /proc/<pid>/fdinfo.
     [idle.behavior.screen-off]
     action = "screen_off"
     enabled = false
