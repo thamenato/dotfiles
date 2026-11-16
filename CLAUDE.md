@@ -15,7 +15,8 @@ Home-manager config for every host. NixOS system configs live elsewhere; this re
 - **Troubleshoot with `just doctor` first.** It's read-only and each failing check names the step that fixes it.
 - Bootstrap with `scripts/ubuntu-bootstrap.sh` in three phases, with a manual `just new-host` + `nh home switch` between phases 2 and 3. Running it with no args prints status and the next command.
 - When editing that script: keep it bash, keep `status` as the no-arg default, dispatch by function name, never add `BASH_SOURCE` guards, and keep the guards that run before any `sudo`.
-- The stack is always niri + noctalia, with Determinate Nix as the installer (not lix). `wayland/sway.nix` is unimported on purpose and kept as a reference; swaylock/swayidle/swaybg are not sway leftovers.
+- The stack is always niri + noctalia, with Determinate Nix as the installer (not lix). `wayland/sway.nix` is unimported on purpose and kept as a reference; swaybg is not a sway leftover. noctalia owns idle lock and lock-before-sleep; don't add swayidle/swaylock back.
+- Keep monitors powered on while idle (noctalia `screen-off` disabled, no `power-off-monitors` on a timer). Some USB-C monitors re-send hotplug every ~10s once off, and niri leaks ~200 MB of GPU memory per hotplug until the outputs wake, which OOM-kills apps (Slack first) after ~20 min.
 - Prefer nix-profile binaries: register them with the system (e.g. `~/.nix-profile/bin/zsh` in `/etc/shells`) rather than apt-installing a duplicate.
 - The noctalia lock screen authenticates against the `noctalia` PAM service (`mesonFlags` `-Dpam_service=noctalia` in the host's `programs/default.nix`), because nix's libpam can't parse Ubuntu's `@include` files. Journal lines like `PAM (other) illegal module type: @include` are harmless. Only a real lock→unlock proves PAM works.
 - niri must come from our nixpkgs (`pkgs.niri`, set in `wayland/niri.nix`), or it can't load the mesa that `gpu-setup` installs.

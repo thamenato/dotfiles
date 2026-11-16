@@ -3,7 +3,6 @@
   flake.homeModules."hosts/glyd-24ba7c" = {...}: {
     imports = [
       self.homeModules."wayland/niri"
-      self.homeModules."programs/swaylock"
       self.homeModules."hosts/glyd-24ba7c/packages"
       self.homeModules."hosts/glyd-24ba7c/services"
       self.homeModules."hosts/glyd-24ba7c/programs"

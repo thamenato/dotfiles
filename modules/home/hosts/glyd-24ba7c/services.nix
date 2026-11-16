@@ -8,7 +8,6 @@
         components = ["secrets"];
       };
       polkit-gnome.enable = true;
-      swayidle.lockscreenCommand = "swaylock -fF";
 
       # Handles DP-3 appearing after niri starts (5120x1440@144Hz link negotiation
       # can race with compositor startup). Kanshi listens for hotplug events and

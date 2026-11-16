@@ -35,9 +35,12 @@ behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
     enabled = false
     timeout = 900
 
+    # Disabled: some USB-C monitors (e.g. the RTK portable on glyd-24ba7c's DP-3) re-send
+    # hotplug every ~10s once powered off, and niri 26.04 keeps ~200 MB of GEM buffers per
+    # hotplug until the outputs power back on. ~20 min of screen-off OOM-kills the session.
     [idle.behavior.screen-off]
     action = "screen_off"
-    enabled = true
+    enabled = false
     timeout = 660
 
 [lockscreen_widgets]

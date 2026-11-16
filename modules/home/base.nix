@@ -50,7 +50,6 @@
       # Services
       self.homeModules."services/easyeffects"
       self.homeModules."services/mako"
-      self.homeModules."services/swayidle"
     ];
 
     home = {

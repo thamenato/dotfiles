@@ -32,10 +32,6 @@
           key = lib.mkForce "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB5BLR7Qc8IUUyRbdUY4YYKQOI8/vXaVaMkFKyUpBduP";
         };
       };
-      swaylock = {
-        enable = lib.mkForce true;
-        package = null; # using swaylock from apt due to PAM issues
-      };
       noctalia = {
         package = lib.mkForce patchedNoctalia;
         settings = {
@@ -78,6 +74,14 @@
         };
       };
       obs-studio.enable = true;
+
+      # Daily `nh clean user` via a home-manager systemd user timer
+      # (nh-clean.service + nh-clean.timer, Persistent=true so missed runs catch up).
+      nh.clean = {
+        enable = true;
+        dates = "daily";
+        extraArgs = ["--keep" "5" "--keep-since" "7d"];
+      };
     };
   };
 }
